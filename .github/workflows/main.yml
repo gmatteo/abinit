@@ -42,6 +42,10 @@ jobs:
         run: |
           python -m pip install -U pip setuptools
           python -m pip install -r requirements.txt # Define your dependencies in this file.
+      - name: Install autoconf, automake, and m4
+        run: |
+            sudo apt update
+            sudo apt install -y autoconf automake m4
       - name: Build Pages
         run: ./mksite.py build
       - name: Configure GitHub Pages # No idea if that actually does anything...
