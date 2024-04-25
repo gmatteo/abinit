@@ -57,8 +57,8 @@ jobs:
 
       - name: Add landing page
         run: |
-            mv build/index.html build/mkdocs_index.html 
-            cp -r docs/ build/
+            mv site/index.html site/mkdocs_index.html 
+            cp -r docs/ site/
 
       - name: Configure GitHub Pages # No idea if that actually does anything...
         uses: actions/configure-pages@v4
