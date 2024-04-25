@@ -46,6 +46,8 @@ jobs:
         run: |
             sudo apt update
             sudo apt install -y autoconf automake m4
+      - name: AutoMake
+        run: ./config/scripts/makemake
       - name: Build Pages
         run: ./mksite.py build
       - name: Configure GitHub Pages # No idea if that actually does anything...
