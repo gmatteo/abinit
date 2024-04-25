@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - abinit_web
-      #- main
     #paths: # Recommended to avoid extra builds
     #  - .github/workflows/your_site_publish_file.yml # Change name to what your workflow file is
     #  - docs/**
@@ -34,28 +33,41 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Recommended for git localized plugin
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.9
+
       - name: Install dependencies
         run: |
           python -m pip install -U pip setuptools
           python -m pip install -r requirements.txt # Define your dependencies in this file.
+
       - name: Install autoconf, automake, and m4
         run: |
             sudo apt update
             sudo apt install -y autoconf automake m4
-      - name: AutoMake
+
+      - name: Run makemake
         run: ./config/scripts/makemake
-      - name: Build Pages
+
+      - name: Build site
         run: ./mksite.py build
+
+      - name: Add landing page
+        run: |
+            mv build/index.html build/mkdocs_index.html 
+            cp -r docs/ build/
+
       - name: Configure GitHub Pages # No idea if that actually does anything...
         uses: actions/configure-pages@v4
+
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: site/ # Important. Set to your output dir in MkDocs
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
