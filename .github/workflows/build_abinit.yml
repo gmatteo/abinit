@@ -50,7 +50,7 @@ jobs:
         echo "nf-config --all\n:" `nf-config --all`
 
     - name: Run configure
-      run: ./configure FC=mpifort CC=mpicc CXX=mpicxx --with-mpi="yes"
+      run: ./configure FC=mpifort CC=mpicc CXX=mpicxx FCFLAGS="-g -O0 -ffree-line-length-none -fallow-argument-mismatch" --with-mpi="yes"
 
     - name: Upload config.log
       uses: actions/upload-artifact@v2
@@ -61,19 +61,13 @@ jobs:
     - name: Run make
       run: make -j | tee make.log
 
-    - name: Upload config.log
-      uses: actions/upload-artifact@v2
-      with:
-        name: make.log
-        path: make.log
-
     - name: Run tests
       run: |
         cd tests 
-        ./runtests.py v1 v2 -j8 | tee runtests.log
+        ./runtests.py v1 v2 -j8 --force-mpirun | tee runtests.log
 
-    - name: Upload runtest.log
+    - name: Upload runtests.log
       uses: actions/upload-artifact@v2
       with:
         name: runtests.log
-        path: runtests.log
+        path: tests/runtests.log
