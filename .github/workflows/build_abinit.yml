@@ -12,8 +12,8 @@ on:
 jobs:
   build:
     #runs-on: [x64|arm64|ppc64le|s390x]-ubuntu-latest
-    #runs-on: ubuntu-latest
-    runs-on: arm64-ubuntu-latest
+    runs-on: ubuntu-latest
+    #runs-on: arm64-ubuntu-latest
 
     steps:
     - name: Checkout repository
@@ -52,10 +52,28 @@ jobs:
     - name: Run configure
       run: ./configure FC=mpifort CC=mpicc CXX=mpicxx --with-mpi="yes"
 
+    - name: Upload config.log
+      uses: actions/upload-artifact@v2
+      with:
+        name: config.log
+        path: config.log
+
     - name: Run make
-      run: make -j
+      run: make -j | tee make.log
+
+    - name: Upload config.log
+      uses: actions/upload-artifact@v2
+      with:
+        name: make.log
+        path: make.log
 
     - name: Run tests
       run: |
         cd tests 
-        ./runtests.py v1 v2 -j8
+        ./runtests.py v1 v2 -j8 | tee runtests.log
+
+    - name: Upload runtest.log
+      uses: actions/upload-artifact@v2
+      with:
+        name: runtests.log
+        path: runtests.log
