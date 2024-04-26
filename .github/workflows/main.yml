@@ -48,6 +48,7 @@ jobs:
         run: |
             sudo apt update
             sudo apt install -y autoconf automake m4
+            #sudo apt-get install -y robodoc
 
       - name: Run makemake
         run: ./config/scripts/makemake
@@ -55,10 +56,10 @@ jobs:
       - name: Build site
         run: ./mksite.py build
 
-      - name: Add landing page
-        run: |
-            mv site/index.html site/mkdocs_index.html 
-            cp -r docs/ site/
+      #- name: Add landing page
+      #  run: |
+      #      mv site/index.html site/mkdocs_index.html 
+      #      mv docs/* site/
 
       - name: Configure GitHub Pages # No idea if that actually does anything...
         uses: actions/configure-pages@v4
