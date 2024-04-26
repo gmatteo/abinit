@@ -44,11 +44,14 @@ jobs:
         echo "which mpifort\n:" `which mpifort`
         echo "which mpicc\n:" `which mpicc`
         echo "which mpicxx\n:" `which mpicxx`
-        echo "nc-config --all\n:" nc-config --all
-        echo "nf-config --all\n:" nf-config --all
+        echo "nc-config --all\n:" `nc-config --all`
+        echo "nf-config --all\n:" `nf-config --all`
 
     - name: Run configure
       run: ./configure FC=mpifort CC=mpicc CXX=mpicxx --with-mpi="yes"
+
+    - name: Run make
+      run: make -j
 
       #with_linalg_flavor="netlib"
       #LINALG_LIBS="-L/usr/lib/x86_64-linux-gnu -llapack -lblas"
@@ -58,5 +61,7 @@ jobs:
       #with_netcdf="yes"
       #with_netcdf_fortran="yes"
 
-    #- name: Run tests
-    #  run: cd tests && 
+    - name: Run tests
+      run: |
+        cd tests 
+        ./runtests.py v1 v2 -j8
