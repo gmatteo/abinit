@@ -39,8 +39,16 @@ jobs:
     - name: Run makemake
       run: ./config/scripts/makemake
 
+    - name: Print Env
+      run: |
+        echo "which mpifort\n:" `which mpifort`
+        echo "which mpicc\n:" `which mpicc`
+        echo "which mpicxx\n:" `which mpicxx`
+        echo "nc-config --all\n:" nc-config --all
+        echo "nf-config --all\n:" nf-config --all
+
     - name: Run configure
-      run: ./configure FC=mpifort --with-mpi="yes"
+      run: ./configure FC=mpifort CC=mpicc CXX=mpicxx --with-mpi="yes"
 
       #with_linalg_flavor="netlib"
       #LINALG_LIBS="-L/usr/lib/x86_64-linux-gnu -llapack -lblas"
