@@ -11,7 +11,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    #runs-on: [x64|arm64|ppc64le|s390x]-ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: arm64-ubuntu-latest
 
     steps:
     - name: Checkout repository
@@ -52,14 +54,6 @@ jobs:
 
     - name: Run make
       run: make -j
-
-      #with_linalg_flavor="netlib"
-      #LINALG_LIBS="-L/usr/lib/x86_64-linux-gnu -llapack -lblas"
-      ## mandatory libraries
-      #with_libxc="yes"
-      #with_hdf5="yes"
-      #with_netcdf="yes"
-      #with_netcdf_fortran="yes"
 
     - name: Run tests
       run: |
