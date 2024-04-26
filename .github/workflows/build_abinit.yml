@@ -1,0 +1,54 @@
+name: Build Abinit
+
+on:
+  push:
+    branches:
+      - develop  
+      - abinit_web
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y autoconf automake m4
+        # 1 # compiler
+        sudo apt install -y build-essential gfortran
+        # 2 # MPI libraries - choice for Open MPI
+        sudo apt install -y mpi-default-dev libopenmpi-dev
+        # 3 # math libraries - choice for lapack and blas
+        sudo apt install -y liblapack-dev libblas-dev
+        # 4 # mandatory libraries
+        sudo apt install -y libfftw3-dev
+        sudo apt install -y libhdf5-dev libnetcdf-dev libnetcdff-dev libpnetcdf-dev libxc-dev
+
+    - name: Run makemake
+      run: ./config/scripts/makemake
+
+    - name: Run configure
+      run: ./configure FC=mpifort --with-mpi="yes"
+
+      #with_linalg_flavor="netlib"
+      #LINALG_LIBS="-L/usr/lib/x86_64-linux-gnu -llapack -lblas"
+      ## mandatory libraries
+      #with_libxc="yes"
+      #with_hdf5="yes"
+      #with_netcdf="yes"
+      #with_netcdf_fortran="yes"
+
+    #- name: Run tests
+    #  run: cd tests && 
