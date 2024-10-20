@@ -1549,6 +1549,17 @@ subroutine invars1(bravais,dtset,iout,jdtset,lenstr,mband_upper,msym,npsp1,&
    vel=dtset%vel_orig(1:3,1:natom,iimage)
    vel_cell=dtset%vel_cell_orig(1:3,1:3,iimage)
    xred=dtset%xred_orig(1:3,1:natom,iimage)
+
+! if getxred or getxcart we need to import xred before entering ingeo.
+! NB: xred/cart might be re-updated at runtime after running source dtset
+!   call intagm(dprarr,intarr,source_dtset,marr,3,string(1:lenstr),'getxred',tread,'INT')
+!   if (tread==1 .or. tread_geo==1) 
+!     source_dtset = 
+!     if (== -1) source_dtset = jdtset-1
+!   end if
+!   call intagm(dprarr,intarr,source_dtset,marr,3,string(1:lenstr),'getxcart',tread_geo,'INT')
+! 
+
    ABI_MALLOC(chrgat,(natom))
    ABI_MALLOC(iatfix,(3,natom))
    ABI_MALLOC(nucdipmom,(3,natom))
@@ -2135,7 +2146,9 @@ subroutine invars1(bravais,dtset,iout,jdtset,lenstr,mband_upper,msym,npsp1,&
  if(tread==1) dtset%constraint_kind(1:dtset%ntypat)=intarr(1:dtset%ntypat)
 
 !Some special cases are not compatible with GPU implementation
- if (dtset%optdriver/=0) dtset%gpu_option=ABI_GPU_DISABLED  ! GPU only compatible with GS
+ if (dtset%optdriver/=RUNL_GSTATE .and. dtset%optdriver/=RUNL_RESPFN) then
+   dtset%gpu_option=ABI_GPU_DISABLED  ! GPU only compatible with GS and RESPFN
+ end if
  if (dtset%tfkinfunc/=0) dtset%gpu_option=ABI_GPU_DISABLED  ! Recursion method has its own GPU impl
  if (dtset%nspinor/=1)   dtset%gpu_option=ABI_GPU_DISABLED  ! nspinor=2 not yet GPU compatible
 
@@ -2291,7 +2304,8 @@ subroutine indefo(dtsets, ndtset_alloc, nprocs)
    dtsets(idtset)%chneut=1      
    dtsets(idtset)%cineb_start=7
    dtsets(idtset)%corecs(:) = zero
-   dtsets(idtset)%cprj_update_lvl=0
+   dtsets(idtset)%cprj_in_memory=0
+   dtsets(idtset)%cprj_update_lvl=3
 !  D
    dtsets(idtset)%ddamp=0.1_dp
    dtsets(idtset)%delayperm=0
@@ -2815,6 +2829,7 @@ subroutine indefo(dtsets, ndtset_alloc, nprocs)
    dtsets(idtset)%write_files = "default"
 !  X
    dtsets(idtset)%xclevel  = 0
+   dtsets(idtset)%xg_nonlop_option  = 0
    dtsets(idtset)%xc_denpos = tol14
    dtsets(idtset)%xc_taupos = tol14
    dtsets(idtset)%xc_tb09_c = 99.99_dp

@@ -18,6 +18,9 @@
 
 #include "abi_common.h"
 
+! nvtx related macro definition
+#include "nvtx_macros.h"
+
 module m_dfpt_vtowfk
 
  use defs_basis
@@ -30,19 +33,23 @@ module m_dfpt_vtowfk
  use m_rf2
  use m_dtset
  use m_dtfil
+ use m_pawcprj
 
  use defs_datatypes, only : pseudopotential_type
  use defs_abitypes,  only : MPI_type
  use m_rf2_init,     only : rf2_init
  use m_time,         only : timab
  use m_pawrhoij,     only : pawrhoij_type
- use m_pawcprj
  use m_hamiltonian,  only : gs_hamiltonian_type, rf_hamiltonian_type, KPRIME_H_KPRIME
  use m_spacepar,     only : meanvalue_g
  use m_dfpt_mkrho,   only : dfpt_accrho
- use m_dfpt_cgwf,    only : dfpt_cgwf
+ use m_dfpt_cgwf,    only : dfpt_cgwf, full_active_wf1
  use m_getghc,       only : getgsc, getghc_nucdip, getghc_mGGA
  use m_getgh1c,      only : getgh1ndc, getgh1c_mGGA
+
+#if defined(HAVE_GPU) && defined(HAVE_GPU_MARKERS)
+ use m_nvtx_data
+#endif
 
  implicit none
 
@@ -227,7 +234,7 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
  integer :: iband,idir0,ierr,igs,igscq,ii,dim_dcwf,inonsc
  integer :: iband_me,nband_me !, unit_me
  integer :: iorder_cprj,iorder_cprj1,ipw,iscf_mod,ispinor,me,mgscq,nkpt_max
- integer :: option,opt_gvnlx1,quit,test_ddk
+ integer :: option,opt_gvnlx1,quit,test_ddk,ndat
  integer :: tocceig,usedcwavef,ptr,shift_band
  real(dp) :: aa,ai,ar,eig0nk,resid,residk,scprod,energy_factor
  character(len=500) :: message
@@ -246,6 +253,8 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
 ! *********************************************************************
 
  DBG_ENTER('COLL')
+
+ ABI_NVTX_START_RANGE(NVTX_DFPT_VTOWFK)
 
 !Keep track of total time spent in dfpt_vtowfk
  call timab(128,1,tsec)
@@ -296,9 +305,14 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
 !TODO MJV: PAW mband_mem
    mgscq=mpw1*nspinor*mband_mem
    ABI_MALLOC_OR_DIE(gscq,(2,mgscq), ierr)
+#ifdef HAVE_OPENMP_OFFLOAD
+   !$OMP TARGET ENTER DATA MAP(alloc:gscq)       IF(gs_hamkq%gpu_option==ABI_GPU_OPENMP)
+#endif
 
+   ABI_NVTX_START_RANGE(NVTX_GETGSC)
    call getgsc(cgq,cprjq,gs_hamkq,gscq,ibgq,icgq,igscq,ikpt,isppol,mcgq,mcprjq,&
-&   mgscq,mpi_enreg,natom,nband_k,npw1_k,dtset%nspinor,select_k=KPRIME_H_KPRIME)
+&   mgscq,mpi_enreg,dtset%bandpp,natom,nband_k,npw1_k,dtset%nspinor,select_k=KPRIME_H_KPRIME)
+   ABI_NVTX_END_RANGE()
 !  2-Initialize additional scalars/arrays
    iorder_cprj=0;iorder_cprj1=0
    dim_dcwf=npw1_k*nspinor;if (ipert==natom+2.or.ipert==natom+10.or.ipert==natom+11) dim_dcwf=0
@@ -335,6 +349,7 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
 !==================  LOOP OVER BANDS ==================================
 !======================================================================
 
+ ndat=1;if (mpi_enreg%paral_kgb==1) ndat=mpi_enreg%bandpp
  call proc_distrb_band(rank_band,mpi_enreg%proc_distrb,ikpt,isppol,mband,&
 &  mpi_enreg%me_band,mpi_enreg%me_kpt,mpi_enreg%comm_band)
 
@@ -431,9 +446,9 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
        bands_treated_now = 0
        bands_treated_now(iband) = 1
        call xmpi_sum(bands_treated_now,mpi_enreg%comm_band,ierr)
-       
+
        if (dtset%rf2_dkdk==2 .and. (idir==1 .or. idir==2 .or. idir==3)) then
-         eig1_k = zero 
+         eig1_k = zero
          resid = zero
        else
          call dfpt_cgwf(iband,iband_me,rank_band,bands_treated_now,dtset%berryopt,cgq,cwavef,cwave0,cwaveprj,cwaveprj0,&
@@ -444,28 +459,28 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
 &         dtset%tolwfr,usedcwavef,dtset%wfoptalg,nlines_done)
        end if
        resid_k(iband)=resid
-       
+
      else
        resid_k(iband)=zero
      end if
 
      if (ipert/=natom+10 .and. ipert/= natom+11) then
-!    At this stage, the 1st order function cwavef is orthogonal to cgq (unlike
-!    when it is input to dfpt_cgwf). Here, restore the "active space" content
-!    of the first-order wavefunction, to give cwave1.
-!    PAW: note that dcwavef (1st-order change of WF due to overlap change)
-!         remains in the subspace orthogonal to cgq
+       ! At this stage, the 1st order function cwavef is orthogonal to cgq (unlike
+       ! when it is input to dfpt_cgwf). Here, restore the "active space" content
+       ! of the first-order wavefunction, to give cwave1.
+       ! PAW: note that dcwavef (1st-order change of WF due to overlap change)
+       !      remains in the subspace orthogonal to cgq
        call proc_distrb_cycle_bands(cycle_bands, mpi_enreg%proc_distrb,ikpt,isppol,me)
-       if (dtset%prtfull1wf>0) then
+       if (dtset%prtfull1wf > 0) then
          call full_active_wf1(cgq,cprjq,cwavef,cwave1,cwaveprj,cwaveprj1,cycle_bands,eig1_k,fermie1,&
-&         eig0nk,eig0_kq,dtset%elph2_imagden,iband,ibgq,icgq,mcgq,mcprjq,mpi_enreg,natom,nband_k,npw1_k,nspinor,&
-&         0,gs_hamkq%usepaw)
+           eig0nk,eig0_kq,dtset%elph2_imagden,iband,ibgq,icgq,mcgq,mcprjq,mpi_enreg,natom,nband_k,npw1_k,nspinor,&
+           0,gs_hamkq%usepaw)
          edocc_k=zero
          tocceig=1
        else
          call corrmetalwf1(cgq,cprjq,cwavef,cwave1,cwaveprj,cwaveprj1,cycle_bands,edocc_k,eig1_k,fermie1,gh0c1,&
-&         iband,ibgq,icgq,gs_hamkq%istwf_k,mcgq,mcprjq,mpi_enreg,natom,nband_k,npw1_k,nspinor,&
-&         occ_k,rocceig,0,gs_hamkq%usepaw,tocceig)
+           iband,ibgq,icgq,gs_hamkq%istwf_k,mcgq,mcprjq,mpi_enreg,natom,nband_k,npw1_k,nspinor,&
+           occ_k,rocceig,0,gs_hamkq%usepaw,tocceig)
        end if
        ABI_FREE (cycle_bands)
      else
@@ -597,7 +612,7 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
        eloc0_k(iband) = zero
        option=2;if (iscf_mod>0.and.inonsc==nnsclo_now) option=3
        call dfpt_accrho(cplex,cwave0,cwave1,cwavef,cwaveprj0,cwaveprj1,eloc0_k(iband),&
-&       gs_hamkq,iband,idir,ipert,isppol,dtset%kptopt,mpi_enreg,natom,nband_k,ncpgr,&
+&       gs_hamkq,iband,idir,ipert,isppol,dtset%kptopt,mpi_enreg,1,natom,nband_k,ncpgr,&
 &       npw_k,npw1_k,nspinor,occ_k,option,pawrhoij1,rhoaug1,tim_fourwf,tocceig,wtk_k)
        if(ipert==natom+10.or.ipert==natom+11) eloc0_k(iband)=energy_factor*eloc0_k(iband)/two
 
@@ -687,6 +702,9 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
    end if
  end if
  ABI_FREE(dcwavef)
+#ifdef HAVE_OPENMP_OFFLOAD
+ !$OMP TARGET EXIT DATA MAP(delete:gscq) IF(gs_hamkq%usepaw==1 .and. gs_hamkq%gpu_option==ABI_GPU_OPENMP)
+#endif
  ABI_FREE(gscq)
  ABI_FREE(gsc)
  ABI_FREE(cwaveprj0)
@@ -716,166 +734,11 @@ subroutine dfpt_vtowfk(cg,cgq,cg1,cg1_active,cplex,cprj,cprjq,cprj1,&
  call timab(130,2,tsec)
  call timab(128,2,tsec)
 
+ ABI_NVTX_END_RANGE()
+
  DBG_EXIT('COLL')
 
 end subroutine dfpt_vtowfk
-!!***
-
-!!****f* ABINIT/full_active_wf1
-!!
-!! NAME
-!! full_active_wf1
-!!
-!! FUNCTION
-!! Response function calculation only:
-!! Restore the full "active space" contribution to the 1st-order wavefunctions.
-!! The 1st-order WF corrected in this way will no longer be orthogonal to the other occupied states.
-!! This routine will be only used in a non self-consistent calculation of the
-!! 1st-order WF for post-processing purposes. Therefore, it does not compute
-!! the contribution of the 2DTE coming from the change of occupations.
-!!
-!! INPUTS
-!!  cgq(2,mcgq)=planewave coefficients of wavefunctions at k+q
-!!  cprjq(natom,mcprjq)= wave functions at k+q projected with non-local projectors
-!!  cwavef(2,npw1*nspinor)= 1st-order wave-function before correction
-!!  cwaveprj(natom,nspinor)= 1st-order wave-function before correction
-!!                           projected on NL projectors (PAW)
-!!  cycle_bands(nband)=array of logicals for bands we have on this cpu
-!!  eig1(2*nband**2)=first-order eigenvalues (hartree)
-!!  fermie1=derivative of fermi energy wrt (strain) perturbation
-!!  eig0nk=energy of the band at k being corrected
-!!  eig0_kq(nband)=energies of the bands at k+q
-!!  elph2_imagden=imaginary parameter to broaden the energy denominators
-!!  iband=index of current band
-!!  ibgq=shift to be applied on the location of data in the array cprjq
-!!  icgq=shift to be applied on the location of data in the array cgq
-!!  mcgq=second dimension of the cgq array
-!!  mcprjq=second dimension of the cprjq array
-!!  mpi_enreg=information about MPI parallelization
-!!  natom=number of atoms in cell
-!!  nband=number of bands
-!!  npw1=number of plane waves at this k+q point
-!!  nspinor=number of spinorial components of the wavefunctions
-!!  timcount=index used to accumulate timing (0 from dfpt_vtowfk, 1 from dfpt_nstwf)
-!!  usepaw=flag for PAW
-!!
-!! OUTPUT
-!!  cwave1(2,npw1*nspinor)= 1st-order wave-function after correction
-!!  cwaveprj1(natom,nspinor)= 1st-order wave-function after correction
-!!                            projected on NL projectors (PAW)
-!!
-!! SOURCE
-
-subroutine full_active_wf1(cgq,cprjq,cwavef,cwave1,cwaveprj,cwaveprj1,cycle_bands,eig1,&
-&               fermie1,eig0nk,eig0_kq,elph2_imagden,&
-&               iband,ibgq,icgq,mcgq,mcprjq,mpi_enreg,natom,nband,npw1,&
-&               nspinor,timcount,usepaw)
-
-!Arguments ------------------------------------
-!scalars
- integer,intent(in) :: iband,ibgq,icgq,mcgq,mcprjq,natom,nband,npw1,nspinor,timcount,usepaw
- real(dp),intent(in) :: fermie1, eig0nk
- real(dp),intent(in) :: elph2_imagden
- type(MPI_type),intent(in) :: mpi_enreg
-!arrays
- logical,intent(in)  :: cycle_bands(nband)
- real(dp),intent(in) :: cgq(2,mcgq),cwavef(2,npw1*nspinor)
- real(dp),intent(in) :: eig0_kq(nband)
- real(dp),intent(in) :: eig1(2*nband**2)
- real(dp),intent(out) :: cwave1(2,npw1*nspinor)
- type(pawcprj_type),intent(in) :: cprjq(natom,mcprjq),cwaveprj(natom,nspinor*usepaw)
- type(pawcprj_type),intent(inout) :: cwaveprj1(natom,nspinor*usepaw) !vz_i
-
-!Local variables-------------------------------
-!scalars
- integer :: ibandkq,index_cgq,index_cprjq,index_eig1,ii
- integer :: ibandkq_me, ierr
- real(dp) :: facti,factr,eta,delta_E,inv_delta_E,gkkr
-!arrays
- real(dp) :: tsec(2)
-
-! *********************************************************************
-
- DBG_ENTER("COLL")
- ABI_UNUSED(mpi_enreg%comm_cell)
-
- call timab(214+timcount,1,tsec)
-
-!At this stage, the 1st order function cwavef is orthogonal to cgq (unlike when it is input to dfpt_cgwf).
-!Here, restore the "active space" content of the 1st-order wavefunction, to give cwave1 .
-
-! New logic 11/11/2019: accumulate correction in cwave1 and cwaveprj1,
-!   then add it to cwavef at the end with a modified blas call
- cwave1 = zero
-
- if (usepaw==1) then
-   call pawcprj_set_zero(cwaveprj1)
- end if
-
- eta = elph2_imagden
-
-!Loop over WF at k+q subspace
- ibandkq_me = 0
- do ibandkq=1,nband
-
-!TODO MJV: here we have an issue - the cgq are no longer present for all bands!
-!   we only have diagonal terms for iband iband1 and ibandq in same set of bands
-! 1) filter with distrb
-   if(cycle_bands(ibandkq)) cycle
-   ibandkq_me = ibandkq_me + 1
-
-! 2) get contributions for correction factors of cgq from bands present on this cpu
-
-   delta_E = eig0nk - eig0_kq(ibandkq)
-   inv_delta_E = delta_E / ( delta_E ** 2 + eta ** 2)
-
-   index_eig1=2*ibandkq-1+(iband-1)*2*nband
-   index_cgq=npw1*nspinor*(ibandkq_me-1)+icgq
-
-   if(ibandkq==iband) then
-     gkkr = eig1(index_eig1) - fermie1
-   else
-     gkkr = eig1(index_eig1)
-   end if
-   factr = inv_delta_E * gkkr
-   facti = inv_delta_E * eig1(index_eig1+1)
-
-!  Apply correction to 1st-order WF
-!$OMP PARALLEL DO PRIVATE(ii) SHARED(cgq,cwave1,facti,factr,index_cgq,npw1,nspinor)
-   do ii=1,npw1*nspinor
-     cwave1(1,ii)=cwave1(1,ii)+(factr*cgq(1,ii+index_cgq)-facti*cgq(2,ii+index_cgq))
-     cwave1(2,ii)=cwave1(2,ii)+(facti*cgq(1,ii+index_cgq)+factr*cgq(2,ii+index_cgq))
-   end do
-
-!  In the PAW case, also apply correction to projected WF
-   if (usepaw==1) then
-     index_cprjq=nspinor*(ibandkq_me-1)+ibgq
-     call pawcprj_zaxpby((/factr,facti/),(/one,zero/),cprjq(:,index_cprjq+1:index_cprjq+nspinor),cwaveprj1)
-   end if
-
- end do ! Loop over k+q subspace
-
-! 3) reduce over bands to get all contributions to correction
-! need MPI reduce over band communicator only
- call xmpi_sum(cwave1,mpi_enreg%comm_band,ierr)
- if (usepaw==1) then
-   call pawcprj_mpi_sum(cwaveprj1, mpi_enreg%comm_band, ierr)
- end if
-
-! 4) add correction to the cwave1
-!Now add on input WF into output WF
- call cg_zaxpy(npw1*nspinor,(/one,zero/),cwavef,cwave1)
-
-!Idem for cprj
- if (usepaw==1) then
-   call pawcprj_zaxpby((/one,zero/),(/one,zero/),cwaveprj,cwaveprj1)
- end if
-
- call timab(214+timcount,2,tsec)
-
- DBG_EXIT("COLL")
-
-end subroutine full_active_wf1
 !!***
 
 !!****f* ABINIT/corrmetalwf1
@@ -956,6 +819,7 @@ subroutine corrmetalwf1(cgq,cprjq,cwavef,cwave1,cwaveprj,cwaveprj1,cycle_bands,e
  real(dp) :: edocc_tmp
 !arrays
  integer :: bands_treated_now(nband)
+ integer, allocatable :: nlmn(:)
  real(dp) :: tsec(2)
  real(dp),allocatable :: cwcorr(:,:)
  type(pawcprj_type) :: cwaveprj1_corr(natom,nspinor*usepaw)
@@ -978,7 +842,10 @@ subroutine corrmetalwf1(cgq,cprjq,cwavef,cwave1,cwaveprj,cwaveprj1,cycle_bands,e
  wf_corrected=0
 
  if(usepaw==1) then
-   call pawcprj_alloc(cwaveprj1_corr, cwaveprj1(1,1)%ncpgr, cwaveprj1(:,1)%nlmn)
+   ABI_MALLOC(nlmn,(natom))
+   nlmn(:)=cwaveprj1(:,1)%nlmn
+   call pawcprj_alloc(cwaveprj1_corr, cwaveprj1(1,1)%ncpgr, nlmn)
+   ABI_FREE(nlmn)
  end if
 
 ! loop iband_ over all bands being treated for the moment

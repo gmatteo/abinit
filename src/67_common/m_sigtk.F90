@@ -177,8 +177,7 @@ subroutine sigtk_kcalc_from_qprange(dtset, cryst, ebands, qprange, nkcalc, kcalc
  integer,intent(out) :: nkcalc
 !arrays
  real(dp),allocatable,intent(out) :: kcalc(:,:)
- integer,allocatable,intent(out) :: bstart_ks(:,:)
- integer,allocatable,intent(out) :: nbcalc_ks(:,:)
+ integer,allocatable,intent(out) :: bstart_ks(:,:), nbcalc_ks(:,:)
 
 !Local variables ------------------------------
 !scalars
@@ -368,7 +367,7 @@ subroutine sigtk_kcalc_from_erange(dtset, cryst, ebands, gaps, nkcalc, kcalc, bs
 !Local variables ------------------------------
 !scalars
  integer,parameter :: master = 0
- integer :: spin, ik, band, ii, ic, nsppol, tmp_nkpt, timrev, sigma_nkbz, my_rank
+ integer :: spin, ik, band, ii, ic, nsppol, tmp_nkpt, sigma_nkbz, my_rank
  logical :: found
  real(dp) :: cmin, vmax, ee
  logical :: assume_gap
@@ -407,13 +406,12 @@ subroutine sigtk_kcalc_from_erange(dtset, cryst, ebands, gaps, nkcalc, kcalc, bs
     ABI_FREE(sigma_wtk)
 
     ! Map tmp_kcalc to ebands%kpts
-    timrev = kpts_timrev_from_kptopt(ebands%kptopt)
 
     ABI_MALLOC(indkk, (6, tmp_nkpt))
 
     krank = krank_from_kptrlatt(ebands%nkpt, ebands%kptns, ebands%kptrlatt, compute_invrank=.False.)
 
-    if (kpts_map("symrec", timrev, cryst, krank, tmp_nkpt, tmp_kcalc, indkk) /= 0) then
+    if (kpts_map("symrec", ebands%kptopt, cryst, krank, tmp_nkpt, tmp_kcalc, indkk) /= 0) then
       write(msg, '(3a)' )&
         "At least one of the k-points could not be generated from a symmetrical one in the WFK.",ch10,&
         'Action: check your WFK file and the value of sigma_nkpt, sigma_shiftk in the input file.'

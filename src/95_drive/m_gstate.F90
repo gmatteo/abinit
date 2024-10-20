@@ -39,9 +39,8 @@ module m_gstate
  use m_ddb
  use m_bandfft_kpt
  use m_invovl
- use m_gemm_nonlop
- use m_gemm_nonlop_gpu
- use m_gemm_nonlop_ompgpu
+ use m_gemm_nonlop_projectors
+ use m_xg_nonlop
  use m_wfk
  use m_nctk
  use m_hdr
@@ -291,10 +290,10 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
  character(len=fnlen) :: dscrpt,filnam,wfkfull_path
  real(dp) :: fatvshift
  type(crystal_t) :: cryst
- type(ebands_t) :: bstruct,ebands
+ type(ebands_t) :: bstruct, ebands, ebands_bz
  type(efield_type) :: dtefield
  type(electronpositron_type),pointer :: electronpositron
- type(hdr_type) :: hdr, hdr_den, hdr_kfull
+ type(hdr_type) :: hdr, hdr_den, hdr_bz
  type(extfpmd_type),pointer :: extfpmd => null()
  type(macro_uj_type) :: dtpawuj(1)
  type(paw_dmft_type) :: paw_dmft
@@ -323,6 +322,7 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
  type(pawrhoij_type),pointer :: pawrhoij(:)
  type(coulomb_operator) :: kernel_dummy
  type(pawcprj_type),allocatable :: cprj(:,:)
+ type(xg_nonlop_t) :: xg_nonlop
 
 ! ***********************************************************************
 
@@ -433,32 +433,23 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
    npwtot(:) = 0
  end if
 
- if((dtset%wfoptalg == 1 .or. dtset%wfoptalg == 111) .and. psps%usepaw == 1) then
+ if((dtset%wfoptalg == 1 .or. dtset%wfoptalg == 111) .and. psps%usepaw == 1 .and. dtset%cprj_in_memory==0) then
    call init_invovl(dtset%nkpt)
  end if
 
  ! Handling GEMM nonlop use
  ! Not enabled by default for CPU and CUDA implementations
- ! Enabled if using OpenMP GPU offload
+ ! Enabled if using OpenMP GPU offload (only implementation)
  gemm_nonlop_use_gemm = .false.
 
- ! OpenMP GPU offload case (GEMM nonlop used by default)
- if(dtset%gpu_option == ABI_GPU_OPENMP) then
-   gemm_nonlop_use_gemm = .true.
-   call init_gemm_nonlop_ompgpu(dtset%nkpt)
- else if(dtset%use_gemm_nonlop == 1) then
-   gemm_nonlop_use_gemm = .true.
-   ! CUDA & Kokkos case (same routine used)
-   if(dtset%gpu_option == ABI_GPU_LEGACY .or. dtset%gpu_option == ABI_GPU_KOKKOS) then
-     call init_gemm_nonlop(dtset%nkpt)
-     call init_gemm_nonlop_gpu(dtset%nkpt)
-   ! CPU case
-   else if(dtset%gpu_option == ABI_GPU_DISABLED) then
-     call init_gemm_nonlop(dtset%nkpt)
-   end if
- end if
  gemm_nonlop_is_distributed = .false.
  if(dtset%gpu_nl_distrib == 1) gemm_nonlop_is_distributed = .true.
+ if(dtset%gpu_nl_splitsize > 0) gemm_nonlop_nblocks = dtset%gpu_nl_splitsize
+
+ if(dtset%gpu_option == ABI_GPU_OPENMP .or. dtset%use_gemm_nonlop == 1) then
+   gemm_nonlop_use_gemm = .true.
+   call init_gemm_nonlop(dtset%gpu_option)
+ end if
 
 !Set up the Ylm for each k point
  if ( dtset%tfkinfunc /= 2) then
@@ -888,29 +879,11 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
 
 !Initialize (eventually) extfpmd object
  if(dtset%useextfpmd>=1.and.dtset%occopt==3) then
-   if(dtset%useextfpmd/=1.and.dtset%extfpmd_nbcut>dtset%mband) then
-     write(msg,'(3a,i0,a,i0,3a)') "Not enough bands to activate ExtFPMD routines.",ch10,&
-&     "extfpmd_nbcut = ",dtset%extfpmd_nbcut," should be less than or equal to nband = ",dtset%mband,".",ch10,&
-&     "Action: Increase nband or decrease extfpmd_nbcut."
-     ABI_ERROR(msg)
-   else
-     if(dtset%useextfpmd/=1.and.(dtset%extfpmd_nbdbuf+dtset%extfpmd_nbcut)>dtset%mband) then
-       write(msg,'(a,i0,a,i0,a,i0,2a,i0,3a)') "(extfpmd_nbdbuf = ",dtset%extfpmd_nbdbuf," + extfpmd_nbcut = ",&
-&       dtset%extfpmd_nbcut,") = ",dtset%extfpmd_nbdbuf+dtset%extfpmd_nbcut,ch10,&
-&       "should be less than or equal to nband = ",dtset%mband,".",ch10,&
-&       "Assume experienced user. Execution will continue with extfpmd_nbdbuf = 0."
-       ABI_WARNING(msg)
-       dtset%extfpmd_nbdbuf = 0
-     else if(dtset%extfpmd_nbdbuf>dtset%mband) then
-       write(msg,'(a,i0,a,i0,3a)') "extfpmd_nbdbuf = ",dtset%extfpmd_nbdbuf,&
-&       " should be less than or equal to nband = ",dtset%mband,".",ch10,&
-&       "Assume experienced user. Execution will continue with extfpmd_nbdbuf = 0."
-       ABI_WARNING(msg)
-       dtset%extfpmd_nbdbuf = 0
-     end if
+   if(extfpmd_chkinp(dtset)) then
      ABI_MALLOC(extfpmd,)
-     call extfpmd%init(dtset%mband,dtset%extfpmd_nbcut,dtset%extfpmd_nbdbuf,&
-&     dtset%nfft,dtset%nspden,rprimd,dtset%useextfpmd)
+     call extfpmd%init(dtset%mband,hdr%extfpmd_eshift,dtset%extfpmd_nbcut,dtset%extfpmd_nbdbuf,&
+&     dtset%nfft,dtset%nspden,dtset%nsppol,dtset%nkpt,rprimd,dtset%useextfpmd,mpi_enreg,&
+&     dtset%extfpmd_nband)
    end if
  end if
 
@@ -940,14 +913,14 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
 &   extfpmd=extfpmd)
    if (dtset%dmftcheck>=0.and.dtset%usedmft>=1.and.(sum(args_gs%upawu(:))>=tol8.or.  &
 &   sum(args_gs%jpawu(:))>tol8).and.dtset%dmft_entropy==0) results_gs%energies%entropy=zero
-   ABI_FREE(doccde)
 
    if(associated(extfpmd)) then
+!    Get nelect to build density
      extfpmd%nelect=zero
-     call extfpmd%compute_nelect(results_gs%energies%e_fermie,extfpmd%nelect,&
-&     dtset%tsmear)
-     call extfpmd%compute_e_kinetic(results_gs%energies%e_fermie,dtset%tsmear)
+     call extfpmd%compute_nelect(results_gs%energies%e_fermie,dtset%nband,extfpmd%nelect,&
+&     dtset%nkpt,dtset%nspinor,dtset%nsppol,dtset%tsmear,dtset%wtk)
    end if
+   ABI_FREE(doccde)
 
 !  Transfer occupations to bigdft object:
    if(dtset%usewvl==1 .and. .not. wvlbigdft) then
@@ -1075,10 +1048,26 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
 
 !###########################################################
 ! Initialisation of cprj
+
+ ! xg_nonlop available only for cprj_in_memory=1 and (LOBPCG or Chebfi)
+ ! cprj_in_memory=2 is used for Congugate Gradient
+ if (dtset%cprj_in_memory==1) then
+   if (dtset%useylm/=1) then
+     ABI_ERROR('xg_nonlop cannot be used with useylm/=1')
+   end if
+   call xg_nonlop_init(xg_nonlop,psps%indlmn,mpi_enreg%my_atmtab,my_natom,nattyp,dtset%mkmem,dtset%ntypat,&
+                     dtset%nspinor,ucvol,dtset%usepaw,dtset%xg_nonlop_option,&
+                     mpi_enreg%me_band,mpi_enreg%comm_band,mpi_enreg%comm_atom)
+   if (xg_nonlop%paw) then
+     call xg_nonlop_make_Sij(xg_nonlop,pawtab,inv_sij=dtset%wfoptalg==111)
+   else
+     call xg_nonlop_make_ekb(xg_nonlop,psps%ekb)
+   end if
+ end if
+
  usecprj=0; mcprj=0;mband_cprj=0
  compute_cprj=.false.
- ! PAW keeping cprj in memory : some cases are excluded for now...
- if (dtset%cprj_in_memory/=0) then
+ if (dtset%cprj_in_memory==2) then
    compute_cprj=.true.
    usecprj=1
  else
@@ -1386,7 +1375,7 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
 &   nfftf,npwarr,occ,pawang,pawfgr,pawrad,pawrhoij,&
 &   pawtab,phnons,psps,pwind,pwind_alloc,pwnsfac,rec_set,&
 &   resid,results_gs,scf_history,fatvshift,&
-&   symrec,taug,taur,wvl,ylm,ylmgr,paw_dmft,wffnew,wffnow)
+&   symrec,taug,taur,wvl,ylm,ylmgr,paw_dmft,wffnew,wffnow,xg_nonlop)
 
    call dtfil_init_time(dtfil,0)
 
@@ -1452,7 +1441,7 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
 !Update the header, before using it
  call hdr%update(bantot,results_gs%etotal,results_gs%energies%e_fermie,results_gs%energies%e_fermih,&
    results_gs%residm,rprimd,occ,pawrhoij,xred,args_gs%amu,&
-   comm_atom=mpi_enreg%comm_atom,mpi_atmtab=mpi_enreg%my_atmtab)
+   comm_atom=mpi_enreg%comm_atom,extfpmd_eshift=results_gs%extfpmd_eshift,mpi_atmtab=mpi_enreg%my_atmtab)
 
  ABI_MALLOC(doccde,(dtset%mband*dtset%nkpt*dtset%nsppol))
  doccde=zero
@@ -1490,8 +1479,7 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
  hdr%rprimd=rprimd_for_kg
 
  if (write_wfk) then
-   call outresid(dtset,dtset%kptns,dtset%mband,dtset%nband,dtset%nkpt, dtset%nsppol,resid)
-
+   call outresid(dtset,dtset%kptns,dtset%mband,dtset%nband,dtset%nkpt,dtset%nsppol,resid)
    call outwf(cg,dtset,psps,eigen,filnam,hdr,kg,dtset%kptns,&
     dtset%mband,mcg,dtset%mkmem,mpi_enreg,dtset%mpw,dtset%natom,&
     dtset%nband,dtset%nkpt,npwarr,dtset%nsppol,&
@@ -1515,9 +1503,8 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
  if (me == master .and. dtset%prtwf == 1 .and. dtset%prtwf_full == 1 .and. dtset%nqpt == 0) then
    wfkfull_path = strcat(dtfil%filnam_ds(4), "_FULL_WFK")
    if (dtset%iomode == IO_MODE_ETSF) wfkfull_path = nctk_ncify(wfkfull_path)
-   call wfk_tofullbz(filnam, dtset, psps, pawtab, wfkfull_path, hdr_kfull)
-   call hdr_kfull%free()
-   call cryst%free()
+   call wfk_to_bz(filnam, dtset, psps, pawtab, wfkfull_path, hdr_bz, ebands_bz)
+   call hdr_bz%free(); call ebands_free(ebands_bz); call cryst%free()
  end if
 
  call timab(1227,2,tsec)
@@ -1660,6 +1647,14 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
  ABI_FREE(taug)
  ABI_FREE(ab_xfh%xfhist)
  call pawfgr_destroy(pawfgr)
+ if (dtset%cprj_in_memory==1) then
+   !if (xg_nonlop%paw) then
+   !  call xg_nonlop_destroy_Sij(xg_nonlop)
+   !else
+   !  call xg_nonlop_destroy_ekb(xg_nonlop)
+   !end if
+   call xg_nonlop_destroy(xg_nonlop)
+ end if
 
  if(dtset%imgwfstor==0)then
    if(dtset%gpu_option == ABI_GPU_KOKKOS) then
@@ -1787,20 +1782,13 @@ subroutine gstate(args_gs,acell,codvsn,cpui,dtfil,dtset,iexit,initialized,&
    call bandfft_kpt_destroy_array(bandfft_kpt,mpi_enreg)
  end if
 
- if((dtset%wfoptalg == 1 .or. dtset%wfoptalg == 111)  .and. psps%usepaw == 1) then
+ if((dtset%wfoptalg == 1 .or. dtset%wfoptalg == 111)  .and. psps%usepaw == 1 .and. dtset%cprj_in_memory==0) then
    call destroy_invovl(dtset%nkpt,dtset%gpu_option)
  end if
 
 !Clean gemm_nonlop work spaces
  if(gemm_nonlop_use_gemm) then
-   if(dtset%gpu_option == ABI_GPU_OPENMP) then
-     call destroy_gemm_nonlop_ompgpu()
-   else if(dtset%gpu_option==ABI_GPU_LEGACY .or. dtset%gpu_option==ABI_GPU_KOKKOS) then
-     call destroy_gemm_nonlop_gpu(dtset%nkpt)
-     call destroy_gemm_nonlop(dtset%nkpt)
-   else if(dtset%gpu_option==ABI_GPU_DISABLED) then
-     call destroy_gemm_nonlop(dtset%nkpt)
-   end if
+   call destroy_gemm_nonlop(dtset%gpu_option)
    gemm_nonlop_use_gemm = .false.
  end if
 

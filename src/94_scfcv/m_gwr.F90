@@ -125,10 +125,10 @@
 
 module m_gwr
 
+ use, intrinsic :: iso_c_binding
  use defs_basis
  use m_abicore
  use m_errors
- !use mpi
  use m_xmpi
  use m_xomp
  use m_hdr
@@ -138,7 +138,6 @@ module m_gwr
  use m_dtfil
  use m_yaml
  use m_sigtk
- use, intrinsic :: iso_c_binding
  use m_hide_blas
 
  use defs_datatypes,  only : pseudopotential_type, ebands_t
@@ -181,9 +180,8 @@ module m_gwr
  use m_chi0tk,        only : chi0_bbp_mask, accumulate_head_wings_imagw, symmetrize_afm_chi0
  use m_sigx,          only : sigx_symmetrize
  use m_dyson_solver,  only : sigma_pade_t
-!#ifdef __HAVE_GREENX
  use minimax_grids,   only : gx_minimax_grid !, gx_get_error_message
-!#endif
+ use m_occ,           only : get_fact_spin_tol_empty
 
  implicit none
 
@@ -848,8 +846,8 @@ subroutine gwr_init(gwr, dtset, dtfil, cryst, psps, pawtab, ks_ebands, mpi_enreg
 
 !Local variables-------------------------------
 !scalars
- integer,parameter :: qptopt1 = 1, qtimrev1 = 1, master = 0, ndims = 4
- integer :: my_it, my_ikf, ii, ebands_timrev, my_iki, my_iqi, itau, spin, my_iqf
+ integer,parameter :: qptopt1 = 1, master = 0, ndims = 4
+ integer :: my_it, my_ikf, ii, kptopt, my_iki, my_iqi, itau, spin, my_iqf
  integer :: my_nshiftq, iq_bz, iq_ibz, npw_, ncid, smat_bsize1, smat_bsize2
  integer :: comm_cart, me_cart, ierr, all_nproc, my_rank, qprange_, gap_err, ncerr, omp_nt
  integer :: cnt, ikcalc, ndeg, mband, bstop, nbsum, jj
@@ -950,11 +948,11 @@ subroutine gwr_init(gwr, dtset, dtfil, cryst, psps, pawtab, ks_ebands, mpi_enreg
  gwr%ngkpt = get_diag(ks_ebands%kptrlatt)
 
  ! Note symrec convention.
- ebands_timrev = kpts_timrev_from_kptopt(ks_ebands%kptopt)
+ kptopt = ks_ebands%kptopt
  krank_ibz = krank_from_kptrlatt(gwr%nkibz, kibz, ks_ebands%kptrlatt, compute_invrank=.False.)
 
  ABI_MALLOC(gwr%kbz2ibz, (6, gwr%nkbz))
- if (kpts_map("symrec", ebands_timrev, cryst, krank_ibz, gwr%nkbz, gwr%kbz, gwr%kbz2ibz) /= 0) then
+ if (kpts_map("symrec", kptopt, cryst, krank_ibz, gwr%nkbz, gwr%kbz, gwr%kbz2ibz) /= 0) then
    ABI_ERROR("Cannot map kBZ to IBZ!")
  end if
 
@@ -965,12 +963,12 @@ subroutine gwr_init(gwr, dtset, dtfil, cryst, psps, pawtab, ks_ebands, mpi_enreg
    call kpts_map_print(units, " Mapping kBZ --> kIBZ", "symrec", gwr%kbz, kibz, gwr%kbz2ibz, gwr%dtset%prtvol)
  end if
 
- !call get_ibz2bz(gwr%nkibz, gwr%nkbz, gwr%kbz2ibz, kibz2bz, ierr)
- !ABI_CHECK(ierr == 0, "Something wrong in symmetry tables for k-points")
+ !call get_ibz2bz(gwr%nkibz, gwr%nkbz, gwr%kbz2ibz, kibz2bz, msg, ierr)
+ !ABI_CHECK(ierr == 0, sjoin("Something wrong in symmetry tables for k-points", ch10, msg))
 
  ! Table with symrel conventions for the symmetrization of the wfs.
  ABI_MALLOC(gwr%kbz2ibz_symrel, (6, gwr%nkbz))
- if (kpts_map("symrel", ebands_timrev, cryst, krank_ibz, gwr%nkbz, gwr%kbz, gwr%kbz2ibz_symrel) /= 0) then
+ if (kpts_map("symrel", kptopt, cryst, krank_ibz, gwr%nkbz, gwr%kbz, gwr%kbz2ibz_symrel) /= 0) then
    ABI_ERROR("Cannot map kBZ to IBZ!")
  end if
 
@@ -991,7 +989,7 @@ subroutine gwr_init(gwr, dtset, dtfil, cryst, psps, pawtab, ks_ebands, mpi_enreg
 
  qrank = krank_from_kptrlatt(gwr%nqibz, gwr%qibz, qptrlatt, compute_invrank=.False.)
 
- if (kpts_map("symrec", qtimrev1, cryst, qrank, gwr%nqbz, gwr%qbz, gwr%qbz2ibz) /= 0) then
+ if (kpts_map("symrec", qptopt1, cryst, qrank, gwr%nqbz, gwr%qbz, gwr%qbz2ibz) /= 0) then
    ABI_ERROR("Cannot map qBZ to IBZ!")
  end if
  call qrank%free()
@@ -1068,7 +1066,7 @@ subroutine gwr_init(gwr, dtset, dtfil, cryst, psps, pawtab, ks_ebands, mpi_enreg
    ! These are the conventions for the symmetrization of the wavefunctions used in cgtk_rotate.
    kk = gwr%kcalc(:, ikcalc)
 
-   if (kpts_map("symrel", ebands_timrev, cryst, krank_ibz, 1, kk, indkk_k) /= 0) then
+   if (kpts_map("symrel", kptopt, cryst, krank_ibz, 1, kk, indkk_k) /= 0) then
       write(msg, '(5a)' ) &
        "The WFK file cannot be used to compute self-energy corrections at k-point: ",trim(ktoa(kk)),ch10,&
        "The k-point cannot be generated from a symmetrical one.", ch10
@@ -1170,7 +1168,6 @@ subroutine gwr_init(gwr, dtset, dtfil, cryst, psps, pawtab, ks_ebands, mpi_enreg
  end if
  gwr%ntau = dtset%gwr_ntau
 
-!#ifdef __HAVE_GREENX
  regterm = dtset%gwr_regterm
  if (regterm > -tol16) then
      call wrtout(std_out, sjoin("Computing minimax grid with user-provided regterm:", ftoa(regterm)))
@@ -1926,7 +1923,6 @@ subroutine gwr_free(gwr)
  ABI_SFREE(gwr%itreat_ikibz)
  ABI_SFREE(gwr%np_qibz)
  ABI_SFREE(gwr%itreat_iqibz)
-!#ifdef __HAVE_GREENX
  ABI_SFREE_NOCOUNT(gwr%tau_mesh)
  ABI_SFREE_NOCOUNT(gwr%tau_wgs)
  ABI_SFREE_NOCOUNT(gwr%iw_mesh)
@@ -1934,7 +1930,6 @@ subroutine gwr_free(gwr)
  ABI_SFREE_NOCOUNT(gwr%cosft_tw)
  ABI_SFREE_NOCOUNT(gwr%cosft_wt)
  ABI_SFREE_NOCOUNT(gwr%sinft_wt)
-!#endif
  ABI_SFREE(gwr%kcalc)
  ABI_SFREE(gwr%bstart_ks)
  ABI_SFREE(gwr%bstop_ks)
@@ -2093,8 +2088,8 @@ subroutine gwr_load_kcalc_wfd(gwr, wfk_path, tmp_kstab)
  wfd_istwfk = 1
 
  call wfd_init(wfd, gwr%cryst, gwr%pawtab, gwr%psps, keep_ur, mband, nband, nkibz, dtset%nsppol, bks_mask, &
-   dtset%nspden, dtset%nspinor, dtset%ecut, dtset%ecutsm, dtset%dilatmx, wfd_istwfk, ks_ebands%kptns, gwr%g_ngfft, &
-   dtset%nloalg, dtset%prtvol, dtset%pawprtvol, gwr%comm%value)
+               dtset%nspden, dtset%nspinor, dtset%ecut, dtset%ecutsm, dtset%dilatmx, wfd_istwfk, ks_ebands%kptns, gwr%g_ngfft, &
+               dtset%nloalg, dtset%prtvol, dtset%pawprtvol, gwr%comm%value)
 
  call wfd%print(header="Wavefunctions for GWR calculation")
 
@@ -2167,10 +2162,9 @@ subroutine gwr_read_ugb_from_wfk(gwr, wfk_path)
  !cryst = gwr%wfk_hdr%get_crystal()
  !call cryst%print(header="crystal structure from WFK file")
 
- nkibz = wfk_ebands%nkpt; nsppol = wfk_ebands%nsppol; mband = wfk_ebands%mband
- min_nband = minval(wfk_ebands%nband)
-
+ nkibz = wfk_ebands%nkpt; nsppol = wfk_ebands%nsppol; mband = wfk_ebands%mband; min_nband = minval(wfk_ebands%nband)
  nbsum = dtset%nband(1)
+
  if (nbsum > min_nband) then
    ABI_WARNING(sjoin("WFK file contains", itoa(min_nband), "states while you're asking for:", itoa(nbsum)))
    nbsum = min_nband
@@ -4104,11 +4098,11 @@ subroutine gwr_build_tchi(gwr)
    ! Perhaps the safest approach would be to generate the plan on the fly.
    max_ndat = gwr%sc_batch_size
    use_mpi_for_k = gwr%sc_batch_size == gwr%kpt_comm%nproc .and. gwr%kpt_comm%nproc > 1
-   use_mpi_for_k = .False.
+   !use_mpi_for_k = .False.
 
    use_shmem_for_k = gwr%sc_batch_size == gwr%kpt_comm%nproc .and. gwr%kpt_comm%nproc > 1
    use_shmem_for_k = use_shmem_for_k .and. gwr%kpt_comm%can_use_shmem()
-   !use_shmem_for_k = .False.
+   use_shmem_for_k = .False.
 
    if (use_shmem_for_k) then
      buf_count = 2 * (sc_nfftsp * max_ndat * 2)
@@ -5955,7 +5949,7 @@ end if
    NCF_CHECK(nf90_put_var(ncid, vid("ks_gaps"), ks_gaps))
    NCF_CHECK(nf90_put_var(ncid, vid("qpz_gaps"), qpz_gaps))
    !NCF_CHECK(nf90_put_var(ncid, vid("qp_pade_gaps"), qp_pade_gaps))
-   NCF_CHECK(nf90_put_var(ncid, vid("sigc_it_mat"), c2r(sigc_it_mat)))
+   !NCF_CHECK(nf90_put_var(ncid, vid("sigc_it_mat"), c2r(sigc_it_mat)))
    NCF_CHECK(nf90_put_var(ncid, vid("sigc_iw_mat"), c2r(gwr%sigc_iw_mat)))
    NCF_CHECK(nf90_put_var(ncid, vid("sigxc_rw_diag"), c2r(sigxc_rw_diag)))
    NCF_CHECK(nf90_put_var(ncid, vid("spfunc_diag"), spfunc_diag))
@@ -6221,8 +6215,10 @@ subroutine gwr_rpa_energy(gwr)
          ! Change size block and, if possible, use 2D rectangular grid of processors for diagonalization
          call proc_4diag%init(chi_tmp%processor%comm)
          call chi_tmp%change_size_blocs(chi_4diag, processor=proc_4diag)
+         call chi_4diag%copy(dummy_vec)
          call chi_4diag%heev("N", "U", dummy_vec, eig, mat_size=mat_size)
          call chi_4diag%free()
+         call dummy_vec%free()
          call proc_4diag%free()
 
          ! TODO: ELPA
@@ -7420,20 +7416,9 @@ subroutine gwr_build_sigxme(gwr, compute_qp)
    qp_eig => gwr%qp_ebands%eig; qp_occ => gwr%qp_ebands%occ
  end if
 
- ! MRM allow lower occ numbers
- ! Normalization of theta_mu_minus_esum. If nsppol==2, qp_occ $\in [0,1]$
- tol_empty_in = 0.01                            ! Initialize the tolerance used to decide if a band is empty (passed to m_sigx.F90)
- select case (nsppol)
- case (1)
-   fact_spin = half; tol_empty = tol_empty_in          ! below this value the state is assumed empty
-   if (nspinor == 2) then
-     fact_spin = one; tol_empty = half * tol_empty_in  ! below this value the state is assumed empty
-   end if
- case (2)
-   fact_spin = one; tol_empty = half * tol_empty_in  ! to be consistent and obtain similar results if a metallic
- case default                                        ! spin unpolarized system is treated using nsppol==2
-   ABI_BUG(sjoin('Wrong nsppol:', itoa(nsppol)))
- end select
+ ! Set tolerance used to decide if a band is empty
+ tol_empty_in = 0.01
+ call get_fact_spin_tol_empty(nsppol, nspinor, tol_empty_in, fact_spin, tol_empty)
 
  ! =========================================
  ! Find FFT mesh and max number of g-vectors
@@ -7522,8 +7507,6 @@ subroutine gwr_build_sigxme(gwr, compute_qp)
      ksum = gwr%kbz(:, ik_bz)
 
      ! Find the symmetrical image of ksum in the IBZ
-     !call kmesh%get_BZ_item(ik_bz, ksum, ik_ibz, isym_ki, iik, ph_mkt)
-
      ! FIXME: Be careful with the symmetry conventions here and the interplay between umklapp in q and FFT
      ik_ibz = gwr%kbz2ibz_symrel(1, ik_bz); isym_k = gwr%kbz2ibz_symrel(2, ik_bz)
      trev_k = gwr%kbz2ibz_symrel(6, ik_bz); g0_k = gwr%kbz2ibz_symrel(3:5, ik_bz)
@@ -7560,12 +7543,6 @@ subroutine gwr_build_sigxme(gwr, compute_qp)
 
      ABI_MALLOC(gbound_x, (2*u_mgfft + 8, 2))
      call sphereboundary(gbound_x, istwfk1, gvec_x, u_mgfft, npwx)
-
-     ! Tables for the FFT of the oscillators.
-     !  a) FFT index of G-G0.
-     !  b) x_gbound table for the zero-padded FFT performed in rhotwg.
-     !ABI_MALLOC(x_gbound, (2*u_mgfft+8, 2))
-     !call Gsph_x%fft_tabs(g0, u_mgfft, u_ngfft, use_padfft, x_gbound, igfftxg0)
 
      ABI_MALLOC(rhotwg_ki, (npwx * nspinor, bmin:bmax))
      ABI_MALLOC(rhotwg, (npwx * nspinor))
@@ -7610,8 +7587,6 @@ subroutine gwr_build_sigxme(gwr, compute_qp)
        ! Skip empty states. MRM: allow negative occ numbers.
        if (abs(qp_occ(band_sum, ik_ibz, spin)) < tol_empty) CYCLE
 
-       !call wfd%get_ur(band_sum, ik_ibz, spin, ur_ibz)
-
        ! Compute ur_ksum(r) from the symmetrical image.
        ! I should rotate the g-vectors outside the loop and rotate ug here
        ! but at present I cannot use cgtk_rotate due to the symrel^T convention.
@@ -7621,7 +7596,6 @@ subroutine gwr_build_sigxme(gwr, compute_qp)
          ug_ksum(:) = ugb_kibz%buffer_cplx(:, il_b)
        else
          ! Reconstruct u_kq(G) from the IBZ image.
-         !call wfd%copy_cg(ibsum_kq, ikq_ibz, spin, cgwork)
 
          ! FIXME: This is wrong if spc
          call c_f_pointer(c_loc(ug_ksum), cg2_ptr, shape=[2, npw_k * nspinor])
@@ -7638,8 +7612,7 @@ subroutine gwr_build_sigxme(gwr, compute_qp)
                           npw_k, kg_k, desc_ki%istwfk, istwf_k, cg1_ibz, cg2_ptr, work_ngfft, work)
        end if
 
-       call fft_ug(npw_k, u_nfft, nspinor, ndat1, u_mgfft, u_ngfft, istwf_k, kg_k, gbound_ksum, &
-                   ug_ksum, ur_ksum)
+       call fft_ug(npw_k, u_nfft, nspinor, ndat1, u_mgfft, u_ngfft, istwf_k, kg_k, gbound_ksum, ug_ksum, ur_ksum)
 
        if (any(g0 /= 0)) ur_ksum = ur_ksum * conjg(eig0r)
 
@@ -7648,8 +7621,7 @@ subroutine gwr_build_sigxme(gwr, compute_qp)
 
          ! FIXME: nspinor 2 is wrong as we have a 2x2 matrix
          ur_prod(:) = conjg(ur_ksum(:)) * ur_bdgw(:,jb)
-         call fft_ur(npwx, u_nfft, nspinor, ndat1, u_mgfft, u_ngfft, istwfk1, gvec_x, gbound_x, &
-                     ur_prod, rhotwg_ki(:,jb))
+         call fft_ur(npwx, u_nfft, nspinor, ndat1, u_mgfft, u_ngfft, istwfk1, gvec_x, gbound_x, ur_prod, rhotwg_ki(:,jb))
 
          ! Multiply by the square root of the Coulomb term
          ! In 3-D systems, the factor sqrt(4pi) is included

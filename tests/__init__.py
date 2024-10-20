@@ -151,6 +151,7 @@ _tsuite_dirs = [
     "etsf_io",
     "fast",
     "gwr",
+    #"gwpt",
     "psml",
     "gpu",
     "libxc",
@@ -1001,4 +1002,5 @@ KNOWN_KEYWORDS = {
     'magnetic_constraint': "Tests employing magnetic constraints",
     "FOLD2BLOCH": "Fold2Bloch tests.",
     "LWF": "Lattice Wannier function tests",
+    "MINIMAL": "Quick set of tests covering all abinit optdriver and executables",
 }

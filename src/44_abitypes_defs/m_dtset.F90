@@ -190,6 +190,7 @@ type, public :: dataset_type
  integer :: exchn2n3d
  integer :: extfpmd_nbcut = 25
  integer :: extfpmd_nbdbuf = 0
+ integer :: extfpmd_nband = 0
  integer :: extrapwf
  integer :: expert_user
 !F
@@ -203,9 +204,12 @@ type, public :: dataset_type
  integer :: ga_algor
  integer :: ga_fitness
  integer :: ga_n_rules
+ integer :: getabiwan = 0
+ integer :: getgwan = 0
  integer :: getcell = 0
  integer :: getddb = 0
  integer :: getdvdb = 0
+ integer :: getdrhodb = 0
  integer :: getddk = 0
  integer :: getdelfd = 0
  integer :: getdkdk = 0
@@ -219,6 +223,7 @@ type, public :: dataset_type
  integer :: getqps = 0
  integer :: getscr = 0
  integer :: getsuscep = 0
+ integer :: getvarpeq = 0
  integer :: getvel = 0
  integer :: getwfk = 0
  integer :: getwfkfine = 0
@@ -244,6 +249,7 @@ type, public :: dataset_type
  character(len=fnlen) :: gstore_kzone = "ibz"
  character(len=fnlen) :: gstore_qzone = "bz"
  character(len=fnlen) :: gstore_kfilter = "none"
+ character(len=fnlen) :: gstore_gmode = "phonon"
  integer :: gstore_brange(2, 2) = 0
  real(dp) :: gstore_erange(2, 2) = zero
 
@@ -322,6 +328,7 @@ type, public :: dataset_type
  integer :: irdchkprdm = 0
  integer :: irdddb = 0
  integer :: irddvdb = 0
+ integer :: irddrhodb = 0
  integer :: irdddk = 0
  integer :: irdden = 0
  integer :: irdefmas = 0
@@ -650,6 +657,18 @@ type, public :: dataset_type
  integer :: use_oldchi = 1
 !V
  integer :: vacnum
+
+ character(len=fnlen) :: varpeq_aseed = "gaussian"
+ character(len=fnlen) :: varpeq_pkind = "none"
+ integer :: varpeq_interpolate = 0
+ integer :: varpeq_orth = 0
+ integer :: varpeq_nstep = 30
+ integer :: varpeq_pc_nupdate = 20
+ real(dp) :: varpeq_tolgrs = tol6
+ real(dp) :: varpeq_pc_factor = eighth
+ real(dp) :: varpeq_gau_params(2) = [zero, one]
+ real(dp) :: varpeq_erange(2) = zero
+
  integer :: vdw_nfrag
  integer :: vdw_df_ndpts
  integer :: vdw_df_ngpts
@@ -668,6 +687,7 @@ type, public :: dataset_type
  integer :: w90prtunk
 !X
  integer :: xclevel
+ integer :: xg_nonlop_option = 0
  integer :: x1rdm  = 0
 
 !Integer arrays
@@ -997,6 +1017,7 @@ type, public :: dataset_type
  character(len=fnlen) :: getddb_filepath = ABI_NOFILE
  character(len=fnlen) :: getden_filepath = ABI_NOFILE
  character(len=fnlen) :: getdvdb_filepath = ABI_NOFILE
+ character(len=fnlen) :: getdrhodb_filepath = ABI_NOFILE
  character(len=fnlen) :: getwfk_filepath = ABI_NOFILE
  character(len=fnlen) :: getwfkfine_filepath = ABI_NOFILE
  character(len=fnlen) :: getwfq_filepath = ABI_NOFILE
@@ -1004,7 +1025,10 @@ type, public :: dataset_type
  character(len=fnlen) :: getpot_filepath = ABI_NOFILE
  character(len=fnlen) :: getscr_filepath = ABI_NOFILE
  character(len=fnlen) :: getsigeph_filepath = ABI_NOFILE
+ character(len=fnlen) :: getvarpeq_filepath = ABI_NOFILE
  character(len=fnlen) :: getgstore_filepath = ABI_NOFILE
+ character(len=fnlen) :: getabiwan_filepath = ABI_NOFILE
+ character(len=fnlen) :: getgwan_filepath = ABI_NOFILE
  character(len=fnlen) :: write_files = ABI_NOFILE
 
  contains
@@ -1315,7 +1339,7 @@ subroutine dtset_initocc_chkneu(dtset, nelectjell, occopt)
      end if
      if (abs(nelect_occ-nelect_img)>tol11 .and. dtset%iscf/=-3) then
 
-!      There is a discrepancy
+       ! There is a discrepancy
        write(msg, &
        '(a,a,i4,a,e22.14,a,e16.8,a,a,a,e22.14,a,a,a,i5,a,a,a,a)' ) ch10,&
        ' initocc_chkneu: image=',iimage,', nelect_occ=',nelect_occ,', zval=',zval,',',ch10,&
@@ -1326,25 +1350,25 @@ subroutine dtset_initocc_chkneu(dtset, nelectjell, occopt)
        call wrtout(std_out,msg)
 
        if (abs(nelect_occ-dtset%nelect)>tol8) then
-!        The discrepancy is severe
+         ! The discrepancy is severe
          write(msg,'(a,a,e9.2,a,a)')ch10,&
          'These must obey zval-nelect_occ=cellcharge-nelectjell to better than ',tol8,ch10,&
          ' This is not the case. '
        else
-!        The discrepancy is not so severe
+         ! The discrepancy is not so severe
          write(msg, '(2a,e9.2)' )ch10,&
-&         'These should obey zval-nelect_occ=cellcharge-nelectjell to better than: ',tol11
+          'These should obey zval-nelect_occ=cellcharge-nelectjell to better than: ',tol11
        end if
        ABI_WARNING(msg)
 
        write(msg, '(6a)' ) &
        'Action: check input file for occ,wtk, and cellcharge.',ch10,&
        'Note that wtk is NOT automatically normalized when occopt=2,',ch10,&
-       'but IS automatically normalized otherwise.',ch10
+       'but is automatically normalized otherwise.',ch10
        call wrtout(std_out,msg)
 
        ! If the discrepancy is severe, stop
-       if (abs(nelect_occ-nelect_img)>tol8)then
+       if (abs(nelect_occ-nelect_img) > tol6) then
          ABI_ERROR(msg)
        end if
 
@@ -1377,9 +1401,7 @@ end subroutine dtset_initocc_chkneu
 type(dataset_type) function dtset_copy(dtin) result(dtout)
 
 !Arguments ------------------------------------
-!scalars
  class(dataset_type),intent(in) :: dtin
-
 ! *************************************************************************
 
  DBG_ENTER("COLL")
@@ -1551,6 +1573,7 @@ type(dataset_type) function dtset_copy(dtin) result(dtout)
  dtout%expert_user        = dtin%expert_user
  dtout%extfpmd_nbcut      = dtin%extfpmd_nbcut
  dtout%extfpmd_nbdbuf     = dtin%extfpmd_nbdbuf
+ dtout%extfpmd_nband      = dtin%extfpmd_nband
  dtout%extrapwf           = dtin%extrapwf
  dtout%pawfatbnd          = dtin%pawfatbnd
  dtout%fermie_nest        = dtin%fermie_nest
@@ -1577,6 +1600,9 @@ type(dataset_type) function dtset_copy(dtin) result(dtout)
  dtout%getcell            = dtin%getcell
  dtout%getddb             = dtin%getddb
  dtout%getdvdb            = dtin%getdvdb
+ dtout%getabiwan          = dtin%getabiwan
+ dtout%getgwan            = dtin%getgwan
+ dtout%getdrhodb          = dtin%getdrhodb
  dtout%getddk             = dtin%getddk
  dtout%getdelfd           = dtin%getdelfd
  dtout%getdkdk            = dtin%getdkdk
@@ -1588,13 +1614,18 @@ type(dataset_type) function dtset_copy(dtin) result(dtout)
  dtout%getkden            = dtin%getkden
  dtout%getocc             = dtin%getocc
  dtout%getpawden          = dtin%getpawden
+ dtout%getvarpeq          = dtin%getvarpeq
  dtout%getddb_filepath    = dtin%getddb_filepath
  dtout%getden_filepath    = dtin%getden_filepath
  dtout%getdvdb_filepath   = dtin%getdvdb_filepath
+ dtout%getdrhodb_filepath = dtin%getdrhodb_filepath
  dtout%getpot_filepath    = dtin%getpot_filepath
  dtout%getsigeph_filepath = dtin%getsigeph_filepath
  dtout%getgstore_filepath = dtin%getgstore_filepath
+ dtout%getabiwan_filepath = dtin%getabiwan_filepath
+ dtout%getgwan_filepath   = dtin%getgwan_filepath
  dtout%getscr_filepath    = dtin%getscr_filepath
+ dtout%getvarpeq_filepath = dtin%getvarpeq_filepath
  dtout%getwfk_filepath    = dtin%getwfk_filepath
  dtout%getwfkfine_filepath= dtin%getwfkfine_filepath
  dtout%getwfq_filepath    = dtin%getwfq_filepath
@@ -1622,6 +1653,7 @@ type(dataset_type) function dtset_copy(dtin) result(dtout)
  dtout%gstore_kzone       = dtin%gstore_kzone
  dtout%gstore_qzone       = dtin%gstore_qzone
  dtout%gstore_kfilter     = dtin%gstore_kfilter
+ dtout%gstore_gmode       = dtin%gstore_gmode
  dtout%gstore_brange      = dtin%gstore_brange
  dtout%gstore_erange      = dtin%gstore_erange
 
@@ -1702,6 +1734,7 @@ type(dataset_type) function dtset_copy(dtin) result(dtout)
  dtout%irdbscoup          = dtin%irdbscoup
  dtout%irdddb             = dtin%irdddb
  dtout%irddvdb            = dtin%irddvdb
+ dtout%irddrhodb          = dtin%irddrhodb
  dtout%irdddk             = dtin%irdddk
  dtout%irdden             = dtin%irdden
  dtout%irdefmas           = dtin%irdefmas
@@ -2012,6 +2045,18 @@ type(dataset_type) function dtset_copy(dtin) result(dtout)
  dtout%usexcnhat_orig     = dtin%usexcnhat_orig
  dtout%useylm             = dtin%useylm
  dtout%vacnum             = dtin%vacnum
+
+ dtout%varpeq_aseed       = dtin%varpeq_aseed
+ dtout%varpeq_pkind       = dtin%varpeq_pkind
+ dtout%varpeq_interpolate = dtin%varpeq_interpolate
+ dtout%varpeq_orth        = dtin%varpeq_orth
+ dtout%varpeq_nstep       = dtin%varpeq_nstep
+ dtout%varpeq_tolgrs      = dtin%varpeq_tolgrs
+ dtout%varpeq_pc_nupdate  = dtin%varpeq_pc_nupdate
+ dtout%varpeq_pc_factor   = dtin%varpeq_pc_factor
+ dtout%varpeq_gau_params  = dtin%varpeq_gau_params
+ dtout%varpeq_erange      = dtin%varpeq_erange
+
  dtout%vdw_df_acutmin     = dtin%vdw_df_acutmin
  dtout%vdw_df_aratio      = dtin%vdw_df_aratio
  dtout%vdw_df_damax       = dtin%vdw_df_damax
@@ -2044,6 +2089,7 @@ type(dataset_type) function dtset_copy(dtin) result(dtout)
  dtout%w90iniprj          = dtin%w90iniprj
  dtout%w90prtunk          = dtin%w90prtunk
  dtout%xclevel            = dtin%xclevel
+ dtout%xg_nonlop_option   = dtin%xg_nonlop_option
  dtout%xc_denpos          = dtin%xc_denpos
  dtout%xc_taupos          = dtin%xc_taupos
  dtout%x1rdm              = dtin%x1rdm
@@ -2316,12 +2362,10 @@ end function dtset_copy
 subroutine dtset_free(dtset)
 
 !Arguments ------------------------------------
-!scalars
  class(dataset_type),intent(inout) :: dtset
-
 ! *************************************************************************
 
-!please, use the same order as the one used in the declaration of the type (see defs_abitypes).
+ ! please, use the same order as the one used in the declaration of the type (see defs_abitypes).
 
  !@dataset_type
 !integer allocatable
@@ -2421,19 +2465,16 @@ end subroutine dtset_free
 subroutine dtset_free_nkpt_arrays(dtset)
 
 !Arguments ------------------------------------
-!scalars
  class(dataset_type),intent(inout) :: dtset
-
 ! *************************************************************************
 
  ABI_SFREE(dtset%istwfk)
- !ABI_SFREE(dtset%nband)
  ABI_SFREE(dtset%kpt)
  ABI_SFREE(dtset%kptns)
  ABI_SFREE(dtset%occ_orig)
  ABI_SFREE(dtset%wtk)
- ! Free HF k-points as well.
- ABI_SFREE(dtset%kptns_hf)
+ ABI_SFREE(dtset%kptns_hf)  ! Free HF k-points as well.
+ !ABI_SFREE(dtset%nband)
 
 end subroutine dtset_free_nkpt_arrays
 !!***
@@ -2481,7 +2522,7 @@ subroutine find_getdtset(dtsets,getvalue,getname,idtset,iget,miximage,mxnimage,n
 
  iget=0
  if(getvalue>0 .or. (getvalue<0 .and. idtset+getvalue>0) )then
-!  In case getvalue is a negative number (so must add to idtset)
+   !In case getvalue is a negative number (so must add to idtset)
    if(getvalue<0 .and. idtset+getvalue>0) iget=idtset+getvalue
    if(getvalue>0)then
      do iget=1,idtset
@@ -2498,11 +2539,11 @@ subroutine find_getdtset(dtsets,getvalue,getname,idtset,iget,miximage,mxnimage,n
      end if
    end if
    write(msg, '(3a,i3,2a)' )&
-&   ' find_getdtset : ',trim(getname),'/=0, take data from output of dataset with index',dtsets(iget)%jdtset,'.',ch10
+     ' find_getdtset : ',trim(getname),'/=0, take data from output of dataset with index',dtsets(iget)%jdtset,'.',ch10
    call wrtout([std_out, ab_out], msg)
  end if
 
-!For the time being, uses a simple interpolation when the images do not match. If only one image, take the first get image.
+ ! For the time being, uses a simple interpolation when the images do not match. If only one image, take the first get image.
  miximage(:,:)=zero
  if(dtsets(idtset)%nimage==1)then
    miximage(1,1)=one
@@ -2722,10 +2763,9 @@ subroutine dtset_get_npert_rbz(dtset, nband_rbz, nkpt_rbz, npert)
    ABI_MALLOC(tnons1_tmp,(3,dtset%nsym))
 !  MJV TODO: check whether prepgkk should be used here
    if (dtset%prepanl /= 1 .and. dtset%berryopt /=4 .and. dtset%berryopt /=6 .and. dtset%berryopt /=7 .and. &
-&   dtset%berryopt /=14 .and. dtset%berryopt /=16 .and. dtset%berryopt /=17) then   !!HONG
+       dtset%berryopt /=14 .and. dtset%berryopt /=16 .and. dtset%berryopt /=17) then   !!HONG
      call littlegroup_pert(gprimd,idir,indsym,std_out,ipert,dtset%natom,dtset%nsym,nsym1,2,&
-&     dtset%symafm,symaf1,symq,symrec,&
-&     dtset%symrel,symrl1_tmp,0,dtset%tnons,tnons1_tmp)
+                           dtset%symafm,symaf1,symq,symrec, dtset%symrel,symrl1_tmp,0,dtset%tnons,tnons1_tmp)
    else
      nsym1 = 1
    end if
@@ -2746,7 +2786,7 @@ subroutine dtset_get_npert_rbz(dtset, nband_rbz, nkpt_rbz, npert)
    timrev_pert=timrev
    if(dtset%ieig2rf>0) then
      call symkpt(0,gmet,indkpt1(:,icase),std_out,dtset%kptns,dtset%nkpt,nkpt_rbz(icase),&
-&     1,symrc1,0,dtset%wtk,wtk_folded, bz2ibz_smap, xmpi_comm_self)
+                 1,symrc1,0,dtset%wtk,wtk_folded, bz2ibz_smap, xmpi_comm_self)
    else
 !    For the time being, the time reversal symmetry is not used
 !    for ddk, elfd, mgfd perturbations.
@@ -2754,7 +2794,7 @@ subroutine dtset_get_npert_rbz(dtset, nband_rbz, nkpt_rbz, npert)
         ipert==dtset%natom+2 .or. dtset%berryopt==4 .or. dtset%berryopt==6 .or. dtset%berryopt==7  &
         .or. dtset%berryopt==14 .or. dtset%berryopt==16 .or. dtset%berryopt==17 )timrev_pert=0  !!HONG
      call symkpt(0,gmet,indkpt1(:,icase),std_out,dtset%kptns,dtset%nkpt,nkpt_rbz(icase),&
-     nsym1,symrc1,timrev_pert,dtset%wtk,wtk_folded, bz2ibz_smap, xmpi_comm_self)
+                 nsym1,symrc1,timrev_pert,dtset%wtk,wtk_folded, bz2ibz_smap, xmpi_comm_self)
    end if
    ABI_FREE(bz2ibz_smap)
    ABI_FREE(wtk_folded)
@@ -2768,7 +2808,7 @@ subroutine dtset_get_npert_rbz(dtset, nband_rbz, nkpt_rbz, npert)
      ikpt1=1
      do ikpt=1,dtset%nkpt
        nband_k=dtset%nband(ikpt+(isppol-1)*dtset%nkpt)
-!      Must test against ikpt1/=nkpt_rbz+1, before evaluate indkpt1(ikpt1)
+       ! Must test against ikpt1/=nkpt_rbz+1, before evaluate indkpt1(ikpt1)
        if(ikpt1/=nkpt_rbz(icase)+1)then
          if(ikpt==indkpt1(ikpt1,icase))then
            nband_rbz(ikpt1+(isppol-1)*nkpt_rbz(icase),icase)=nband_k
@@ -2778,7 +2818,6 @@ subroutine dtset_get_npert_rbz(dtset, nband_rbz, nkpt_rbz, npert)
    end do
 
  end do
-
 
 ! Write YAML doc with the list of irreducible perturbations. Example.
 !
@@ -2871,10 +2910,6 @@ end function dtset_testsusmat
 !!  Build crystal_t object from dtset and image index.
 !!  Note that acell_orig, rprim_orig and xred_orig are used by default
 !!
-!! INPUTS
-!!
-!! OUTPUT
-!!
 !! SOURCE
 
 type(crystal_t) function dtset_get_crystal(dtset, img) result(cryst)
@@ -2899,16 +2934,16 @@ type(crystal_t) function dtset_get_crystal(dtset, img) result(cryst)
  my_xred => dtset%xred_orig(:, :, img)
 
  do ii=1,dtset%ntypat
-    my_title(ii) = "No info on pseudo available"
+   my_title(ii) = "No info on pseudo available"
  end do
 
  gw_timrev = 1; if (any(dtset%kptopt == [3, 4])) gw_timrev = 0
  gw_timrev = gw_timrev + 1
 
  call crystal_init(dtset%amu_orig(:, img), cryst, dtset%spgroup, dtset%natom, dtset%npsp, &
-   dtset%ntypat, dtset%nsym, my_rprimd, dtset%typat, my_xred, dtset%ziontypat, dtset%znucl, gw_timrev, &
-   dtset%nspden==2 .and. dtset%nsppol==1, remove_inv, my_title,&
-   symrel=dtset%symrel, tnons=dtset%tnons, symafm=dtset%symafm)
+                   dtset%ntypat, dtset%nsym, my_rprimd, dtset%typat, my_xred, dtset%ziontypat, dtset%znucl, gw_timrev, &
+                   dtset%nspden==2 .and. dtset%nsppol==1, remove_inv, my_title,&
+                   symrel=dtset%symrel, tnons=dtset%tnons, symafm=dtset%symafm)
 
 end function dtset_get_crystal
 !!***
@@ -3210,9 +3245,10 @@ subroutine macroin2(dtsets, ndtset_alloc)
  integer,intent(in) :: ndtset_alloc
 !arrays
  type(dataset_type),intent(inout) :: dtsets(0:ndtset_alloc)
- character(len=500) :: msg
+
 !Local variables -------------------------------
 !scalars
+ !character(len=500) :: msg
  integer :: idtset,pawujat
 
 !******************************************************************
@@ -3220,12 +3256,11 @@ subroutine macroin2(dtsets, ndtset_alloc)
  do idtset=1,ndtset_alloc
    ! Set first PAW+U atom to perform atomic level shift
    if (dtsets(idtset)%typat(1)==0) cycle
-!LMac Here is where the pawujat is perturbed.
+   !LMac Here is where the pawujat is perturbed.
    pawujat=dtsets(idtset)%pawujat
    pawujat=pawujat-count(dtsets(idtset)%lpawu( dtsets(idtset)%typat( 1:pawujat ))<0)
 
-   write(msg,*)"LMac pawujat is: ",pawujat
-   call wrtout(std_out,msg)
+   !write(msg,*)"LMac pawujat is: ",pawujat; call wrtout(std_out,msg)
 
    if (dtsets(idtset)%macro_uj>0) then
      ! Level shift atom with amplitude pawujv
@@ -3304,7 +3339,7 @@ subroutine chkvars(string)
  list_vars=trim(list_vars)//' cd_halfway_freq cd_max_freq cd_subset_freq'
  list_vars=trim(list_vars)//' cellcharge charge chrgat chempot chkdilatmx chkexit chkparal chkprim'
  list_vars=trim(list_vars)//' chksymbreak chksymtnons chneut cineb_start coefficients constraint_kind'
- list_vars=trim(list_vars)//' cprj_update_lvl cpus cpum cpuh'
+ list_vars=trim(list_vars)//' cprj_in_memory cprj_update_lvl cpus cpum cpuh'
 !D
  list_vars=trim(list_vars)//' ddamp ddb_ngqpt ddb_shiftq'
  list_vars=trim(list_vars)//' delayperm densfor_pred densty dfield'
@@ -3343,7 +3378,8 @@ subroutine chkvars(string)
  list_vars=trim(list_vars)//' eph_np_pqbks'
  list_vars=trim(list_vars)//' eph_phrange eph_phrange_w eph_phwinfact'
  list_vars=trim(list_vars)//' eph_prtscratew eph_restart eph_stern eph_task eph_tols_idelta eph_transport eph_use_ftinterp'
- list_vars=trim(list_vars)//' eshift esmear exchmix exchn2n3d expert_user extfpmd_nbcut extfpmd_nbdbuf extrapwf'
+ list_vars=trim(list_vars)//' eshift esmear exchmix exchn2n3d expert_user'
+ list_vars=trim(list_vars)//' extfpmd_nbcut extfpmd_nbdbuf extfpmd_nband extrapwf'
 !F
  list_vars=trim(list_vars)//' fband fermie_nest ffnl_lw'
  list_vars=trim(list_vars)//' fftalg fftcache fftgw fft_count'
@@ -3361,17 +3397,19 @@ subroutine chkvars(string)
  list_vars=trim(list_vars)//' ga_algor ga_fitness ga_n_rules ga_opt_percent ga_rules'
  list_vars=trim(list_vars)//' genafm getbscoup getbseig getbsreso getcell'
  list_vars=trim(list_vars)//' getddb getddb_filepath getden_filepath getddk'
- list_vars=trim(list_vars)//' getdelfd getdkdk getdkde getden getkden getdvdb getdvdb_filepath'
+ list_vars=trim(list_vars)//' getdelfd getdkdk getdkde getden getkden getdvdb getdrhodb getdvdb_filepath getdrhodb_filepath'
  list_vars=trim(list_vars)//' getefmas getkerange_filepath getgam_eig2nkq'
  list_vars=trim(list_vars)//' gethaydock getocc getpawden getpot_filepath getsigeph_filepath getgstore_filepath'
+ list_vars=trim(list_vars)//' getabiwan getabiwan_filepath getgwan getgwan_filepath'
  list_vars=trim(list_vars)//' getqps getscr getscr_filepath'
  list_vars=trim(list_vars)//' getwfkfine getwfkfine_filepath getsuscep'
+ list_vars=trim(list_vars)//' getvarpeq getvarpeq_filepath'
  list_vars=trim(list_vars)//' getvel getwfk getwfk_filepath getwfq getwfq_filepath getxcart getxred'
  list_vars=trim(list_vars)//' get1den get1wf goprecon goprecprm'
  list_vars=trim(list_vars)//' gpu_devices gpu_kokkos_nthrd gpu_linalg_limit gpu_nl_distrib'
  list_vars=trim(list_vars)//' gpu_nl_splitsize gpu_option'
  list_vars=trim(list_vars)//' gwaclowrank gwcalctyp gwcomp gwencomp gwgamma gwmem'
- list_vars=trim(list_vars)//' gstore_brange gstore_cplex gstore_erange gstore_kfilter'
+ list_vars=trim(list_vars)//' gstore_brange gstore_cplex gstore_erange gstore_kfilter gstore_gmode'
  list_vars=trim(list_vars)//' gstore_kzone gstore_qzone gstore_with_vk'
  list_vars=trim(list_vars)//' gwpara gwrpacorr gwgmcorr gw_customnfreqsp gw1rdm'
  list_vars=trim(list_vars)//' gw_frqim_inzgrid gw_frqre_inzgrid gw_frqre_tangrid gw_freqsp'
@@ -3392,7 +3430,7 @@ subroutine chkvars(string)
  list_vars=trim(list_vars)//' iboxcut icoulomb icutcoul ieig2rf'
  list_vars=trim(list_vars)//' imgmov imgwfstor inclvkb indata_prefix intxc invovl_blksliced iomode ionmov iqpt'
  list_vars=trim(list_vars)//' iprcel iprcfc irandom irdbscoup'
- list_vars=trim(list_vars)//' irdbseig irdbsreso irdchkprdm irdddb irdddk irdden irdkden irddvdb irdefmas'
+ list_vars=trim(list_vars)//' irdbseig irdbsreso irdchkprdm irdddb irdddk irdden irdkden irddvdb irddrhodb irdefmas'
  list_vars=trim(list_vars)//' irdhaydock irdpawden irdqps'
  list_vars=trim(list_vars)//' irdscr irdsuscep irdwfk irdwfq ird1den'
  list_vars=trim(list_vars)//' irdwfkfine'
@@ -3533,6 +3571,9 @@ subroutine chkvars(string)
  list_vars=trim(list_vars)//' use_oldchi'
 !V
  list_vars=trim(list_vars)//' vaclst vacnum vacuum vacwidth vcutgeo'
+ list_vars=trim(list_vars)//' varpeq_aseed varpeq_erange varpeq_gau_params'
+ list_vars=trim(list_vars)//' varpeq_interpolate varpeq_orth varpeq_nstep varpeq_pkind'
+ list_vars=trim(list_vars)//' varpeq_tolgrs varpeq_pc_nupdate varpeq_pc_factor'
  list_vars=trim(list_vars)//' vdw_nfrag vdw_supercell'
  list_vars=trim(list_vars)//' vdw_tol vdw_tol_3bt vdw_typfrag vdw_xc'
  list_vars=trim(list_vars)//' vdw_df_acutmin vdw_df_aratio vdw_df_damax'
@@ -3550,7 +3591,8 @@ subroutine chkvars(string)
  list_vars=trim(list_vars)//' w90iniprj w90prtunk'
  list_vars=trim(list_vars)//' write_files'
 !X
- list_vars=trim(list_vars)//' xcart xc_denpos xc_taupos xc_tb09_c xred xredsph_extra xyzfile x1rdm'
+ list_vars=trim(list_vars)//' xcart xc_denpos xc_taupos xc_tb09_c xg_nonlop_option xred xredsph_extra'
+ list_vars=trim(list_vars)//' xyzfile x1rdm'
 !Y
 !Z
  list_vars=trim(list_vars)//' zcut zeemanfield znucl'

@@ -34,7 +34,7 @@ module m_parser
 
  use m_io_tools,  only : open_file
  use m_fstrings,  only : sjoin, strcat, itoa, inupper, ftoa, tolower, toupper, next_token, &
-                         endswith, char_count, find_digit !, startswith,
+                         endswith, char_count, find_digit, replace !, startswith,
  use m_geometry,  only : xcart2xred, det3r, mkrdim
 
  implicit none
@@ -111,7 +111,7 @@ module m_parser
  !public :: chkint_prt
 
  public :: prttagm             ! Print the content of intarr or dprarr.
- public :: prttagm_images      ! Extension to prttagm to include the printing of images information.
+ public :: prttagm_images      ! Extension to prttagm to include the printing of images  information.
  public :: chkvars_in_string   ! Analyze variable names in string. Abort if name is not recognized.
  public :: get_acell_rprim     ! Get acell and rprim from string
 
@@ -175,8 +175,7 @@ module m_parser
 
  public :: geo_from_abivar_string   ! Build object form abinit variable
  public :: geo_from_poscar_path     ! Build object from POSCAR filepath.
-
- public :: intagm_img   !  Read input file variables according to images path definition (1D array)
+ public :: intagm_img               ! Read input file variables according to images path definition (1D array)
 
  interface intagm_img
    module procedure intagm_img_1D
@@ -241,6 +240,9 @@ subroutine parsefile(filnamin, lenstr, ndtset, string, comm)
 
    ! To make case-insensitive, map characters of string to upper case.
    call inupper(string(1:lenstr))
+
+   ! Make sure double quotation marks are used to enclose strings.
+   !string = replace(string(1:lenstr), "'", '"')
 
    ! Might import data from xyz file(s) into string
    ! Need string_raw to deal properly with xyz filenames
