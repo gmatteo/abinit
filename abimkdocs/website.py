@@ -1284,9 +1284,9 @@ The full bibtex file is available [here](../abiref.bib).
             if not page_rpath.startswith("/"): page_rpath = "/" + page_rpath
             page_rpath = os.path.dirname(page_rpath.replace(".md", ""))
             # Hacking previous implementation to make it work with new mkdocs (?)
-            #url = os.path.relpath(url, page_rpath)
+            url = os.path.relpath(url, page_rpath)
             if end: url = "%s#%s" % (url, end)
-            #print("url", url)
+            print("url", url)
 
         if self.verbose: print("token", token, "page_rpath", page_rpath, "url", url)
 
