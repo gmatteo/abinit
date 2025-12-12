@@ -6810,8 +6810,8 @@ which there is only one atom per unit cell. Of course, many k points are needed,
 <p><strong>2.1.</strong> The first step is the pre-computation of the ground state
 wavefunctions. This is driven by the files <em>tdfpt_01.abi</em>.
 You should edit it and examine it.</p>
-<div class="text-center"><button id="uuid-978e5504-faad-44af-abef-c060edd77988" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_01.abi </button></div>
-<div id="uuid-5317cf9f-4baf-4123-9a0b-6b0b1bcfe5c4" class="my_dialog" title="tests/tutoparal/Input/tdfpt_01.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#   FCC Al; 60 special points</span>
+<div class="text-center"><button id="uuid-24857e76-cfb7-442c-a199-bd1141a5f92e" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_01.abi </button></div>
+<div id="uuid-dea05453-d0ce-420a-97fe-79d6c2adf8e8" class="my_dialog" title="tests/tutoparal/Input/tdfpt_01.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#   FCC Al; 60 special points</span>
 
 <span class="c1">#Definition of the unit cell</span>
 <span class="w"> </span>acell<span class="w"> </span><span class="m">3</span>*7.56
@@ -6869,7 +6869,7 @@ You should edit it and examine it.</p>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-5317cf9f-4baf-4123-9a0b-6b0b1bcfe5c4", "#uuid-978e5504-faad-44af-abef-c060edd77988") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-dea05453-d0ce-420a-97fe-79d6c2adf8e8", "#uuid-24857e76-cfb7-442c-a199-bd1141a5f92e") }); </script>
 
 <p>One relies on a k-point grid of 8x8x8 x 4 shifts (=2048 k points), and 5 bands.
 The k-point grid sampling is well converged, actually.
@@ -6889,8 +6889,8 @@ You can launch it:</p>
 <p>A reference output file is available in <em>$ABI_TESTS/tutoparal/Refs</em>, under
 the name <em>tdfpt_01.abo</em>. It was obtained using 4 computing cores, and took a few seconds.</p>
 <p><strong>2.2.</strong> The second step is the DFPT calculation, see the file <em>tdfpt_02.abi</em></p>
-<div class="text-center"><button id="uuid-eee91632-cf1f-452d-8e8e-f21f491be463" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_02.abi </button></div>
-<div id="uuid-1cfe46b5-057e-406d-94d3-4b6dcd8ae510" class="my_dialog" title="tests/tutoparal/Input/tdfpt_02.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#   FCC Al; ; phonon at 1/4 1/8 1/8</span>
+<div class="text-center"><button id="uuid-d92c55c8-b89d-48c0-8808-27cddce6b228" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_02.abi </button></div>
+<div id="uuid-6c97dc07-e0c2-4298-b85f-56c722c228cb" class="my_dialog" title="tests/tutoparal/Input/tdfpt_02.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#   FCC Al; ; phonon at 1/4 1/8 1/8</span>
 
 <span class="c1">#Definition of DFPT calculation</span>
 <span class="w"> </span>rfphon<span class="w"> </span><span class="m">1</span>
@@ -6955,7 +6955,7 @@ the name <em>tdfpt_01.abo</em>. It was obtained using 4 computing cores, and too
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-1cfe46b5-057e-406d-94d3-4b6dcd8ae510", "#uuid-eee91632-cf1f-452d-8e8e-f21f491be463") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-6c97dc07-e0c2-4298-b85f-56c722c228cb", "#uuid-d92c55c8-b89d-48c0-8808-27cddce6b228") }); </script>
 
 <p>There are three perturbations (three atomic displacements). For the two first
 perturbations, no symmetry can be used, while for the third, two symmetries
@@ -7128,10 +7128,10 @@ number of cores used to run them is added after the name of the test: the
 The preparatory step takes about 3 minutes, and the DFPT step takes about
 3 minutes as well.</p>
 <div class="text-center"><div class="btn-group-vertical">
-<button id="uuid-2e44596a-15c2-4454-9734-c435939f17e3" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_03.abi </button>
-<button id="uuid-02a88e99-0da4-452c-a079-dc89b2ef34f3" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_04.abi </button>
+<button id="uuid-1d51bd8a-1d48-44f1-855e-c33e737c722a" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_03.abi </button>
+<button id="uuid-3d39d8af-1ee3-411d-a631-fb3830e2b90c" class="md-button md-button--secondary"> View tests/tutoparal/Input/tdfpt_04.abi </button>
 </div></div>
-<div id="uuid-c1389386-85c8-423e-a606-5f89050bd647" class="my_dialog" title="tests/tutoparal/Input/tdfpt_03.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#SLAB ending TiO2 double layer</span>
+<div id="uuid-76197f78-3c80-416b-ad6d-a9848cbb3d4a" class="my_dialog" title="tests/tutoparal/Input/tdfpt_03.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#SLAB ending TiO2 double layer</span>
 <span class="c1"># N=9</span>
 <span class="c1"># paralelectric configuration</span>
 
@@ -7216,9 +7216,9 @@ nband<span class="w"> </span><span class="m">120</span>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-c1389386-85c8-423e-a606-5f89050bd647", "#uuid-2e44596a-15c2-4454-9734-c435939f17e3") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-76197f78-3c80-416b-ad6d-a9848cbb3d4a", "#uuid-1d51bd8a-1d48-44f1-855e-c33e737c722a") }); </script>
 
-<div id="uuid-8108049e-a46f-40f5-b2f5-326049273596" class="my_dialog" title="tests/tutoparal/Input/tdfpt_04.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#SLAB ending TiO2 double layer</span>
+<div id="uuid-27b10654-c47b-4c89-b56b-96f52dac4bac" class="my_dialog" title="tests/tutoparal/Input/tdfpt_04.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#SLAB ending TiO2 double layer</span>
 <span class="c1"># N=9</span>
 <span class="c1"># paralelectric configuration</span>
 
@@ -7311,7 +7311,7 @@ nband<span class="w"> </span><span class="m">116</span><span class="w">    </spa
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-8108049e-a46f-40f5-b2f5-326049273596", "#uuid-02a88e99-0da4-452c-a079-dc89b2ef34f3") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-27b10654-c47b-4c89-b56b-96f52dac4bac", "#uuid-3d39d8af-1ee3-411d-a631-fb3830e2b90c") }); </script>
 
 <p>You can run now these test cases. For tdfpt_03, with <a class="wikilink codevar-wikilink" href="/variables/paral#autoparal">autoparal</a>=1, 
 you will be able to run on different numbers of processors compatible with <a class="wikilink codevar-wikilink" href="/variables/basic#nkpt">nkpt</a>=4,

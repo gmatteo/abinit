@@ -6930,8 +6930,8 @@ in the working directory <em>Work_bs</em>.</p>
 The header reports a brief description of the calculation so read it carefully.
 Do not worry if some parts are not clear to you as we are going to discuss the
 calculation in step by step fashion.</p>
-<div class="text-center"><button id="uuid-5b7a152d-2c7d-41fe-914b-35d9f0cf8861" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_1.abi </button></div>
-<div id="uuid-91984367-00a9-471a-8828-26ea6de9138a" class="my_dialog" title="tests/tutorial/Input/tbs_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-7c68758d-c537-4759-a41f-2239df725b81" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_1.abi </button></div>
+<div id="uuid-7076edc0-03a6-4f08-8d2a-496cd13564f3" class="my_dialog" title="tests/tutorial/Input/tbs_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Preparatory run for BS calculations</span>
 <span class="c1">#</span>
 <span class="c1"># There are four datasets specified in this input:</span>
@@ -7070,7 +7070,7 @@ diemac<span class="w"> </span><span class="m">12</span>.0
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-91984367-00a9-471a-8828-26ea6de9138a", "#uuid-5b7a152d-2c7d-41fe-914b-35d9f0cf8861") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-7076edc0-03a6-4f08-8d2a-496cd13564f3", "#uuid-7c68758d-c537-4759-a41f-2239df725b81") }); </script>
 
 <p>This input file generates the two WFK files and the SCR file needed for
 the subsequent Bethe-Salpeter computations. The first dataset performs a
@@ -7169,8 +7169,8 @@ directory and issue:</p>
 <p>Now open <em>$ABI_TESTS/tutorial/Input/tbs_2.abi</em> in your preferred editor and go
 to the next section where we discuss the most important variables governing a
 typical BS computation.</p>
-<div class="text-center"><button id="uuid-fe744d6b-08e5-4255-bc5b-5b2fbc768970" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_2.abi </button></div>
-<div id="uuid-5a0149c4-1727-4083-bfde-edc956eabf9a" class="my_dialog" title="tests/tutorial/Input/tbs_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-0d002654-627d-4485-83e3-2b808ce09ddf" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_2.abi </button></div>
+<div id="uuid-a4b8323f-e85f-4401-95ef-39206127e4e0" class="my_dialog" title="tests/tutorial/Input/tbs_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># BS run: Tamm-Dancoff approximation solved with the Haydock algorithm.</span>
 
 <span class="c1"># BSE run with Haydock iterative method (only resonant + W + v)</span>
@@ -7262,7 +7262,7 @@ diemac<span class="w"> </span><span class="m">12</span>.0
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-5a0149c4-1727-4083-bfde-edc956eabf9a", "#uuid-fe744d6b-08e5-4255-bc5b-5b2fbc768970") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-a4b8323f-e85f-4401-95ef-39206127e4e0", "#uuid-0d002654-627d-4485-83e3-2b808ce09ddf") }); </script>
 
 <h3 id="the-structure-of-the-input-file">The structure of the input file<a class="headerlink" href="#the-structure-of-the-input-file" title="Permanent link">&para;</a></h3>
 <p>First we need to set <a class="wikilink codevar-wikilink" href="/variables/gstate#optdriver">optdriver</a> = 99 to call the BSE routines</p>
@@ -7569,8 +7569,8 @@ study should be done once converged values for the other parameters have been al
 <p>In this section we take advantage of the multi-dataset capabilities of ABINIT
 to perform calculations with different values for <a class="wikilink codevar-wikilink" href="/variables/bse#bs_loband">bs_loband</a> and <a class="wikilink codevar-wikilink" href="/variables/basic#nband">nband</a></p>
 <p>Before running the test take some time to read the input file <em>$ABI_TESTS/tutorial/Input/tbs_3.abi</em>.</p>
-<div class="text-center"><button id="uuid-cb16b526-b404-435d-b6bb-d82c665466c7" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_3.abi </button></div>
-<div id="uuid-adc97907-0d19-4eef-9ce3-c1e062f442e3" class="my_dialog" title="tests/tutorial/Input/tbs_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-e328726a-1579-488f-989c-e1d8ace82636" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_3.abi </button></div>
+<div id="uuid-63d0ca7d-d057-4650-aacf-0aa7e9ae8376" class="my_dialog" title="tests/tutorial/Input/tbs_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Convergence of the number of bands in the transition space.</span>
 
 ndtset<span class="w">     </span><span class="m">2</span>
@@ -7674,7 +7674,7 @@ diemac<span class="w"> </span><span class="m">12</span>.0
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-adc97907-0d19-4eef-9ce3-c1e062f442e3", "#uuid-cb16b526-b404-435d-b6bb-d82c665466c7") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-63d0ca7d-d057-4650-aacf-0aa7e9ae8376", "#uuid-e328726a-1579-488f-989c-e1d8ace82636") }); </script>
 
 <p>The convergence in the number of transitions is performed by defining two
 datasets with different values for <a class="wikilink codevar-wikilink" href="/variables/basic#nband">nband</a> and <a class="wikilink codevar-wikilink" href="/variables/bse#bs_loband">bs_loband</a></p>
@@ -7793,8 +7793,8 @@ ln -s 444_shifted_WFK tbs_4i_DS2_WFK
 </code></pre></div>
 
 <p>to execute the test (it should take around 2 minutes).</p>
-<div class="text-center"><button id="uuid-dff6f713-172c-4b7f-8d52-4ce9b3febf10" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_4.abi </button></div>
-<div id="uuid-97917f8d-91cf-4f19-8ac0-0e26f3444409" class="my_dialog" title="tests/tutorial/Input/tbs_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-2109ed55-e106-4898-b189-625689e14783" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_4.abi </button></div>
+<div id="uuid-514a3f45-6cf1-4f1a-af0a-22de56928f36" class="my_dialog" title="tests/tutorial/Input/tbs_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># BS run: convergence in ecuteps</span>
 
 ndtset<span class="w">    </span><span class="m">2</span>
@@ -7891,7 +7891,7 @@ diemac<span class="w"> </span><span class="m">12</span>.0
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-97917f8d-91cf-4f19-8ac0-0e26f3444409", "#uuid-dff6f713-172c-4b7f-8d52-4ce9b3febf10") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-514a3f45-6cf1-4f1a-af0a-22de56928f36", "#uuid-2109ed55-e106-4898-b189-625689e14783") }); </script>
 
 <p>Once the calculation is completed, plot the spectra obtained with different <a class="wikilink codevar-wikilink" href="/variables/gw#ecuteps">ecuteps</a> using <a href="http://www.gnuplot.info/">gnuplot</a> :</p>
 <div class="highlight"><pre><span></span><code><span class="k">p</span><span class="w"> </span><span class="s">&quot;tbs_4o_DS1_EXC_MDF&quot;</span><span class="w"> </span><span class="nb">u</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">3</span><span class="w"> </span><span class="nb">w</span><span class="w"> </span><span class="n">l</span>
@@ -7923,8 +7923,8 @@ q-points in the screening must be consistent with each other).</p>
 a standard BS calculation (generation of two WFK file, screening calculation,
 BS run) into a single input. The calculation is done with the converged
 parameters found in the previous studies, only <a class="wikilink codevar-wikilink" href="/variables/basic#ngkpt">ngkpt</a> has been intentionally left undefined.</p>
-<div class="text-center"><button id="uuid-19f2a775-1a75-44ac-9404-44368dde0438" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_5.abi </button></div>
-<div id="uuid-6d27c7a8-da55-4ae9-82f9-eb282cb61f98" class="my_dialog" title="tests/tutorial/Input/tbs_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon </span>
+<div class="text-center"><button id="uuid-372f4973-697a-4655-983f-dfbe2a11cfe4" class="md-button md-button--secondary"> View tests/tutorial/Input/tbs_5.abi </button></div>
+<div id="uuid-c2b13f41-d4b1-46b0-b0b3-6517afea6cf2" class="my_dialog" title="tests/tutorial/Input/tbs_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon </span>
 <span class="c1"># Template for converge study on ngkpt</span>
 <span class="c1"># 1) GS</span>
 <span class="c1"># 2) generation of the WFK file on a symmetric k-mesh</span>
@@ -8035,7 +8035,7 @@ diemac<span class="w"> </span><span class="m">12</span>.0
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-6d27c7a8-da55-4ae9-82f9-eb282cb61f98", "#uuid-19f2a775-1a75-44ac-9404-44368dde0438") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c2b13f41-d4b1-46b0-b0b3-6517afea6cf2", "#uuid-372f4973-697a-4655-983f-dfbe2a11cfe4") }); </script>
 
 <p>Use <em>tbs_5.abi</em> as a template for performing BS calculations with different
 k-meshes. For example, you might try to compare the three meshes 4x4x4, 5x5x5,

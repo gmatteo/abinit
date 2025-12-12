@@ -6895,8 +6895,8 @@ cp ../tgwr_1.abi .
 <div class="highlight"><pre><span></span><code>mpirun -n 1 tgwr_1.abi &gt; tgwr_1.log 2&gt; err &amp;
 </code></pre></div>
 <p>so that we have some time to discuss the input while ABINIT is running.</p>
-<div class="text-center"><button id="uuid-cb3a6091-9b47-4716-9a64-86bce169dafd" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_1.abi </button></div>
-<div id="uuid-8841b7f1-7488-4b10-b53e-aa16a7d39b55" class="my_dialog" title="tests/tutorial/Input/tgwr_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon. Preparatory run for GWR code</span>
+<div class="text-center"><button id="uuid-f12106a4-fa72-447f-88e8-dee8c0b15c9a" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_1.abi </button></div>
+<div id="uuid-69062978-26fb-47a8-8d31-15797731a8d8" class="my_dialog" title="tests/tutorial/Input/tgwr_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon. Preparatory run for GWR code</span>
 <span class="c1"># Dataset 1: ground state calculation to compute the density.</span>
 <span class="c1"># Dataset 2: KS band structure calculation along a k-path.</span>
 
@@ -6984,7 +6984,7 @@ diemac<span class="w">  </span><span class="m">12</span>.0<span class="w">      
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-8841b7f1-7488-4b10-b53e-aa16a7d39b55", "#uuid-cb3a6091-9b47-4716-9a64-86bce169dafd") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-69062978-26fb-47a8-8d31-15797731a8d8", "#uuid-f12106a4-fa72-447f-88e8-dee8c0b15c9a") }); </script>
 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -7001,8 +7001,8 @@ that will be <strong>included</strong> in all the other input files using the sy
 include &quot;gwr_include.abi&quot;
 </code></pre></div>
 <p>If you open the include file:</p>
-<div class="text-center"><button id="uuid-4de3bc48-14b3-427f-82c3-00d8ff565eef" class="md-button md-button--secondary"> View tests/tutorial/Input/gwr_include.abi </button></div>
-<div id="uuid-9da8525f-640a-4779-82ad-9820c20b04c0" class="my_dialog" title="tests/tutorial/Input/gwr_include.abi" hidden><div><div class="codehilite small-text"><pre><span></span>ecut<span class="w"> </span><span class="m">16</span>.0<span class="w">        </span><span class="c1"># Maximal kinetic energy cut-off, in Hartree</span>
+<div class="text-center"><button id="uuid-a652954b-2088-45c5-b9c8-c341e000870c" class="md-button md-button--secondary"> View tests/tutorial/Input/gwr_include.abi </button></div>
+<div id="uuid-cd6f2614-cc51-45c7-9bfb-42842ddfd851" class="my_dialog" title="tests/tutorial/Input/gwr_include.abi" hidden><div><div class="codehilite small-text"><pre><span></span>ecut<span class="w"> </span><span class="m">16</span>.0<span class="w">        </span><span class="c1"># Maximal kinetic energy cut-off, in Hartree</span>
 
 <span class="c1"># Definition of the unit cell: fcc</span>
 acell<span class="w">  </span><span class="m">3</span>*10.26<span class="w">         </span><span class="c1"># Experimental lattice constants in Bohr</span>
@@ -7027,7 +7027,7 @@ pseudos<span class="w"> </span><span class="s2">&quot;Psdj_nc_sr_04_pbe_std_psp8
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-9da8525f-640a-4779-82ad-9820c20b04c0", "#uuid-4de3bc48-14b3-427f-82c3-00d8ff565eef") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-cd6f2614-cc51-45c7-9bfb-42842ddfd851", "#uuid-a652954b-2088-45c5-b9c8-c341e000870c") }); </script>
 
 <p>you will notice that we are using norm-conserving (NC) pseudos taken from
 the standard scalar-relativistic table of the <a href="https://www.pseudo-dojo.org/">PseudoDojo</a>,
@@ -7120,8 +7120,8 @@ The density file, on the contrary, can be generated with shifted <span class="ar
 <p>Let&rsquo;s immediately start the job in background with:</p>
 <div class="highlight"><pre><span></span><code>mpirun -n 1 tgwr_2.abi &gt; tgwr_2.log 2&gt; err &amp;
 </code></pre></div>
-<div class="text-center"><button id="uuid-5b1df963-5d9f-4441-80ec-02f3e7362aae" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_2.abi </button></div>
-<div id="uuid-9bca8863-28d6-49b1-9574-95c56bfdfc19" class="my_dialog" title="tests/tutorial/Input/tgwr_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#  Calculation of WFK files with empty states and direct diagonalization</span>
+<div class="text-center"><button id="uuid-0d369ccd-3e90-4725-9349-2f45eb28fa9d" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_2.abi </button></div>
+<div id="uuid-17cf4a0f-cf21-467b-b2c7-943a66e45022" class="my_dialog" title="tests/tutorial/Input/tgwr_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#  Calculation of WFK files with empty states and direct diagonalization</span>
 
 <span class="c1"># Include geometry and pseudos</span>
 include<span class="w"> </span><span class="s2">&quot;gwr_include.abi&quot;</span>
@@ -7165,7 +7165,7 @@ getden_filepath<span class="w"> </span><span class="s2">&quot;tgwr_1o_DS1_DEN&qu
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-9bca8863-28d6-49b1-9574-95c56bfdfc19", "#uuid-5b1df963-5d9f-4441-80ec-02f3e7362aae") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-17cf4a0f-cf21-467b-b2c7-943a66e45022", "#uuid-0d369ccd-3e90-4725-9349-2f45eb28fa9d") }); </script>
 
 <p>Here we are using <a class="wikilink codevar-wikilink" href="/variables/gwr#gwr_task">gwr_task</a> = &ldquo;HDIAGO&rdquo; to perform a <strong>direct diagonalization</strong>
 of the KS Hamiltonian <span class="arithmatex">\(H^\KS[n]\)</span> constructed from the input DEN file.
@@ -7228,8 +7228,8 @@ First of all, you may want to start immediately the computation with:</p>
 <div class="highlight"><pre><span></span><code>mpirun -n 1 tgwr_3.abi &gt; tgwr_3.log 2&gt; err &amp;
 </code></pre></div>
 <p>and the following input file:</p>
-<div class="text-center"><button id="uuid-db49ddfa-e476-48c6-9ebd-d2e1a4148c44" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_3.abi </button></div>
-<div id="uuid-edf6f7d0-721c-40de-b07b-ec4d3553ae70" class="my_dialog" title="tests/tutorial/Input/tgwr_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-f360a433-5549-4b0c-91e7-a171fa15c95f" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_3.abi </button></div>
+<div id="uuid-35d7ef26-359f-4377-ae59-43699845d14b" class="my_dialog" title="tests/tutorial/Input/tgwr_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Calculation of one-shot GW corrections with GWR code.</span>
 
 <span class="c1"># Definition of the k-point grid</span>
@@ -7294,7 +7294,7 @@ bdgw<span class="w">       </span><span class="c1"># calculate GW corrections fo
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-edf6f7d0-721c-40de-b07b-ec4d3553ae70", "#uuid-db49ddfa-e476-48c6-9ebd-d2e1a4148c44") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-35d7ef26-359f-4377-ae59-43699845d14b", "#uuid-f360a433-5549-4b0c-91e7-a171fa15c95f") }); </script>
 
 <p>This input contains some variables whose meaning is the same as in the conventional GW code,
 and other variables whose name starts with <code>gwr_</code> that are specific to the GWR code.</p>
@@ -7340,8 +7340,8 @@ TODO: Mention [[inclvkb]] == 2, [[symsigma]]
 -->
 
 <p>We can now have a look at the main output file:</p>
-<div class="text-center"><button id="uuid-c54bbd07-042c-44e8-ab2f-add691636350" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgwr_3.abo </button></div>
-<div id="uuid-5f931e72-4cbd-4531-a8b7-b861c3a73095" class="my_dialog" title="tests/tutorial/Refs/tgwr_3.abo" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-c3c5f7cb-fd11-4d84-be28-27d6f65b8760" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgwr_3.abo </button></div>
+<div id="uuid-191e27e3-72e8-4acb-906a-91264822d4b3" class="my_dialog" title="tests/tutorial/Refs/tgwr_3.abo" hidden><div><pre class="small-text">
 
 .Version 10.3.6.4 of ABINIT, released Feb 2025.
 .(MPI version, prepared for a aarch64_darwin23.6.0_gnu14.2 computer)
@@ -7990,7 +7990,7 @@ P           mkmem           3
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-5f931e72-4cbd-4531-a8b7-b861c3a73095", "#uuid-c54bbd07-042c-44e8-ab2f-add691636350") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-191e27e3-72e8-4acb-906a-91264822d4b3", "#uuid-c3c5f7cb-fd11-4d84-be28-27d6f65b8760") }); </script>
 
 <p>First of all, we have a Yaml document that summarizes the most important GWR parameters:</p>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"> </span><span class="kt">!GWR_params</span>
@@ -8435,8 +8435,8 @@ You may want to start immediately the computation by issuing:</p>
 <div class="highlight"><pre><span></span><code>mpirun -n 1 tgwr_4.abi &gt; tgwr_4.log 2&gt; err &amp;
 </code></pre></div>
 <p>with the following input file:</p>
-<div class="text-center"><button id="uuid-d105df9c-216b-41a2-9c50-9e3d6c4ddbeb" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_4.abi </button></div>
-<div id="uuid-c2e796a9-ce85-4597-8808-40a666b52c77" class="my_dialog" title="tests/tutorial/Input/tgwr_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#  Crystalline silicon</span>
+<div class="text-center"><button id="uuid-785b6f24-48fe-4545-ad52-6e33d3494c71" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_4.abi </button></div>
+<div id="uuid-80b7db42-7aa6-4e59-bdfa-a9d1a9a3ee06" class="my_dialog" title="tests/tutorial/Input/tgwr_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#  Crystalline silicon</span>
 <span class="c1">#  Calculation of the GW corrections with GWR code and 4x4x4 k-mesh.</span>
 
 <span class="c1"># Include geometry and pseudos</span>
@@ -8515,11 +8515,11 @@ bdgw<span class="w">       </span><span class="c1"># calculate GW corrections fo
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-c2e796a9-ce85-4597-8808-40a666b52c77", "#uuid-d105df9c-216b-41a2-9c50-9e3d6c4ddbeb") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-80b7db42-7aa6-4e59-bdfa-a9d1a9a3ee06", "#uuid-785b6f24-48fe-4545-ad52-6e33d3494c71") }); </script>
 
 <p>The output file is reported here for your convenience:</p>
-<div class="text-center"><button id="uuid-1d350626-e15b-4e21-b6f6-38c6d66006f0" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgwr_4.abo </button></div>
-<div id="uuid-a567dbaa-8b06-4258-a8d5-32cbe068c4e1" class="my_dialog" title="tests/tutorial/Refs/tgwr_4.abo" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-a225c18d-6685-4b3f-9ef0-0387378d22d9" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgwr_4.abo </button></div>
+<div id="uuid-60da4edb-f477-4cb5-ae9d-af706536d526" class="my_dialog" title="tests/tutorial/Refs/tgwr_4.abo" hidden><div><pre class="small-text">
 
 .Version 10.3.6.4 of ABINIT, released Feb 2025.
 .(MPI version, prepared for a aarch64_darwin23.6.0_gnu14.2 computer)
@@ -9272,7 +9272,7 @@ P           mkmem           8
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-a567dbaa-8b06-4258-a8d5-32cbe068c4e1", "#uuid-1d350626-e15b-4e21-b6f6-38c6d66006f0") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-60da4edb-f477-4cb5-ae9d-af706536d526", "#uuid-a225c18d-6685-4b3f-9ef0-0387378d22d9") }); </script>
 
 <p>Once the calculation is finished, save the script reported below in a file,
 let’s say <code>conv_kmesh.py</code> in the same directory where we launched the calculation,
@@ -9309,8 +9309,8 @@ This method is less accurate than e.g. the Wannier interpolation, and might be p
 of band-crossings, but it has the big advantage of being much easier to use and with minimal user intervention.</p>
 <p>First of all, we need to compute the QP corrections for <strong>all</strong> the <span class="arithmatex">\(\kk\)</span>-points in the IBZ.
 This is done in the following input:</p>
-<div class="text-center"><button id="uuid-f15d0941-e120-4d96-9239-f065c5e53791" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_5.abi </button></div>
-<div id="uuid-9e3bc3c4-405c-49f4-a5f5-2a6d00c9035e" class="my_dialog" title="tests/tutorial/Input/tgwr_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-a5ba0bb6-6a47-4724-a701-7281e6f41eb6" class="md-button md-button--secondary"> View tests/tutorial/Input/tgwr_5.abi </button></div>
+<div id="uuid-aa162553-813f-4a26-ac9d-04b67b70a2ab" class="my_dialog" title="tests/tutorial/Input/tgwr_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Calculation of the GW corrections with GWR code and 2x2x2 k-mesh.</span>
 <span class="c1"># Compute QP corrections for all k-points in the IBZ</span>
 
@@ -9375,7 +9375,7 @@ gw_qprange<span class="w">  </span>-4<span class="w">      </span><span class="c
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-9e3bc3c4-405c-49f4-a5f5-2a6d00c9035e", "#uuid-f15d0941-e120-4d96-9239-f065c5e53791") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-aa162553-813f-4a26-ac9d-04b67b70a2ab", "#uuid-a5ba0bb6-6a47-4724-a701-7281e6f41eb6") }); </script>
 
 <!-- gw_qprange is positive in tgwr_5.abi -->
 <p>Note the usage of <a class="wikilink codevar-wikilink" href="/variables/gw#gw_qprange">gw_qprange</a> = <code>-NUM</code> and <a class="wikilink codevar-wikilink" href="/variables/gwr#gwr_sigma_algo">gwr_sigma_algo</a> 1 to activate
@@ -9386,8 +9386,8 @@ but it is clear that a more accurate intepolation would require denser <span cla
 <div class="highlight"><pre><span></span><code>mpirun -n 1 tgwr_5.abi &gt; tgwr_5.log 2&gt; err &amp;
 </code></pre></div>
 <p>The output file is reported here for your convenience:</p>
-<div class="text-center"><button id="uuid-98be26eb-6059-4791-ba74-caa7db6d4d93" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgwr_5.abo </button></div>
-<div id="uuid-729d5db6-1bdf-473d-8500-7c4b0d2850b2" class="my_dialog" title="tests/tutorial/Refs/tgwr_5.abo" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-02f5b566-9e5c-4acc-98d2-a47cff32c01d" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgwr_5.abo </button></div>
+<div id="uuid-6a458749-cefc-40bb-9389-963e1e26ef2f" class="my_dialog" title="tests/tutorial/Refs/tgwr_5.abo" hidden><div><pre class="small-text">
 
 .Version 10.3.6.4 of ABINIT, released Feb 2025.
 .(MPI version, prepared for a aarch64_darwin23.6.0_gnu14.2 computer)
@@ -10122,7 +10122,7 @@ P           mkmem           3
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-729d5db6-1bdf-473d-8500-7c4b0d2850b2", "#uuid-98be26eb-6059-4791-ba74-caa7db6d4d93") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-6a458749-cefc-40bb-9389-963e1e26ef2f", "#uuid-02f5b566-9e5c-4acc-98d2-a47cff32c01d") }); </script>
 
 <p>Now use the following AbiPy script to read the GWR results and interpolate the QP corrections.
 In this case, we pass the KS band structure stored in <code>tgwr_1o_DS2_GSR.nc</code>.

@@ -7188,8 +7188,8 @@ cp<span class="w"> </span>../tatdep1_1.*<span class="w"> </span>.<span class="w"
 <h4 id="211-the-data-files-tatdep1_1_xreddat-tatdep1_1_fcartdat-and-tatdep1_1_etotaldat"><ins>2.1.1 The data files <em>tatdep1_1_xred.dat</em>, <em>tatdep1_1_fcart.dat</em> and <em>tatdep1_1_etotal.dat</em></ins><a class="headerlink" href="#211-the-data-files-tatdep1_1_xreddat-tatdep1_1_fcartdat-and-tatdep1_1_etotaldat" title="Permanent link">&para;</a></h4>
 <p>These ones store some data coming from the AIMD simulations : the reduced coordinates, the cartesian forces and the total energy of all the atoms in the supercell, respectively. In the present example, only 20 snapshots are extracted from a very long trajectory with thousands molecular dynamic time steps.</p>
 <h4 id="212-the-input-file-tatdep1_1abi"><ins>2.1.2 The input file <em>tatdep1_1.abi</em></ins><a class="headerlink" href="#212-the-input-file-tatdep1_1abi" title="Permanent link">&para;</a></h4>
-<div class="text-center"><button id="uuid-625649cd-4aa9-42bb-bd23-9b423abea084" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_1.abi </button></div>
-<div id="uuid-4fd94128-c4fc-4d12-8ccf-45773dbf30a1" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#DEFINE_UNITCELL</span>
+<div class="text-center"><button id="uuid-4081b3db-796f-412d-9b78-a2ff1ce62935" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_1.abi </button></div>
+<div id="uuid-ab81301b-8dc4-4a5b-9c78-561de85f054a" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#DEFINE_UNITCELL</span>
 brav<span class="w"> </span><span class="m">7</span><span class="w"> </span>-3
 natom_unitcell<span class="w"> </span><span class="m">1</span>
 xred_unitcell<span class="w"> </span><span class="m">0</span>.00000000000000000<span class="w"> </span><span class="m">0</span>.00000000000000000<span class="w"> </span><span class="m">0</span>.00000000000000000
@@ -7238,7 +7238,7 @@ enunit<span class="w"> </span><span class="m">3</span>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-4fd94128-c4fc-4d12-8ccf-45773dbf30a1", "#uuid-625649cd-4aa9-42bb-bd23-9b423abea084") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-ab81301b-8dc4-4a5b-9c78-561de85f054a", "#uuid-4081b3db-796f-412d-9b78-a2ff1ce62935") }); </script>
 
 <p>This one lists (in a formated way) all the input variables needed. In the following we will comment each variable and the value used for the present calculation. Many of them have the same meaning as in the ABINIT main code.</p>
 <ul>
@@ -7355,8 +7355,8 @@ enunit<span class="w"> </span><span class="m">3</span>
 </table>
 <h4 id="213-the-files-file-tatdep1_1files"><ins>2.1.3 The files file <em>tatdep1_1.files</em></ins><a class="headerlink" href="#213-the-files-file-tatdep1_1files" title="Permanent link">&para;</a></h4>
 <p>This one lists the input file name and the root of input and output files :</p>
-<div class="text-center"><button id="uuid-95985d51-ad69-4354-bcfb-bf6d37a7d419" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_1.files </button></div>
-<div id="uuid-f1bd17bf-f948-42c4-9058-fb06e3963efb" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_1.files" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-ae2ef78f-4e9a-4ef3-9d9d-39c065828634" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_1.files </button></div>
+<div id="uuid-53adc54d-a098-4ada-89ad-9c76536bfbf9" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_1.files" hidden><div><pre class="small-text">
 tatdep1_1.abi
 tatdep1_1
 tatdep1_1
@@ -7364,7 +7364,7 @@ tatdep1_1
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-f1bd17bf-f948-42c4-9058-fb06e3963efb", "#uuid-95985d51-ad69-4354-bcfb-bf6d37a7d419") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-53adc54d-a098-4ada-89ad-9c76536bfbf9", "#uuid-ae2ef78f-4e9a-4ef3-9d9d-39c065828634") }); </script>
 
 <p>You can now execute <code>atdep</code>:</p>
 <div class="highlight"><pre><span></span><code>atdep<span class="w"> </span>&lt;<span class="w"> </span>tatdep1_1.files<span class="w"> </span>&gt;<span class="w"> </span>log<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>err<span class="w"> </span><span class="p">&amp;</span>
@@ -7373,8 +7373,8 @@ tatdep1_1
 <h3 id="22-the-output-files">2.2 The output files<a class="headerlink" href="#22-the-output-files" title="Permanent link">&para;</a></h3>
 <p>The <code>atdep</code> code writes <strong>many</strong> output files (some of them are available in *$ABI_TESTS/tutoatdep/Refs/). The reason is twofold : to remove all the &ldquo;details&rdquo; of the calculations from the main output file and to give all the thermodynamic data in an handable format. Let us detail these output files in the following :</p>
 <h4 id="221-the-main-output-file-tatdep1_1abo"><ins>2.2.1 The main output file <em>tatdep1_1.abo</em></ins><a class="headerlink" href="#221-the-main-output-file-tatdep1_1abo" title="Permanent link">&para;</a></h4>
-<div class="text-center"><button id="uuid-8baeb1e4-6721-4b07-a58b-78e01bcc5b80" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1.abo </button></div>
-<div id="uuid-b82be599-9f8b-4719-aba0-6f40b9c8624c" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1.abo" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-c03d12ad-f74d-42f8-8a67-467bbb926e81" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1.abo </button></div>
+<div id="uuid-f51cf1d3-ce9b-48b4-a826-fc4b0d01565d" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1.abo" hidden><div><pre class="small-text">
 
 .Version    4.0 of ATDEP
 .Copyright (C) 1998-2025 ABINIT group (FB,JB).
@@ -8079,7 +8079,7 @@ tatdep1_1
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-b82be599-9f8b-4719-aba0-6f40b9c8624c", "#uuid-8baeb1e4-6721-4b07-a58b-78e01bcc5b80") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-f51cf1d3-ce9b-48b4-a826-fc4b0d01565d", "#uuid-c03d12ad-f74d-42f8-8a67-467bbb926e81") }); </script>
 
 <p>This file reproduces all the steps encountered during the execution of <code>atdep</code>. You are strongly adviced to detect all the sequences listed below. The main output file :</p>
 <ol>
@@ -8258,8 +8258,8 @@ tatdep1_1
 ...
 </code></pre></div>
 <h4 id="222-the-phonon-frequencies-file-tatdep1_1_omegadat"><ins>2.2.2 The phonon frequencies file <em>tatdep1_1_omega.dat</em></ins><a class="headerlink" href="#222-the-phonon-frequencies-file-tatdep1_1_omegadat" title="Permanent link">&para;</a></h4>
-<div class="text-center"><button id="uuid-e1c00828-3914-4f88-ab1f-308cf4a6f843" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1_omega.dat </button></div>
-<div id="uuid-8055cdf5-9a8e-41cc-b172-4406b0a66d48" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1_omega.dat" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-09ae8ca0-7368-417f-8f26-d7463dafa558" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1_omega.dat </button></div>
+<div id="uuid-03857287-c87a-43bf-bf62-25fb5c14aea0" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1_omega.dat" hidden><div><pre class="small-text">
 # Phonon frequencies in THz
     1           0.000           0.000           0.000
     2           0.093           0.093           0.160
@@ -8694,7 +8694,7 @@ tatdep1_1
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-8055cdf5-9a8e-41cc-b172-4406b0a66d48", "#uuid-e1c00828-3914-4f88-ab1f-308cf4a6f843") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-03857287-c87a-43bf-bf62-25fb5c14aea0", "#uuid-09ae8ca0-7368-417f-8f26-d7463dafa558") }); </script>
 
 <p>You can plot the phonon spectrum. If you use the <a href="http://plasma-gate.weizmann.ac.il/Grace/">xmgrace</a>  tool, launch:</p>
 <div class="codehilite"><pre><span></span><code>  xmgrace -nxy tatdep1_1_omega.dat
@@ -8708,8 +8708,8 @@ tatdep1_1
 <p>The path along the BZ can be changed using the <a class="wikilink codevar-wikilink" href="/variables/atdep#bzpath">bzpath</a> input variable. </p>
 </div>
 <p>The BZ boundaries and all the <strong>q</strong>-points included in the path are available in the <em>tatdep1_1_qpt.dat</em> file :</p>
-<div class="text-center"><button id="uuid-d57f314e-bd08-49f7-9a7b-9c021d62b61d" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1_qpt.dat </button></div>
-<div id="uuid-b0cd0984-52eb-4d18-a320-bfe995cfb9f3" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1_qpt.dat" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-0a7a5046-1eb5-43b0-aee1-050c1b398f20" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1_qpt.dat </button></div>
+<div id="uuid-2c3a1197-19be-4545-80bb-8d820e8349e2" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1_qpt.dat" hidden><div><pre class="small-text">
  Generate the BZ path using the Q points defined by default
    In reduced coordinates:
 G        0.00000    0.00000    0.00000
@@ -9175,7 +9175,7 @@ G -L    86
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-b0cd0984-52eb-4d18-a320-bfe995cfb9f3", "#uuid-d57f314e-bd08-49f7-9a7b-9c021d62b61d") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-2c3a1197-19be-4545-80bb-8d820e8349e2", "#uuid-0a7a5046-1eb5-43b0-aee1-050c1b398f20") }); </script>
 
 <p>As you can see, in the present calculation the path is as follows : <span class="arithmatex">\(\Gamma\)</span> - X - W - X&rsquo; - K - <span class="arithmatex">\(\Gamma\)</span> - L. Concerning the results, you can compare the phonon spectrum obtained in this tutorial with the first figure of <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.91.135501">this paper</a>. As you can see, the overall agreement is very good but not perfect due the too small number of atomic configurations (20) and the difference between the experimental (80 K) and theoretical (900 K) temperatures. If you perform AIMD simulations at various temperatures and store more than 20 atomic configurations, you will obtain the following picture : </p>
 <p><img alt="Al experimental spectrum" src="../atdep1_assets/tatdep1_1exp.jpg" /></p>
@@ -9184,8 +9184,8 @@ G -L    86
 <p>The <em>tatdep1_1_qpt.dat</em> file do not be confused with the <em>tatdep1_1_qbz.dat</em> file which defines the Monkhorst-Pack (MP) <strong>q</strong>-point mesh used to compute the vDOS : <span class="arithmatex">\(g(\omega)=\frac{1}{3N_a}\sum_{s=1}^{3N_a}\sum_{\mathbf{q}\in BZ} \delta(\omega-\omega_s(\mathbf{q}))\)</span> such as <span class="arithmatex">\(\int_0^{\omega_{max}} g(\omega)d\omega =1\)</span>, with <span class="arithmatex">\(\omega_{max}\)</span> the highest phonon frequency of the system. The vDOS is written in the <em>tatdep1_1_vdos.dat</em> file. You may plot it to verify that the vDOS is consistent with the phonon spectrum.</p>
 </div>
 <h4 id="223-the-thermodynamic-file-tatdep1_1_thermodat"><ins>2.2.3 The thermodynamic file <em>tatdep1_1_thermo.dat</em></ins><a class="headerlink" href="#223-the-thermodynamic-file-tatdep1_1_thermodat" title="Permanent link">&para;</a></h4>
-<div class="text-center"><button id="uuid-2eb73439-35ba-4106-8138-84958cdcfba7" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1_thermo.dat </button></div>
-<div id="uuid-80954275-c226-40e0-9ca8-0b1fa395ebaf" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1_thermo.dat" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-a8d6c6c5-28eb-4cbb-afe7-3b9765869e72" class="md-button md-button--secondary"> View tests/tutoatdep/Refs/tatdep1_1_thermo.dat </button></div>
+<div id="uuid-652d31fb-6aa0-4666-aca5-d8c4f4e31d76" class="my_dialog" title="tests/tutoatdep/Refs/tatdep1_1_thermo.dat" hidden><div><pre class="small-text">
 ============= Direct results (without any inter/extrapolation) ==================
  For present temperature (in Kelvin): T=    900.000
    The cold contribution (in eV/atom): U_0 =     -56.407
@@ -9311,7 +9311,7 @@ G -L    86
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-80954275-c226-40e0-9ca8-0b1fa395ebaf", "#uuid-2eb73439-35ba-4106-8138-84958cdcfba7") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-652d31fb-6aa0-4666-aca5-d8c4f4e31d76", "#uuid-a8d6c6c5-28eb-4cbb-afe7-3b9765869e72") }); </script>
 
 <p>In this file, we print all the thermodynamic data that we can compute by using the phonon spectrum and/or the vDOS. The main quantity is the free energy <span class="arithmatex">\(\mathcal{F}\)</span>. This one can be splitted in two parts:</p>
 <div class="arithmatex">\[
@@ -9454,8 +9454,8 @@ cp<span class="w"> </span>../tatdep1_3.*<span class="w"> </span>.<span class="w"
 cp<span class="w"> </span>../tatdep1_4.*<span class="w"> </span>.<span class="w"> </span>
 </code></pre></div>
 <p>You can open the first input file :</p>
-<div class="text-center"><button id="uuid-0f3cf2fe-fa65-46bb-9207-39d4a481a57a" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_2.abi </button></div>
-<div id="uuid-30d721f6-f999-41c8-887a-c9051baf1f6e" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#DEFINE_UNITCELL</span>
+<div class="text-center"><button id="uuid-ea69792f-5613-4750-843e-ee698a5c4ef1" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_2.abi </button></div>
+<div id="uuid-a7e9f733-2ca8-4e57-a7bc-48a9aaff4f04" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#DEFINE_UNITCELL</span>
 brav<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span>
 natom_unitcell<span class="w"> </span><span class="m">2</span>
 xred_unitcell<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span>-0.2022<span class="w"> </span><span class="m">0</span>.2022<span class="w"> </span><span class="m">0</span>.5
@@ -9504,7 +9504,7 @@ enunit<span class="w"> </span><span class="m">3</span>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-30d721f6-f999-41c8-887a-c9051baf1f6e", "#uuid-0f3cf2fe-fa65-46bb-9207-39d4a481a57a") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-a7e9f733-2ca8-4e57-a7bc-48a9aaff4f04", "#uuid-ea69792f-5613-4750-843e-ee698a5c4ef1") }); </script>
 
 <p>As can be seen in the first lines, U-<span class="arithmatex">\(\alpha\)</span> is an orthorombic (<a class="wikilink codevar-wikilink" href="/variables/atdep#brav">brav</a>(1)=3) C-face centered (<a class="wikilink codevar-wikilink" href="/variables/atdep#brav">brav</a>(2)=3) phase with two atoms in the unitcell : one at (0;0;0) and another at (-<span class="arithmatex">\(y\)</span>;<span class="arithmatex">\(y\)</span>;0.5) with <span class="arithmatex">\(y\)</span> an internal parameter. Two optional input parameters are set : <a class="wikilink codevar-wikilink" href="/variables/atdep#enunit">enunit</a>=3 (the frequency unit is THz) and <a class="wikilink codevar-wikilink" href="/variables/atdep#use_ideal_positions">use_ideal_positions</a>=1 (the atomic displacements are computed wrt the U-<span class="arithmatex">\(\alpha\)</span> ideal positions). </p>
 <div class="admonition note">
@@ -9626,8 +9626,8 @@ atdep<span class="w"> </span>&lt;<span class="w"> </span>tatdep1_3.files<span cl
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>../tatdep1_5.*<span class="w"> </span>.<span class="w"> </span>
 </code></pre></div>
 <p>You can now open the input file :</p>
-<div class="text-center"><button id="uuid-ec35be53-c886-427e-a10d-d64b5d66a74c" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_5.abi </button></div>
-<div id="uuid-5c0c1c96-56a3-4d9c-b703-39ff594ca879" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#DEFINE_UNITCELL</span>
+<div class="text-center"><button id="uuid-6758d481-7fc7-4030-a640-a1870a8188df" class="md-button md-button--secondary"> View tests/tutoatdep/Input/tatdep1_5.abi </button></div>
+<div id="uuid-8a492104-cf54-46a9-b039-c585ed92851a" class="my_dialog" title="tests/tutoatdep/Input/tatdep1_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#DEFINE_UNITCELL</span>
 brav<span class="w"> </span><span class="m">7</span><span class="w"> </span>-1
 natom_unitcell<span class="w"> </span><span class="m">1</span>
 xred_unitcell<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0
@@ -9679,7 +9679,7 @@ enunit<span class="w"> </span><span class="m">1</span>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-5c0c1c96-56a3-4d9c-b703-39ff594ca879", "#uuid-ec35be53-c886-427e-a10d-d64b5d66a74c") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-8a492104-cf54-46a9-b039-c585ed92851a", "#uuid-6758d481-7fc7-4030-a640-a1870a8188df") }); </script>
 
 <p>As can be seen in the first lines, U-<span class="arithmatex">\(\gamma\)</span> is a cubic (<a class="wikilink codevar-wikilink" href="/variables/atdep#brav">brav</a>(1)=7) body-centered (<a class="wikilink codevar-wikilink" href="/variables/atdep#brav">brav</a>(2)=-1) phase with one atom in the unitcell. Four optional input parameters are set : <a class="wikilink codevar-wikilink" href="/variables/atdep#enunit">enunit</a>=1 (the frequency unit is cm<span class="arithmatex">\(^{-1}\)</span>), <a class="wikilink codevar-wikilink" href="/variables/atdep#bzpath">bzpath</a>=5 G H P G N (five special points define the following BZ path <span class="arithmatex">\(\Gamma-H-P-\Gamma-N\)</span>), <a class="wikilink codevar-wikilink" href="/variables/atdep#bzlength">bzlength</a>=4 100 88 88 71 (the length of the 4 elementary paths <span class="arithmatex">\(\Gamma-H\)</span>, <span class="arithmatex">\(H-P\)</span>, <span class="arithmatex">\(H-\Gamma\)</span> and <span class="arithmatex">\(\Gamma-N\)</span> are 100, 88, 88 and 71, respectively), and <a class="wikilink codevar-wikilink" href="/variables/atdep#use_ideal_positions">use_ideal_positions</a>=1 (the atomic displacements are computed wrt the bcc ideal positions). Now you can execute <code>atdep</code> :</p>
 <div class="highlight"><pre><span></span><code>atdep<span class="w"> </span>&lt;<span class="w"> </span>tatdep1_5.files<span class="w"> </span>&gt;<span class="w"> </span>log<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>err<span class="w"> </span><span class="p">&amp;</span>

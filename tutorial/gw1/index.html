@@ -7035,8 +7035,8 @@ matrices, producing another specialized file, <em>tgw1_xo_DS2_SCR</em> (<em>_SCR
 &ldquo;Screening&rdquo;, actually the inverse dielectric matrix <span class="arithmatex">\(\epsilon^{-1}\)</span>). Then, in the fourth
 dataset, the code calculates the quasiparticle energies for the 4<sup>th</sup> and 5<sup>th</sup> bands at the <span class="arithmatex">\(\Gamma\)</span> point.</p>
 <p>So, you can edit this <em>tgw1_1.abi</em> file.</p>
-<div class="text-center"><button id="uuid-be957ea0-d1f8-490d-ad99-de42feab52f0" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_1.abi </button></div>
-<div id="uuid-7319dbce-f3b8-4905-b763-236c44904de2" class="my_dialog" title="tests/tutorial/Input/tgw1_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-b55bf6fe-816f-4dfb-9251-5ecdef7af6b7" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_1.abi </button></div>
+<div id="uuid-396a1070-d271-46ce-8cdc-bce5bf2700fa" class="my_dialog" title="tests/tutorial/Input/tgw1_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Calculation of the GW corrections</span>
 <span class="c1"># Dataset 1: ground state calculation to get the density</span>
 <span class="c1"># Dataset 2: NSCF run to produce the WFK file for 10 k-points in IBZ</span>
@@ -7168,7 +7168,7 @@ diemac<span class="w">  </span><span class="m">12</span>.0<span class="w">      
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-7319dbce-f3b8-4905-b763-236c44904de2", "#uuid-be957ea0-d1f8-490d-ad99-de42feab52f0") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-396a1070-d271-46ce-8cdc-bce5bf2700fa", "#uuid-b55bf6fe-816f-4dfb-9251-5ecdef7af6b7") }); </script>
 
 <p>In the first half of the file,
 you will find specialized input variables for the datasets 1 to 4.</p>
@@ -7287,8 +7287,8 @@ calculation due to integrable poles along the integration path.</p>
 <p>Your calculation should have ended now. Let&rsquo;s examine the output file.
 Open <em>tgw1_1.abo</em> in your preferred editor and find the section
 corresponding to DATASET 3.</p>
-<div class="text-center"><button id="uuid-ee5dfabc-c1d3-4158-a745-498913d86455" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgw1_1.abo </button></div>
-<div id="uuid-ab2e15a0-254a-49fa-a979-fd70fe969aa0" class="my_dialog" title="tests/tutorial/Refs/tgw1_1.abo" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-5a74afee-b492-468f-8d69-df7a8dbf722d" class="md-button md-button--secondary"> View tests/tutorial/Refs/tgw1_1.abo </button></div>
+<div id="uuid-8e823b8b-e817-45e8-aa82-767c525a3d91" class="my_dialog" title="tests/tutorial/Refs/tgw1_1.abo" hidden><div><pre class="small-text">
 
 .Version 10.1.4.5 of ABINIT, released Sep 2024.
 .(MPI version, prepared for a x86_64_linux_gnu13.2 computer)
@@ -8559,7 +8559,7 @@ P           mkmem           6
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-ab2e15a0-254a-49fa-a979-fd70fe969aa0", "#uuid-ee5dfabc-c1d3-4158-a745-498913d86455") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-8e823b8b-e817-45e8-aa82-767c525a3d91", "#uuid-5a74afee-b492-468f-8d69-df7a8dbf722d") }); </script>
 
 <p>After the description of the unit cell and of the pseudopotentials, you will
 find the list of <strong>k</strong>-points used for the electrons and the grid of <strong>q</strong>-points (in
@@ -8825,8 +8825,8 @@ Then, issue:</p>
 <span class="w">    </span>cp<span class="w"> </span>tgw1_2o_DS3_SCR<span class="w"> </span>tgw1_3o_DS3_SCR
 <span class="w">    </span>abinit<span class="w"> </span>tgw1_3.abi<span class="w"> </span>&gt;<span class="w"> </span>tgw1_3.log<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>err<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<div class="text-center"><button id="uuid-98a629f2-9540-4926-b0c5-96bd32ba22c8" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_3.abi </button></div>
-<div id="uuid-0841d80a-6ee6-434c-907d-b881b81139f9" class="my_dialog" title="tests/tutorial/Input/tgw1_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-b30c7ac4-c638-4239-bf63-d88136332621" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_3.abi </button></div>
+<div id="uuid-3f7abf9c-ff9f-49e7-8cb2-9ddef6555b47" class="my_dialog" title="tests/tutorial/Input/tgw1_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Calculation of the GW corrections</span>
 
 
@@ -8901,7 +8901,7 @@ istwfk<span class="w">  </span>*1<span class="w">         </span><span class="c1
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-0841d80a-6ee6-434c-907d-b881b81139f9", "#uuid-98a629f2-9540-4926-b0c5-96bd32ba22c8") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-3f7abf9c-ff9f-49e7-8cb2-9ddef6555b47", "#uuid-b30c7ac4-c638-4239-bf63-d88136332621") }); </script>
 
 <p>Edit the output file. The number of bands used for the self-energy is
 mentioned in the fragments of output:</p>
@@ -9012,8 +9012,8 @@ Then, issue:
 <div class="highlight"><pre><span></span><code><span class="w">    </span>cp<span class="w"> </span>tgw1_2o_DS2_WFK<span class="w"> </span>tgw1_4o_DS2_WFK
 <span class="w">    </span>abinit<span class="w"> </span>tgw1_4.abi<span class="w"> </span>&gt;<span class="w"> </span>tgw1_4.log<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>err<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div></p>
-<div class="text-center"><button id="uuid-da644b0b-f9fb-411e-ac3d-c4c73105022f" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_4.abi </button></div>
-<div id="uuid-ea39f4a3-d94b-4e85-aaaa-354ea26196f9" class="my_dialog" title="tests/tutorial/Input/tgw1_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-41f52cef-41f2-4194-896f-0348b4da5412" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_4.abi </button></div>
+<div id="uuid-edfe5278-1ab0-4f34-8f81-354461b006d3" class="my_dialog" title="tests/tutorial/Input/tgw1_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Calculation of the GW corrections</span>
 
 ndtset<span class="w">      </span><span class="m">10</span>
@@ -9100,7 +9100,7 @@ istwfk<span class="w">  </span>*1<span class="w">         </span><span class="c1
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-ea39f4a3-d94b-4e85-aaaa-354ea26196f9", "#uuid-da644b0b-f9fb-411e-ac3d-c4c73105022f") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-edfe5278-1ab0-4f34-8f81-354461b006d3", "#uuid-41f52cef-41f2-4194-896f-0348b4da5412") }); </script>
 
 <p>Edit the output file. The number of bands used for the wavefunctions in the
 computation of the screening is mentioned in the fragments of output:</p>
@@ -9146,8 +9146,8 @@ Then, issue:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span>cp<span class="w"> </span>tgw1_2o_DS2_WFK<span class="w"> </span>tgw1_5o_DS2_WFK
 <span class="w">    </span>abinit<span class="w"> </span>tgw1_5.abi<span class="w"> </span>&gt;<span class="w"> </span>tgw1_5.log<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>err<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<div class="text-center"><button id="uuid-9fd3bd69-9ec8-4148-9f8c-b0e3012ba075" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_5.abi </button></div>
-<div id="uuid-b7f00bf0-554d-462e-8ea5-e7b8fb3f53ab" class="my_dialog" title="tests/tutorial/Input/tgw1_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-c05c82f7-e2aa-4cc2-a2cd-270d57306b19" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_5.abi </button></div>
+<div id="uuid-0fa84147-29e0-44e0-a125-f8ed865edea0" class="my_dialog" title="tests/tutorial/Input/tgw1_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Calculation of the GW corrections</span>
 
 ndtset<span class="w">      </span><span class="m">12</span>
@@ -9231,7 +9231,7 @@ istwfk<span class="w">  </span>*1<span class="w">         </span><span class="c1
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-b7f00bf0-554d-462e-8ea5-e7b8fb3f53ab", "#uuid-9fd3bd69-9ec8-4148-9f8c-b0e3012ba075") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-0fa84147-29e0-44e0-a125-f8ed865edea0", "#uuid-c05c82f7-e2aa-4cc2-a2cd-270d57306b19") }); </script>
 
 <p>Edit the output file. The number of bands used for the wavefunctions in the
 computation of the screening is mentioned in the fragments of output:</p>
@@ -9291,8 +9291,8 @@ the GW corrections for the direct band gap of bulk silicon at the <span class="a
 </code></pre></div>
 <p>This job lasts a couple of minutes or so. It is worth to run it before the examination of the input file.
 Now, you can examine it.</p>
-<div class="text-center"><button id="uuid-ea50a8e2-c404-4450-acb3-56e15437019d" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_6.abi </button></div>
-<div id="uuid-393fccd2-8fd0-416a-959e-104f290184bb" class="my_dialog" title="tests/tutorial/Input/tgw1_6.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
+<div class="text-center"><button id="uuid-e7924fd2-1533-4ddb-a2ef-c2cc22d457cc" class="md-button md-button--secondary"> View tests/tutorial/Input/tgw1_6.abi </button></div>
+<div id="uuid-b36bb93c-63bb-4b75-bc07-3867c4b1cfb9" class="my_dialog" title="tests/tutorial/Input/tgw1_6.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline silicon</span>
 <span class="c1"># Calculation of the GW correction to the direct band gap in Gamma</span>
 <span class="c1"># Dataset 1: ground state calculation</span>
 <span class="c1"># Dataset 2: calculation of the WFK file</span>
@@ -9409,7 +9409,7 @@ diemac<span class="w">  </span><span class="m">12</span>.0<span class="w">      
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-393fccd2-8fd0-416a-959e-104f290184bb", "#uuid-ea50a8e2-c404-4450-acb3-56e15437019d") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-b36bb93c-63bb-4b75-bc07-3867c4b1cfb9", "#uuid-e7924fd2-1533-4ddb-a2ef-c2cc22d457cc") }); </script>
 
 <p>We need the usual part of the input file to perform a ground state
 calculation. This is done in datasets 1 and 2. At the end of dataset 2, we print out the density and wavefunction files.
@@ -9481,8 +9481,8 @@ in the IBZ obtained using the direct GW approach <a class="wikilink citation-wik
 You need to have the Wannier90 plug-in installed.
 See the directory tests/wannier90, test case 03, for an example of a file where a GW calculation
 is followed by the use of Wannier90.</p>
-<div class="text-center"><button id="uuid-7c99eb6c-12a3-4aae-a95d-7f38d6455311" class="md-button md-button--secondary"> View tests/wannier90/Input/t03.abi </button></div>
-<div id="uuid-e525d367-d9b5-4a89-bfef-b1a2bf975af6" class="my_dialog" title="tests/wannier90/Input/t03.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Self-consistent GW test including wannier90 interface for GW quasiparticles</span>
+<div class="text-center"><button id="uuid-b6d39caa-88e5-4254-9fb8-687db033d194" class="md-button md-button--secondary"> View tests/wannier90/Input/t03.abi </button></div>
+<div id="uuid-c9648883-652e-4995-9d17-9af38274c56e" class="my_dialog" title="tests/wannier90/Input/t03.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Self-consistent GW test including wannier90 interface for GW quasiparticles</span>
 <span class="c1">#  This test is poorly converged (see GW and wannier90 tutorials).</span>
 
 <span class="c1"># Silicon structure</span>
@@ -9653,7 +9653,7 @@ is followed by the use of Wannier90.</p>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-e525d367-d9b5-4a89-bfef-b1a2bf975af6", "#uuid-7c99eb6c-12a3-4aae-a95d-7f38d6455311") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c9648883-652e-4995-9d17-9af38274c56e", "#uuid-b6d39caa-88e5-4254-9fb8-687db033d194") }); </script>
 
 <p>The wannier interpolation is a very accurate method, can handle band crossings
 but it may require additional work to obtain well localized wannier functions.

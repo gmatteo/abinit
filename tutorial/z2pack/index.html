@@ -6812,8 +6812,8 @@ cp ../tz2_2.abi .
 </code></pre></div>
 
 <p>Let us examine the input file <em>tz2_2.abi</em>, while the calculation is running:.</p>
-<div class="text-center"><button id="uuid-cbb19447-f6cd-4bc6-82d1-3d3980d8903c" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tz2_2.abi </button></div>
-<div id="uuid-2f32c69f-1a09-49d2-8b7f-e9ab541d6ef9" class="my_dialog" title="tests/tutoplugs/Input/tz2_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Ground state calculation for BiTeI at 0 GPa</span>
+<div class="text-center"><button id="uuid-3f931f0e-7967-473a-b1f8-585d4746bd1d" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tz2_2.abi </button></div>
+<div id="uuid-31e87804-c5f8-4bb9-a484-23d31536f6ea" class="my_dialog" title="tests/tutoplugs/Input/tz2_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Ground state calculation for BiTeI at 0 GPa</span>
 
 autoparal<span class="w"> </span><span class="m">1</span>
 pp_dirpath<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ABI_PSPDIR</span><span class="s2">/Psdj_nc_fr_04_pbe_std_psp8/&quot;</span>
@@ -6913,7 +6913,7 @@ ratsph?3<span class="w"> </span><span class="m">2</span>.5<span class="w"> </spa
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-2f32c69f-1a09-49d2-8b7f-e9ab541d6ef9", "#uuid-cbb19447-f6cd-4bc6-82d1-3d3980d8903c") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-31e87804-c5f8-4bb9-a484-23d31536f6ea", "#uuid-3f931f0e-7967-473a-b1f8-585d4746bd1d") }); </script>
 
 <p>This input file should look familiar, as it involves features of ABINIT that you probably already used.
 It is constructed into two loops of three datasets.
@@ -6922,8 +6922,8 @@ In each of these big loops, the first computation calculates the ground state on
 the second one computes the band structure along high-symmetry paths in the entire Brillouin zone
 and the third one is the calculation of fatbands which outputs the orbital character of the different bands, only along a specific path.</p>
 <p>Let us compare the band structure. We use a small python script based on abipy:</p>
-<div class="text-center"><button id="uuid-b390ec2f-732d-4b65-b147-7befe2d326e9" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tz2_2_bandstructure.py </button></div>
-<div id="uuid-7bbe9a31-593c-4a34-b718-64079bde1194" class="my_dialog" title="tests/tutoplugs/Input/tz2_2_bandstructure.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="text-center"><button id="uuid-d2b51fbb-aa5f-4fb1-8647-62b4b6e5f832" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tz2_2_bandstructure.py </button></div>
+<div id="uuid-ae36db06-199f-41f8-889d-88320352501e" class="my_dialog" title="tests/tutoplugs/Input/tz2_2_bandstructure.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">abipy.abilab</span><span class="w"> </span><span class="kn">import</span> <span class="n">abiopen</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">abipy.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">abidata</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -6961,7 +6961,7 @@ and the third one is the calculation of fatbands which outputs the orbital chara
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-7bbe9a31-593c-4a34-b718-64079bde1194", "#uuid-b390ec2f-732d-4b65-b147-7befe2d326e9") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-ae36db06-199f-41f8-889d-88320352501e", "#uuid-d2b51fbb-aa5f-4fb1-8647-62b4b6e5f832") }); </script>
 
 <p>Run it using:</p>
 <div class="codehilite"><pre><span></span><code>python ../tz2_2_bandstructure.py
@@ -6989,8 +6989,8 @@ One can use the fatbands plotting feature of abipy as used in the <a href="/tuto
 but instead here we will use a more advanced script which plots the difference in character between
 the p orbitals of bismuth and of those of both the tellurium and iodine.
 This procedure makes more clear the band inversion and the script is the following:</p>
-<div class="text-center"><button id="uuid-f9610bdf-cced-4257-96b0-d3e93078663d" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tz2_2_relative_projection.py </button></div>
-<div id="uuid-e2166ac9-351d-48f7-b6e5-3e37c06d4140" class="my_dialog" title="tests/tutoplugs/Input/tz2_2_relative_projection.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="text-center"><button id="uuid-8258f595-9f7e-4568-9dbb-e6fb8c5fda54" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tz2_2_relative_projection.py </button></div>
+<div id="uuid-d56f0740-30c0-472b-ada9-c2b68d535082" class="my_dialog" title="tests/tutoplugs/Input/tz2_2_relative_projection.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">abipy.abilab</span><span class="w"> </span><span class="kn">import</span> <span class="n">abiopen</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">abipy.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">abidata</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -7069,7 +7069,7 @@ This procedure makes more clear the band inversion and the script is the followi
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-e2166ac9-351d-48f7-b6e5-3e37c06d4140", "#uuid-f9610bdf-cced-4257-96b0-d3e93078663d") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-d56f0740-30c0-472b-ada9-c2b68d535082", "#uuid-8258f595-9f7e-4568-9dbb-e6fb8c5fda54") }); </script>
 
 <div class="codehilite"><pre><span></span><code>cp -r ../input_tz2_3/ .
 python ../tz2_2_relative_projection.py
@@ -7097,8 +7097,8 @@ python ../z2.py
 </code></pre></div>
 
 <p>given by the following file:</p>
-<div class="text-center"><button id="uuid-4027e2e1-607c-4b01-98fa-27c387319838" class="md-button md-button--secondary"> View tests/tutoplugs/Input/z2.py </button></div>
-<div id="uuid-281b4e18-dae6-4974-a49f-d75a6cfc1a99" class="my_dialog" title="tests/tutoplugs/Input/z2.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="text-center"><button id="uuid-93c695b2-33b1-4607-a378-9fea04aa0019" class="md-button md-button--secondary"> View tests/tutoplugs/Input/z2.py </button></div>
+<div id="uuid-c858557f-d70a-4955-ad72-36eade22172d" class="my_dialog" title="tests/tutoplugs/Input/z2.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># Z2 invariant calculation for BiTeI at 0 and 5 GPa</span>
 
@@ -7142,7 +7142,7 @@ python ../z2.py
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-281b4e18-dae6-4974-a49f-d75a6cfc1a99", "#uuid-4027e2e1-607c-4b01-98fa-27c387319838") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c858557f-d70a-4955-ad72-36eade22172d", "#uuid-93c695b2-33b1-4607-a378-9fea04aa0019") }); </script>
 
 <p>It will take a long time to run. It works as follow:</p>
 <ul>

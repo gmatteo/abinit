@@ -6984,8 +6984,8 @@ tutorial was written so that specific numerical results can be reproduced if nec
 <h3 id="31-carbon-a-simple-datatset">3.1. Carbon - a simple datatset<a class="headerlink" href="#31-carbon-a-simple-datatset" title="Permanent link">&para;</a></h3>
 <p>Make a <em>working directory</em> for the <code>ATOMPAW</code> generation (you could call it
 <code>C_atompaw</code>) and copy the file: <a href="../paw3_assets/inputs/C_simple.input">C_simple.input</a> to it.</p>
-<div class="text-center"><button id="uuid-ad14cd35-fd51-47f1-8cb9-3a23efa36f29" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/C_simple.input </button></div>
-<div id="uuid-ef89a273-affb-4743-bdae-d074d86e54de" class="my_dialog" title="tutorial/paw3_assets/inputs/C_simple.input" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-e3f39256-f2f8-436c-ae76-0b161e4107f2" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/C_simple.input </button></div>
+<div id="uuid-d8a7da42-bf8b-4015-ab64-3c4a2e8f5ed9" class="my_dialog" title="tutorial/paw3_assets/inputs/C_simple.input" hidden><div><pre class="small-text">
 C 6                                         ! Atomic name and number
 LDA-PW scalarrelativistic loggrid 801 logderivrange -10 40 1000 ! XC approx., SE type, gridtype, # pts, logderiv
 2 2 0 0 0 0                                 ! maximum n for each l: 2s,2p,0d,0f..
@@ -7009,7 +7009,7 @@ END                                         ! Exit
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-ef89a273-affb-4743-bdae-d074d86e54de", "#uuid-ad14cd35-fd51-47f1-8cb9-3a23efa36f29") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-d8a7da42-bf8b-4015-ab64-3c4a2e8f5ed9", "#uuid-e3f39256-f2f8-436c-ae76-0b161e4107f2") }); </script>
 
 <p>Then go there and run <code>ATOMPAW</code> by typing (assuming that you have set things up so that you
 can run atompaw by just typing <code>atompaw</code>):</p>
@@ -7044,8 +7044,8 @@ of the projector products (the x-axis is in units of Ha).</p>
 <p>The inputs directory also contains scripts for plotting these graphs
 individually, and you are encouraged to test and modify them. We can look
 inside the <code>C_simple.input</code> file:</p>
-<div class="text-center"><button id="uuid-bdb6f7ba-0e4f-491c-88f3-67d4e1a9c4ad" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/C_simple.input </button></div>
-<div id="uuid-0bc95d7b-ec15-49ad-ad3c-7017277c8d5f" class="my_dialog" title="tutorial/paw3_assets/inputs/C_simple.input" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-fcbbc69f-c29a-495f-88b2-4000bfb57ed7" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/C_simple.input </button></div>
+<div id="uuid-c95f0cb2-400b-4775-8300-6a97b8087bbc" class="my_dialog" title="tutorial/paw3_assets/inputs/C_simple.input" hidden><div><pre class="small-text">
 C 6                                         ! Atomic name and number
 LDA-PW scalarrelativistic loggrid 801 logderivrange -10 40 1000 ! XC approx., SE type, gridtype, # pts, logderiv
 2 2 0 0 0 0                                 ! maximum n for each l: 2s,2p,0d,0f..
@@ -7069,7 +7069,7 @@ END                                         ! Exit
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-0bc95d7b-ec15-49ad-ad3c-7017277c8d5f", "#uuid-bdb6f7ba-0e4f-491c-88f3-67d4e1a9c4ad") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c95f0cb2-400b-4775-8300-6a97b8087bbc", "#uuid-fcbbc69f-c29a-495f-88b2-4000bfb57ed7") }); </script>
 
 <p>Here we see that the current dataset is very simple, it has no basis states
 beyond the <span class="arithmatex">\(2s\)</span> and <span class="arithmatex">\(2p\)</span> occupied valence states in carbon. It is thus not
@@ -7088,8 +7088,8 @@ each value of <code>ecut</code>. This is thus the internal <code>ABINIT</code> c
 dataset is expected to converge to a result sooner or later, but that does not
 mean that the final result is accurate, unless the dataset is good. The goal
 is of course to generate a dataset which both converges quickly and is very accurate.</p>
-<div class="text-center"><button id="uuid-e1b3c7b2-3d51-4c6b-986f-03f40080a445" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_C_test.abi </button></div>
-<div id="uuid-7c2359c6-ca30-498e-81f8-503dce1529fd" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_C_test.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
+<div class="text-center"><button id="uuid-a6431c7a-761d-4302-9b77-d01f3960d5ea" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_C_test.abi </button></div>
+<div id="uuid-3f6eea60-ba6a-4aac-b4e9-6343ba3f3896" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_C_test.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
 <span class="c1"># C - diamond structure</span>
 
 <span class="c1">#-------------------------------------------------------------------------------</span>
@@ -7186,7 +7186,7 @@ istwfk<span class="w"> </span>*1
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-7c2359c6-ca30-498e-81f8-503dce1529fd", "#uuid-e1b3c7b2-3d51-4c6b-986f-03f40080a445") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-3f6eea60-ba6a-4aac-b4e9-6343ba3f3896", "#uuid-a6431c7a-761d-4302-9b77-d01f3960d5ea") }); </script>
 
 <p>The <code>ab_C_test.abi</code> file contains:</p>
 <div class="codehilite"><pre><span></span><code><span class="n">pseudos=&quot;C.LDA-PW-paw.xml&quot;</span>
@@ -7326,8 +7326,8 @@ example input file for doing this at:
 The new input file has ten datasets which increment the lattice parameter, alatt,
 from 6.1 to 7.0 Bohr in steps of 0.1 Bohr. A look in the input file will tell
 you that <code>ecut</code> is set to 25 Hartrees. Copy these to your abinit_test directory and run:</p>
-<div class="text-center"><button id="uuid-c83167a4-0503-4938-81c9-8f4c6ba4f9eb" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_C_equi.abi </button></div>
-<div id="uuid-4ca7fb07-175d-4bbb-95cc-2ee68886776d" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_C_equi.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
+<div class="text-center"><button id="uuid-c06b4619-4edf-48c1-a538-1c80ec0abd49" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_C_equi.abi </button></div>
+<div id="uuid-09c11b48-2582-4900-93e4-af2460448085" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_C_equi.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
 <span class="c1"># C - diamond structure</span>
 
 <span class="c1">#-------------------------------------------------------------------------------</span>
@@ -7396,7 +7396,7 @@ xred<span class="w">              </span><span class="c1"># This keyword indicat
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-4ca7fb07-175d-4bbb-95cc-2ee68886776d", "#uuid-c83167a4-0503-4938-81c9-8f4c6ba4f9eb") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-09c11b48-2582-4900-93e4-af2460448085", "#uuid-c06b4619-4edf-48c1-a538-1c80ec0abd49") }); </script>
 
 <div class="codehilite"><pre><span></span><code>abinit ab_C_equi.abi &gt;&amp; log_C_equi
 </code></pre></div>
@@ -7524,8 +7524,8 @@ name for an <code>Elk</code> calculation. We are now ready to run the <code>Elk<
 ...
 </code></pre></div>
 
-<div class="text-center"><button id="uuid-429404d4-5e3c-4c44-b6fd-910736164e78" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/elk_C_diamond.in </button></div>
-<div id="uuid-57f4a93e-ddd3-4f69-a226-a764479f9e23" class="my_dialog" title="tutorial/paw3_assets/inputs/elk_C_diamond.in" hidden><div><div class="codehilite small-text"><pre><span></span>!<span class="w"> </span>Carbon,<span class="w"> </span>diamond<span class="w"> </span>structure<span class="w"> </span><span class="o">(</span>FCC<span class="o">)</span>
+<div class="text-center"><button id="uuid-a413b1be-2afe-45eb-9a33-85e688802795" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/elk_C_diamond.in </button></div>
+<div id="uuid-80e663f9-284b-4293-8391-b6d1ce39df38" class="my_dialog" title="tutorial/paw3_assets/inputs/elk_C_diamond.in" hidden><div><div class="codehilite small-text"><pre><span></span>!<span class="w"> </span>Carbon,<span class="w"> </span>diamond<span class="w"> </span>structure<span class="w"> </span><span class="o">(</span>FCC<span class="o">)</span>
 
 !<span class="w"> </span>The<span class="w"> </span>tasks<span class="w"> </span>define<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span><span class="k">done</span><span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>code:
 !<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Perform<span class="w"> </span>ground-state<span class="w"> </span>calculation<span class="w"> </span>from<span class="w"> </span>scratch
@@ -7679,7 +7679,7 @@ lradstp
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-57f4a93e-ddd3-4f69-a226-a764479f9e23", "#uuid-429404d4-5e3c-4c44-b6fd-910736164e78") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-80e663f9-284b-4293-8391-b6d1ce39df38", "#uuid-a413b1be-2afe-45eb-9a33-85e688802795") }); </script>
 
 <p>Any text after an exclamation mark (or a colon on the lines defining data) is
 a comment. The keyword <code>tasks</code> defines what the code should do. In this case
@@ -8146,8 +8146,8 @@ the <code>Elk</code> and the <code>ABINIT</code> calculation.</p>
 <p>There is an <code>Elk</code> input file prepared at: <a href="../paw3_assets/inputs/elk_Mg_band.in">elk_Mg_band.in</a>,
 we suggest you copy it into a subdirectory dedicated to the Mg <code>Elk</code> calculation (why not <code>Mg_elk</code>?), rename
 it to <code>elk.in</code> and take a look inside the input file.</p>
-<div class="text-center"><button id="uuid-7937970f-6db2-4aae-949a-9db33b6c5f6f" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/elk_Mg_band.in </button></div>
-<div id="uuid-79fb94bf-2ad6-427e-a2ac-803aa4191143" class="my_dialog" title="tutorial/paw3_assets/inputs/elk_Mg_band.in" hidden><div><div class="codehilite small-text"><pre><span></span>!<span class="w"> </span>Carbon,<span class="w"> </span>diamond<span class="w"> </span>structure<span class="w"> </span><span class="o">(</span>FCC<span class="o">)</span>
+<div class="text-center"><button id="uuid-922251a6-8a95-4222-911f-a0a3b79a7bfc" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/elk_Mg_band.in </button></div>
+<div id="uuid-1ad47c5e-18a6-4547-afd1-a83a3a155891" class="my_dialog" title="tutorial/paw3_assets/inputs/elk_Mg_band.in" hidden><div><div class="codehilite small-text"><pre><span></span>!<span class="w"> </span>Carbon,<span class="w"> </span>diamond<span class="w"> </span>structure<span class="w"> </span><span class="o">(</span>FCC<span class="o">)</span>
 
 !<span class="w"> </span>The<span class="w"> </span>tasks<span class="w"> </span>define<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span><span class="k">done</span><span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>code:
 !<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Perform<span class="w"> </span>ground-state<span class="w"> </span>calculation<span class="w"> </span>from<span class="w"> </span>scratch
@@ -8320,7 +8320,7 @@ lradstp
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-79fb94bf-2ad6-427e-a2ac-803aa4191143", "#uuid-7937970f-6db2-4aae-949a-9db33b6c5f6f") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-1ad47c5e-18a6-4547-afd1-a83a3a155891", "#uuid-922251a6-8a95-4222-911f-a0a3b79a7bfc") }); </script>
 
 <p>There will be sections familiar from before, defining the lattice vectors,
 structure, etc. (Mg has a 2-atom hexagonal unit cell.) Then there are a couple
@@ -8389,8 +8389,8 @@ structure to. There is one more thing we need to check, and that is the Fermi en
 we compare band structures to align the band plots at the Fermi energy.</p>
 <p>Now it&rsquo;s time to calculate the equilibrium lattice parameters. There is a
 prepared file at: <a href="../paw3_assets/inputs/elk_Mg_equi.in">elk_Mg_equi.in</a>.</p>
-<div class="text-center"><button id="uuid-01d00f87-b6bd-4175-9bb5-78a4eb6a89b1" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/elk_Mg_equi.in </button></div>
-<div id="uuid-1803185c-9730-4e92-9644-8ff994451077" class="my_dialog" title="tutorial/paw3_assets/inputs/elk_Mg_equi.in" hidden><div><div class="codehilite small-text"><pre><span></span>!<span class="w"> </span>Carbon,<span class="w"> </span>diamond<span class="w"> </span>structure<span class="w"> </span><span class="o">(</span>FCC<span class="o">)</span>
+<div class="text-center"><button id="uuid-88b42bbb-c8af-46a3-9fc3-5dde4b7e8b05" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/elk_Mg_equi.in </button></div>
+<div id="uuid-25061e97-d631-4d1e-a660-e70105fafc7d" class="my_dialog" title="tutorial/paw3_assets/inputs/elk_Mg_equi.in" hidden><div><div class="codehilite small-text"><pre><span></span>!<span class="w"> </span>Carbon,<span class="w"> </span>diamond<span class="w"> </span>structure<span class="w"> </span><span class="o">(</span>FCC<span class="o">)</span>
 
 !<span class="w"> </span>The<span class="w"> </span>tasks<span class="w"> </span>define<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span><span class="k">done</span><span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>code:
 !<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Perform<span class="w"> </span>ground-state<span class="w"> </span>calculation<span class="w"> </span>from<span class="w"> </span>scratch
@@ -8509,7 +8509,7 @@ lradstp
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-1803185c-9730-4e92-9644-8ff994451077", "#uuid-01d00f87-b6bd-4175-9bb5-78a4eb6a89b1") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-25061e97-d631-4d1e-a660-e70105fafc7d", "#uuid-88b42bbb-c8af-46a3-9fc3-5dde4b7e8b05") }); </script>
 
 <p>As before copy this to your directory rename it to <code>elk.in</code>. The layout of this file looks pretty much
 like the one before, except the band structure keywords are missing, and now
@@ -8606,8 +8606,8 @@ the <code>ABINIT</code> test. We will assume that the subdirectories have been c
 
 <p>and that your current directory is <code>./Mg_atompaw</code>. For the Mg <code>ATOMPAW</code> input,
 use the file  <a href="../paw3_assets/inputs/Mg.input">Mg.input</a>.</p>
-<div class="text-center"><button id="uuid-cc151928-0ad5-463c-85b4-1fda185512e7" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/Mg.input </button></div>
-<div id="uuid-d90d4945-a688-416c-8b86-ab931c741db2" class="my_dialog" title="tutorial/paw3_assets/inputs/Mg.input" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-1afdaabe-d523-459c-a91f-23fcce130711" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/Mg.input </button></div>
+<div id="uuid-8a77dea6-92db-406c-b625-7b13ea5bd899" class="my_dialog" title="tutorial/paw3_assets/inputs/Mg.input" hidden><div><pre class="small-text">
 Mg 12
 LDA-PW scalarrelativistic loggrid 801 40. logderivrange -10 40 1000
 3 3 0 0 0 0
@@ -8635,7 +8635,7 @@ END
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-d90d4945-a688-416c-8b86-ab931c741db2", "#uuid-cc151928-0ad5-463c-85b4-1fda185512e7") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-8a77dea6-92db-406c-b625-7b13ea5bd899", "#uuid-1afdaabe-d523-459c-a91f-23fcce130711") }); </script>
 
 <p>Note that there are not really many projectors in this dataset, only two
 per angular momentum channel. It should be possible to make this much better
@@ -8648,8 +8648,8 @@ and copy these files to it: <a href="../paw3_assets/inputs/ab_Mg_test.abi">ab_Mg
 and <a href="../paw3_assets/inputs/ab_Mg_equi.abi">ab_Mg_equi.abi</a>.
 The file for testing the convergence has already been set up so that the smearing
 strategy is equivalent to the <code>Elk</code> one, as evidenced by the lines:</p>
-<div class="text-center"><button id="uuid-21778356-2b6c-4a25-9d8b-7e78c30f2462" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_Mg_test.abi </button></div>
-<div id="uuid-c20e63c9-3631-421c-8054-941b28bf93cb" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_Mg_test.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
+<div class="text-center"><button id="uuid-9f8361fa-1808-48e9-afcf-8e08e52ac072" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_Mg_test.abi </button></div>
+<div id="uuid-ccb48ddf-96a5-45fe-9ee1-584e3cccf82f" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_Mg_test.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
 <span class="c1"># Mg - hexagonal structure</span>
 
 <span class="c1">#-------------------------------------------------------------------------------</span>
@@ -8748,9 +8748,9 @@ istwfk<span class="w"> </span>*1
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-c20e63c9-3631-421c-8054-941b28bf93cb", "#uuid-21778356-2b6c-4a25-9d8b-7e78c30f2462") }); </script>
-<div class="text-center"><button id="uuid-7e10b132-2caf-4b32-8aba-1098a6cccab2" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_Mg_equi.abi </button></div>
-<div id="uuid-b7d3b595-4415-4c25-a2c4-e96c271a9aec" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_Mg_equi.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-ccb48ddf-96a5-45fe-9ee1-584e3cccf82f", "#uuid-9f8361fa-1808-48e9-afcf-8e08e52ac072") }); </script>
+<div class="text-center"><button id="uuid-ef73319b-b7ae-4da7-9f70-9d6199ccc3ec" class="md-button md-button--secondary"> View tutorial/paw3_assets/inputs/ab_Mg_equi.abi </button></div>
+<div id="uuid-95718b4e-1d50-41c1-ad99-3879daf74160" class="my_dialog" title="tutorial/paw3_assets/inputs/ab_Mg_equi.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW3 tutorial</span>
 <span class="c1"># Mg - hexagonal structure - metallic bulk</span>
 
 <span class="c1">#-------------------------------------------------------------------------------</span>
@@ -8823,7 +8823,7 @@ xred<span class="w">              </span><span class="c1"># This keyword indicat
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-b7d3b595-4415-4c25-a2c4-e96c271a9aec", "#uuid-7e10b132-2caf-4b32-8aba-1098a6cccab2") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-95718b4e-1d50-41c1-ad99-3879daf74160", "#uuid-ef73319b-b7ae-4da7-9f70-9d6199ccc3ec") }); </script>
 
 <div class="codehilite"><pre><span></span><code><span class="w"> </span>...
 <span class="w"> </span>#<span class="w"> </span><span class="nv">Parameters</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">metals</span>

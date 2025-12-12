@@ -6841,8 +6841,8 @@ and use the associated <a class="wikilink codevar-wikilink" href="/variables/par
 </ul>
 <p>OK, let&rsquo;s start!</p>
 <p>Copy the <code>tparal_bandpw_01.abi</code> file the tutorial directory into your working directory.</p>
-<div class="text-center"><button id="uuid-df66786d-a433-423d-8f81-51d136f8d023" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_01.abi </button></div>
-<div id="uuid-ac6d31ed-3b83-4e29-ab79-bd6fa0086235" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_01.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
+<div class="text-center"><button id="uuid-9c488dff-ae84-474d-8e7e-25d349dfaf83" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_01.abi </button></div>
+<div id="uuid-f7542cda-f366-41f6-80cd-cadafa409fc2" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_01.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
 <span class="c1"># Gold with one vacancy (107 atoms of gold) #</span>
 <span class="c1">#############################################</span>
 
@@ -7018,7 +7018,7 @@ timopt<span class="w">        </span>-3<span class="w"> </span><span class="c1">
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-ac6d31ed-3b83-4e29-ab79-bd6fa0086235", "#uuid-df66786d-a433-423d-8f81-51d136f8d023") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-f7542cda-f366-41f6-80cd-cadafa409fc2", "#uuid-9c488dff-ae84-474d-8e7e-25d349dfaf83") }); </script>
 
 <p>Then run ABINIT on 1 CPU core (using 1 MPI process and 1 <em>OpenMP</em> thread).</p>
 <p>ABINIT should stop without starting a calculation (don&rsquo;t pay attention to the error message).
@@ -7059,8 +7059,8 @@ But somehow, you did it without understanding how you got the result&hellip;</p>
 understanding. As shown above, the pair (<a class="wikilink codevar-wikilink" href="/variables/paral#npband">npband</a> x <a class="wikilink codevar-wikilink" href="/variables/paral#npfft">npfft</a>) of input variables
 can have various values: (64x1), (32x2), (16x4), (8x8), (4x16).
 In order to perform these 5 calculations you can use the <code>tparal_bandpw_02.abi</code>.</p>
-<div class="text-center"><button id="uuid-d919ab2f-6e14-43a0-920a-c10b834c7c25" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_02.abi </button></div>
-<div id="uuid-0fca9a1e-4e4c-4c79-9e90-8adcfd06025f" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_02.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
+<div class="text-center"><button id="uuid-8fb453e1-52ea-4a7e-a330-6792e8e95c7f" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_02.abi </button></div>
+<div id="uuid-4dd455ce-a5de-4257-b03b-21ca47f5bcd2" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_02.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
 <span class="c1"># Gold with one vacancy (107 atoms of gold) #</span>
 <span class="c1">#############################################</span>
 
@@ -7233,7 +7233,7 @@ timopt<span class="w">        </span>-3<span class="w">  </span><span class="c1"
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-0fca9a1e-4e4c-4c79-9e90-8adcfd06025f", "#uuid-d919ab2f-6e14-43a0-920a-c10b834c7c25") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-4dd455ce-a5de-4257-b03b-21ca47f5bcd2", "#uuid-8fb453e1-52ea-4a7e-a330-6792e8e95c7f") }); </script>
 
 <p>Change the line corresponding to the processor distribution.
 A first calculation with:
@@ -7334,8 +7334,8 @@ Note that FFTs are still performed by the <a class="wikilink codevar-wikilink" h
 <div class="highlight"><pre><span></span><code><span class="gi">+ nstep         10</span>
 <span class="gi">+ bandpp        1 # This is the default value</span>
 </code></pre></div>
-<div class="text-center"><button id="uuid-a6a6eff0-c961-4840-bf8d-13b9adbd9052" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_03.abi </button></div>
-<div id="uuid-f2b06605-232e-4b40-9823-100a701e7376" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_03.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
+<div class="text-center"><button id="uuid-648b4e89-9d93-4b9a-bd6d-34e0669a8419" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_03.abi </button></div>
+<div id="uuid-0b1cad38-6d53-46d5-9663-68ff389ce025" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_03.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
 <span class="c1"># Gold with one vacancy (107 atoms of gold) #</span>
 <span class="c1">#############################################</span>
 
@@ -7509,7 +7509,7 @@ timopt<span class="w">        </span>-3<span class="w">  </span><span class="c1"
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-f2b06605-232e-4b40-9823-100a701e7376", "#uuid-a6a6eff0-c961-4840-bf8d-13b9adbd9052") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-0b1cad38-6d53-46d5-9663-68ff389ce025", "#uuid-648b4e89-9d93-4b9a-bd6d-34e0669a8419") }); </script>
 
 <p>Copy the input file <code>tparal_bandpw_03.abi</code> then run ABINIT over 64 CPUs,
 setting <a class="wikilink codevar-wikilink" href="/variables/paral#bandpp">bandpp</a><strong>=1</strong> and then <a class="wikilink codevar-wikilink" href="/variables/paral#bandpp">bandpp</a><strong>=2</strong>. The output files will be
@@ -7610,8 +7610,8 @@ Thus it uses 32 MPI processes. We have set <a class="wikilink codevar-wikilink" 
 <p class="admonition-title">Note</p>
 <p>32 MPI x 2 threads = 64 cores.</p>
 </div>
-<div class="text-center"><button id="uuid-7258f382-4a3f-4381-ade5-bd89cc20adc2" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_04.abi </button></div>
-<div id="uuid-11afb6f8-5857-4733-b818-760462c741cc" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_04.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
+<div class="text-center"><button id="uuid-502b4c8b-0a19-4dd4-ac62-685f80abaed4" class="md-button md-button--secondary"> View tests/tutoparal/Input/tparal_bandpw_04.abi </button></div>
+<div id="uuid-c95cfa0e-702f-4af1-bb80-24d33ea6238f" class="my_dialog" title="tests/tutoparal/Input/tparal_bandpw_04.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################</span>
 <span class="c1"># Gold with one vacancy (107 atoms of gold) #</span>
 <span class="c1">#############################################</span>
 
@@ -7785,7 +7785,7 @@ timopt<span class="w">        </span>-3<span class="w">  </span><span class="c1"
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-11afb6f8-5857-4733-b818-760462c741cc", "#uuid-7258f382-4a3f-4381-ade5-bd89cc20adc2") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c95cfa0e-702f-4af1-bb80-24d33ea6238f", "#uuid-502b4c8b-0a19-4dd4-ac62-685f80abaed4") }); </script>
 
 <p>Let&rsquo;s have a look at the timings and compare them :</p>
 <div class="highlight"><pre><span></span><code>grep<span class="w"> </span>Proc<span class="w"> </span>tparal_bandpw_04.bandpp2.1thread.abo<span class="w"> </span>tparal_bandpw_04.bandpp2.2thread.abo

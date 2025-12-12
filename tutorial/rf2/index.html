@@ -6856,8 +6856,8 @@ Execute this file with</p>
 </code></pre></div>
 
 <p>Let us have a look at the input file <em>trf2_1.abi</em>.</p>
-<div class="text-center"><button id="uuid-9588426f-a139-437f-8a9c-67f54f4f9680" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_1.abi </button></div>
-<div id="uuid-3498394c-9197-4097-80c4-0cb868e08758" class="my_dialog" title="tests/tutorespfn/Input/trf2_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline AlAs : computation of the phonon spectrum</span>
+<div class="text-center"><button id="uuid-03361171-18f6-422e-938a-3052123896d3" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_1.abi </button></div>
+<div id="uuid-7fb4798d-1a36-44f3-8d62-9af53f9fd09f" class="my_dialog" title="tests/tutorespfn/Input/trf2_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline AlAs : computation of the phonon spectrum</span>
 
 <span class="c1"># initial steps: compute ground state wavefunctions accurately and the DDK</span>
 <span class="c1"># wavefunctions accurately</span>
@@ -6948,7 +6948,7 @@ pseudos<span class="w"> </span><span class="s2">&quot;13al.981214.fhi, PseudosTM
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-3498394c-9197-4097-80c4-0cb868e08758", "#uuid-9588426f-a139-437f-8a9c-67f54f4f9680") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-7fb4798d-1a36-44f3-8d62-9af53f9fd09f", "#uuid-03361171-18f6-422e-938a-3052123896d3") }); </script>
 
 <p>This input file consists of two datasets&ndash;the first generates the
 ground state wavefunctions, with tight convergence: these are output
@@ -6973,8 +6973,8 @@ database.</p>
 Before you run it, you will have to name the input wavefunctions that you prepared in step 0
 appropriately, so ABINIT can find them. </p>
 <p>Examine the input file you are about to run:</p>
-<div class="text-center"><button id="uuid-76a7f4d6-ef1a-4332-a565-2ef8ca650ea8" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_2.abi </button></div>
-<div id="uuid-4a3ccdfa-20e7-467b-b337-e85f7764856b" class="my_dialog" title="tests/tutorespfn/Input/trf2_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline AlAs : computation of the phonon spectrum and electric field perturbation</span>
+<div class="text-center"><button id="uuid-4af8ebf9-e5b9-4a9e-8611-e52a1a7c8d13" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_2.abi </button></div>
+<div id="uuid-0cd8c88b-acf3-41c3-909e-60ba89b3e747" class="my_dialog" title="tests/tutorespfn/Input/trf2_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Crystalline AlAs : computation of the phonon spectrum and electric field perturbation</span>
 
 <span class="w">   </span>ndtset<span class="w">   </span><span class="m">8</span>
 
@@ -7086,7 +7086,7 @@ appropriately, so ABINIT can find them. </p>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-4a3ccdfa-20e7-467b-b337-e85f7764856b", "#uuid-76a7f4d6-ef1a-4332-a565-2ef8ca650ea8") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-0cd8c88b-acf3-41c3-909e-60ba89b3e747", "#uuid-4af8ebf9-e5b9-4a9e-8611-e52a1a7c8d13") }); </script>
 
 <p>Notice the lines <code>ndtset 8</code>, <code>getddk 98</code>, and <code>getwfk 99</code>. Since we
 will be looping over multiple datasets (8, in fact), in order to
@@ -7190,8 +7190,8 @@ the datasets of the trf2_2 job, which contain the dynamical matrices for the
 8 q points, as well as the response to the electric field (dielectric tensor
 and Born effective charges). Name the new DDB <em>trf2_3.ddb.abo</em>.</p>
 <p>File <em>$ABI_TESTS/tutorespfn/Input/trf2_3.abi</em> is an example of input file for MRGDDB.</p>
-<div class="text-center"><button id="uuid-bcc34da9-bac7-4371-bcf7-800e070a7cce" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_3.abi </button></div>
-<div id="uuid-69fa2483-522f-4e63-b72a-b87dade624b8" class="my_dialog" title="tests/tutorespfn/Input/trf2_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span>trf2_3.ddb.abo
+<div class="text-center"><button id="uuid-b0e62dcc-1a58-476e-9d5d-aed941cc56df" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_3.abi </button></div>
+<div id="uuid-584da937-c2ef-42e1-a256-df45ad4a3925" class="my_dialog" title="tests/tutorespfn/Input/trf2_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span>trf2_3.ddb.abo
 AlAs<span class="w"> </span>phonons<span class="w"> </span>on<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>mesh
 <span class="m">8</span>
 trf2_2o_DS1_DDB
@@ -7223,7 +7223,7 @@ trf2_2o_DS8_DDB
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-69fa2483-522f-4e63-b72a-b87dade624b8", "#uuid-bcc34da9-bac7-4371-bcf7-800e070a7cce") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-584da937-c2ef-42e1-a256-df45ad4a3925", "#uuid-b0e62dcc-1a58-476e-9d5d-aed941cc56df") }); </script>
 
 <p>You can copy it in the <em>Work_rf2</em> directory, noting that if your DDB
 files were produced in <code>netcdf</code> format, you will need to include
@@ -7262,8 +7262,8 @@ In this tutorial, we will focus on the flags <a class="wikilink codevar-wikilink
 Examine the file <em>trf2_4.abi</em>. Note that <a class="wikilink codevar-wikilink" href="/variables/anaddb#ifcflag">ifcflag</a> is activated. It also specifies
 the input ddb file, and output file naming (<a class="wikilink codevar-wikilink" href="/variables/anaddb#ddb_filepath">ddb_filepath</a>, <a class="wikilink codevar-wikilink" href="/variables/anaddb#output_file">output_file</a>, and
 <a class="wikilink codevar-wikilink" href="/variables/anaddb#outdata_prefix">outdata_prefix</a>).</p>
-<div class="text-center"><button id="uuid-724d2c21-1119-4c4a-ab64-d266295ab604" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_4.abi </button></div>
-<div id="uuid-ece27bb2-438e-4701-91ea-8efab142a61f" class="my_dialog" title="tests/tutorespfn/Input/trf2_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span>!Input<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>anaddb<span class="w"> </span>code.<span class="w"> </span>Analysis<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>AlAs<span class="w"> </span>DDB
+<div class="text-center"><button id="uuid-97fe7420-eeb4-4954-97e1-7caa7c6ff688" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_4.abi </button></div>
+<div id="uuid-4cdfbd8c-1f93-45bf-a41a-33711c330888" class="my_dialog" title="tests/tutorespfn/Input/trf2_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span>!Input<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>anaddb<span class="w"> </span>code.<span class="w"> </span>Analysis<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>AlAs<span class="w"> </span>DDB
 
 !<span class="w"> </span>ddb<span class="w"> </span>input
 <span class="nv">ddb_filepath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;trf2_3.ddb.abo&quot;</span>
@@ -7308,7 +7308,7 @@ the input ddb file, and output file naming (<a class="wikilink codevar-wikilink"
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-ece27bb2-438e-4701-91ea-8efab142a61f", "#uuid-724d2c21-1119-4c4a-ab64-d266295ab604") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-4cdfbd8c-1f93-45bf-a41a-33711c330888", "#uuid-97fe7420-eeb4-4954-97e1-7caa7c6ff688") }); </script>
 
 <p>Related input variables can be split in three groups.
 The first group of variables define the grid of q wavevectors:</p>
@@ -7344,8 +7344,8 @@ dynamical matrices and the charge neutrality on Born effective charges before pr
 
 <p>It will last only a few seconds. </p>
 <p>The file <em>trf2_4.abo</em> contains the list of interatomic force constants, as well as some analysis.</p>
-<div class="text-center"><button id="uuid-d588a082-d848-45c5-a9c6-0b53912ae718" class="md-button md-button--secondary"> View tests/tutorespfn/Refs/trf2_4.abo </button></div>
-<div id="uuid-8984734d-46a4-4a04-9197-333f71ba069a" class="my_dialog" title="tests/tutorespfn/Refs/trf2_4.abo" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-db289b7e-c4c3-41f2-a406-92c96e5a1d7a" class="md-button md-button--secondary"> View tests/tutorespfn/Refs/trf2_4.abo </button></div>
+<div id="uuid-e5dfdbf1-d5da-4f37-a6d2-9e6246ccabc7" class="my_dialog" title="tests/tutorespfn/Refs/trf2_4.abo" hidden><div><pre class="small-text">
 
 .Version 10.1.4.5 of ANADDB, released Sep 2024.
 .(MPI version, prepared for a x86_64_linux_gnu13.2 computer) 
@@ -7965,7 +7965,7 @@ dynamical matrices and the charge neutrality on Born effective charges before pr
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-8984734d-46a4-4a04-9197-333f71ba069a", "#uuid-d588a082-d848-45c5-a9c6-0b53912ae718") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-e5dfdbf1-d5da-4f37-a6d2-9e6246ccabc7", "#uuid-db289b7e-c4c3-41f2-a406-92c96e5a1d7a") }); </script>
 
 <p>Open this file and find the following paragraph:</p>
 <div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">Analysis</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">interatomic</span><span class="w"> </span><span class="n">force</span><span class="w"> </span><span class="n">constants</span>
@@ -7994,8 +7994,8 @@ longitudinal and a transverse component.</p>
 <h2 id="5-computation-of-phonon-band-structures-with-efficient-interpolation">5 Computation of phonon band structures with efficient interpolation<a class="headerlink" href="#5-computation-of-phonon-band-structures-with-efficient-interpolation" title="Permanent link">&para;</a></h2>
 <p>You can copy the file trf2_5.abi from $ABI_TESTS/tutorespfn/Input to the Work_rf2 directory.
 Then open <em>trf2_5.abi</em>.</p>
-<div class="text-center"><button id="uuid-e2375764-0431-4925-94bd-1a3612b88a9f" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_5.abi </button></div>
-<div id="uuid-24ce1b76-ba20-45e7-8889-7addbbd77754" class="my_dialog" title="tests/tutorespfn/Input/trf2_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span>!Input<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>anaddb<span class="w"> </span>code.<span class="w"> </span>Analysis<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>AlAs<span class="w"> </span>DDB
+<div class="text-center"><button id="uuid-de362b6d-0e77-4402-b4e6-6219f0c6c431" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_5.abi </button></div>
+<div id="uuid-4d28d641-9238-4885-950f-bd86905f6d1a" class="my_dialog" title="tests/tutorespfn/Input/trf2_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span>!Input<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>anaddb<span class="w"> </span>code.<span class="w"> </span>Analysis<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>AlAs<span class="w"> </span>DDB
 
 !<span class="w"> </span>ddb<span class="w"> </span>file<span class="w"> </span>
 <span class="nv">ddb_filepath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;trf2_3.ddb.abo&quot;</span>
@@ -8059,7 +8059,7 @@ Then open <em>trf2_5.abi</em>.</p>
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-24ce1b76-ba20-45e7-8889-7addbbd77754", "#uuid-e2375764-0431-4925-94bd-1a3612b88a9f") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-4d28d641-9238-4885-950f-bd86905f6d1a", "#uuid-de362b6d-0e77-4402-b4e6-6219f0c6c431") }); </script>
 
 <p>Note that <a class="wikilink codevar-wikilink" href="/variables/anaddb#ifcflag">ifcflag</a> is again activated.
 Indeed, in order to compute a phonon band structure using the Fourier
@@ -8087,8 +8087,8 @@ tutorial</a>.</p>
 q-wavevectors. You can open it, and have a look at the different sections of
 the file. Note that the interatomic force constants are computed (they are
 needed for the Fourier interpolation), but not printed.</p>
-<div class="text-center"><button id="uuid-fd23c965-ad6d-4b2f-89ab-25425f59e691" class="md-button md-button--secondary"> View tests/tutorespfn/Refs/trf2_5.abo </button></div>
-<div id="uuid-af6cde4c-cd85-4218-83d2-4cd4ed0dda66" class="my_dialog" title="tests/tutorespfn/Refs/trf2_5.abo" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-444f33fa-fa55-4766-9a85-d9a306578a26" class="md-button md-button--secondary"> View tests/tutorespfn/Refs/trf2_5.abo </button></div>
+<div id="uuid-10f44aa3-c59e-4d7f-9178-1e7980ea220d" class="my_dialog" title="tests/tutorespfn/Refs/trf2_5.abo" hidden><div><pre class="small-text">
 
 .Version 10.1.4.5 of ANADDB, released Sep 2024.
 .(MPI version, prepared for a x86_64_linux_gnu13.2 computer) 
@@ -9995,7 +9995,7 @@ needed for the Fourier interpolation), but not printed.</p>
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-af6cde4c-cd85-4218-83d2-4cd4ed0dda66", "#uuid-fd23c965-ad6d-4b2f-89ab-25425f59e691") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-10f44aa3-c59e-4d7f-9178-1e7980ea220d", "#uuid-444f33fa-fa55-4766-9a85-d9a306578a26") }); </script>
 
 <p>Please, open also the other output file, named <em>trf2_5o_B2EPS.freq</em>.
 It contains the frequencies, in a format suitable for graphical output, using the program
@@ -10005,10 +10005,10 @@ It contains the frequencies, in a format suitable for graphical output, using th
 </code></pre></div>
 
 <div class="text-center"><div class="btn-group-vertical">
-<button id="uuid-2e566b90-79f3-4930-8418-d815e5c47b10" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_6.files </button>
-<button id="uuid-8b9997a5-8fd5-4456-bfca-481b5c4e0e81" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_6.abi </button>
+<button id="uuid-d3432126-2c5a-4277-b346-7faf40666198" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_6.files </button>
+<button id="uuid-7ca71446-6ea1-4edb-8572-c473d4c8ed7d" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_6.abi </button>
 </div></div>
-<div id="uuid-db6c7a76-9284-40ae-8589-0c90670feb27" class="my_dialog" title="tests/tutorespfn/Input/trf2_6.files" hidden><div><pre class="small-text">
+<div id="uuid-70de3b2f-e41d-48a3-9239-950fa2059624" class="my_dialog" title="tests/tutorespfn/Input/trf2_6.files" hidden><div><pre class="small-text">
 trf2_6.abi
 trf2_6.abo.eps
 trf2_6.in_freq
@@ -10017,9 +10017,9 @@ no
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-db6c7a76-9284-40ae-8589-0c90670feb27", "#uuid-2e566b90-79f3-4930-8418-d815e5c47b10") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-70de3b2f-e41d-48a3-9239-950fa2059624", "#uuid-d3432126-2c5a-4277-b346-7faf40666198") }); </script>
 
-<div id="uuid-0b2a98ee-7724-4f0a-8d44-185773bdc17f" class="my_dialog" title="tests/tutorespfn/Input/trf2_6.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#Input file for &#39;band2eps.&#39; This data layout must be used, line-by-line.</span>
+<div id="uuid-c24dee09-2d76-436b-9d7b-82f8b22e225d" class="my_dialog" title="tests/tutorespfn/Input/trf2_6.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#Input file for &#39;band2eps.&#39; This data layout must be used, line-by-line.</span>
 <span class="w">    </span><span class="c1">#number of atoms in a cell :</span>
 natom<span class="w"> </span><span class="m">2</span>
 <span class="w">    </span><span class="c1">#minimum value, maximum value and number of tics of the vertical axe :</span>
@@ -10063,7 +10063,7 @@ blue<span class="w"> </span><span class="m">0</span><span class="w"> </span><spa
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-0b2a98ee-7724-4f0a-8d44-185773bdc17f", "#uuid-8b9997a5-8fd5-4456-bfca-481b5c4e0e81") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c24dee09-2d76-436b-9d7b-82f8b22e225d", "#uuid-7ca71446-6ea1-4edb-8572-c473d4c8ed7d") }); </script>
 
 <p>The file <em>trf2_6.abo.eps</em> has been produced. It is an .eps file (eps stand for
 Encapsulated PostScript). You can use the program ghostview to visualize it.
@@ -10175,8 +10175,8 @@ user should be able to produce figures and data like the ones for SiO2 quartz
 and stishovite, published in <a class="wikilink citation-wikilink" data-tippy-content="Ab initio calculation of the thermodynamic properties and atomic temperature factors ofSiO2α-quartz and stishovite" data-toggle="popover" href="/theory/bibliography#lee1995">[Lee1995]</a>.</p>
 <p>You can copy the file <em>trf2_7.abi</em> from <em>$ABI_TESTS/tutorespfn/Input</em> to <em>Work_rf2</em>.
 The same DDB as for trf2_4 and trf2_5 is used, namely <em>trf2_3.ddb.abo</em>.</p>
-<div class="text-center"><button id="uuid-e300d66b-3e59-4fce-b139-3b0413a6c21e" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_7.abi </button></div>
-<div id="uuid-2981301f-e823-42fd-a1e8-226d26e148a3" class="my_dialog" title="tests/tutorespfn/Input/trf2_7.abi" hidden><div><div class="codehilite small-text"><pre><span></span>!Input<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>anaddb<span class="w"> </span>code.<span class="w"> </span>Analysis<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>AlAs<span class="w"> </span>ddb
+<div class="text-center"><button id="uuid-fdf06858-6f97-42e6-a8ae-15b0be65d697" class="md-button md-button--secondary"> View tests/tutorespfn/Input/trf2_7.abi </button></div>
+<div id="uuid-b3b1679b-b952-4e66-bf8e-6b3eed3b9a4f" class="my_dialog" title="tests/tutorespfn/Input/trf2_7.abi" hidden><div><div class="codehilite small-text"><pre><span></span>!Input<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>anaddb<span class="w"> </span>code.<span class="w"> </span>Analysis<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>AlAs<span class="w"> </span>ddb
 
 !<span class="w"> </span>ddb<span class="w"> </span>file<span class="w"> </span>
 <span class="nv">ddb_filepath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;trf2_3.ddb.abo&quot;</span>
@@ -10228,7 +10228,7 @@ The same DDB as for trf2_4 and trf2_5 is used, namely <em>trf2_3.ddb.abo</em>.</
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-2981301f-e823-42fd-a1e8-226d26e148a3", "#uuid-e300d66b-3e59-4fce-b139-3b0413a6c21e") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-b3b1679b-b952-4e66-bf8e-6b3eed3b9a4f", "#uuid-fdf06858-6f97-42e6-a8ae-15b0be65d697") }); </script>
 
 <p>The following additional input variables are present:</p>
 <ul>

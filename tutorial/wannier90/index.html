@@ -6958,8 +6958,8 @@ Therefore, you must include this file in the folder:</p>
 </code></pre></div>
 
 <p>Let&rsquo;s examine the input file <em>tw90_1.abi</em>, while the calculation is running.</p>
-<div class="text-center"><button id="uuid-d7fdf7d7-24dd-43e2-9647-5ad0def302b9" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_1.abi </button></div>
-<div id="uuid-710c1588-3608-41e5-8f6e-75490ec1ef7b" class="my_dialog" title="tests/tutoplugs/Input/tw90_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="w">    </span>ndtset<span class="w">      </span><span class="m">2</span>
+<div class="text-center"><button id="uuid-2921edbc-6906-4b26-8004-81e6ea13f8a2" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_1.abi </button></div>
+<div id="uuid-45c83cae-ffa0-41a8-9615-61b296e9a7b5" class="my_dialog" title="tests/tutoplugs/Input/tw90_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="w">    </span>ndtset<span class="w">      </span><span class="m">2</span>
 <span class="c1"># Silicon structure</span>
 <span class="w">     </span>acell<span class="w">     </span><span class="m">10</span>.263<span class="w">  </span><span class="m">10</span>.263<span class="w">  </span><span class="m">10</span>.263
 <span class="w">     </span>rprim<span class="w">      </span><span class="m">0</span>.00<span class="w">   </span><span class="m">0</span>.50<span class="w">   </span><span class="m">0</span>.50
@@ -7031,15 +7031,15 @@ w90prtunk2<span class="w"> </span><span class="m">1</span><span class="w">   </s
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-710c1588-3608-41e5-8f6e-75490ec1ef7b", "#uuid-d7fdf7d7-24dd-43e2-9647-5ad0def302b9") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-45c83cae-ffa0-41a8-9615-61b296e9a7b5", "#uuid-2921edbc-6906-4b26-8004-81e6ea13f8a2") }); </script>
 
 <p>The input file should look familiar to you. It is indeed the primitive cell of silicon.
 It has two data sets: first a SCF calculation and then a NSCF calculation which
 will call the Wannier90 library. The only new input variable is <a class="wikilink codevar-wikilink" href="/variables/files#prtwant">prtwant</a>
 which has to be set to 2 in order to use the Wannier90 utility.</p>
 <p>Now lets look at the second input file <em>wannier90.win</em>.</p>
-<div class="text-center"><button id="uuid-cee2251d-49a6-402c-a739-88e6d6b7219b" class="md-button md-button--secondary"> View tests/tutoplugs/Input/wannier90.win </button></div>
-<div id="uuid-00aab703-c6b8-4a1e-9ad4-fc79da739752" class="my_dialog" title="tests/tutoplugs/Input/wannier90.win" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-b7e848cd-47e8-4419-9c81-f860faf7b7be" class="md-button md-button--secondary"> View tests/tutoplugs/Input/wannier90.win </button></div>
+<div id="uuid-4e84fac2-0333-4e6b-b0af-23202519d848" class="my_dialog" title="tests/tutoplugs/Input/wannier90.win" hidden><div><pre class="small-text">
 num_wann 4
 num_iter 200
 
@@ -7049,7 +7049,7 @@ wannier_plot =true
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-00aab703-c6b8-4a1e-9ad4-fc79da739752", "#uuid-cee2251d-49a6-402c-a739-88e6d6b7219b") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-4e84fac2-0333-4e6b-b0af-23202519d848", "#uuid-b7e848cd-47e8-4419-9c81-f860faf7b7be") }); </script>
 
 <p>This is a mandatory input file required by the Wannier90 library.
 There are many variables that can be defined inside this file.
@@ -7203,8 +7203,8 @@ cp ../tw90_3o_DS2_w90.win .
 
 <p>While it is running, we can start to examine the input files.
 Open the main input file <em>tw90_3.abi</em>. The file is divided into three datasets.</p>
-<div class="text-center"><button id="uuid-92663acd-1eae-4cf2-891a-8987f3e728d5" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_3.abi </button></div>
-<div id="uuid-7923a7f7-6852-4f9b-931a-981c05126086" class="my_dialog" title="tests/tutoplugs/Input/tw90_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#########################################################</span>
+<div class="text-center"><button id="uuid-4d64565e-475a-4283-b552-5247a291359f" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_3.abi </button></div>
+<div id="uuid-85f10b19-0c21-453f-868e-24d3a10b8b12" class="my_dialog" title="tests/tutoplugs/Input/tw90_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#########################################################</span>
 <span class="c1"># Silane SiH4</span>
 <span class="c1">#########################################################</span>
 
@@ -7306,7 +7306,7 @@ ecut<span class="w">  </span><span class="m">8</span><span class="w">       </sp
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-7923a7f7-6852-4f9b-931a-981c05126086", "#uuid-92663acd-1eae-4cf2-891a-8987f3e728d5") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-85f10b19-0c21-453f-868e-24d3a10b8b12", "#uuid-4d64565e-475a-4283-b552-5247a291359f") }); </script>
 
 <p>First a SCF calculation is done. What follows is a NSCF calculation including
 more bands. Finally, in the third dataset we just read the wavefunction from
@@ -7398,8 +7398,8 @@ In order to correctly select the subset of correlated orbitals that we want to m
 in our effective Hamiltonian and how to project it, we need to study the orbital character
 of the band structure of the material.</p>
 <p>Let&rsquo;s look at the input file:</p>
-<div class="text-center"><button id="uuid-99220b84-6ebd-4360-b690-380c13fad32e" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_5.abi </button></div>
-<div id="uuid-556748de-0a8d-4df4-9190-6958df3c85d2" class="my_dialog" title="tests/tutoplugs/Input/tw90_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################################################</span>
+<div class="text-center"><button id="uuid-6552112f-ed11-479a-96ad-4aae6d4def72" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_5.abi </button></div>
+<div id="uuid-2d7675ff-8ca7-4c01-89f6-cc9b3dc4a1f5" class="my_dialog" title="tests/tutoplugs/Input/tw90_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################################################</span>
 <span class="c1"># La2CuO4 : Fatbands</span>
 <span class="c1">#############################################################################</span>
 
@@ -7497,7 +7497,7 @@ pseudos<span class="w">          </span><span class="s2">&quot;Psdj_paw_pw_std/L
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-556748de-0a8d-4df4-9190-6958df3c85d2", "#uuid-99220b84-6ebd-4360-b690-380c13fad32e") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-2d7675ff-8ca7-4c01-89f6-cc9b3dc4a1f5", "#uuid-6552112f-ed11-479a-96ad-4aae6d4def72") }); </script>
 
 <p>The first dataset is simply useful to compute the ground state.
 DFT will predict it to be metallic, so we use an occupation option <a class="wikilink codevar-wikilink" href="/variables/basic#occopt">occopt</a> for metals.</p>
@@ -7554,8 +7554,8 @@ cp ../tw90_6o_DS3_w90.win .
 
 <p>This calculation should take a couple of minutes. It uses two files.
 The first one is</p>
-<div class="text-center"><button id="uuid-e20ed11e-417c-4e22-8b49-43c9eabd5715" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_6.abi </button></div>
-<div id="uuid-2d522c41-d200-41ef-8c6a-dc654a4c7499" class="my_dialog" title="tests/tutoplugs/Input/tw90_6.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################################################</span>
+<div class="text-center"><button id="uuid-be4d271a-abb6-4e81-a51b-d40bbe5489ea" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_6.abi </button></div>
+<div id="uuid-55db63b9-7c79-4e11-8ca7-eb8b887c3969" class="my_dialog" title="tests/tutoplugs/Input/tw90_6.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1">#############################################################################</span>
 <span class="c1"># La2CuO4: Wannier90</span>
 <span class="c1">#############################################################################</span>
 <span class="c1"># Structural parameters</span>
@@ -7674,7 +7674,7 @@ pseudos<span class="w">          </span><span class="s2">&quot;Psdj_paw_pw_std/L
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-2d522c41-d200-41ef-8c6a-dc654a4c7499", "#uuid-e20ed11e-417c-4e22-8b49-43c9eabd5715") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-55db63b9-7c79-4e11-8ca7-eb8b887c3969", "#uuid-be4d271a-abb6-4e81-a51b-d40bbe5489ea") }); </script>
 
 <p>which contains four datasets. In the first one, we simply compute the density and wave function
 of the ground state on a coarse grid.
@@ -7685,8 +7685,8 @@ which uses the data computed in the second dataset.
 The fourth dataset computes a band structure, that we use to compare with the projected band structure
 computed by Wannier90.</p>
 <p>The important part here happens in the third set. The Wannier90 library uses the following input file:</p>
-<div class="text-center"><button id="uuid-743881c7-f592-42b6-a94d-9a911d55046e" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_6o_DS3_w90.win </button></div>
-<div id="uuid-d43960bc-0dc1-49d8-9270-30b20f816f05" class="my_dialog" title="tests/tutoplugs/Input/tw90_6o_DS3_w90.win" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-172465fc-2573-425e-9a4e-5b9ed6ba7669" class="md-button md-button--secondary"> View tests/tutoplugs/Input/tw90_6o_DS3_w90.win </button></div>
+<div id="uuid-64f21597-22a0-4c44-af97-eb71c2d689d8" class="my_dialog" title="tests/tutoplugs/Input/tw90_6o_DS3_w90.win" hidden><div><pre class="small-text">
 num_wann = 1
 num_bands = 38
 
@@ -7721,7 +7721,7 @@ bands_num_points = 20
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-d43960bc-0dc1-49d8-9270-30b20f816f05", "#uuid-743881c7-f592-42b6-a94d-9a911d55046e") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-64f21597-22a0-4c44-af97-eb71c2d689d8", "#uuid-172465fc-2573-425e-9a4e-5b9ed6ba7669") }); </script>
 
 <p>The keywords can be understood using Wannier90&rsquo;s user guide found on their web page (<a href="https://raw.githubusercontent.com/wannier-developers/wannier90/v3.1.0/doc/compiled_docs/user_guide.pdf">https://raw.githubusercontent.com/wannier-developers/wannier90/v3.1.0/doc/compiled_docs/user_guide.pdf</a>). </p>
 <p>We want to make a one band model of the dx^2 -y^2 cupper orbital, which is defined by the projection keyword.

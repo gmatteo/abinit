@@ -7038,8 +7038,8 @@ can be found in the <code>Atom_name</code> file (<code>Atom_name</code> is the f
 <p>In a first stage, copy a simple input file for <code>ATOMPAW</code> in your working directory
 (find it in <span style="color:green"><em>$ABI_HOME/doc/tutorial/paw2/paw2_assets/Ni.atompaw.input1</em></span>).
 Edit this file.</p>
-<div class="text-center"><button id="uuid-2c207c03-62b2-4b07-9332-2a38c8d4020c" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input1 </button></div>
-<div id="uuid-fc6ba9aa-7901-4a79-a4f9-594b063f3a38" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input1" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-6141f187-b346-40c8-816f-0fb5ed3c08a8" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input1 </button></div>
+<div id="uuid-56640db4-3bda-4c86-b644-181c22b68900" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input1" hidden><div><pre class="small-text">
 Ni 28                                       ! Definition of material
 GGA-PBE scalarrelativistic loggrid 2000     ! All-electrons calc.: GGA+scalar-relativstic - log.grid with 2000 pts
 4 4 3 0 0 0                                 ! Max. n per angular momentum: 4s 3p 3d
@@ -7074,7 +7074,7 @@ END                                         ! End of file
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-fc6ba9aa-7901-4a79-a4f9-594b063f3a38", "#uuid-2c207c03-62b2-4b07-9332-2a38c8d4020c") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-56640db4-3bda-4c86-b644-181c22b68900", "#uuid-6141f187-b346-40c8-816f-0fb5ed3c08a8") }); </script>
 
 <p>This file has been built in the following way:</p>
 <ol>
@@ -7466,8 +7466,8 @@ This generally shows the presence of a <em>ghost state</em>.</p>
 <p>In most cases (changing pseudopotential or matching radius), one has to restart the procedure from step 5.</p>
 <p>To see an example of ghost state, use the
  <span style="color:green">$ABI_HOME/doc/tutorial/paw2_assets/Ni.ghost.atompaw.input</span> file and run it with <code>ATOMPAW</code>.</p>
-<div class="text-center"><button id="uuid-cf50106d-b80c-4b58-bef1-61387fc39856" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.ghost.atompaw.input </button></div>
-<div id="uuid-ab1bc556-c0a6-4891-8019-b2f356f987b2" class="my_dialog" title="tutorial/paw2_assets/Ni.ghost.atompaw.input" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-87ddebe4-2141-4b87-90d8-be67e95021f1" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.ghost.atompaw.input </button></div>
+<div id="uuid-36de1ff3-895b-417a-976b-bee06d3a9331" class="my_dialog" title="tutorial/paw2_assets/Ni.ghost.atompaw.input" hidden><div><pre class="small-text">
 Ni  28
 GGA-PBE scalarrelativistic loggrid 1500
 4 4 3 0 0 0
@@ -7509,7 +7509,7 @@ END
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-ab1bc556-c0a6-4891-8019-b2f356f987b2", "#uuid-cf50106d-b80c-4b58-bef1-61387fc39856") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-36de1ff3-895b-417a-976b-bee06d3a9331", "#uuid-87ddebe4-2141-4b87-90d8-be67e95021f1") }); </script>
 
 <p>Look at the <span class="arithmatex">\(l=1\)</span> logarithmic derivatives (<code>logderiv.1</code> file). They look like:</p>
 <p><img alt="Ni l=1 log derivatives" src="../paw2_assets/log1c.jpg" /></p>
@@ -7532,8 +7532,8 @@ wave basis</strong> needed to reach a given accuracy. If the <strong>cut-off ene
 plane waves basis is too high (higher than <code>20 Hartree</code>), some changes have to be made in the input file.</p>
 <p>Copy <span style="color:green">$ABI_TESTS/tutorial/Input/tpaw2_1.abi</span> in your working directory.
 Edit it, and activate the 8 datasets (uncomment the line <code>ndtset 8</code>).</p>
-<div class="text-center"><button id="uuid-b817b86e-df3a-4215-8ceb-e515352eaf78" class="md-button md-button--secondary"> View tests/tutorial/Input/tpaw2_1.abi </button></div>
-<div id="uuid-a44ae926-9a11-40ff-99ff-84ecc5180df8" class="my_dialog" title="tests/tutorial/Input/tpaw2_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW2 tutorial</span>
+<div class="text-center"><button id="uuid-49633ede-dca1-44f7-b71b-432a77e3a9b7" class="md-button md-button--secondary"> View tests/tutorial/Input/tpaw2_1.abi </button></div>
+<div id="uuid-c40bd975-cfe6-4e91-af45-19fda47fdaa7" class="my_dialog" title="tests/tutorial/Input/tpaw2_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW2 tutorial</span>
 <span class="c1"># Nickel ferromagnetic fcc structure</span>
 <span class="c1"># Testing ecut convergence</span>
 
@@ -7623,7 +7623,7 @@ prteig<span class="w"> </span><span class="m">0</span><span class="w">          
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-a44ae926-9a11-40ff-99ff-84ecc5180df8", "#uuid-b817b86e-df3a-4215-8ceb-e515352eaf78") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c40bd975-cfe6-4e91-af45-19fda47fdaa7", "#uuid-49633ede-dca1-44f7-b71b-432a77e3a9b7") }); </script>
 
 <p>Run &lsquo;ABINIT&rsquo;. It computes the <code>total energy</code> of ferromagnetic FCC Nickel for several values of <a class="wikilink codevar-wikilink" href="/variables/basic#ecut">ecut</a>.
 At the end of output file, you get this:</p>
@@ -7657,8 +7657,8 @@ etotal8    -3.9627833090E+01
   See this input file:
   <span style="color:green">$ABI_HOME/doc/tutorial/paw2_assets/Ni.atompaw.input.vanderbilt</span>.</li>
 </ul>
-<div class="text-center"><button id="uuid-045a3b0b-f261-4f4b-b482-6e52987df791" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input.vanderbilt </button></div>
-<div id="uuid-0a38f597-5884-459b-bac6-17e502c830e1" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input.vanderbilt" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-b65f80c2-249c-4af8-8091-bbc442bb0c58" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input.vanderbilt </button></div>
+<div id="uuid-e512fc19-2116-45f7-8f8c-f6a4cf69de8e" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input.vanderbilt" hidden><div><pre class="small-text">
 Ni 28                                       ! Definition of material
 GGA-PBE scalarrelativistic loggrid 700      ! All-electrons calc.: GGA+scalar-relativstic - log.grid with 700 pts
 4 4 3 0 0 0                                 ! Max. n per angular momentum: 4s 3p 3d
@@ -7699,7 +7699,7 @@ END                                         ! End of file
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-0a38f597-5884-459b-bac6-17e502c830e1", "#uuid-045a3b0b-f261-4f4b-b482-6e52987df791") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-e512fc19-2116-45f7-8f8c-f6a4cf69de8e", "#uuid-b65f80c2-249c-4af8-8091-bbc442bb0c58") }); </script>
 
 <ul>
 <li>2<sup>nd</sup> possibility: use <code>RRKJ</code> <strong>pseudization scheme</strong> for projectors.
@@ -7711,8 +7711,8 @@ END                                         ! End of file
   Repeat the entire procedure (<code>ATOMPAW</code> + <code>ABINIT</code>)&hellip; and get a new ABINIT output file.
   <em>Note: You have check again log derivatives.</em></li>
 </ul>
-<div class="text-center"><button id="uuid-7ea57a91-eb2e-4a93-8830-5da4588646c7" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input2 </button></div>
-<div id="uuid-c65099f7-3f73-4f49-aa76-14d0b88cd112" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input2" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-ef131993-98cf-45a1-a659-9a196040bd7e" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input2 </button></div>
+<div id="uuid-998475ba-8efe-499a-acfa-796de7c93d46" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input2" hidden><div><pre class="small-text">
 Ni 28                                       ! Definition of material
 GGA-PBE scalarrelativistic loggrid 700      ! All-electrons calc.: GGA+scalar-relativstic - log.grid with 700 pts
 4 4 3 0 0 0                                 ! Max. n per angular momentum: 4s 3p 3d
@@ -7753,7 +7753,7 @@ END                                         ! End of file
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-c65099f7-3f73-4f49-aa76-14d0b88cd112", "#uuid-7ea57a91-eb2e-4a93-8830-5da4588646c7") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-998475ba-8efe-499a-acfa-796de7c93d46", "#uuid-ef131993-98cf-45a1-a659-9a196040bd7e") }); </script>
 
 <div class="codehilite"><pre><span></span><code>  ecut1     8.00000000E+00 Hartree
   ecut2     1.00000000E+01 Hartree
@@ -7786,8 +7786,8 @@ etotal8    -3.9628455467E+01
 <p>Let&rsquo;s go back to <code>Vanderbilt</code> projectors.
 Repeat the procedure (<code>ATOMPAW</code> + <code>ABINIT</code>) with the previous
 <span style="color:green">\Ni.atompaw.input.vanderbilt</span> file.</p>
-<div class="text-center"><button id="uuid-13f2392e-59f1-414b-8d1e-d80a4cf0511c" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input.vanderbilt </button></div>
-<div id="uuid-babc6a9a-432b-4638-b034-29ec74074c0e" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input.vanderbilt" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-8c0d4c33-c9e9-4423-9b01-7acfdc6bd108" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input.vanderbilt </button></div>
+<div id="uuid-a2575b93-cb25-41fd-86ef-40fce8942ef1" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input.vanderbilt" hidden><div><pre class="small-text">
 Ni 28                                       ! Definition of material
 GGA-PBE scalarrelativistic loggrid 700      ! All-electrons calc.: GGA+scalar-relativstic - log.grid with 700 pts
 4 4 3 0 0 0                                 ! Max. n per angular momentum: 4s 3p 3d
@@ -7828,7 +7828,7 @@ END                                         ! End of file
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-babc6a9a-432b-4638-b034-29ec74074c0e", "#uuid-13f2392e-59f1-414b-8d1e-d80a4cf0511c") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-a2575b93-cb25-41fd-86ef-40fce8942ef1", "#uuid-8c0d4c33-c9e9-4423-9b01-7acfdc6bd108") }); </script>
 
 <p>Let&rsquo;s try  to change the pseudization scheme for the local pseudopotential.
 Try to replace the <code>troulliermartins</code> keyword by <code>ultrasoft</code>.
@@ -7892,8 +7892,8 @@ Edit it, activate the 7 datasets (ubcomment the &lsquo;ndtset 7` line),
  <span style="color:green">$ABI_HOME/doc/tutorial/paw2_assets/Ni.PBE-paw.rrkj.xml</span>
  PAW dataset obtained from <span style="color:green">Ni.atompaw.input2 file</span>, with a minor change of name (suppression of the indication GGA).
 Run ABINIT (this may take a while&hellip;).</p>
-<div class="text-center"><button id="uuid-8685ecf4-623e-4369-a1ca-d8ce33e1782e" class="md-button md-button--secondary"> View tests/tutorial/Input/tpaw2_2.abi </button></div>
-<div id="uuid-fc68f305-6b62-48a1-8ae7-68bb1962f9eb" class="my_dialog" title="tests/tutorial/Input/tpaw2_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW2 tutorial</span>
+<div class="text-center"><button id="uuid-982f3102-4ec5-4e3b-b739-ca631453a10e" class="md-button md-button--secondary"> View tests/tutorial/Input/tpaw2_2.abi </button></div>
+<div id="uuid-c1f2f6c3-2c0f-4c84-ba09-38f76f8a39d3" class="my_dialog" title="tests/tutorial/Input/tpaw2_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PAW2 tutorial</span>
 <span class="c1"># Nickel ferromagnetic fcc structure</span>
 <span class="c1"># Testing ecut convergence</span>
 
@@ -7990,10 +7990,10 @@ fftalg<span class="w"> </span><span class="m">112</span><span class="w">        
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-fc68f305-6b62-48a1-8ae7-68bb1962f9eb", "#uuid-8685ecf4-623e-4369-a1ca-d8ce33e1782e") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c1f2f6c3-2c0f-4c84-ba09-38f76f8a39d3", "#uuid-982f3102-4ec5-4e3b-b739-ca631453a10e") }); </script>
 
-<div class="text-center"><button id="uuid-e7cc6c56-d1d0-4b0c-9458-1c5cbe2853f0" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.PBE-paw.rrkj.xml </button></div>
-<div id="uuid-351ffef2-ee0d-4b8c-acb3-ba8134a36bc4" class="my_dialog" title="tutorial/paw2_assets/Ni.PBE-paw.rrkj.xml" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-27efd56f-e400-4c53-99df-5590178b56db" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.PBE-paw.rrkj.xml </button></div>
+<div id="uuid-65cc04f2-d627-4a6d-9d72-e596b54cf02d" class="my_dialog" title="tutorial/paw2_assets/Ni.PBE-paw.rrkj.xml" hidden><div><pre class="small-text">
 &lt;?xml  version=&quot;1.0&quot;?&gt;
 &lt;paw_dataset version=&quot;0.7&quot;&gt;
 &lt;!-- PAW-XML specification: http://esl.cecam.org/Paw-xml --&gt;
@@ -13994,7 +13994,7 @@ END
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-351ffef2-ee0d-4b8c-acb3-ba8134a36bc4", "#uuid-e7cc6c56-d1d0-4b0c-9458-1c5cbe2853f0") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-65cc04f2-d627-4a6d-9d72-e596b54cf02d", "#uuid-27efd56f-e400-4c53-99df-5590178b56db") }); </script>
 
 <p>ABINIT computes the converged ground state of ferromagnetic FCC Nickel for several volumes around equilibrium.
 Plot the <code>etotal</code> vs <code>acell</code> curve:</p>
@@ -14094,8 +14094,8 @@ In practice we have to:</p>
 In your working directory, use the dataset
 <span style="color:green">$ABI_HOME/doc/tutorial/paw2_assets/Ni.atompaw.input3</span>
 (Bloechl&rsquo;s projectors).</p>
-<div class="text-center"><button id="uuid-c65f95a2-eb14-4219-8ed4-0db35e76be3d" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input3 </button></div>
-<div id="uuid-a8e264d9-abe6-46ae-98d5-941717b848eb" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input3" hidden><div><pre class="small-text">
+<div class="text-center"><button id="uuid-af63b139-9bd3-4b74-9432-b8963d096e8e" class="md-button md-button--secondary"> View tutorial/paw2_assets/Ni.atompaw.input3 </button></div>
+<div id="uuid-c4b7aa10-e218-46a7-88ce-12c01e782708" class="my_dialog" title="tutorial/paw2_assets/Ni.atompaw.input3" hidden><div><pre class="small-text">
 Ni 28                                       ! Definition of material
 GGA-PBE scalarrelativistic loggrid 700      ! All-electrons calc.: GGA+scalar-relativstic - log.grid with 2000 pts
 4 4 3 0 0 0                                 ! Max. n per angular momentum: 4s 3p 3d
@@ -14130,7 +14130,7 @@ END                                         ! End of file
 </pre>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-a8e264d9-abe6-46ae-98d5-941717b848eb", "#uuid-c65f95a2-eb14-4219-8ed4-0db35e76be3d") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-c4b7aa10-e218-46a7-88ce-12c01e782708", "#uuid-af63b139-9bd3-4b74-9432-b8963d096e8e") }); </script>
 
 <p>Replace the <code>XML options</code> (penultimate line):
 <div class="highlight"><pre><span></span><code>    XMLOUT

@@ -6736,8 +6736,8 @@ mkdir<span class="w"> </span>Work_quad
 <span class="nb">cd</span><span class="w"> </span>Work_quad
 cp<span class="w"> </span>../tquad_1.abi<span class="w"> </span>.
 </code></pre></div>
-<div class="text-center"><button id="uuid-a05f2c04-e08d-405f-a57b-9b06710d7d06" class="md-button md-button--secondary"> View tests/tutorespfn/Input/tquad_1.abi </button></div>
-<div id="uuid-8c83c0d7-5205-484b-8b59-88a751aee92f" class="my_dialog" title="tests/tutorespfn/Input/tquad_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Dynamic quadrupoles calculation for AlAs</span>
+<div class="text-center"><button id="uuid-04cf0e63-08f2-48b1-9ec6-53efa516fa11" class="md-button md-button--secondary"> View tests/tutorespfn/Input/tquad_1.abi </button></div>
+<div id="uuid-6f40b1be-7212-4ed3-a09c-c1942e6cb9d0" class="my_dialog" title="tests/tutorespfn/Input/tquad_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Dynamic quadrupoles calculation for AlAs</span>
 <span class="c1"># Tutorial based on tests/v9/Input/t145.abi made by M. Royo</span>
 
 ndtset<span class="w"> </span><span class="m">5</span>
@@ -6850,7 +6850,7 @@ diemac<span class="w"> </span><span class="m">9</span>.0
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-8c83c0d7-5205-484b-8b59-88a751aee92f", "#uuid-a05f2c04-e08d-405f-a57b-9b06710d7d06") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-6f40b1be-7212-4ed3-a09c-c1942e6cb9d0", "#uuid-04cf0e63-08f2-48b1-9ec6-53efa516fa11") }); </script>
 
 <p>This step might be quite time-consuming so you may want to immediately start the job in background with:</p>
 <div class="highlight"><pre><span></span><code>abinit<span class="w"> </span>tquad_1.abi<span class="w"> </span>&gt;<span class="w"> </span>tquad_1.log<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>err<span class="w"> </span><span class="p">&amp;</span>
@@ -6890,8 +6890,8 @@ including the option <a class="wikilink codevar-wikilink" href="/variables/dfpt#
 <span class="arithmatex">\(Q_{\kappa\beta}^{\gamma\delta} = Q_\kappa |\varepsilon_{\beta\gamma\delta}|\)</span> where <span class="arithmatex">\(\varepsilon_{\beta\gamma\delta}\)</span> is the Levi-Cevita symbol.</p>
 <p>In case you want to use the quadrupole tensor for the <a href="https://epw-code.org/">EPW</a> code, you can use
 the python convertor located in <code>abinit/scripts/post_processing/ab2epw_quad.py</code></p>
-<div class="text-center"><button id="uuid-94f94b90-5b81-4e40-a874-af255f7e90a4" class="md-button md-button--secondary"> View ../scripts/post_processing/ab2epw_quad.py </button></div>
-<div id="uuid-1d5c4a7e-84ca-4727-8506-3dcbcec1b3ba" class="my_dialog" title="../scripts/post_processing/ab2epw_quad.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Author: Samuel Ponc\&#39;e</span>
+<div class="text-center"><button id="uuid-ddb7a13b-a4c7-4d66-abec-5fcf0a07ed4e" class="md-button md-button--secondary"> View ../scripts/post_processing/ab2epw_quad.py </button></div>
+<div id="uuid-5faf685e-d8ae-4299-9972-4cf2922c350e" class="my_dialog" title="../scripts/post_processing/ab2epw_quad.py" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Author: Samuel Ponc\&#39;e</span>
 <span class="c1"># Date: 02/07/2024</span>
 <span class="c1"># Converter of quadrupole tensor from Abinit to EPW format (Quadrupole.fmt). </span>
 
@@ -6957,7 +6957,7 @@ the python convertor located in <code>abinit/scripts/post_processing/ab2epw_quad
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-1d5c4a7e-84ca-4727-8506-3dcbcec1b3ba", "#uuid-94f94b90-5b81-4e40-a874-af255f7e90a4") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-5faf685e-d8ae-4299-9972-4cf2922c350e", "#uuid-ddb7a13b-a4c7-4d66-abec-5fcf0a07ed4e") }); </script>
 
 <p>If you run the python code, the script will ask for the name of the output. Once provided you should obtain the following result:</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span>atom<span class="w">   </span>dir<span class="w">       </span>Qxx<span class="w">             </span>Qyy<span class="w">         </span>Qzz<span class="w">          </span>Qyz<span class="w">            </span>Qxz<span class="w">         </span>Qxy

@@ -6821,8 +6821,8 @@ contains first the definition of the wavelet basis-set. One may want to test
 the precision of the calculation by varying the <a class="wikilink codevar-wikilink" href="/variables/basic#wvl_hgrid">wvl_hgrid</a> and
 <a class="wikilink codevar-wikilink" href="/variables/gstate#wvl_crmult">wvl_crmult</a> variables. This is not the purpose of this tutorial, so we will
 use the given values (0.45 Bohr and 5).</p>
-<div class="text-center"><button id="uuid-6d9b8101-a1d0-4b33-b130-7d74802c4a78" class="md-button md-button--secondary"> View tests/tutoparal/Input/tgswvl_1.abi </button></div>
-<div id="uuid-b4082785-69a5-46fd-aaed-265ce5f65a28" class="my_dialog" title="tests/tutoparal/Input/tgswvl_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PARAL_GSWVL tutorial</span>
+<div class="text-center"><button id="uuid-edb2fbd3-5acd-482f-a819-20a099276b71" class="md-button md-button--secondary"> View tests/tutoparal/Input/tgswvl_1.abi </button></div>
+<div id="uuid-f33b224d-bc70-4959-9fdc-f58ed4beacec" class="my_dialog" title="tests/tutoparal/Input/tgswvl_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PARAL_GSWVL tutorial</span>
 <span class="c1"># 14 atom boron cluster, parallel calculation</span>
 
 <span class="c1">#-------------------------------------------------------------------------------</span>
@@ -6936,7 +6936,7 @@ optstress<span class="w"> </span><span class="m">0</span><span class="w">       
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-b4082785-69a5-46fd-aaed-265ce5f65a28", "#uuid-6d9b8101-a1d0-4b33-b130-7d74802c4a78") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-f33b224d-bc70-4959-9fdc-f58ed4beacec", "#uuid-edb2fbd3-5acd-482f-a819-20a099276b71") }); </script>
 
 <p>Run ABINIT with 3 processors. The overall time is printed at the end of the
 output file (and of the log):</p>
@@ -7137,8 +7137,8 @@ and the <strong>load balancing of the Poisson Solver</strong> (with 15 processor
 <code>tgswvl_2.abi</code>. It contains the definition of an alkane chain of 65 atoms,
 providing 64 orbitals.</p>
 <p><img alt="Boron14" src="../paral_gswvl_assets/alkane.jpg" width="60%" /></p>
-<div class="text-center"><button id="uuid-a5b7ec5b-18f1-405a-b53f-da7aeaa09b80" class="md-button md-button--secondary"> View tests/tutoparal/Input/tgswvl_2.abi </button></div>
-<div id="uuid-186b8a6e-5db8-4e00-9727-bb7f78953ca3" class="my_dialog" title="tests/tutoparal/Input/tgswvl_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PARAL_GSWVL tutorial</span>
+<div class="text-center"><button id="uuid-0f61ecbe-3a7c-44f6-ad21-d82ab03485de" class="md-button md-button--secondary"> View tests/tutoparal/Input/tgswvl_2.abi </button></div>
+<div id="uuid-0a184114-9962-4efc-b244-9bb7e8146dfc" class="my_dialog" title="tests/tutoparal/Input/tgswvl_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Input for PARAL_GSWVL tutorial</span>
 <span class="c1"># 65-atom alkane chain of 65 atoms, parallel calculation</span>
 
 <span class="c1">#-------------------------------------------------------------------------------</span>
@@ -7302,7 +7302,7 @@ optstress<span class="w"> </span><span class="m">0</span><span class="w">       
 </pre></div>
 </div></div>
 
-<script> $(function() { abidocs_jqueryui_dialog("#uuid-186b8a6e-5db8-4e00-9727-bb7f78953ca3", "#uuid-a5b7ec5b-18f1-405a-b53f-da7aeaa09b80") }); </script>
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-0a184114-9962-4efc-b244-9bb7e8146dfc", "#uuid-0f61ecbe-3a7c-44f6-ad21-d82ab03485de") }); </script>
 
 <p>Run this input file with {1, 2, 4, 8, 16, 24, 32, 48, 64} processors.
 The run with one processor should take less than one hour. If
