@@ -1,0 +1,13 @@
+# t61 is reserved for now and will be updated when python script will be enable (S.P.)
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = none
+#%% [files]
+#%% psp_files = 
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = 
+#%% description = 
+#%%<END TEST_INFO>

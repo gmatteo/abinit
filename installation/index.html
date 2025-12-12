@@ -1,0 +1,7517 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Abinit documentation">
+      
+      
+        <meta name="author" content="The Abinit group">
+      
+      
+        <link rel="canonical" href="https://gmatteo.github.io/abinit/installation/">
+      
+      
+      
+        <link rel="next" href="../INSTALL_MacOS/">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>HowTo - abinit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+    
+      
+    
+
+    <!--
+    IMPORTANT: Don't use boostrap in particular boostrap.css since it comes into conflict with mkdocs-material theme.
+    Prefer low-level tools based on Jquery or JS library such as Tippyjs to get the work done.
+    -->
+
+    <!-- Jquery from Google CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Load Jquery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Handle jQuery plugin naming conflict between jQuery UI and Bootstrap
+    https://stackoverflow.com/questions/13731400/jqueryui-tooltips-are-competing-with-twitter-bootstrap
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+      $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    -->
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!-- Tippyjs for popovers https://atomiks.github.io/tippyjs/ -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- font-awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!--Pace support. http://github.hubspot.com/pace/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/white/pace-theme-big-counter.min.css" />
+
+    <script>
+        paceOptions = {
+            ajax: true,      // disabled
+            document: true,  // activated
+            eventLag: false  // disabled
+            //target: 'article'
+            //elements: {selectors: ['.my-page']}
+        };
+    </script>
+
+    <!-- MathJax support
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    -->
+
+    <!-- This version is compatible with plotly. -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_SVG">
+    </script>
+
+    <!-- Configure MathJax to produce automatic equation numbers http://docs.mathjax.org/en/latest/tex.html -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX","output/HTML-CSS"],
+        //tex2jax: {inlineMath: [['$','$']]},
+        //displayAlign: "center",
+        TeX: {
+            equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "boldsymbol.js"],
+            Macros: {
+                "*": "{\\dagger}",
+                "ra": "{\\rangle}",
+                "la": "{\\langle}",
+                // Workaround for bm package. See https://github.com/mathjax/MathJax/issues/1219
+                bm: ["{\\boldsymbol #1}",1],
+                // Mathcal symbols
+                mcL: "{\\mathcal{L}}",
+                mcG: "{\\mathcal{G}}",
+                mcR: "{\\mathcal{R}}",
+                mcS: "{\\mathcal{S}}",
+                mcC: "{\\mathcal{C}}",
+                mcO: "{\\mathcal{O}}",
+                // Acronyms
+                KS: "{\\text{KS}}",
+                eph: "{\\text{e-ph}}",
+                ee: "{\\text{e-e}}",
+                phph: "{\\text{ph-ph}}",
+                FM: "{\\text{FM}}",
+                DW: "{\\text{DW}}",
+                QP: "{\\text{QP}}",
+                BZ: "{\\text{BZ}}",
+                sign: "{\\text{sign}}",
+                xc: "{\\text{xc}}",
+                tchi: "{\\tilde\\chi}",
+                // Symbols commonly used (k-points, eigenvalues ...)
+                rr: "{\\bf r}",
+                RR: "{\\bf R}",
+                tt: "{\\bf t}",
+                GG: "{\\bf G}",
+                bg: "{\\bf g}",
+                kk: "{\\bf k}",
+                qq: "{\\bf q}",
+                kq: "{\\kk + \\qq}",
+                qG: "{\\bf q + G}",
+                kG: "{\\bf k + G}",
+                kmq: "{\\kk - \\qq}",
+                kpq: "{\\kk + \\qq}",
+                kpG: "{\\kk + \\GG}",
+                qpG: "{\\qq + \\GG}",
+                nk: "{n \\kk}",
+                mk: "{, \\kk}",
+                nks: "{n \\kk\\sigma}",
+                mks: "{m \\kk\\sigma}",
+                enk: "{\\varepsilon_\\nk}",
+                emkq: "{\\varepsilon_{m\\kk+\\qq}}",
+                qnu: "{\\qq \\nu}",
+                wqnu: "{\\omega_{\\qnu}}",
+                vnk: "{\\mathbf{v}_{n\\kk}}",
+                vmkq: "{\\mathbf{v}_{m\\kk+\\qq}}",
+                vnka: "{\\mathrm{v}_{n\\kk,\\alpha}}",
+                vnkb: "{\\mathrm{v}_{n\\kk,\\beta}}",
+                ef: "{\\varepsilon_F}",
+                // EPH quantities
+                gkkp: "{g_{mn\\nu}(\\kk,\\qq)}",
+                gkq: "{g_{mn\\nu}(\\kk,\\qq)}",
+                //\newcommand{\gkkpL}{g_{mn\nu}^\Lc(\kb,\qb)}
+                // Many-body theory
+                Go: "{G_0}",
+                Wo: "{W_0}",
+                Ueff: "{U_{\\text{eff}}}",
+                Gove: "{\\overline{G}}",
+                Gund: "{\\underline{G}}",
+                // Greek symbols + tilde version
+                ee: "{\\epsilon}",
+                tee: "{\\tilde{\\epsilon}}",
+                ww: "{\\omega}",
+                tww: "{\\tilde\\omega}",
+                dd: "{\\,\\text{d}}",
+                vxc: "{v_\\xc}",
+                // symrel
+                Ri: "{\\mcR^{-1}}",
+                Rit: "{\\mcR^{-1\\tau}}",
+                // symrec
+                Si: "{\\mcS^{-1}}}",
+                Sit: "{\\Si^\\tau}}",
+                // partial and functional derivative.
+                PDER: ["{\\dfrac{\\partial #1}{\\partial #2}}", 2],
+                FDER: ["{\\dfrac{\\delta #1}{\\delta #2}}", 2],
+                // PAW
+                tPsi: "{\\tilde\\Psi}",
+                tpsi: "{\\tilde\\psi}",
+                tPhi: "{\\tilde\\Phi}",
+                tphi: "{\\tilde\\phi}",
+                tprj: "{\\tilde p}"
+            }
+          }
+      });
+    </script>
+
+    
+
+    
+
+    <!-- Load fonts used for input variables -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+      <link rel="stylesheet" href="../css/gallery.css">
+    
+      <link rel="stylesheet" href="../css/my_codehilite.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation-notes-for-abinit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="abinit" class="md-header__button md-logo" aria-label="abinit" data-md-component="logo">
+      
+  <img src="../images/logo-abinit-2015.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            abinit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HowTo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/abinit/abinit/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    github-abinit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  User Guides
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../topics/features/" class="md-tabs__link">
+          
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../variables/" class="md-tabs__link">
+          
+  
+  Variables
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tutorial/" class="md-tabs__link">
+          
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../faq/configuration_and_compilation/" class="md-tabs__link">
+          
+  
+  FAQ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../theory/geometry/" class="md-tabs__link">
+          
+  
+  Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../developers/git_and_gitlab/" class="md-tabs__link">
+          
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../about/release-notes/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="abinit" class="md-nav__button md-logo" aria-label="abinit" data-md-component="logo">
+      
+  <img src="../images/logo-abinit-2015.png" alt="logo">
+
+    </a>
+    abinit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/abinit/abinit/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    github-abinit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    User Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            User Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    HowTo
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    HowTo
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-get-a-version-of-abinit" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to get a version of ABINIT?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-compile-the-executables" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to compile the executables?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-write-the-hostnameac9-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to write the &ldquo;hostname&rdquo;.ac9 file?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-build-abinit-with-cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to build ABINIT with CMake ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-quickly-check-abinit-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to quickly check ABINIT installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run-the-internal-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to run the internal tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-execute-the-automatic-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to execute the automatic tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For developers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="For developers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-autotools-and-makemake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git, autotools and makemake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-the-source-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to generate the source package
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL_MacOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MacOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL_Ubuntu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ubuntu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL_CentOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CentOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL_EasyBuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EasyBuild
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL_gpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPUs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NewUser
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/abinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/abitk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abitk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/aim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/anaddb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaddb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/atdep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/cut3d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cut3d
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/fold2bloch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fold2Bloch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/mrgddb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mrgddb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/mrgscr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mrgscr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/multibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/optic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/respfn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Respfn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/spacegroup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spacegroup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topic List
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Abipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abipy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/APPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    APPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Artificial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/aTDEP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/AtomCentered/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AtomCentered
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/AtomManipulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AtomManipulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/AtomTypes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AtomTypes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Bader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Band2eps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Band2eps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Berry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Berry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/BandOcc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BandOcc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/BSE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BSE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/BoundingProcess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BoundingProcess
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ConstrainedDFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ConstrainedDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ConstrainedPol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ConstrainedPol
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Coulomb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coulomb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/CrossingBarriers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CrossingBarriers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/CalcUJ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CalcUJ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/crystal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crystal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/DFT%2BU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT+U
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/DeltaSCF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeltaSCF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/DensityPotential/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DensityPotential
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/DFPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/DMFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DMFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/DynamicsMultibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DynamicsMultibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/EffectiveMass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EffectiveMass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/EFG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EFG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Elastic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ElPhonInt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElPhonInt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ElPhonTransport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElPhonTransport
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ElecDOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElecDOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ElecBandStructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElecBandStructure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ExtFPMD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ExtFPMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/FileFormats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FileFormats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/FitProcess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FitProcess
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/ForcesStresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ForcesStresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/FrequencyMeshMBPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FrequencyMeshMBPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/GeoConstraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GeoConstraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/GeoOpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GeoOpt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/GSintroduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GSintroduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/GW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/GWR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/GWls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Hybrids/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hybrids
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/k-points/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K points
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/LatticeModel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LatticeModel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/LatticeWannier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LatticeWannier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/LWFModel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LWFModel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/LDAminushalf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAminushalf
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/LOTF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LOTF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/longwave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Longwave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Macroave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Macroave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/MagField/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MagField
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/MagMom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MagMom
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/MolecularDynamics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MolecularDynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/multidtset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multidtset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/NMR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NMR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/nonlinear/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nonlinear
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Optic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/parallelism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/PAW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/PIMD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PIMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Planewaves/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Planewaves
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Phonons/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phonons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/PhononBands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PhononBands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/PhononWidth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PhononWidth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Polaron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polaron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/PortabilityNonRegression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PortabilityNonRegression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/positron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Positron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/printing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Printing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/PseudosPAW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PseudosPAW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/q-points/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q points
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/RandStopPow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RandStopPow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Recursion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/RPACorrEn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPACorrEn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/RTTDDFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RTTDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/SCFControl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCFControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/SCFAlgorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCFAlgorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/SelfEnergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SelfEnergy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/SmartSymm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SmartSymm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/spinpolarisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spinpolarisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/SpinDynamicsMultibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SpinDynamicsMultibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/STM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Susceptibility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Susceptibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/TDDFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/TDepES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TDepES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Temperature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Temperature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/TransPath/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TransPath
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/TuningSpeedMem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TuningSpeedMem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Unfolding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfolding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/UnitCell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UnitCell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/vdw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vdw
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Wannier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wannier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/Wavelets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/xc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Xc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/external_resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Variables
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Variables
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All Variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Abinit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Abinit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/bse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bethe-Salpeter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/dmft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DMFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/eph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Electron-Phonon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/ffield/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Varff
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/geo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geometry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/gstate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ground-State
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/gw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/internal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/paral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/paw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/dfpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/rlx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relaxation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/rttddft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RTTDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/vdw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VdW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/w90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wannier90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/anaddb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaddb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/atdep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/multibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/optic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/aim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/external_parameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External Parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/varset_stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basic tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Basic tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/base1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/base2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/base3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/base4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/abinit_build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABINIT_build
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paw1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/spin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/polarization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polarization & finite field
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/rf1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/rf2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/basepar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ABINIT postprocessors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            ABINIT postprocessors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/atdep1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/cut3d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cut3D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/fold2bloch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fold2bloch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/optic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    optic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/wannier90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wannier90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/z2pack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Z2pack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DFT beyond basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            DFT beyond basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/nuc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    properties at the nucleus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/dftu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT+U
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/ucalc_crpa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cRPA U(J)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/lruj/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linear Response U(J)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paw2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paw3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/positron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    positron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Many-Body Theory & excitations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_12">
+            <span class="md-nav__icon md-icon"></span>
+            Many-Body Theory & excitations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/gw1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/gw2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/gwr_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWR_intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/gwr1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWR1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/bse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bethe-Salpeter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/dmft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DMFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/tddft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TDDFT (Casida)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/rttddft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RT-TDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DFPT & electron-phonon
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            DFPT & electron-phonon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/elastic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elastic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/nlo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nonlinear
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/lattice_wannier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lattice_wannier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/lw_quad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    quadrupoles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/eph_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph_intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/eph4mob/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph for mobilities
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/eph4zpr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph for zero-point renormalization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/eph4vpq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph for variational polaron equations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/eph_legacy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph_legacy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/eph_tdep_legacy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph_tdep_legacy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multibinit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_14">
+            <span class="md-nav__icon md-icon"></span>
+            Multibinit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/multibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction to multibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/lattice_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lattice_model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/spin_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    spin_model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/lwf_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lwf_model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced parallelism
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_15">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced parallelism
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paral_bandpw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_band_PW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paral_gswvl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_wavelets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paral_moldyn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_MD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paral_images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paral_dfpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/paral_mbt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_MBPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            FAQ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/configuration_and_compilation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration and compilation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/general_questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/pre_and_post_processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pre/Post processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/ground_state/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ground state
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/dfpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/Troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting (old-dokuwiki)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/tuning_abinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tuning (old-dokuwiki)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Theory
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Theory
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/geometry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geometry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/spherical_harmonics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spherical Harmonics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/wavefunctions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavefunctions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/noncollinear/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noncollinear
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/pseudopotentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pseudopotentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/mbt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Many-Body Perturbation Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/bse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bethe-Salpeter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/documents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/acknowledgments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/bibliography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bibliography
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/acronyms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acronyms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/git_and_gitlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git and Gitlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/developers_howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HowTo for developers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/abimkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abimkdocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/markdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Test Suite
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Test Suite
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/testsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test list
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/testsuite_howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Suite Howto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/new_testsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YAML-based test suite Howto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/yaml_tools_api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YAML-based test suite Python tools and API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/XgType/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XgType
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pseudos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            Pseudos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/psp1_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/psp3_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/psp45_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp45
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/psp5spinorbit_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/psp6_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/psp8_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/codestats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code stats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/autoconf_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autoconf_examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/testlink/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Page for linkcheck
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-get-a-version-of-abinit" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to get a version of ABINIT?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-compile-the-executables" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to compile the executables?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-write-the-hostnameac9-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to write the &ldquo;hostname&rdquo;.ac9 file?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-build-abinit-with-cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to build ABINIT with CMake ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-quickly-check-abinit-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to quickly check ABINIT installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run-the-internal-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to run the internal tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-execute-the-automatic-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to execute the automatic tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For developers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="For developers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-autotools-and-makemake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git, autotools and makemake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-the-source-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to generate the source package
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+  
+  
+
+
+<h1 id="installation-notes-for-abinit">Installation notes for ABINIT<a class="headerlink" href="#installation-notes-for-abinit" title="Permanent link">&para;</a></h1>
+<p>This page provides an introduction to the installation of the
+ABINIT package and the compilation of the executables.
+It also discusses how to test whether the compilation was successful by running the internal test suite.
+Finally, it gives related complements for the developers.</p>
+<p>Any comment or suggestion to improve the procedure or this page is welcome!
+Simply contact the ABINIT group on the <a href="https://discourse.abinit.org">discourse forum</a>.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>For the vast majority of people willing to use ABINIT (simple users -not developers-, with Unix/Linux or MacOS
+working in the terminal), the installation/compilation steps are:</p>
+<ol>
+<li><strong>Prerequisite</strong>: you need a Fortran compiler, a C compiler, the Python interpreter (&gt;= 2.7.5),
+     some mandatory libraries (<strong>BLAS/LAPACK</strong>, <strong>FFT</strong>, <strong>NetCDF4</strong>, <strong>HDF5</strong> and <strong>LibXC</strong>),
+     possibly some recommended libraries (MPI) and other optional libraries such as Wannier90.
+     The libraries can be installed with the help of the &ldquo;fallback&rdquo; procedure, see below for more info on this step.
+     Alternatively, you may want to install everything from source using the procedure detailed in
+     the <a href="/tutorial/abinit_build">ABINIT_build tutorial</a>.</li>
+<li>Get the <a href="https://www.abinit.org/packages">latest version of the ABINIT package</a> (abinit-x.y.z.tar.gz)
+     from the abinit web site.
+     More information are available <a href="#how-to-get-a-version-of-abinit">here</a>.</li>
+<li>Prepare a configuration file named &ldquo;hostname&rdquo;.ac9, that contains the information
+     about libraries and compilation options.
+     This step is not mandatory as the ABINIT <em>configure</em> script will try to detect the installation location
+     if options are not provided but the automatic detection procedure can fail.
+     See below for more information, as well as <a href="#how-to-write-the-hostnameac9-file">this section</a>.</li>
+<li>Issue <code>./configure</code> (or, even better, first create a <em>tmp</em> directory for the build
+     then <code>cd tmp</code> and finally run <code>../configure</code> within the build directory).
+     For further details, consult <a href="https://wiki.abinit.org/doku.php?id=build:configure">this link</a>.</li>
+<li>Issue <code>make</code> (or <code>make -jN</code> for compiling with N processors, e.g. <code>make -j4</code>
+     to use four processors). This step might take dozen of minutes depending on the compilation options.
+     More information are available <a href="#how-to-compile-the-executables">here</a>.</li>
+<li>Optionally, issue <code>make install</code> to install the package (root privileges are needed if the installation direction
+     is not specified via <code>--prefix</code>).</li>
+</ol>
+<p>Note that the details of step 1 and 3 might vary significantly depending on the operating system.
+Further details are provided by
+<a href="/tutorial/abinit_build">the ABINIT_build tutorial</a> that covers the scenario in which you want to build everything from source
+and install libraries in your $HOME directory.
+There are also other pages focusing on
+<a href="/INSTALL_MacOS">macOS</a>, <a href="/INSTALL_CentOS">CentOS</a> and <a href="/INSTALL_Ubuntu">Ubuntu</a>
+that discuss how to bypass the compilation of the external libraries
+using homebrew or MacPorts (for macOS), dnf (for CentOS) or apt (for Ubuntu).</p>
+<p>Examples of configuration files to compile Abinit on clusters are available
+in the <a href="https://github.com/abinit/abiconfig">abiconfig</a>  package on github
+(specifically the <a href="https://github.com/abinit/abiconfig/tree/master/abiconfig/clusters">directory for ABINITv9</a>),
+while the configuration files
+used for our buildbot testfarm are available in the <a href="/developers/autoconf_examples/">autoconf_examples section</a>.
+The <a href="https://wiki.abinit.org">ABINIT Wiki</a> also has a <strong>build abinit</strong> section, that might be useful.
+In particular, the current documentation for the fallback procedure is available
+<a href="https://wiki.abinit.org/doku.php?id=build:fallbacks">here</a> while configuration options are documented
+<a href="https://wiki.abinit.org/doku.php?id=build:configure">in this page</a>.</p>
+<p>If you succeed to build the executables, and would like to check whether
+the executables work properly, please consult the two sections on <a href="#how-to-run-the-internal-tests">Internal tests</a>
+and <a href="#how-to-execute-the-automatic-tests">Automatic tests</a>.</p>
+<p>If you want to have a much better handling on the ABINIT source code than normal users, or if
+you downloaded ABINIT from Gitlab or GitHub anyhow, then consult the section <a href="#for-developers">For developers</a>.</p>
+<p>From abinit version 10, there is an experimental support for the <a href="https://cmake.org/">CMake</a> build system; see <a href="#how-to-build-abinit-with-cmake">below</a>.</p>
+<h2 id="how-to-get-a-version-of-abinit">How to get a version of ABINIT?<a class="headerlink" href="#how-to-get-a-version-of-abinit" title="Permanent link">&para;</a></h2>
+<p>We assume that you have a F90 compiler under UNIX/Linux or macOS X and that you want to
+<strong>compile the source files</strong>, and, perhaps, <strong>modify and/or add
+new files</strong>. This is the typical scenario for most users and system administrators.
+In what follows, <em>x.y.z</em> represents the ABINIT version.</p>
+<p>In order to get the ABINIT package, you have first to download the file
+<strong>abinit-<em>x.y.z</em>.tar.gz</strong> from the
+<a href="https://www.abinit.org/packages">packages webpage</a> of the ABINIT Web site, then issue:</p>
+<div class="highlight"><pre><span></span><code>gunzip<span class="w"> </span>abinit-x.y.z.tar.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>-
+</code></pre></div>
+<p>Alternatively, you may use</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://www.abinit.org/sites/default/files/packages/abinit-x.y.z.tar.gz
+tar<span class="w"> </span>xzf<span class="w"> </span>abinit-x.y.z.tar.gz
+</code></pre></div>
+<p>If correctly done, a main directory, denoted ~abinit in the present document
+(usually, its real name will be <strong>abinit-<em>x.y.z</em></strong>) and a whole set of
+subdirectories should have been created, including:</p>
+<ul>
+<li>the source files inside the <strong><em>src</em></strong> directory;</li>
+<li>a tarball with the fallbacks and a script to create libraries in the directory <strong><em>fallbacks</em></strong>;</li>
+<li>the documentation in the <strong><em>doc</em></strong> directory;</li>
+<li>the complete set of tests and the pseudopotentials needed for the automatic tests in the directory <strong><em>tests</em></strong>;</li>
+<li>all the scripts and configuration options needed to generate <em>configure</em> and Makefiles
+    in the <strong><em>config</em></strong> directory.</li>
+</ul>
+<p>Obviously, the package does not contain object files and binary executables that will be built by <em>make</em>.
+Note also that pseudopotentials for production runs <strong>are not shipped</strong> with the package.
+The tarball contains several dozen pseudopotentials <strong>for testing purposes</strong> in ~abinit/tests/Psps_for_tests.
+The largest set of pseudopotentials and PAW atomic datafiles for production runs can be found
+on the <a href="http://www.abinit.org/psp-tables">ABINIT Atomic data pseudopotentials and PAW datasets Web page</a>.
+Other pseudopotentials have been generated by many different users, and might be
+shared but you might have to contact them.</p>
+<p>The web site <a href="https://www.abinit.org">https://www.abinit.org</a> contains many other resources including links to the forum,
+the mailing list, the ABINIT events etc and, last but not least, tutorials and documentation pages.</p>
+<h2 id="how-to-compile-the-executables">How to compile the executables?<a class="headerlink" href="#how-to-compile-the-executables" title="Permanent link">&para;</a></h2>
+<p>We now suppose that you have a F90 compiler and that you want to compile the source files.</p>
+<p>In most cases, you will have to provide to the <em>configure</em> utility some
+information: the location of the F90 compiler (and sometimes even the C
+compiler), the adequate compiler options, and, if you want to
+produce the parallel binaries, the location of the MPI library.</p>
+<p>Although the present building tools should be powerful enough to
+succeed to build the binaries without you giving such information,
+on a significant number of platforms it has been observed that it is still better to specify
+options explicitly in order to avoid suboptimal executables or downgraded capabilities.</p>
+<p>Supposing that you are in the lucky case in which the build system is able detects all the requirements,
+then building ABINIT is rather simple.
+Issue:</p>
+<ul>
+<li><code>./configure</code> (or first create a tmp directory, then <code>cd tmp</code>, then <code>../configure</code>).</li>
+<li><code>make</code> (or <code>make -jN</code> for compiling with N processors on a SMP machine, e.g. <code>make -j4</code> for four processors).
+    Might take two minutes.</li>
+<li>Optionally, <code>make install</code></li>
+</ul>
+<p>Well, it might also be that only one additional information is needed, in which case something like:</p>
+<div class="highlight"><pre><span></span><code>configure<span class="w"> </span><span class="nv">FC</span><span class="o">=</span>gfortran
+make
+</code></pre></div>
+<p>might work. In both cases, let&rsquo;s explain a bit what is done, and the further possibilities.</p>
+<p>The <em>configure</em> step produces the set of Makefile files (among other things),
+taking into account information about your machine and the &ldquo;hostname&rdquo;.ac9 file.
+It takes three minute or less. The <em>make</em> step compiles everything,
+according to the Makefile files produced in the previous step.
+The executables will be located in the subdirectory ~abinit/src/98_main, if
+you have chosen to issue ./configure in the ~abinit directory. If you have
+issued ./configure in another directory, it will be placed accordingly.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The time required to build
+everything is highly dependent on the compiler and platform. On a 2.8 GHz
+quad-proc machine (using <em>make -j4</em>), the whole compilation is about 10 minutes.
+On other platforms, with only one processor, it might be more than one hour.</p>
+</div>
+<p>The <em>make</em> command accepts the name of the target(s) as optional argument.
+To compile only one of the executable after the configure step, issue</p>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>name_of_the_binary
+</code></pre></div>
+<p>where <em>name_of_the_binary</em> can be <em>abinit</em>, <em>cut3d</em>, <em>anaddb</em>, etc.</p>
+<p>Also,</p>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>install
+</code></pre></div>
+<p>will install the package in the /usr/local directory.</p>
+<h2 id="how-to-write-the-hostnameac9-file">How to write the &ldquo;hostname&rdquo;.ac9 file?<a class="headerlink" href="#how-to-write-the-hostnameac9-file" title="Permanent link">&para;</a></h2>
+<p>Let&rsquo;s come back to the case where the build system needs some more
+information. This information should be stored in a file named &ldquo;hostname&rdquo;.ac9,
+where &ldquo;hostname&rdquo; is the result of executing the command <code>hostname -s</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note that the command <code>hostname</code> by default returns the fully qualified domain name (FQDN),
+e.g. abiref.pcpm.ucl.ac.be,
+while only the first word of the returned chain of character is needed, e.g. abiref.
+This is the reasone why we had to use <code>hostname -s</code>.</p>
+</div>
+<p>There is a template for such &ldquo;hostname&rdquo;.ac9 file, located in ~abinit/doc/config.
+Its name is <em>config-template.ac9</em>.
+Examples of such files, that are used for testing the package on our testfarm,
+can be found in ~abinit/doc/build/config-examples,
+or equivalently in the <a href="/developers/autoconf_examples/">autoconf_examples section</a>.
+Additional examples of configuration files for clusters are provided by the <em>abiconfig</em> project
+and are available <a href="https://github.com/abinit/abiconfig/tree/master/abiconfig/clusters">here</a>.</p>
+<p>Most of the examples provided in the ~abinit/doc/build/config-examples
+directory contain five important variables: location of the F90/C compilers,
+F90 and C compilation options, location of MPI library (if enabled).
+On the other hand, there are many other additional control flags (&ldquo;with_XYZ&rdquo;),
+needed for advanced use.</p>
+<p>Your hostname.ac9 file might be placed in your home directory inside a new
+directory named ~/.abinit/build.
+If you opt for this solution, every time you
+install a new version of ABINIT, the configuration file will be automatically used by
+the configure script so you do not have to care anymore about this file after the first installation.</p>
+<p>On the other hand, if you want to play with several configurations,
+you can place the hostname.ac9 file in the ~abinit directory, where such a
+hostname.ac9 file will be also seen by the build system (and preferred over the
+one located in ~/.abinit/build) or inside your build directory (like ~abinit/tmp).
+As mentioned above, you might even input the options contained in the hostname.ac9 file
+directly on the command line.</p>
+<p>Note the order of precedence for the location of the hostname.ac9 file (or
+command-line interface), in case more than one possibility is used
+(decreasing order of precedence):</p>
+<ul>
+<li>Command line (overcome all other information)</li>
+<li>Your build directory (~abinit/tmp)</li>
+<li>The ABINIT top source directory (~abinit)</li>
+<li>~/.abinit/build</li>
+<li>/etc/abinit/build</li>
+</ul>
+<p>When the hostname.ac9 file is ready, you can come back to the configure/make sequence.</p>
+<h2 id="how-to-build-abinit-with-cmake">How to build ABINIT with CMake ?<a class="headerlink" href="#how-to-build-abinit-with-cmake" title="Permanent link">&para;</a></h2>
+<p>As an alternative to the autotools, you can use <a href="https://cmake.org/">CMake</a> to build ABINIT. You just need to follow step 1 and 2 from the <a href="#overview">overview</a> above. No need to write an <em>ac9 file_</em>, <code>CMake</code> should be able to figure out where all required software dependencies are installed on your build host.</p>
+<p>Here are the steps for building abinit, where all options take default values:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># step 0: create build directory</span>
+<span class="nb">cd</span><span class="w"> </span><span class="k">$(</span>ABINIT_TOPLEVEL_SOURCE<span class="k">)</span>
+mkdir<span class="w"> </span>_build_cmake<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>_build_cmake
+<span class="c1"># step 1: cmake configure</span>
+cmake<span class="w"> </span>-S<span class="w"> </span>..
+<span class="c1"># step 2: build using 8 threads</span>
+make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
+</code></pre></div>
+<p>Then ABINIT executable will be available in folder <code>_build_cmake/src/98_main/</code>. You can use it as if you had built ABINIT with the <code>autotools</code> build system.</p>
+<blockquote>
+<p><strong>Important note: Assisting <code>CMake</code> build system is highly recommended</strong>
+The external depndencies detection system is still under development; only <code>pkg-config</code> detection is fully operational (see note below).
+It is strongly recommended to guide the build system by specifying the path to the libraries as follows (steps 1 and 2 above):
+<div class="highlight"><pre><span></span><code><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;path/to/netcdf/lib/pkgconfig:path/to/netcdf_fortran/lib/pkgconfig:path/to/libxc/lib/pkgconfig:</span><span class="nv">$PKG_CONFIG_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;my_C_compiler&quot;</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;my_C++_compiler&quot;</span><span class="w"> </span><span class="nv">FC</span><span class="o">=</span><span class="s2">&quot;my_Fortran_compiler&quot;</span><span class="w"> </span><span class="nv">CPP</span><span class="o">=</span><span class="s2">&quot;my_C_preprocessor&quot;</span><span class="w"> </span>cmake<span class="w"> </span>-S<span class="w"> </span>..
+make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
+</code></pre></div></p>
+</blockquote>
+<p>If you want to change <code>CMake</code> build parameters, you can either add optional flags on the <code>cmake</code> configure command line, i.e. modify step 1. For example, let&rsquo;s assume you want ABINIT to use MKL instead of FFTW library for computing Fast Fourier transforms, use the following modified step 1:</p>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S<span class="w"> </span>..<span class="w"> </span>-DABINIT_FFT_FLAVOR<span class="o">=</span>MKL_DFTI
+</code></pre></div>
+<p>If you want to explore all available <code>CMake</code> configuration parameters and build options, simply use <code>ccmake</code> for the configuration step:</p>
+<div class="highlight"><pre><span></span><code>ccmake<span class="w"> </span>-S<span class="w"> </span>..
+</code></pre></div>
+<p>You will enter a terminal user interface where you can navigate using the up and down arrow keys to select a <code>CMake</code> parameter, view the available options, and choose a new value. If you modify a parameter within the <code>ccmake</code> interface, you must press ‘c’ to prompt <code>CMake</code> to acknowledge the change and then ‘g’ to regenerate all Makefiles. Typically, you can simply follow the instructions displayed at the bottom of the <code>ccmake</code> interface.</p>
+<p>Most of the configuration parameters available in the <code>autotools</code> build system are also supported in the <code>CMake</code> build process.</p>
+<p>Additionally, you can configure ABINIT to leverage GPU hardware, if supported by your system. To do so, you should consider enabling the option <code>ABINIT_ENABLE_GPU_CUDA</code> (NVIDIA) or <code>ABINIT_ENABLE_GPU_HIP</code> (AMD) (e.g.: <code>cmake -S .. -DABINIT_ENABLE_GPU_CUDA=ON</code>). Documentation for this feature will be provided soon.</p>
+<div class="admonition note">
+<p class="admonition-title">How CMake detects external dependencies?</p>
+<p>Most of the external dependencies are detected by <code>CMake</code> using either macro <a href="https://cmake.org/cmake/help/latest/command/find_package.html">find_package</a> or macro <a href="https://cmake.org/cmake/help/latest/module/FindPkgConfig.html#command:pkg_check_modules">pkg_check_modules</a>.
+In case <code>CMake</code> isn&rsquo;t able to detect the location of some required dependencies, e.g. when you installed a library in a non standard directory, most of the time you just need to export an environment variable to tell <code>CMake</code> where to look for. As an example, if you installed library fftw in a custom location, as fftw is detected by <code>pkg_check_modules</code> you just need to prepend variable <code>PKG_CONFIG_PATH</code> with the name of the folder containing file <code>fftw3.pc</code>. Alternatively, if the library is detected using <code>find_package</code>, you may need to adjust environment variable <code>CMAKE_PREFIX_PATH</code> with the full path location where the library is installed (usually a subfolder named <code>cmake</code>).</p>
+</div>
+<h2 id="how-to-quickly-check-abinit-installation">How to quickly check ABINIT installation<a class="headerlink" href="#how-to-quickly-check-abinit-installation" title="Permanent link">&para;</a></h2>
+<p>After compiling ABINIT, it is highly recommended to run some tests to validate the installation.</p>
+<p>Obviously, it is recommended to run the full test suite, but this can take a lot of time. However, it is possible to run <strong>a smaller set of tests</strong> that cover most of the main features. For these tests, only a comparison of the main physical results in the output is performed (and not a line-by-line comparison of the output files), making it a very useful feature for quickly verifying an installation on a new architecture.</p>
+<p>To do this, simply run:
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>check
+</code></pre></div></p>
+<blockquote>
+<p>Note: make check is strictly equivalent to executing:
+  <code>cd tests &amp;&amp; ~abinit_src_dir/tests/runtests.py --keywords MINIMAL --yaml-simplified-diff</code></p>
+</blockquote>
+<h2 id="how-to-run-the-internal-tests">How to run the internal tests<a class="headerlink" href="#how-to-run-the-internal-tests" title="Permanent link">&para;</a></h2>
+<p>The abinit code has several small internal tests (three basic ones, called <em>fast</em>, <em>v1</em> and
+<em>v5</em>, and then one for each of the libraries <em>bigdft</em>, <em>etsf_io</em>, <em>libxc</em>,
+<em>wannier90</em>), that can be issued automatically, and that check automatically whether the results are correct.
+These tests are available whether you have got the package from the Web or from the ABINIT
+archive. Of course, you need to have compiled abinit in order to run the
+internal tests. Moreover, the simple implementation procedure assumes that the
+executable is located in ~abinit/src/98_main (the standard location after issuing <em>make</em>).</p>
+<blockquote>
+<p>Note: The difference between the internal tests and running <code>make check</code> lies in the fact that these internal tests only include testing a fixed set of very simple features, and in this case, the output files are compared line by line.</p>
+</blockquote>
+<p>You can begin with the <em>fast</em> suite. Simply issue the command:</p>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>test_fast
+</code></pre></div>
+<p>It will run for a few seconds. It should print:</p>
+<div class="highlight"><pre><span></span><code>Status file, reporting on built-in test fast
+
+==&gt; The run finished cleanly.
+    Moreover, comparison of the total energy, and other (few) relevant quantities with reference values has been successful.
+    This does not mean that no problem is present, however.
+    Please run the complete set of ABINIT tests to gain a better confidence in your installation.
+</code></pre></div>
+<p>This means that the internal <em>fast</em> suite ran successfully. If you do not get
+this message, then the executables were not properly generated, or there is a
+problem with the makefile that drives the internal test. In this case, after
+having tried to solve the problem by yourself, you should contact somebody in
+the ABINIT group.</p>
+<p>In addition to this small message, you can have access to all generated files,
+that are located inside the tests/built-in/Input subdirectory.</p>
+<p>Supposing the <em>fast</em> tests are OK, then you might issue the command:</p>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>tests_in
+</code></pre></div>
+<p>The <em>fast</em> tests will be executed once more, followed by the other internal tests.
+Again, we hope that you will get the positive diagnostics for the other tests.
+Of course, the <em>bigdft</em>, <em>etsf_io</em>, <em>libxc</em>, and <em>wannier90</em> needs the
+appropriate library to be installed in order to work properly.</p>
+<p>For further information on these internal tests, see the ~abinit/tests/built-in/README file.</p>
+<p>You might now read the <a href="/guide/new_user">new user&rsquo;s guide</a>, in
+order to learn how to use the code, and then follow the four basic
+tutorials, see the <a href="/tutorial/">entry page for the tutorials</a>.
+This is useful if you consider that the installation has been successful. Or
+you might continue to read the present Web page, and try to perform the speed
+tests, as well as the other tests.</p>
+<h2 id="how-to-execute-the-automatic-tests">How to execute the automatic tests<a class="headerlink" href="#how-to-execute-the-automatic-tests" title="Permanent link">&para;</a></h2>
+<p>The workhorse script to run the test suite is called <em>runtests.py</em>.
+It is very flexible.
+A reasonable set of tests (those contained in the fast and v&rdquo;x&rdquo;
+directories), can be executed automatically by issuing inside the ~abinit/tests directory the command:</p>
+<div class="highlight"><pre><span></span><code>./runtests.py
+</code></pre></div>
+<p>or e.g.</p>
+<div class="highlight"><pre><span></span><code>./runtests.py<span class="w"> </span>-j4
+</code></pre></div>
+<p>to run the test suite in parallel with 4 cores.</p>
+<p>This is the recommended procedure for developers. In order to execute these
+tests, you will need a larger disk space than for the simple installation of
+the code (the total additional disk space required is on the order of 1GB).</p>
+<p>The command line options of <em>runtests.py</em> are numerous. Please issue</p>
+<div class="highlight"><pre><span></span><code>./runtests.py<span class="w"> </span>--help
+</code></pre></div>
+<p>in order to access the documentation with the examples or consult the video below.</p>
+<p><a href="https://asciinema.org/a/40324"><img alt="asciicast" src="https://asciinema.org/a/40324.png" /></a></p>
+<p>Let us now examine the different subdirectories of the ~abinit/tests directory.</p>
+<p>~ABINIT/tests/fast is the simplest, and its content will be described in some
+detail below. For tests of the parallel version see the directory tests/paral. For tests
+of the response function features of abinit, and for tests of mrgddb and
+anaddb, see the subdirectories tests/v2. The other directories tests/v3,
+tests/v4, etc present further tests of recently implemented features of ABINIT.</p>
+<p><strong>1) tests/fast</strong> (for the sequential version only)</p>
+<p>This subdirectory contains a basic set of tests of the code, aimed at testing
+whether the code is coherent in time (successive versions), and exercising
+several parts of the code. However, they do not examine its accuracy on
+physical problems, mainly because the number of plane waves is too small,
+and some tests are not run to self-consistent convergence.
+32 MB of memory should be enough for these tests.</p>
+<p>The input files for each of the tests can be found in the
+~abinit/tests/fast/Input directory. At the bottom of each input file,
+there is a section with metadata and parameters defining the test.
+Such metadata mentions the executable to be
+used, the output files to be analyzed, the admitted tolerances with respect to
+reference output files, the author of the test and a brief description of the test.</p>
+<p>To run only the tests in this directory, simply issue</p>
+<p><div class="highlight"><pre><span></span><code>./runtests.py<span class="w"> </span>fast
+</code></pre></div>
+in the ~abinit/tests/ directory.</p>
+<p>The script will create a directory named <em>Test_suite</em>. All the results will be stored in that
+directory. The output files are be automatically compared  to a set of reference files (in ~abinit/tests/fast/Refs)
+thanks to the GNU &lsquo;diff&rsquo; utility.
+The corresponding difference files are prefixed by &lsquo;diff.&rsquo;.</p>
+<p>In addition to &lsquo;diff&rsquo;, there are two other levels of automatic analysis: one
+based on a python diff tool called &lsquo;fldiff&rsquo;, producing &lsquo;fldiff.report&rsquo; files,
+and another where the output of &lsquo;fldiff&rsquo; is further analyzed to produce a
+brief report called &lsquo;report&rsquo;. The latter step is only performed in case all
+the tests cases of one directory are performed (including the case where tests
+of different directories are performed).</p>
+<p>The one-line summaries produced by fldiff (see later) are compared with the
+tolerances indicated in the input file (metadata added at the end of the input
+file). This procedure produces a file called &ldquo;report&rdquo;, in which there is a one
+line assessment of the behaviour of each test: succeeded (everything is OK),
+passed (the test is OK for users in production), passed marginally (the test
+is within 1.5 of the usually accepted deviation, which is likely OK for most
+applications - still to be improved by the development team, though), failed
+(there is a problem, the deviation is usually not accepted). This is by far
+the most convenient tool to analyze the automatic tests of abinit.</p>
+<p>The vast majority of tests cases succeed or pass on all platforms that are
+used by the developer team in Louvain-la-neuve. Some problems are mentioned in
+the file ~abinit/KNOWN_PROBLEMS. Additionally, there might be specific
+problems for some test case for some platforms, also mentioned in
+~abinit/KNOWN_PROBLEMS. So, apart from the known problems, mentioned in this
+file, the &ldquo;report&rdquo; file should mention, for each test case, only &ldquo;succeeded&rdquo; or &ldquo;passed&rdquo;.</p>
+<p>The comparing tool &lsquo;fldiff&rsquo; -for &lsquo;floating diff&rsquo;- performs in a more detailed
+way the comparison of floating numbers between the output files and the
+reference files than in the case of a &lsquo;diff&rsquo; command. As used presently, for
+each run inside one directory, one single file, called &lsquo;fldiff.report&rsquo;, will
+be produced, and gather the analysis for all tests in that directory.</p>
+<p>If for one test case, the two files differ by the number of lines, the
+&lsquo;fldiff.report&rsquo; file will report that it cannot compare the two files. Usually
+this problem will be seen at the level of &lsquo;command signs&rsquo; appearing sometimes
+in the first column of the output files, so a typical error message
+(announcing something went wrong) will be:</p>
+<div class="codehilite"><pre><span></span><code>Case_1
+22
+The diff analysis cannot be pursued: the command sign differ.
+</code></pre></div>
+
+<p>By contrast, it will identify the floating numbers and ignore their
+differences if they are within some prescribed tolerance, or if the difference
+is not relevant. For example, it is able to ignore the differences in timings.
+If everything goes fine for a test, fldiff should identify only the differences in:</p>
+<ul>
+<li>the dates of execution (possibly);</li>
+<li>the version numbers (possibly);</li>
+<li>the platform description (possibly);</li>
+<li>the overall execution time (this is ALWAYS printed, even without differences).</li>
+</ul>
+<p>So, a successful execution of one test case may be announced as follows in the fldiff.report file:</p>
+<div class="codehilite"><pre><span></span><code>Case_1
+2
+&lt;  Version 8.0.6  of ABINIT
+<span class="k">&gt; </span><span class="ge"> Version 8.0.3  of ABINIT</span>
+5
+&lt;  Starting date: Mon 23 May 2016.
+<span class="k">&gt; </span><span class="ge"> Starting date: Mon  4 Apr 2016</span>
+202
+&lt; +overall time at end (sec): cpu=          7.1  wall=          8.0
+<span class="k">&gt; </span><span class="ge">+Overall time at end (sec): cpu=          7.3  wall=          8.0</span>
+Summary Case_1: no significant difference has been found
+</code></pre></div>
+
+<p>The fldiff.report file will have one such section for each test_case that was
+run. It begins with the number of the test case, then includes a few blocks of
+three lines: the number of the line where something is happening, followed by
+the content of the two lines. Finally, there is a one-line summary for each test case.</p>
+<p>More information on the fldiff script can be found in the ~abinit/tests/Scripts/fldiff.pl file.</p>
+<p><strong>2) tests/v1</strong></p>
+<p>This directory contains tests built in the same spirit as those in the
+test/fast directory, but that exercise other basic features, like the
+treatment of metals, the GGA, the new pseudopotentials, the multi-dataset
+mode, the cell parameters optimization, and the spatial symmetry groups
+database. These were developed during the development time of the version 1 of
+ABINIT. Of course, the automatic difference procedure only compares to recent
+runs of the ABINIT code. As for the &lsquo;fast&rsquo; test cases, the fldiff.report and
+report files are also available. 64 MB of memory should be enough for these tests.</p>
+<p><strong>3) tests/v2</strong></p>
+<p>This directory contains tests built in the same spirit as those in the
+tests/fast/ or tests/v1 directory, but that exercise features not present in
+version 1 of the ABINIT package, mainly the response function features, and
+the use of the mrgddb and anaddb codes. Again, the automatic difference
+procedure only compares to recent runs of the ABINIT code. As for the &lsquo;fast&rsquo;
+test cases, the fldiff.report and report files are also available. 64 MB of
+memory should be enough for these tests.</p>
+<p><strong>4) tests/v3, tests/v4, tests/v5, tests/v6, tests/v67mbpt, tests/v7, tests/v8, tests/v9, tests/bigdft,
+    tests/etsf_io, tests/libxc, tests/wannier90</strong></p>
+<p>These directories contain tests built in the same spirit as those in the
+tests/fast/, tests/v1, tests/v2 directory, but that exercise features not present in the
+version 1 or 2 of the ABINIT package, noticeably the
+use of the GW code, the utilities Cut3d, AIM, .., the PAW &hellip; . Or the
+interfacing with fallbacks. Again, the automatic difference procedure only
+compares to recent runs of the ABINIT code. Like for the &lsquo;fast&rsquo; test cases, the
+fldiff.report and report files are also available. 64 MB of memory should be
+enough for these tests.</p>
+<p><strong>5) tests/paral/ and tests/mpiio/</strong> (need MPI support)</p>
+<p>This directory contains tests built in the same spirit as those in the
+test/fast/ directory, but that exercise the parallel version of the ABINIT code.</p>
+<p>The script runtests.py considers one of the different input files, and for
+this file, it will use the parallel code with one processing node, then
+perform different parallel runs with an increasing number of processing nodes,
+as specified in the metadata contained in the input file. As for the other
+series of test, the diff and the fldiff utilities are used automatically, and
+fldiff.report and report files are produced automatically.</p>
+<h2 id="for-developers">For developers<a class="headerlink" href="#for-developers" title="Permanent link">&para;</a></h2>
+<p>Note the documentation available in the pages labelled <a href="/developers/git_and_gitlab/">Developers</a>,
+as well as the <a href="https://wiki.abinit.org">developer&rsquo;s corner of the Wiki</a>.
+The following sections are complements for the installation from gitlab, and the generation of the
+ABINIT distribution.</p>
+<h3 id="git-autotools-and-makemake">Git, autotools and makemake<a class="headerlink" href="#git-autotools-and-makemake" title="Permanent link">&para;</a></h3>
+<p>If you want to have a full handle on the package (compilation, modification of files, writing
+of scripts, you need additional prerequisites, the
+(free) software applications <em>git</em>, <em>automake</em>, <em>autoconf</em>, <em>libtools</em>.</p>
+<p>More explicitly, you need minimally (version numbers can be upgraded)</p>
+<ul>
+<li><a href="ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz">GNU Autoconf 2.69</a></li>
+<li><a href="ftp://ftp.gnu.org/gnu/automake/automake-1.15.tar.gz">GNU Automake 1.15</a></li>
+<li><a href="ftp://ftp.gnu.org/gnu/libtool/libtool-2.2.4.tar.gz">GNU Libtool 2.2.4</a></li>
+<li><a href="ftp://ftp.gnu.org/gnu/m4/m4-1.4.4.tar.gz">GNU M4 1.4</a></li>
+</ul>
+<p>If you do not have these tools, please consult your local computer guru, and/or the following pages:</p>
+<ul>
+<li><a href="https://wiki.abinit.org/doku.php?id=developers:overview">An overview of ABINIT development</a></li>
+<li><a href="https://wiki.abinit.org/doku.php?id=developers:hike">10 steps to hike ABINIT</a></li>
+<li><a href="https://wiki.abinit.org/doku.php?id=bb:overview">Buildbot and the test farm</a></li>
+</ul>
+<p>If you want to develop on a regular basis, please have a Git(lab) access
+created for you by contacting Jean-Michel Beuken, as described in these pages.
+If it is only very occasional, you might as well rely on the <a href="https://github.com/abinit">ABINIT Github Web site</a>.</p>
+<p>It is strongly advised to subscribe to the <a href="https://discourse.abinit.org/">ABINIT discourse forum</a>
+to receive the latest information concerning new developments.</p>
+<p>After having installed git, and obtained a gitlab branch on the ABINIT internal server,
+create an autonomous copy of the source code, on top of which you have to make your development.
+This is explained in the ABINIT wiki
+<a href="https://wiki.abinit.org/doku.php?id=developers:git:specificities_git_abinit">gitlab: ABINIT specificities</a></p>
+<p>For your gitlab branches on the internal server, you will have the
+permission not only to clone/fetch/pull, but also to commit/push your
+modifications. You might alternatively download other branches of the
+archives, but you will not be able to commit to these branches. So, do not
+start to modify these, you will not be able to include them afterwards in the archive.</p>
+<p>Working with <code>git clone</code> creates a local archive for your daily work, this
+archive being linked to the main ABINIT archive. This very efficient technique
+is recommended as it makes you more independent for the management of your
+work (you will be able to create new branches). One big advantage of this
+approach is that people working with a laptop can develop and commit safely
+without a network connection.</p>
+<p>Then, make sure you have the ABINIT prerequisite (compilers, libraries etc), and that you
+have set up an ac9 file.</p>
+<p>At this stage, before being able to compile, cd to the newly created abinit directory, and issue:</p>
+<div class="highlight"><pre><span></span><code>./config/scripts/makemake
+</code></pre></div>
+<p>This command initializes a whole set of files and scripts, needed for the
+autotools, as well as for the global work on ABINIT sources.
+This initialization might take up to two minutes.
+After this initialisation, you can proceed with the configure/make procedure
+as described in section 2.</p>
+<h3 id="how-to-generate-the-source-package">How to generate the source package<a class="headerlink" href="#how-to-generate-the-source-package" title="Permanent link">&para;</a></h3>
+<p>If you want to produce the source package abinit-<em>x.y.z</em>.tar.gz, after having compiled and tested ABINIT, issue:</p>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>dist
+</code></pre></div>
+<p>inside ~abinit/.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+<!--
+Add dropdown button with toolbar (based on https://bootsnipp.com/snippets/featured/inbox-by-gmail)
+and return to Top button (based on https://codepen.io/rdallaire/pen/apoyx)
+-->
+<div class="md-container">
+  <div class="row">
+    <div id="inbox">
+      <div class="fab btn-group show-on-hover dropup">
+        <div data-toggle="tooltip" data-placement="left" title="Menu" style="margin-left: 42px;">
+          <button id="return-to-top" type="button" class="btn btn-primary btn-io dropdown-toggle" data-toggle="dropdown">
+            <span class="fa-stack fa-2x">
+               <i class="fa fa-circle fa-stack-2x fab-backdrop"></i>
+               <i class="fa fa-chevron-up fa-stack-1x fa-inverse fab-primary"></i>
+               <i class="fa fa-map-signs fa-stack-1x fa-inverse fab-secondary"></i>
+            </span>
+          </button>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+        
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/about/release-notes/"
+               data-toggle="popover" data-tippy-content="About">
+               <i class="fa fa-info-circle"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/developers/git_and_gitlab/"
+               data-toggle="popover" data-tippy-content="Developers">
+               <i class="fa fa-terminal"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/theory/geometry/"
+               data-toggle="popover" data-tippy-content="Theory">
+               <i class="fa fa-book"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/faq/configuration_and_compilation/"
+               data-toggle="popover" data-tippy-content="FAQ">
+               <i class="fa fa-graduation-cap"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/tutorial/"
+               data-toggle="popover" data-tippy-content="Tutorials">
+               <i class="fa fa-file-text-o"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/variables/"
+               data-toggle="popover" data-tippy-content="Variables">
+               <i class="fa fa-question"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/topics/features/"
+               data-toggle="popover" data-tippy-content="Topics">
+               <i class="fa fa-user-circle-o"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href=""
+               data-toggle="popover" data-tippy-content="User Guides">
+               <i class="fa "></i>
+            </a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="footer.title">
+      
+      
+        <a href="../INSTALL_MacOS/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              MacOS
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+            <center>Abinit version 10.4.7</center>
+        
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2024 The Abinit Group
+            
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abinit/abinit" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/watch?v=gcbfb_Mteo4" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="http://www.facebook.com/abinit.org" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/hashtag/abinit" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "header.autohide"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "10.4.7"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../extra_javascript/abidocs.js"></script>
+      
+    
+  </body>
+</html>

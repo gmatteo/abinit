@@ -1,0 +1,7654 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Abinit documentation">
+      
+      
+        <meta name="author" content="The Abinit group">
+      
+      
+        <link rel="canonical" href="https://gmatteo.github.io/abinit/tutorial/optic/">
+      
+      
+        <link rel="prev" href="../fold2bloch/">
+      
+      
+        <link rel="next" href="../wannier90/">
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>optic - abinit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+    
+      
+    
+
+    <!--
+    IMPORTANT: Don't use boostrap in particular boostrap.css since it comes into conflict with mkdocs-material theme.
+    Prefer low-level tools based on Jquery or JS library such as Tippyjs to get the work done.
+    -->
+
+    <!-- Jquery from Google CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Load Jquery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Handle jQuery plugin naming conflict between jQuery UI and Bootstrap
+    https://stackoverflow.com/questions/13731400/jqueryui-tooltips-are-competing-with-twitter-bootstrap
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+      $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    -->
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!-- Tippyjs for popovers https://atomiks.github.io/tippyjs/ -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- font-awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!--Pace support. http://github.hubspot.com/pace/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/white/pace-theme-big-counter.min.css" />
+
+    <script>
+        paceOptions = {
+            ajax: true,      // disabled
+            document: true,  // activated
+            eventLag: false  // disabled
+            //target: 'article'
+            //elements: {selectors: ['.my-page']}
+        };
+    </script>
+
+    <!-- MathJax support
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    -->
+
+    <!-- This version is compatible with plotly. -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_SVG">
+    </script>
+
+    <!-- Configure MathJax to produce automatic equation numbers http://docs.mathjax.org/en/latest/tex.html -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX","output/HTML-CSS"],
+        //tex2jax: {inlineMath: [['$','$']]},
+        //displayAlign: "center",
+        TeX: {
+            equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "boldsymbol.js"],
+            Macros: {
+                "*": "{\\dagger}",
+                "ra": "{\\rangle}",
+                "la": "{\\langle}",
+                // Workaround for bm package. See https://github.com/mathjax/MathJax/issues/1219
+                bm: ["{\\boldsymbol #1}",1],
+                // Mathcal symbols
+                mcL: "{\\mathcal{L}}",
+                mcG: "{\\mathcal{G}}",
+                mcR: "{\\mathcal{R}}",
+                mcS: "{\\mathcal{S}}",
+                mcC: "{\\mathcal{C}}",
+                mcO: "{\\mathcal{O}}",
+                // Acronyms
+                KS: "{\\text{KS}}",
+                eph: "{\\text{e-ph}}",
+                ee: "{\\text{e-e}}",
+                phph: "{\\text{ph-ph}}",
+                FM: "{\\text{FM}}",
+                DW: "{\\text{DW}}",
+                QP: "{\\text{QP}}",
+                BZ: "{\\text{BZ}}",
+                sign: "{\\text{sign}}",
+                xc: "{\\text{xc}}",
+                tchi: "{\\tilde\\chi}",
+                // Symbols commonly used (k-points, eigenvalues ...)
+                rr: "{\\bf r}",
+                RR: "{\\bf R}",
+                tt: "{\\bf t}",
+                GG: "{\\bf G}",
+                bg: "{\\bf g}",
+                kk: "{\\bf k}",
+                qq: "{\\bf q}",
+                kq: "{\\kk + \\qq}",
+                qG: "{\\bf q + G}",
+                kG: "{\\bf k + G}",
+                kmq: "{\\kk - \\qq}",
+                kpq: "{\\kk + \\qq}",
+                kpG: "{\\kk + \\GG}",
+                qpG: "{\\qq + \\GG}",
+                nk: "{n \\kk}",
+                mk: "{, \\kk}",
+                nks: "{n \\kk\\sigma}",
+                mks: "{m \\kk\\sigma}",
+                enk: "{\\varepsilon_\\nk}",
+                emkq: "{\\varepsilon_{m\\kk+\\qq}}",
+                qnu: "{\\qq \\nu}",
+                wqnu: "{\\omega_{\\qnu}}",
+                vnk: "{\\mathbf{v}_{n\\kk}}",
+                vmkq: "{\\mathbf{v}_{m\\kk+\\qq}}",
+                vnka: "{\\mathrm{v}_{n\\kk,\\alpha}}",
+                vnkb: "{\\mathrm{v}_{n\\kk,\\beta}}",
+                ef: "{\\varepsilon_F}",
+                // EPH quantities
+                gkkp: "{g_{mn\\nu}(\\kk,\\qq)}",
+                gkq: "{g_{mn\\nu}(\\kk,\\qq)}",
+                //\newcommand{\gkkpL}{g_{mn\nu}^\Lc(\kb,\qb)}
+                // Many-body theory
+                Go: "{G_0}",
+                Wo: "{W_0}",
+                Ueff: "{U_{\\text{eff}}}",
+                Gove: "{\\overline{G}}",
+                Gund: "{\\underline{G}}",
+                // Greek symbols + tilde version
+                ee: "{\\epsilon}",
+                tee: "{\\tilde{\\epsilon}}",
+                ww: "{\\omega}",
+                tww: "{\\tilde\\omega}",
+                dd: "{\\,\\text{d}}",
+                vxc: "{v_\\xc}",
+                // symrel
+                Ri: "{\\mcR^{-1}}",
+                Rit: "{\\mcR^{-1\\tau}}",
+                // symrec
+                Si: "{\\mcS^{-1}}}",
+                Sit: "{\\Si^\\tau}}",
+                // partial and functional derivative.
+                PDER: ["{\\dfrac{\\partial #1}{\\partial #2}}", 2],
+                FDER: ["{\\dfrac{\\delta #1}{\\delta #2}}", 2],
+                // PAW
+                tPsi: "{\\tilde\\Psi}",
+                tpsi: "{\\tilde\\psi}",
+                tPhi: "{\\tilde\\Phi}",
+                tphi: "{\\tilde\\phi}",
+                tprj: "{\\tilde p}"
+            }
+          }
+      });
+    </script>
+
+    
+
+    
+
+    <!-- Load fonts used for input variables -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/gallery.css">
+    
+      <link rel="stylesheet" href="../../css/my_codehilite.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-on-optical-properties" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="abinit" class="md-header__button md-logo" aria-label="abinit" data-md-component="logo">
+      
+  <img src="../../images/logo-abinit-2015.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            abinit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              optic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/abinit/abinit/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    github-abinit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../installation/" class="md-tabs__link">
+          
+  
+  User Guides
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../topics/features/" class="md-tabs__link">
+          
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../variables/" class="md-tabs__link">
+          
+  
+  Variables
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../faq/configuration_and_compilation/" class="md-tabs__link">
+          
+  
+  FAQ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../theory/geometry/" class="md-tabs__link">
+          
+  
+  Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developers/git_and_gitlab/" class="md-tabs__link">
+          
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../about/release-notes/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="abinit" class="md-nav__button md-logo" aria-label="abinit" data-md-component="logo">
+      
+  <img src="../../images/logo-abinit-2015.png" alt="logo">
+
+    </a>
+    abinit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/abinit/abinit/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    github-abinit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    User Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            User Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HowTo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INSTALL_MacOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MacOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INSTALL_Ubuntu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ubuntu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INSTALL_CentOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CentOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INSTALL_EasyBuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EasyBuild
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INSTALL_gpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPUs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NewUser
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/abinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/abitk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abitk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/aim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/anaddb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaddb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/atdep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/cut3d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cut3d
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/fold2bloch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fold2Bloch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/mrgddb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mrgddb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/mrgscr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mrgscr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/multibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/optic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/respfn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Respfn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/spacegroup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spacegroup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topic List
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Abipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abipy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/APPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    APPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Artificial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artificial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/aTDEP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/AtomCentered/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AtomCentered
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/AtomManipulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AtomManipulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/AtomTypes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AtomTypes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Bader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Band2eps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Band2eps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Berry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Berry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/BandOcc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BandOcc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/BSE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BSE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/BoundingProcess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BoundingProcess
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ConstrainedDFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ConstrainedDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ConstrainedPol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ConstrainedPol
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Coulomb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coulomb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/CrossingBarriers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CrossingBarriers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/CalcUJ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CalcUJ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/crystal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crystal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/DFT%2BU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT+U
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/DeltaSCF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeltaSCF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/DensityPotential/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DensityPotential
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/DFPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/DMFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DMFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/DynamicsMultibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DynamicsMultibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/EffectiveMass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EffectiveMass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/EFG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EFG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Elastic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ElPhonInt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElPhonInt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ElPhonTransport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElPhonTransport
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ElecDOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElecDOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ElecBandStructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElecBandStructure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ExtFPMD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ExtFPMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/FileFormats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FileFormats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/FitProcess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FitProcess
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/ForcesStresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ForcesStresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/FrequencyMeshMBPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FrequencyMeshMBPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/GeoConstraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GeoConstraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/GeoOpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GeoOpt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/GSintroduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GSintroduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/GW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/GWR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/GWls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Hybrids/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hybrids
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/k-points/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K points
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/LatticeModel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LatticeModel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/LatticeWannier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LatticeWannier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/LWFModel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LWFModel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/LDAminushalf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAminushalf
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/LOTF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LOTF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/longwave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Longwave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Macroave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Macroave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/MagField/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MagField
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/MagMom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MagMom
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/MolecularDynamics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MolecularDynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/multidtset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multidtset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/NMR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NMR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/nonlinear/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nonlinear
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Optic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/parallelism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/PAW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/PIMD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PIMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Planewaves/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Planewaves
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Phonons/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phonons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/PhononBands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PhononBands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/PhononWidth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PhononWidth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Polaron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polaron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/PortabilityNonRegression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PortabilityNonRegression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/positron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Positron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/printing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Printing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/PseudosPAW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PseudosPAW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/q-points/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q points
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/RandStopPow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RandStopPow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Recursion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/RPACorrEn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPACorrEn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/RTTDDFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RTTDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/SCFControl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCFControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/SCFAlgorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCFAlgorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/SelfEnergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SelfEnergy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/SmartSymm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SmartSymm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/spinpolarisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spinpolarisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/SpinDynamicsMultibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SpinDynamicsMultibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/STM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Susceptibility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Susceptibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/TDDFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/TDepES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TDepES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Temperature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Temperature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/TransPath/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TransPath
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/TuningSpeedMem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TuningSpeedMem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Unfolding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfolding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/UnitCell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UnitCell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/vdw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vdw
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Wannier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wannier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/Wavelets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/xc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Xc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/external_resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Variables
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Variables
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All Variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Abinit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Abinit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/bse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bethe-Salpeter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/dmft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DMFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/eph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Electron-Phonon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/ffield/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Varff
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/geo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geometry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/gstate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ground-State
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/gw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/internal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/paral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/paw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/dfpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/rlx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relaxation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/rttddft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RTTDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/vdw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VdW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/w90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wannier90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/anaddb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaddb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/atdep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/multibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/optic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/aim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/external_parameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External Parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../variables/varset_stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basic tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Basic tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    basic4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abinit_build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABINIT_build
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paw1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polarization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polarization & finite field
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rf1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rf2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basepar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ABINIT postprocessors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            ABINIT postprocessors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atdep1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aTDEP1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cut3d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cut3D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fold2bloch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fold2bloch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    optic
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    optic
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#frequency-dependent-linear-and-second-order-nonlinear-optical-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency-dependent linear and second-order nonlinear optical response.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-the-momentum-matrix-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the momentum matrix elements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-the-linear-and-nonlinear-optical-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the linear and nonlinear optical response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faster-computation-of-the-imaginary-part-of-the-linear-optical-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faster computation of the imaginary part of the linear optical response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-the-linear-electro-optical-susceptibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the linear electro-optical susceptibility
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wannier90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wannier90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../z2pack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Z2pack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DFT beyond basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            DFT beyond basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nuc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    properties at the nucleus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dftu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT+U
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ucalc_crpa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cRPA U(J)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lruj/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linear Response U(J)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paw2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paw3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PAW3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../positron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    positron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Many-Body Theory & excitations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_12">
+            <span class="md-nav__icon md-icon"></span>
+            Many-Body Theory & excitations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gw1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gw2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GW2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwr_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWR_intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwr1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GWR1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bethe-Salpeter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dmft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DMFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tddft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TDDFT (Casida)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rttddft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RT-TDDFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DFPT & electron-phonon
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            DFPT & electron-phonon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elastic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elastic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nonlinear
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lattice_wannier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lattice_wannier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lw_quad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    quadrupoles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eph_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph_intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eph4mob/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph for mobilities
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eph4zpr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph for zero-point renormalization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eph4vpq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph for variational polaron equations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eph_legacy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph_legacy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eph_tdep_legacy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eph_tdep_legacy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multibinit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_14">
+            <span class="md-nav__icon md-icon"></span>
+            Multibinit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multibinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction to multibinit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lattice_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lattice_model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spin_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    spin_model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lwf_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lwf_model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced parallelism
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_15">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced parallelism
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paral_bandpw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_band_PW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paral_gswvl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_wavelets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paral_moldyn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_MD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paral_images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paral_dfpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paral_mbt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    paral_MBPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            FAQ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/configuration_and_compilation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration and compilation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/general_questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/pre_and_post_processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pre/Post processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/ground_state/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ground state
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/dfpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/Troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting (old-dokuwiki)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/tuning_abinit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tuning (old-dokuwiki)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Theory
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Theory
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/geometry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geometry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/spherical_harmonics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spherical Harmonics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/wavefunctions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavefunctions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/noncollinear/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noncollinear
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/pseudopotentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pseudopotentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/mbt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Many-Body Perturbation Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/bse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bethe-Salpeter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/documents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/acknowledgments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/bibliography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bibliography
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/acronyms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acronyms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/git_and_gitlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git and Gitlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/developers_howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HowTo for developers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/abimkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abimkdocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/markdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Test Suite
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Test Suite
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/testsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test list
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/testsuite_howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Suite Howto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/new_testsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YAML-based test suite Howto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/yaml_tools_api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YAML-based test suite Python tools and API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/XgType/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XgType
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pseudos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            Pseudos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/psp1_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/psp3_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/psp45_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp45
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/psp5spinorbit_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/psp6_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/psp8_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psp8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/codestats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code stats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/autoconf_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autoconf_examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/testlink/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Page for linkcheck
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#frequency-dependent-linear-and-second-order-nonlinear-optical-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency-dependent linear and second-order nonlinear optical response.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-the-momentum-matrix-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the momentum matrix elements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-the-linear-and-nonlinear-optical-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the linear and nonlinear optical response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faster-computation-of-the-imaginary-part-of-the-linear-optical-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faster computation of the imaginary part of the linear optical response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-the-linear-electro-optical-susceptibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the linear electro-optical susceptibility
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+  
+  
+
+
+<h1 id="tutorial-on-optical-properties">Tutorial on optical properties<a class="headerlink" href="#tutorial-on-optical-properties" title="Permanent link">&para;</a></h1>
+<h2 id="frequency-dependent-linear-and-second-order-nonlinear-optical-response">Frequency-dependent linear and second-order nonlinear optical response.<a class="headerlink" href="#frequency-dependent-linear-and-second-order-nonlinear-optical-response" title="Permanent link">&para;</a></h2>
+<p>This tutorial aims at showing how to get the following physical properties, for semiconductors:</p>
+<ul>
+<li>Frequency-dependent linear dielectric tensor</li>
+<li>Frequency-dependent second-order nonlinear susceptibility tensor</li>
+<li>Frequency-dependent electro-optical susceptibility tensor</li>
+</ul>
+<p>in the simple <em>Random-Phase Approximation</em> or <em>Sum-over-states</em> approach.
+This tutorial will help you to understand and make use of <em>optic</em>.
+Before starting, you should first have some theoretical background.
+We strongly suggest that you first read the first two sections of the <a class="wikilink user-guide-wikilink" href="/guide/optic">optic help file</a>.</p>
+<p>This tutorial should take about 1 hour.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Supposing you made your own installation of ABINIT, the input files to run the examples
+are in the <em>~abinit/tests/</em> directory where <em>~abinit</em> is the <strong>absolute path</strong> of the abinit top-level directory.
+If you have NOT made your own install, ask your system administrator where to find the package,
+especially the executable and test files.</p>
+<p>In case you work on your own PC or workstation, to make things easier, we suggest you define
+some handy environment variables by executing the following lines in the terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ABI_HOME</span><span class="o">=</span>Replace_with_absolute_path_to_abinit_top_level_dir<span class="w"> </span><span class="c1"># Change this line</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$ABI_HOME</span>/src/98_main/:<span class="nv">$PATH</span><span class="w">      </span><span class="c1"># Do not change this line: path to executable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ABI_TESTS</span><span class="o">=</span><span class="nv">$ABI_HOME</span>/tests/<span class="w">             </span><span class="c1"># Do not change this line: path to tests dir</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ABI_PSPDIR</span><span class="o">=</span><span class="nv">$ABI_TESTS</span>/Pspdir/<span class="w">  </span><span class="c1"># Do not change this line: path to pseudos dir</span>
+</code></pre></div>
+<p>Examples in this tutorial use these shell variables: copy and paste
+the code snippets into the terminal (<strong>remember to set ABI_HOME first!</strong>) or, alternatively,
+source the <code>set_abienv.sh</code> script located in the <em>~abinit</em> directory:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~abinit/set_abienv.sh
+</code></pre></div>
+<p>The &lsquo;export PATH&rsquo; line adds the directory containing the executables to your <a href="http://www.linfo.org/path_env_var.html">PATH</a>
+so that you can invoke the code by simply typing <em>abinit</em> in the terminal instead of providing the absolute path.</p>
+<p>To execute the tutorials, create a working directory (<code>Work*</code>) and
+copy there the input files of the lesson.</p>
+<p>Most of the tutorials do not rely on parallelism (except specific <a class="wikilink lesson-wikilink" href="/tutorial/basepar">tutorials on parallelism</a>).
+However you can run most of the tutorial examples in parallel with MPI, see the <a class="wikilink topic-wikilink" data-tippy-content="How to set parameters for a parallel calculation" data-toggle="popover" href="/topics/parallelism">topic on parallelism</a>.</p>
+</div>
+<h2 id="computing-the-momentum-matrix-elements">Computing the momentum matrix elements<a class="headerlink" href="#computing-the-momentum-matrix-elements" title="Permanent link">&para;</a></h2>
+<p><em>Before beginning, you might consider working in a different subdirectory.
+Why not create Work_optic?</em></p>
+<p>We also need to copy <em>toptic_1.abi</em> from
+<em>$ABI_TESTS/tutorial/Input</em> to <em>Work_optic</em>.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$ABI_TESTS</span>/tutorespfn/Input
+mkdir<span class="w"> </span>Work_optic
+<span class="nb">cd</span><span class="w"> </span>Work_optic
+cp<span class="w"> </span>../toptic_1.abi<span class="w"> </span>.
+</code></pre></div>
+<p>Now, you are ready to run Abinit and prepare the files needed for Optic.
+Issue:</p>
+<div class="codehilite"><pre><span></span><code>abinit toptic_1.abi &gt; log 2&gt; err
+</code></pre></div>
+
+<p>We now examine the input file.</p>
+<div class="text-center"><button id="uuid-8c534bb9-d8eb-45fb-891e-3a7c919d293a" class="md-button md-button--secondary"> View tests/tutorespfn/Input/toptic_1.abi </button></div>
+<div id="uuid-88f976f1-a87a-4d1d-a235-d8eb7470b439" class="my_dialog" title="tests/tutorespfn/Input/toptic_1.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Prepare the computation of linear and non-linear optic properties</span>
+<span class="c1"># of GaAs crystal : ground-state with few bands,</span>
+<span class="c1"># then non-SCF with a larger number of bands, then ddk for different directions</span>
+<span class="c1"># Note that the k point sampling shoud be finer for significant results. The cut-off energy is also too low.</span>
+
+<span class="w"> </span>ndtset<span class="w"> </span><span class="m">6</span>
+
+<span class="c1">#First dataset : SC run with kpoints in the IBZ</span>
+<span class="w">  </span>nband1<span class="w">  </span><span class="m">4</span>
+<span class="w">  </span>nstep1<span class="w"> </span><span class="m">25</span>
+<span class="w"> </span>kptopt1<span class="w"> </span><span class="m">1</span>
+<span class="w"> </span>nbdbuf1<span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>prtden1<span class="w"> </span><span class="m">1</span><span class="w">   </span>getden1<span class="w"> </span><span class="m">0</span><span class="w">   </span>getwfk1<span class="w"> </span><span class="m">0</span><span class="w">    </span><span class="c1"># Usual file handling data</span>
+
+<span class="c1">#Second dataset : NSC run with large number of bands, and points in the IBZ</span>
+<span class="w">    </span>iscf2<span class="w"> </span>-2
+<span class="w">   </span>nstep2<span class="w"> </span><span class="m">25</span>
+<span class="w">  </span>kptopt2<span class="w">  </span><span class="m">1</span>
+<span class="w">  </span>getwfk2<span class="w">  </span><span class="m">1</span><span class="w">   </span>getden2<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="c1"># Usual file handling data</span>
+
+<span class="c1">#Third dataset : NSC run with large number of bands, and points in the full BZ</span>
+<span class="w">    </span>iscf3<span class="w"> </span>-2
+<span class="w">   </span>nstep3<span class="w"> </span><span class="m">25</span>
+<span class="w">  </span>getwfk3<span class="w">  </span><span class="m">2</span><span class="w">   </span>getden3<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="c1"># Usual file handling data</span>
+
+
+<span class="c1">#Fourth dataset : ddk response function along axis 1</span>
+<span class="w">   </span>iscf4<span class="w"> </span>-3
+<span class="w">  </span>nstep4<span class="w">  </span><span class="m">1</span><span class="w">  </span>nline4<span class="w">  </span><span class="m">0</span><span class="w">  </span>prtwf4<span class="w">  </span><span class="m">3</span><span class="w">   </span><span class="c1"># Speed up the calculation : the first-order response wavefunction is not computed, only the matrix elements.</span>
+
+<span class="w">   </span>nqpt4<span class="w">  </span><span class="m">1</span>
+<span class="w">  </span>rfdir4<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>rfelfd4<span class="w">  </span><span class="m">2</span>
+
+<span class="c1">#Fifth dataset : ddk response function along axis 2</span>
+<span class="w">   </span>iscf5<span class="w"> </span>-3
+<span class="w">  </span>nstep5<span class="w">  </span><span class="m">1</span><span class="w">  </span>nline5<span class="w">  </span><span class="m">0</span><span class="w">  </span>prtwf5<span class="w">  </span><span class="m">3</span><span class="w">   </span><span class="c1"># Speed up the calculation : the first-order response wavefunction is not computed, only the matrix elements.</span>
+
+<span class="w">   </span>nqpt5<span class="w">  </span><span class="m">1</span>
+<span class="w">  </span>rfdir5<span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>rfelfd5<span class="w">  </span><span class="m">2</span>
+
+<span class="c1">#Sixth dataset : ddk response function along axis 3</span>
+<span class="w">   </span>iscf6<span class="w"> </span>-3
+<span class="w">  </span>nstep6<span class="w">  </span><span class="m">1</span><span class="w">  </span>nline6<span class="w">  </span><span class="m">0</span><span class="w">  </span>prtwf6<span class="w">  </span><span class="m">3</span><span class="w">   </span><span class="c1"># Speed up the calculation : the first-order response wavefunction is not computed, only the matrix elements.</span>
+
+<span class="w">   </span>nqpt6<span class="w">  </span><span class="m">1</span>
+<span class="w">  </span>rfdir6<span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="w"> </span>rfelfd6<span class="w">  </span><span class="m">2</span>
+
+<span class="c1"># Data common to datasets 2-6</span>
+<span class="w">  </span>nband<span class="w">  </span><span class="m">20</span><span class="w">      </span><span class="c1"># This number of bands might be too low for non-linear optics and real part of linear optics</span>
+
+<span class="c1"># Data common to datasets 3-6</span>
+<span class="w"> </span>kptopt<span class="w">   </span><span class="m">3</span><span class="w">      </span><span class="c1"># Need points in the full BZ for non-linear optical properties</span>
+
+<span class="c1"># Data common to datasets 4-6</span>
+<span class="w">  </span>getwfk<span class="w">  </span><span class="m">3</span>
+
+<span class="c1">#Data common to all datasets</span>
+<span class="w"> </span>nshiftk<span class="w"> </span><span class="m">4</span>
+<span class="w"> </span>shiftk<span class="w">  </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.5
+<span class="w">         </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0
+<span class="w">         </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.0
+<span class="w">         </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.5
+<span class="w"> </span>ngkpt<span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">        </span><span class="c1"># This is much too low : should be at least 24x24x24</span>
+<span class="w">   </span>qpt<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w">     </span><span class="c1"># Not really needed, because it is the defaults, but mentioned here to keep track of its importance for datasets 4-6</span>
+
+<span class="w"> </span>acell<span class="w">   </span><span class="m">3</span>*10.60
+<span class="w"> </span>diemac<span class="w"> </span><span class="m">10</span>.0
+<span class="w"> </span>ecut<span class="w"> </span><span class="m">2</span>.00<span class="w">             </span><span class="c1"># This is also too low</span>
+<span class="w"> </span>natom<span class="w">  </span><span class="m">2</span><span class="w">  </span>nbdbuf<span class="w"> </span><span class="m">2</span>
+<span class="w"> </span>ntypat<span class="w">  </span><span class="m">2</span>
+<span class="w"> </span>rprim<span class="w">   </span><span class="m">0</span><span class="w"> </span>.5<span class="w"> </span>.5<span class="w">  </span>.5<span class="w"> </span><span class="m">0</span><span class="w"> </span>.5<span class="w">  </span>.5<span class="w"> </span>.5<span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>xred<span class="w"> </span><span class="m">3</span>*0.00d0<span class="w"> </span><span class="m">3</span>*0.25d0
+<span class="w"> </span>typat<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w">  </span>tolwfr<span class="w">  </span><span class="m">1</span>.e-20
+<span class="w"> </span>znucl<span class="w">  </span><span class="m">31</span><span class="w"> </span><span class="m">33</span>
+
+
+<span class="w"> </span>pp_dirpath<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ABI_PSPDIR</span><span class="s2">&quot;</span>
+<span class="w"> </span>pseudos<span class="w"> </span><span class="s2">&quot;Psdj_nc_sr_04_pw_lrgcore_psp8/Ga-low.psp8, Psdj_nc_sr_04_pw_lrgcore_psp8/As.psp8&quot;</span>
+
+<span class="c1">##############################################################</span>
+<span class="c1"># This section is used only for regression testing of ABINIT #</span>
+<span class="c1">##############################################################</span>
+<span class="c1">#%%&lt;BEGIN TEST_INFO&gt;</span>
+<span class="c1">#%% [setup]</span>
+<span class="c1">#%% executable = abinit</span>
+<span class="c1">#%% test_chain = toptic_1.abi, toptic_2.abi</span>
+<span class="c1">#%% need_cpp_vars = !HAVE_MPI_IO_DEFAULT</span>
+<span class="c1">#%% [files]</span>
+<span class="c1">#%% files_to_test =</span>
+<span class="c1">#%%   toptic_1.abo, tolnlines=  0, tolabs=  0.000e+00, tolrel=  0.000e+00, fld_options = -easy</span>
+<span class="c1">#%% [paral_info]</span>
+<span class="c1">#%% max_nprocs = 2</span>
+<span class="c1">#%% [extra_info]</span>
+<span class="c1">#%% authors = S. Sharma, X. Gonze</span>
+<span class="c1">#%% keywords = NC, DFPT</span>
+<span class="c1">#%% description =</span>
+<span class="c1">#%%  Prepare the computation of linear and non-linear optic properties</span>
+<span class="c1">#%%  of GaAs crystal: ground-state with few bands,</span>
+<span class="c1">#%%  then non-SCF with a larger number of bands, then ddk for different directions</span>
+<span class="c1">#%%  Note that the k point sampling shoud be finer for significant results. The cut-off energy is also too low.</span>
+<span class="c1">#%%&lt;END TEST_INFO&gt;</span>
+</pre></div>
+</div></div>
+
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-88f976f1-a87a-4d1d-a235-d8eb7470b439", "#uuid-8c534bb9-d8eb-45fb-891e-3a7c919d293a") }); </script>
+
+<p>The computation concerns a crystal of GaAs, in the zinc-blende structure (2 atoms per primitive cell).
+It has six datasets.</p>
+<p>The first dataset is a quite standard self-consistent determination of the ground state for a fixed geometry.
+Only the occupied bands are treated. The density is output and used in later datasets.</p>
+<p>The second dataset is a non-self-consistent calculation, where the number of bands has been increased to include unoccupied states.
+The k points are restricted to the Irreducible Brillouin Zone.</p>
+<p>The third dataset uses the result of the second one to produce the
+wavefunctions for all the bands, for the full Brillouin Zone
+(this step could be skipped for linear optic, but is included for later CPU time saving - for nonlinear optic, checks of symmetry behaviour are ongoing currently as of 23 June 2024, better to perform set three).
+If only the linear optical response is computed, then time-reversal symmetry can be used, and the computation
+might be restricted to the half Brillouin zone (<a class="wikilink codevar-wikilink" href="/variables/basic#kptopt">kptopt</a>=2).</p>
+<p>The fourth, fifth, and sixth datasets correspond to the computation of the <em>ddk</em> matrix elements,
+that is, matrix elements of the <span class="arithmatex">\(\partial H / \partial k\)</span> operators where <span class="arithmatex">\(H\)</span> is the Hamiltonian.
+Note that the number of bands is the same as for datasets 2 and 3.
+Note also that these are non-self-consistent calculations, moreover, restricted to <a class="wikilink codevar-wikilink" href="/variables/basic#nstep">nstep</a> = 1 and <a class="wikilink codevar-wikilink" href="/variables/gstate#nline">nline</a> = 0.
+Indeed, only the matrix elements between explicitly computed (unperturbed) states are required.
+This also is why <a class="wikilink codevar-wikilink" href="/variables/files#prtwf">prtwf</a>=3 is used.
+Using a larger <a class="wikilink codevar-wikilink" href="/variables/basic#nstep">nstep</a> would lead to a full computation of the derivative of the wavefunction with respect to
+the wavevector, while in Optic, only the matrix elements between unperturbed states are needed.
+Thus a value of <a class="wikilink codevar-wikilink" href="/variables/basic#nstep">nstep</a> larger than one would be a waste of time.</p>
+<p>A useful alternative is to use <a class="wikilink codevar-wikilink" href="/variables/gstate#wfk_task">wfk_task</a>=&rdquo;wfk_optics_fullbz&rdquo; after the calculation of the WFK file for 
+just the irreducible Brillouin zone: this postprocessing step calculates the matrix elements needed for optic, 
+and is much more memory efficient.</p>
+<p>In order to have a sufficiently fast tutorial, the k point sampling was chosen to be extremely dense.
+Instead of a <span class="arithmatex">\(4\times 4\times 4\)</span>
+FCC lattice (256 k points), it should be something like <span class="arithmatex">\(28\times 28\times 28\)</span> FCC (about 100000 k points).
+Also, the cut-off energy (2 Ha) is too small. As usual, convergence studies are the responsibility of the user.
+Moreover, we emphasize that in general the results of a sum-over-states approach, as is used in Optic,
+typically converges quite slowly with the k point mesh. Thus it is of uttermost importance to
+test convergence carefully.</p>
+<p>The run takes less than one minute on a 2.8 GHz PC. The files <em>toptic_1o_DS3_WFK</em>,
+<em>toptic_1o_DS4_1WF7</em>, <em>toptic_1o_DS5_1WF8</em> and <em>toptic_1o_DS6_1WF9</em> are the four
+files requested for the Optic run.
+The first file contains the wavefunctions for the filled and empty states in the entire
+Brillouin zone, while the latter three contain the matrix elements of the
+<span class="arithmatex">\(\partial/\partial k\)</span> operators, one file for each Cartesian direction.</p>
+<p>Real preparation runs (with adequate k point sampling and cut-off energy) can
+last several hours (or even days) on such a PC.</p>
+<h2 id="computing-the-linear-and-nonlinear-optical-response">Computing the linear and nonlinear optical response<a class="headerlink" href="#computing-the-linear-and-nonlinear-optical-response" title="Permanent link">&para;</a></h2>
+<p>The next step is to compute the linear and nonlinear optical response: once the
+momentum matrix elements are available, you are ready to determine the optical
+response (up to second order in the current implementation) for the material under study.</p>
+<p>First, read the <a class="wikilink user-guide-wikilink" href="/guide/optic#input">section 3</a> of the Optic help file.</p>
+<p>Copy the <em>toptic_2.abi</em> input file from <em>$ABI_TESTS/tutorial/Input</em> to <em>Work_optic</em>:</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>../toptic_2.abi<span class="w"> </span>.
+</code></pre></div>
+<p>The <em>toptic_2.abi</em> is your input file. You should edit it and read it carefully. For
+help on various input parameters in this file, please see the <a class="wikilink user-guide-wikilink" href="/guide/optic">optic help file</a>.</p>
+<div class="text-center"><button id="uuid-86814deb-cf2b-4267-88db-0d211b4427d6" class="md-button md-button--secondary"> View tests/tutorespfn/Input/toptic_2.abi </button></div>
+<div id="uuid-8dd3466b-0560-4d5c-b708-e4b5d397519e" class="my_dialog" title="tests/tutorespfn/Input/toptic_2.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="p">&amp;</span>FILES
+<span class="w"> </span><span class="nv">ddkfile_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_1o_DS4_1WF7&#39;</span>,
+<span class="w"> </span><span class="nv">ddkfile_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_1o_DS5_1WF8&#39;</span>,
+<span class="w"> </span><span class="nv">ddkfile_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_1o_DS6_1WF9&#39;</span>,
+<span class="w"> </span><span class="nv">wfkfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_1o_DS3_WFK&#39;</span>
+/
+<span class="p">&amp;</span>PARAMETERS
+<span class="w"> </span><span class="nv">broadening</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.002,
+<span class="w"> </span><span class="nv">domega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.0003,
+<span class="w"> </span><span class="nv">maxomega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.3,
+<span class="w"> </span><span class="nv">scissor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.000,
+<span class="w"> </span><span class="nv">tolerance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.002
+/
+<span class="p">&amp;</span>COMPUTATIONS
+<span class="w"> </span><span class="nv">num_lin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>,
+<span class="w"> </span><span class="nv">lin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span>,
+<span class="w"> </span><span class="nv">num_nonlin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>,
+<span class="w"> </span><span class="nv">nonlin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">123</span>,222,
+<span class="w"> </span><span class="nv">num_linel_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+<span class="w"> </span><span class="nv">num_nonlin2_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+/
+
+<span class="c1">##############################################################</span>
+<span class="c1"># This section is used only for regression testing of ABINIT #</span>
+<span class="c1">##############################################################</span>
+<span class="c1">#%%&lt;BEGIN TEST_INFO&gt;</span>
+<span class="c1">#%% [setup]</span>
+<span class="c1">#%% executable = optic</span>
+<span class="c1">#%% test_chain = toptic_1.abi, toptic_2.abi</span>
+<span class="c1">#%% need_cpp_vars = !HAVE_MPI_IO_DEFAULT</span>
+<span class="c1">#%% [files]</span>
+<span class="c1">#%% files_to_test = </span>
+<span class="c1">#%%   toptic_2_0001_0001-linopt.out,        tolnlines=  0, tolabs=  0.000e+00, tolrel=  0.000e+00, fld_options = -easy;</span>
+<span class="c1">#%%   toptic_2_0001_0002_0003-ChiTotRe.out, tolnlines= 16, tolabs=  7.000e-04, tolrel=  7.000e-04, fld_options = -easy;</span>
+<span class="c1">#%%   toptic_2_0001_0002_0003-ChiTotIm.out, tolnlines= 16, tolabs=  4.000e-04, tolrel=  2.000e-04, fld_options = -easy</span>
+<span class="c1">#%% [paral_info]</span>
+<span class="c1">#%% max_nprocs = 4</span>
+<span class="c1">#%% [extra_info]</span>
+<span class="c1">#%% authors = S. Sharma, X. Gonze</span>
+<span class="c1">#%% keywords = </span>
+<span class="c1">#%% description = Input file for optic code. </span>
+<span class="c1">#%%&lt;END TEST_INFO&gt;</span>
+</pre></div>
+</div></div>
+
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-8dd3466b-0560-4d5c-b708-e4b5d397519e", "#uuid-86814deb-cf2b-4267-88db-0d211b4427d6") }); </script>
+
+<p>When you have read the input file, you can run the code, as usual, using the
+following command (assuming optic is in $PATH - copy the
+executable in the current directory if needed):</p>
+<div class="codehilite"><pre><span></span><code>optic toptic_2.abi &gt; log 2&gt; err &amp;
+</code></pre></div>
+
+<p>It will take a few seconds to run. You have produced numerous output files.
+Now, you can examine some of these output files.</p>
+<p>The headers contains information about the calculation.
+See the <a class="wikilink user-guide-wikilink" href="/guide/optic#output">section 4</a> of the Optic help file.
+These files can be plotted in <a href="http://plasma-gate.weizmann.ac.il/Grace/">xmgrace</a>  or <a href="http://www.gnuplot.info/">gnuplot</a> .
+If you do not have xmgrace installed on your computer, please get it from the Web, and install it,
+or alternatively, use your preferred plotting package.</p>
+<p>We will first have a look at the linear optic file.</p>
+<div class="codehilite"><pre><span></span><code>xmgrace toptic_2_0001_0001-linopt.out
+</code></pre></div>
+
+<p>This file contains the <em>xx</em> component of the dielectric tensor, and includes,
+as a function of energy, the magnitude, real, and imaginary parts of the tensor element.
+On the graph, you should see three curves. One of them is positive, and always
+larger than the two others. It is the modulus of the dielectric function.
+Another one is also always positive, it is the imaginary part of the
+dielectric function. The last one is the real part.
+There are a large number of peaks. This is at variance with the experimental
+spectra, which are much smoother. The origin of this discrepancy is to be found
+in the very sparse k point sampling that we used in order to be able to perform
+the tutorial quickly.
+In the next section, we will improve this sampling, and start a convergence study.</p>
+<p>Concerning the non-linear optics, the graphs for the <em>xyz</em> components are also
+quite bad, with many isolated (but broadened) peaks. However, the <em>yyy</em> ones are
+<em>perfect</em>. Indeed, they vanish due to symmetry reasons!
+Visualize the imaginary part with:</p>
+<div class="codehilite"><pre><span></span><code>xmgrace toptic_2_0002_0002_0002-ChiTotIm.out
+</code></pre></div>
+
+<p>and the Real part with:</p>
+<div class="codehilite"><pre><span></span><code>xmgrace toptic_2_0002_0002_0002-ChiTotRe.out
+</code></pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If <a href="https://github.com/abinit/abipy">AbiPy</a>  is installed on your machine, you can use the <a href="http://abinit.github.io/abipy/scripts/abiopen.html">abiopen.py</a>  script
+with the <code>--expose</code> option to visualize the results stored in the OPTIC.nc file:</p>
+<div class="codehilite"><pre><span></span><code>abiopen.py toptic_2_OPTIC.nc --expose -sns=paper
+</code></pre></div>
+
+<p><img alt="" src="../optic_assets/abiopen_toptic_2.png" /></p>
+</div>
+<p>This would be a good time to review <a class="wikilink user-guide-wikilink" href="/guide/optic#troubleshooting">section 5</a> of the optic help file.</p>
+<p>For comparison, we have included in the tutorial directory of the ABINIT package (ask your administrator to have access 
+to the full ABINIT package if you do not have your own installation), three files that have been
+obtained with a much better k point sampling (still with a low cut-off energy
+and a number of bands that should be larger). You can visualize them as follows:</p>
+<div class="codehilite"><pre><span></span><code>xmgrace $ABI_HOME/doc/tutorial/optic_assets/toptic_ref_0001_0001-linopt.out
+</code></pre></div>
+
+<p>for the linear optics, obtained with a 28x28x28 grid (keeping everything else fixed), and</p>
+<div class="codehilite"><pre><span></span><code>xmgrace $ABI_HOME/doc/tutorial/optic_assets/toptic_ref_0001_0002_0003-ChiTotIm.out
+</code></pre></div>
+
+<p>as well as</p>
+<div class="codehilite"><pre><span></span><code>xmgrace $ABI_HOME/doc/tutorial/optic_assets/toptic_ref_0001_0002_0003-ChiTotRe.out
+</code></pre></div>
+
+<p>for the non-linear optics, obtained with a 18x18x18 grid (keeping everything else fixed).</p>
+<p>Concerning the linear spectrum, we will now compare this (underconverged)
+result <em>toptic_ref_0001_0001-linopt.out</em> with experimental data and converged
+theoretical results.</p>
+<p>The book by Cohen M.L. and Chelikowsky <a class="wikilink citation-wikilink" data-tippy-content="Electronic Structure and Optical Properties of Semiconductors" data-toggle="popover" href="/theory/bibliography#cohen1988">[Cohen1988]</a> presents a
+comparison of experimental data with the empirical pseudopotential method
+spectrum. If you do not have access to this book, you can see an experimental
+spectrum in <a class="wikilink citation-wikilink" data-tippy-content="Optical Properties of Semiconductors" data-toggle="popover" href="/theory/bibliography#philipp1963">[Philipp1963]</a>,
+and a theoretical spectrum in <a class="wikilink citation-wikilink" data-tippy-content="Calculation of optical excitations in cubic semiconductors. I. Electronic structure and linear response" data-toggle="popover" href="/theory/bibliography#huang1993">[Huang1993]</a>, as well as other sources.</p>
+<p>We discuss first the imaginary spectrum. Prominent experimental features of
+this spectrum are two peaks located close to 3 eV and 5 eV, both with the same
+approximate height. The spectrum is zero below about 1.5 eV (the direct band
+gap), and decreases with some wiggles beyond 5.5 eV. Converged theoretical
+spectra also show two peaks at about the same location, although their heights
+are markedly different: about 10 for the first one (at 3 eV), and 25 for the
+second one (at 5 eV). Other features are rather similar to the experimental
+ones. In the linear optic spectrum of <em>toptic_ref_0001_0001-linopt.out</em>, we note
+that there is a shoulder at around 3 eV, and a peak at 4.2 eV, with respective
+approximate heights of 7 and 25. Some comments are in order:</p>
+<ul>
+<li>
+<p>The main difference between experimental and converged theoretical spectra is due
+    to the presence of excitons (electron-hole bound states), not treated at all in
+    this rather elementary theoretical approach: excitons transfer some oscillator strength
+    from the second peak (at 5 eV) to the first one (at 3 eV). Going beyond the Sum-Over-State approach,
+    but still keeping the independent-electron approximation, e.g., in the framework of the TDDFT (adiabatic LDA)
+    will not correct this problem. One needs to use the Bethe-Salpeter approximation, or to rely on
+    <em>fancy</em> exchange-correlation kernels, to produce an optical spectrum in qualitative agreement with the experimental data.
+    Still, trends should be correct (e.g. change of the peak positions with pressure,
+    comparison between different semiconductors, etc.).</p>
+</li>
+<li>
+<p>In many early theoretical spectra (including the ones in <a class="wikilink citation-wikilink" data-tippy-content="Electronic Structure and Optical Properties of Semiconductors" data-toggle="popover" href="/theory/bibliography#cohen1988">[Cohen1988]</a>),
+    the agreement between the theoretical and experimental band gap is artificially good.
+    In straight DFT, one cannot avoid the band gap problem. However, it is possible to
+    add an artificial &ldquo;<a class="wikilink codevar-wikilink" href="/variables/optic#scissor">scissor shift</a>&rdquo;, to make the theoretical band gap match the experimental one.</p>
+</li>
+<li>
+<p>Our theoretical spectrum presents additional deficiencies with respect to the other ones,
+    mostly due to a still too coarse sampling of the k space (there are too many wiggles in the spectrum),
+    and to a rather inaccurate band structure (the cut-off energy was really very low, so that
+    the first peak only appears as a shoulder to the second peak).</p>
+</li>
+</ul>
+<p>The real part of the spectrum is related by the Kramers-Kronig relation to the imaginary part.
+We note that the deficiencies of the imaginary part of the
+spectrum translate to the real part: the first peak is too low, and the
+second peak too high, while the spectrum correctly changes sign around 5 eV,
+and stays negative below 8 eV.</p>
+<p>In our simulation, more empty states are needed
+to obtain a better behaviour. Also, the limiting low-frequency value is only
+4.3, while it should be on the order of 10. This can be corrected by
+increasing the cut-off energy, the k point sampling and the number of unoccupied states.</p>
+<p>Similar considerations apply to the non-linear spectra.</p>
+<h2 id="faster-computation-of-the-imaginary-part-of-the-linear-optical-response">Faster computation of the imaginary part of the linear optical response<a class="headerlink" href="#faster-computation-of-the-imaginary-part-of-the-linear-optical-response" title="Permanent link">&para;</a></h2>
+<p>In the case of the imaginary part of the linear optical response, there are
+several points that make the calculation easier:</p>
+<ul>
+<li>
+<p>The time-reversal symmetry can be used to decrease the number of k points
+    by a factor of two (this is also true for the computation of the real spectrum);</p>
+</li>
+<li>
+<p>The number of unoccupied bands can be reduced to the strict minimum needed
+    to span the target range of frequencies.</p>
+</li>
+</ul>
+<p>We will focus on the energy range from 0 eV to 8 eV, for which only 5 unoccupied bands are needed.</p>
+<p>Copy the input file <em>toptic_3.abi</em> in <em>Work_optic</em>:</p>
+<div class="codehilite"><pre><span></span><code>cp ../toptic_3.abi .
+</code></pre></div>
+
+<div class="text-center"><button id="uuid-26ef6d27-6c5f-4e92-b964-78e5a40ba175" class="md-button md-button--secondary"> View tests/tutorespfn/Input/toptic_3.abi </button></div>
+<div id="uuid-90897801-d3eb-424c-88fc-77a56c87a248" class="my_dialog" title="tests/tutorespfn/Input/toptic_3.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="c1"># Prepare the computation of linear optic properties</span>
+<span class="c1"># (for the imaginary spectrum only: the number of bands can be taken much lower than for the real part)</span>
+<span class="c1"># of GaAs crystal : ground-state with few bands,</span>
+<span class="c1"># then non-SCF with a larger number of bands, then ddk for different directions</span>
+<span class="c1"># Note that the k point sampling shoud be finer for significant results. The cut-off energy is also too low.</span>
+
+<span class="c1"># Use of TRS to compute less kpts and use less bands</span>
+<span class="c1"># Data common to datasets 2-6</span>
+<span class="w">  </span>nband<span class="w">   </span><span class="m">9</span><span class="w">       </span><span class="c1"># Minimal number of bands for linear optics (imaginary part of the spectrum)</span>
+
+<span class="c1"># Data common to datasets 3-6</span>
+<span class="w"> </span>kptopt<span class="w">   </span><span class="m">2</span><span class="w">      </span><span class="c1"># Need points in the half BZ (use time-reversal symmetry)</span>
+
+<span class="c1">#-------------------------------------------------------------------------------</span>
+<span class="c1">#The rest of this file is similar to the toptic_1.abi file, except</span>
+<span class="c1">#that nband and kptopt have been moved above ...</span>
+
+<span class="w"> </span>ndtset<span class="w"> </span><span class="m">6</span>
+
+<span class="c1">#First dataset : SC run with kpoints in the IBZ</span>
+<span class="w">  </span>nband1<span class="w">  </span><span class="m">4</span>
+<span class="w">  </span>nstep1<span class="w"> </span><span class="m">25</span>
+<span class="w"> </span>kptopt1<span class="w"> </span><span class="m">1</span>
+<span class="w"> </span>nbdbuf1<span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>prtden1<span class="w"> </span><span class="m">1</span><span class="w">   </span>getden1<span class="w"> </span><span class="m">0</span><span class="w">   </span>getwfk1<span class="w"> </span><span class="m">0</span><span class="w">    </span><span class="c1"># Usual file handling data</span>
+
+<span class="c1">#Second dataset : NSC run with large number of bands, and points in the IBZ</span>
+<span class="w">    </span>iscf2<span class="w"> </span>-2
+<span class="w">   </span>nstep2<span class="w"> </span><span class="m">25</span>
+<span class="w">  </span>kptopt2<span class="w">  </span><span class="m">1</span>
+<span class="w">  </span>getwfk2<span class="w">  </span><span class="m">1</span><span class="w">   </span>getden2<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="c1"># Usual file handling data</span>
+
+<span class="c1">#Third dataset : NSC run with large number of bands, and points in the the full BZ</span>
+<span class="w">    </span>iscf3<span class="w"> </span>-2
+<span class="w">   </span>nstep3<span class="w"> </span><span class="m">25</span>
+<span class="w">  </span>getwfk3<span class="w">  </span><span class="m">2</span><span class="w">   </span>getden3<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="c1"># Usual file handling data</span>
+
+
+<span class="c1">#Fourth dataset : ddk response function along axis 1</span>
+<span class="w">   </span>iscf4<span class="w"> </span>-3
+<span class="w">  </span>nstep4<span class="w">  </span><span class="m">1</span><span class="w">  </span>nline4<span class="w">  </span><span class="m">0</span><span class="w">   </span>prtwf4<span class="w">   </span><span class="m">3</span><span class="w">   </span><span class="c1"># Speed up the calculation : the first-order response wavefunction is not computed, only the matrix elements</span>
+
+<span class="w">   </span>nqpt4<span class="w">  </span><span class="m">1</span>
+<span class="w">  </span>rfdir4<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>rfelfd4<span class="w">  </span><span class="m">2</span>
+
+<span class="c1">#Fifth dataset : ddk response function along axis 2</span>
+<span class="w">   </span>iscf5<span class="w"> </span>-3
+<span class="w">  </span>nstep5<span class="w">  </span><span class="m">1</span><span class="w">  </span>nline5<span class="w">  </span><span class="m">0</span><span class="w">   </span>prtwf5<span class="w">  </span><span class="m">3</span><span class="w">     </span><span class="c1"># Speed up the calculation : the first-order response wavefunction is not computed, only the matrix elements.</span>
+
+<span class="w">   </span>nqpt5<span class="w">  </span><span class="m">1</span>
+<span class="w">  </span>rfdir5<span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>rfelfd5<span class="w">  </span><span class="m">2</span>
+
+<span class="c1">#Sixth dataset : ddk response function along axis 3</span>
+<span class="w">   </span>iscf6<span class="w"> </span>-3
+<span class="w">  </span>nstep6<span class="w">  </span><span class="m">1</span><span class="w">  </span>nline6<span class="w">  </span><span class="m">0</span><span class="w">   </span>prtwf6<span class="w">  </span><span class="m">3</span><span class="w">     </span><span class="c1"># Speed up the calculation : the first-order response wavefunction is not computed, only the matrix elements.</span>
+
+<span class="w">   </span>nqpt6<span class="w">  </span><span class="m">1</span><span class="w">  </span>qpt6<span class="w">  </span><span class="m">0</span>.0d0<span class="w"> </span><span class="m">0</span>.0d0<span class="w"> </span><span class="m">0</span>.0d0
+<span class="w">  </span>rfdir6<span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="w"> </span>rfelfd6<span class="w">  </span><span class="m">2</span>
+
+
+<span class="c1"># Data common to datasets 4-6</span>
+<span class="w">  </span>getwfk<span class="w">  </span><span class="m">3</span>
+
+
+
+<span class="c1">#Data common to all datasets</span>
+<span class="w"> </span>nshiftk<span class="w"> </span><span class="m">4</span>
+<span class="w"> </span>shiftk<span class="w">  </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.5
+<span class="w">         </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0
+<span class="w">         </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span><span class="m">0</span>.0
+<span class="w">         </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.5
+<span class="w"> </span>ngkpt<span class="w">  </span><span class="m">3</span>*4<span class="w">        </span><span class="c1"># This is much too low : should be at least 24x24x24</span>
+
+<span class="w"> </span>acell<span class="w">   </span><span class="m">3</span>*10.60
+<span class="w"> </span>diemac<span class="w"> </span><span class="m">10</span>.0
+<span class="w"> </span>ecut<span class="w"> </span><span class="m">2</span>.00<span class="w">             </span><span class="c1"># This is also too low</span>
+<span class="w"> </span>natom<span class="w">  </span><span class="m">2</span><span class="w">  </span>nbdbuf<span class="w"> </span><span class="m">2</span>
+<span class="w"> </span>ntypat<span class="w">  </span><span class="m">2</span>
+<span class="w"> </span>rprim<span class="w">   </span><span class="m">0</span><span class="w"> </span>.5<span class="w"> </span>.5<span class="w">  </span>.5<span class="w"> </span><span class="m">0</span><span class="w"> </span>.5<span class="w">  </span>.5<span class="w"> </span>.5<span class="w"> </span><span class="m">0</span>
+<span class="w"> </span>xred<span class="w"> </span><span class="m">3</span>*0.00d0<span class="w"> </span><span class="m">3</span>*0.25d0
+<span class="w"> </span>typat<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w">  </span>tolwfr<span class="w">  </span><span class="m">1</span>.e-20
+<span class="w"> </span>znucl<span class="w">  </span><span class="m">31</span><span class="w"> </span><span class="m">33</span>
+
+<span class="w"> </span>pp_dirpath<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ABI_PSPDIR</span><span class="s2">&quot;</span>
+<span class="w"> </span>pseudos<span class="w"> </span><span class="s2">&quot;Psdj_nc_sr_04_pw_lrgcore_psp8/Ga-low.psp8, Psdj_nc_sr_04_pw_lrgcore_psp8/As.psp8&quot;</span>
+
+<span class="c1">##############################################################</span>
+<span class="c1"># This section is used only for regression testing of ABINIT #</span>
+<span class="c1">##############################################################</span>
+<span class="c1">#%%&lt;BEGIN TEST_INFO&gt;</span>
+<span class="c1">#%% [setup]</span>
+<span class="c1">#%% executable = abinit</span>
+<span class="c1">#%% test_chain = toptic_3.abi, toptic_4.abi, toptic_5.abi</span>
+<span class="c1">#%% need_cpp_vars = !HAVE_MPI_IO_DEFAULT</span>
+<span class="c1">#%% [files]</span>
+<span class="c1">#%% files_to_test =</span>
+<span class="c1">#%%   toptic_3.abo, tolnlines=  0, tolabs=  0.000e+00, tolrel=  0.000e+00, fld_options = -easy</span>
+<span class="c1">#%% [paral_info]</span>
+<span class="c1">#%% max_nprocs = 2</span>
+<span class="c1">#%% [extra_info]</span>
+<span class="c1">#%% authors = S. Sharma, X. Gonze</span>
+<span class="c1">#%% keywords = NC, DFPT</span>
+<span class="c1">#%% description =</span>
+<span class="c1">#%%  Prepare the computation of linear optic properties (for the imaginary spectrum only)</span>
+<span class="c1">#%%  of GaAs crystal: ground-state with few bands,</span>
+<span class="c1">#%%  then non-SCF with a larger number of bands, then ddk for different directions</span>
+<span class="c1">#%%  Note that the k point sampling shoud be finer for significant results. The cut-off energy is also too low.</span>
+<span class="c1">#%%&lt;END TEST_INFO&gt;</span>
+</pre></div>
+</div></div>
+
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-90897801-d3eb-424c-88fc-77a56c87a248", "#uuid-26ef6d27-6c5f-4e92-b964-78e5a40ba175") }); </script>
+
+<p>Issue:</p>
+<div class="codehilite"><pre><span></span><code>abinit toptic_3.abi &gt; log 2&gt; err &amp;
+</code></pre></div>
+
+<p>Now, examine the file <em>toptic_3.abi</em>. There are two important changes with respect to the file <em>toptic_1.abi</em>:</p>
+<ul>
+<li>the number of unoccupied bands has been reduced, so that the total number of bands is 9 instead of 20</li>
+<li>when applicable, the value of <a class="wikilink codevar-wikilink" href="/variables/basic#kptopt">kptopt</a> 3 in our previous simulation has been changed to 2,
+    in order to take advantage of the time-reversal symmetry</li>
+</ul>
+<p>When the run is finished (it is only 8 secs on a 2.8 GHz PC), you can process
+the WFK files and obtain the linear optic spectra.
+Copy the <em>toptic_4.abi</em> input file in <em>Work_optic</em>:</p>
+<div class="codehilite"><pre><span></span><code>cp ../toptic_4.abi .
+</code></pre></div>
+
+<div class="text-center"><button id="uuid-89eb4dce-b095-4672-b736-6c07a80c665b" class="md-button md-button--secondary"> View tests/tutorespfn/Input/toptic_4.abi </button></div>
+<div id="uuid-dc00e57d-60d8-4d29-8198-78a5b8608e5e" class="my_dialog" title="tests/tutorespfn/Input/toptic_4.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="p">&amp;</span>FILES
+<span class="w"> </span><span class="nv">ddkfile_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS4_1WF7&#39;</span>,
+<span class="w"> </span><span class="nv">ddkfile_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS5_1WF8&#39;</span>,
+<span class="w"> </span><span class="nv">ddkfile_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS6_1WF9&#39;</span>,
+<span class="w"> </span><span class="nv">wfkfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS3_WFK&#39;</span>
+/
+<span class="p">&amp;</span>PARAMETERS
+<span class="w"> </span><span class="nv">broadening</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.002,
+<span class="w"> </span><span class="nv">domega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.0003,
+<span class="w"> </span><span class="nv">maxomega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.3,
+<span class="w"> </span><span class="nv">scissor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.000,
+<span class="w"> </span><span class="nv">tolerance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.002
+/
+<span class="p">&amp;</span>COMPUTATIONS
+<span class="w"> </span><span class="nv">num_lin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>,
+<span class="w"> </span><span class="nv">lin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span>,
+<span class="w"> </span><span class="nv">num_nonlin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+<span class="w"> </span><span class="nv">num_linel_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+<span class="w"> </span><span class="nv">num_nonlin2_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+/
+
+
+<span class="c1">##############################################################</span>
+<span class="c1"># This section is used only for regression testing of ABINIT #</span>
+<span class="c1">##############################################################</span>
+<span class="c1">#%%&lt;BEGIN TEST_INFO&gt;</span>
+<span class="c1">#%% [setup]</span>
+<span class="c1">#%% executable = optic</span>
+<span class="c1">#%% test_chain = toptic_3.abi, toptic_4.abi, toptic_5.abi</span>
+<span class="c1">#%% need_cpp_vars = !HAVE_MPI_IO_DEFAULT</span>
+<span class="c1">#%% [files]</span>
+<span class="c1">#%% files_to_test =</span>
+<span class="c1">#%%   toptic_4_0001_0001-linopt.out, tolnlines=  0, tolabs=  0.000e+00, tolrel=  0.000e+00, fld_options = -easy</span>
+<span class="c1">#%% [paral_info]</span>
+<span class="c1">#%% max_nprocs = 4</span>
+<span class="c1">#%% [extra_info]</span>
+<span class="c1">#%% authors = S. Sharma, X. Gonze</span>
+<span class="c1">#%% description = Input file for optic code.</span>
+<span class="c1">#%%&lt;END TEST_INFO&gt;</span>
+</pre></div>
+</div></div>
+
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-dc00e57d-60d8-4d29-8198-78a5b8608e5e", "#uuid-89eb4dce-b095-4672-b736-6c07a80c665b") }); </script>
+
+<p>Examine <em>toptic_4.abi</em> file: only the linear optic spectra will be built.</p>
+<p>When you have read the input file, you can run the code, as usual using the following command</p>
+<div class="codehilite"><pre><span></span><code>optic toptic_4.abi &gt; log 2&gt; err &amp;
+</code></pre></div>
+
+<p>Then, you can visualize the files <em>toptic_2_0001_0001-linopt.out</em> and
+<em>toptic_4_0001_0001-linopt.out</em> using xmgrace and compare them. The spectra
+looks completely identical. However, a careful look at these files, by editing
+them, show that indeed, the imaginary part is very similar:</p>
+<div class="codehilite"><pre><span></span><code> #calculated the component:  1  1  of dielectric function
+ #broadening:    0.000000E+00    2.000000E-03
+ #scissors shift:    0.000000E+00
+ #energy window:    3.897388E+01eV    1.432264E+00Ha
+
+ # Energy(eV)         Im(eps(w))
+    8.163415E-03    1.463528E-04
+    1.632683E-02    2.927094E-04
+    2.449025E-02    4.390740E-04
+    3.265366E-02    5.854504E-04
+  ...
+</code></pre></div>
+
+<p>But the real parts differ slightly (this is seen at lines 1007 and beyond):</p>
+<div class="codehilite"><pre><span></span><code> # Energy(eV)         Re(eps(w))
+    8.163415E-03    6.623599E+00
+    1.632683E-02    6.623632E+00
+    2.449025E-02    6.623686E+00
+    3.265366E-02    6.623763E+00
+  ...
+</code></pre></div>
+
+<p>for <em>toptic_2_0001_0001-linopt.out</em> and</p>
+<div class="codehilite"><pre><span></span><code> # Energy(eV)         Re(eps(w))
+    8.163415E-03    6.518576E+00
+    1.632683E-02    6.518608E+00
+    2.449025E-02    6.518663E+00
+    3.265366E-02    6.518740E+00
+</code></pre></div>
+
+<p>for <em>toptic_4_0001_0001-linopt.out</em>.
+This small difference is due to the number
+of bands (<a class="wikilink codevar-wikilink" href="/variables/basic#nband">nband</a> 20 for <em>toptic_2_0001_0001-linopt.out</em> and <a class="wikilink codevar-wikilink" href="/variables/basic#nband">nband</a> 9 for <em>toptic_4_0001_0001-linopt.out</em>).</p>
+<p>Then, you can increase the number of k points, and watch the change in the
+imaginary part of the spectrum. There will be more and more peaks, until they
+merge, and start to form a smooth profile (still not completely smooth even with <span class="arithmatex">\(28\times 28\times 28\)</span>).
+For your information, we give some timings of the corresponding Abinit run for a 2.8 GHz PC:</p>
+<div class="codehilite"><pre><span></span><code>k-point grid     CPU time
+4 x 4 x 4            8 secs
+6 x 6 x 6            20 secs
+8 x 8 x 8            43 secs
+10 x 10 x 10         80 secs
+12 x 12 x 12         138 secs
+16 x 16 x 16         338 secs
+20 x 20 x 20         702 secs
+24 x 24 x 24         1335 secs
+28 x 28 x 28         2633 secs
+</code></pre></div>
+
+<p>For grids on the order of <span class="arithmatex">\(16\times 16\times 16\)</span>, the treatment by optics also takes several
+minutes, due to IO (30 minutes for the <span class="arithmatex">\(28\times 28\times 28\)</span> grid).
+You might note how the first peak slowly develop with increasing number of k
+points but nevertheless stays much smaller than the converged one, and
+even smaller than the experimental one.</p>
+<h2 id="computing-the-linear-electro-optical-susceptibility">Computing the linear electro-optical susceptibility<a class="headerlink" href="#computing-the-linear-electro-optical-susceptibility" title="Permanent link">&para;</a></h2>
+<p>Calculations of the linear electro-optical susceptibility follows the same inital calculations
+as those described in the first two sections of this tutorial. 
+To calculate the coefficients of the linear electro-optical susceptibility
+one needs to modify the optic input file with two additional keywords.</p>
+<p>Copy the <em>toptic_5.abi</em> input file in <em>Work_optic</em>:</p>
+<div class="codehilite"><pre><span></span><code>cp ../toptic_5.abi .
+</code></pre></div>
+
+<div class="text-center"><button id="uuid-fa4aa151-f1c0-482a-9139-bfb907817ca1" class="md-button md-button--secondary"> View tests/tutorespfn/Input/toptic_5.abi </button></div>
+<div id="uuid-0a87dec6-2db8-4937-be58-31ef6f834fa4" class="my_dialog" title="tests/tutorespfn/Input/toptic_5.abi" hidden><div><div class="codehilite small-text"><pre><span></span><span class="p">&amp;</span>FILES
+<span class="w"> </span><span class="nv">ddkfile_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS4_1WF7&#39;</span>,
+<span class="w"> </span><span class="nv">ddkfile_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS5_1WF8&#39;</span>,
+<span class="w"> </span><span class="nv">ddkfile_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS6_1WF9&#39;</span>,
+<span class="w"> </span><span class="nv">wfkfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;toptic_3o_DS3_WFK&#39;</span>
+/
+<span class="p">&amp;</span>PARAMETERS
+<span class="w"> </span><span class="nv">broadening</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.002,
+<span class="w"> </span><span class="nv">domega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.0003,
+<span class="w"> </span><span class="nv">maxomega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.3,
+<span class="w"> </span><span class="nv">scissor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.000,
+<span class="w"> </span><span class="nv">tolerance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.002
+/
+<span class="p">&amp;</span>COMPUTATIONS
+<span class="w"> </span><span class="nv">num_lin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+<span class="w"> </span><span class="nv">lin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+<span class="w"> </span><span class="nv">num_nonlin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span><span class="nv">nonlin_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,
+<span class="w"> </span><span class="nv">num_linel_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>,
+<span class="w"> </span><span class="nv">linel_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">123</span>,
+/
+
+<span class="c1">##############################################################</span>
+<span class="c1"># This section is used only for regression testing of ABINIT #</span>
+<span class="c1">##############################################################</span>
+<span class="c1">#%%&lt;BEGIN TEST_INFO&gt;</span>
+<span class="c1">#%% [setup]</span>
+<span class="c1">#%% executable = optic</span>
+<span class="c1">#%% test_chain = toptic_3.abi,toptic_4.abi,toptic_5.abi</span>
+<span class="c1">#%% need_cpp_vars = !HAVE_MPI_IO_DEFAULT</span>
+<span class="c1">#%% [files]</span>
+<span class="c1">#%% files_to_test =</span>
+<span class="c1">#%%   toptic_5_0001_0002_0003-ChiEOAbs.out, tolnlines= 16, tolabs=  7.000e-04, tolrel=  7.000e-04, fld_options = -easy;</span>
+<span class="c1">#%%   toptic_5_0001_0002_0003-ChiEOIm.out,  tolnlines= 16, tolabs=  7.000e-04, tolrel=  7.000e-04, fld_options = -easy;</span>
+<span class="c1">#%%   toptic_5_0001_0002_0003-ChiEORe.out,  tolnlines= 16, tolabs=  7.000e-04, tolrel=  7.000e-04, fld_options = -easy;</span>
+<span class="c1">#%%   toptic_5_0001_0002_0003-ChiEOTotIm.out,  tolnlines= 16, tolabs=  7.000e-04, tolrel=  7.000e-04, fld_options = -easy;</span>
+<span class="c1">#%%   toptic_5_0001_0002_0003-ChiEOTotRe.out,  tolnlines= 16, tolabs=  7.000e-04, tolrel=  7.000e-04, fld_options = -easy;</span>
+<span class="c1">#%% [paral_info]</span>
+<span class="c1">#%% max_nprocs = 4</span>
+<span class="c1">#%% [extra_info]</span>
+<span class="c1">#%% authors = S. Sharma, X. Gonze, N. A. Pike</span>
+<span class="c1">#%% keywords = linear-electro-optical</span>
+<span class="c1">#%% description = Input file for optic code to calculate the linear electro-optical coefficient</span>
+<span class="c1">#%%&lt;END TEST_INFO&gt;</span>
+</pre></div>
+</div></div>
+
+<script> $(function() { abidocs_jqueryui_dialog("#uuid-0a87dec6-2db8-4937-be58-31ef6f834fa4", "#uuid-fa4aa151-f1c0-482a-9139-bfb907817ca1") }); </script>
+
+<p>For <em>toptic_5.abi</em>, only the linear electro-optic susceptibility will be calculated.</p>
+<p>When you have read the input file, you can run the code, as usual using the following command</p>
+<div class="codehilite"><pre><span></span><code>optic toptic_5.abi &gt; log 2&gt; err &amp;
+</code></pre></div>
+
+<p>The calculation should run in a few seconds on a modern PC.</p>
+<p>The resulting calculation produces a number of files ending in <em>ChiEO</em> and are related to different parts of the linear electro-optical tensor:</p>
+<ul>
+<li><em>ChiEOAbs.out</em> gives the absolute value of the linear electro-optical susceptibility</li>
+<li><em>ChiEOIm.out</em> gives the imaginary components of the calculated linear electro-optical susceptibility</li>
+<li><em>ChiEORe.out</em> gives the real components of the calculated linear electro-optical susceptibility</li>
+<li><em>ChiEOTotIm.out</em> gives the total imaginary part of the calculated linear electro-optical susceptibility</li>
+<li><em>ChiEOTotRe.out</em> gives the total real part of the calculated linear electro-optical susceptibility</li>
+</ul>
+<p>Generally, the low energy (or frequency) range of the linear electro-optical susceptibility
+is linear and of experimental importance. Here, low energy means energies much less than the band gap energy.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+<!--
+Add dropdown button with toolbar (based on https://bootsnipp.com/snippets/featured/inbox-by-gmail)
+and return to Top button (based on https://codepen.io/rdallaire/pen/apoyx)
+-->
+<div class="md-container">
+  <div class="row">
+    <div id="inbox">
+      <div class="fab btn-group show-on-hover dropup">
+        <div data-toggle="tooltip" data-placement="left" title="Menu" style="margin-left: 42px;">
+          <button id="return-to-top" type="button" class="btn btn-primary btn-io dropdown-toggle" data-toggle="dropdown">
+            <span class="fa-stack fa-2x">
+               <i class="fa fa-circle fa-stack-2x fab-backdrop"></i>
+               <i class="fa fa-chevron-up fa-stack-1x fa-inverse fab-primary"></i>
+               <i class="fa fa-map-signs fa-stack-1x fa-inverse fab-secondary"></i>
+            </span>
+          </button>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+        
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/about/release-notes/"
+               data-toggle="popover" data-tippy-content="About">
+               <i class="fa fa-info-circle"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/developers/git_and_gitlab/"
+               data-toggle="popover" data-tippy-content="Developers">
+               <i class="fa fa-terminal"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/theory/geometry/"
+               data-toggle="popover" data-tippy-content="Theory">
+               <i class="fa fa-book"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/faq/configuration_and_compilation/"
+               data-toggle="popover" data-tippy-content="FAQ">
+               <i class="fa fa-graduation-cap"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/tutorial/"
+               data-toggle="popover" data-tippy-content="Tutorials">
+               <i class="fa fa-file-text-o"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/variables/"
+               data-toggle="popover" data-tippy-content="Variables">
+               <i class="fa fa-question"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://gmatteo.github.io/abinit/topics/features/"
+               data-toggle="popover" data-tippy-content="Topics">
+               <i class="fa fa-user-circle-o"></i>
+            </a>
+          </li>
+        
+          <li>
+            <a href=""
+               data-toggle="popover" data-tippy-content="User Guides">
+               <i class="fa "></i>
+            </a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="footer.title">
+      
+        <a href="../fold2bloch/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              fold2bloch
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../wannier90/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              wannier90
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+            <center>Abinit version 10.4.7</center>
+        
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2024 The Abinit Group
+            
+            (SS, XG, YG, NAP, FG)
+            
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abinit/abinit" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/watch?v=gcbfb_Mteo4" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="http://www.facebook.com/abinit.org" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/hashtag/abinit" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "header.autohide"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "10.4.7"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../extra_javascript/abidocs.js"></script>
+      
+    
+  </body>
+</html>

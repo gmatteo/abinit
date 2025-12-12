@@ -1,0 +1,1535 @@
+******************************************************************************************
+                                Welcome to MULTIBINIT,                         
+ a software platform designed for the construction and use of second-principles models
+                   for lattice, spin and electron degrees of freedom.
+
+.Version 10.0.0.3 of MULTIBINIT 
+.(MPI version, prepared for a x86_64_linux_gnu13.2 computer) 
+
+.Copyright (C) 1998-2025 ABINIT group . 
+ MULTIBINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ MULTIBINIT is a software project of the University of Liege
+ (PHYTHEMA & NANOMAT groups), in collaboration with other partners.
+
+-----------------------------------------------------------------------------------------
+
+                          MULTIBINIT - LATTICE MODELS                   
+
+ Project initiated and coordinated by Philippe GHOSEZ and his group at ULiege
+   (Philippe.Ghosez@uliege.be).
+
+ Main contributors: Alexandre MARTIN, Jordan BIEDER, Michael Marcus SCHMITT,
+   Louis BASTOGNE, Xu HE, Alireza SASANI, Huazhang ZHANG, Subhadeep BANDYOPADHYAY,
+   Philippe GHOSEZ.
+
+ Technical support: Xu HE (X.He@uliege.be)
+
+*****************************************************************************************
+
+
+
+.Starting date : Fri 21 Mar 2025.
+- ( at 11h29 )
+  
+- The starting date is more than 2 years after the initial release
+- of this version of ABINIT, namely Jul 2022.
+- Note that the use beyond 3 years after the release will not be supported.
+- Action: please, switch to a more recent version of ABINIT.
+
+-  nproc =    4
+
+================================================================================
+
+ Read the information in the reference structure in 
+-/home/buildbot/ABINIT3/eos_gnu_13.2_mpich/xuhe_merge_newbound/tests/paral/Input/t98_sys.xml
+ to initialize the multibinit input
+
+================================================================================
+
+ -outvars_multibinit: echo values of input variables ----------------------
+
+ Flags : 
+     ifcflag         1
+   prt_model         1
+     strcpli        -1
+ Molecular Dynamics :
+    dynamics        12
+    dyn_chks         0
+        temp    1000.0
+       ntime        50
+       ncell         2         2         2
+       dtion       100
+ Miscellaneous information :
+         asr         2
+ Interatomic Force Constants Inputs :
+      dipdip         0
+      ifcana         0
+      ifcout   2000000
+      natifc         4
+       atifc         1   2   3   4
+ Description of grid 1 :
+        brav         1
+       ngqpt         1         1         1
+      nqshft         1
+      q1shft
+                     0.00000000E+00  0.00000000E+00  0.00000000E+00
+ First list of wavevector (reduced coord.) :
+       nph1l         1
+       qph1l
+                     0.00000000E+00  0.00000000E+00  0.00000000E+00    0.000E+00
+
+================================================================================
+
+-Opening the file /home/buildbot/ABINIT3/eos_gnu_13.2_mpich/xuhe_merge_newbound/tests/paral/Input/t98_sys.xml
+-Reading the file /home/buildbot/ABINIT3/eos_gnu_13.2_mpich/xuhe_merge_newbound/tests/paral/Input/t98_sys.xml with Fortran
+
+ Bound for ifc SR:
+
+ x=[  0  1], y=[  0  1] and z=[ -1  1]
+
+================================================================================
+
+ Impose acoustic sum rule on total ifc
+
+================================================================================
+
+ This effective potential contains :
+  - Reference energy:        -17.1451766217
+  - Number of types of atoms:    2
+  - Number of atoms:     4
+  - Number of cells:    12
+  - Number of qpoints:    8
+  - Primitive vectors (unit:Bohr):
+    6.528935    3.769482    0.000000
+   -6.528935    3.769482    0.000000
+    0.000000    0.000000   12.277795
+  - acell (unit:Bohr):
+    1.000000    1.000000    1.000000
+  - Dielectric tensor:
+   25.944545   -0.000000   -0.000000
+   -0.000000   25.944545   -0.000000
+   -0.000000   -0.000000    8.373944
+  - Elastic tensor (unit:10^2GPa):
+    1.873830    0.414444    0.178057    0.000000    0.000000   -0.000000
+    0.414444    1.873830    0.178057    0.000000    0.000000    0.000000
+    0.177855    0.177855    1.660337    0.000000    0.000000    0.000000
+    0.000000   -0.000000    0.000000    0.345671    0.000000    0.000000
+    0.000000    0.000000    0.000000    0.000000    0.345665    0.000000
+    0.000000    0.000000    0.000000    0.000000    0.000000    0.729651
+  - Atoms   1
+    - atomic number:   13.0000
+    - atomic mass:   26.9815
+    - cartesian position:   -2.176312    3.769482    0.000000
+    - Effective charges:
+      3.872159    0.000000    0.000000
+      0.000000    3.872159   -0.000000
+      0.000000    0.000000    2.012513
+  - Atoms   2
+    - atomic number:   13.0000
+    - atomic mass:   26.9815
+    - cartesian position:    2.176312    3.769482    6.138898
+    - Effective charges:
+      3.872159   -0.000000    0.000000
+     -0.000000    3.872159   -0.000000
+     -0.000000    0.000000    2.012513
+  - Atoms   3
+    - atomic number:   33.0000
+    - atomic mass:   74.9216
+    - cartesian position:   -2.176312    3.769482    4.617506
+    - Effective charges:
+     -3.872159   -0.000000    0.000000
+      0.000000   -3.872159    0.000000
+      0.000000   -0.000000   -2.012513
+  - Atoms   4
+    - atomic number:   33.0000
+    - atomic mass:   74.9216
+    - cartesian position:    2.176312    3.769482   10.756403
+    - Effective charges:
+     -3.872159   -0.000000   -0.000000
+     -0.000000   -3.872159   -0.000000
+     -0.000000   -0.000000   -2.012513
+
+================================================================================
+
+ There is no file for the coefficients from polynomial fitting
+
+================================================================================
+
+ Generation of the xml file for the model in t98_MPI4_model.xml
+
+================================================================================
+
+--------------------------------------------------------------------------------
+-Monte Carlo / Molecular Dynamics 
+
+
+=== [ionmov=12] Isokinetic ensemble molecular dynamics with effective potential
+================================================================================
+
+--- Iteration: ( 1/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  2.2434843098053667E-30 Hartree
+
+    >>>>>>>>> Etotal= -1.37161412973312E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  9.69618200E-20  sigma(3 2)= -2.67420725E-31
+  sigma(2 2)= -5.09075774E-20  sigma(3 1)= -4.39177225E-26
+  sigma(3 3)= -6.29266170E-20  sigma(2 1)=  4.92885886E-20
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  1.6547E-16 GPa]
+- sigma(1 1)=  2.85271475E-15  sigma(3 2)= -7.86778803E-27
+- sigma(2 2)= -1.49775239E-15  sigma(3 1)= -1.29210379E-21
+- sigma(3 3)= -1.85136468E-15  sigma(2 1)=  1.45012010E-15
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 2/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  2.3429243987198455E-03 Hartree
+
+    >>>>>>>>> Etotal= -1.37159070048913E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -9.74240213E-07  sigma(3 2)=  1.96628407E-06
+  sigma(2 2)=  1.16422185E-06  sigma(3 1)= -1.91117083E-07
+  sigma(3 3)=  9.80610406E-07  sigma(2 1)= -2.02818933E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -1.1480E-02 GPa]
+- sigma(1 1)= -2.86631318E-02  sigma(3 2)=  5.78500648E-02
+- sigma(2 2)=  3.42525836E-02  sigma(3 1)= -5.62285775E-03
+- sigma(3 3)=  2.88505493E-02  sigma(2 1)= -5.96713803E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 3/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  9.2560101284598038E-03 Hartree
+
+    >>>>>>>>> Etotal= -1.37152156963184E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -1.69985631E-06  sigma(3 2)=  3.84163388E-06
+  sigma(2 2)=  3.52175027E-06  sigma(3 1)= -3.87566708E-07
+  sigma(3 3)=  2.40813900E-06  sigma(2 1)= -4.18946206E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.1484E-02 GPa]
+- sigma(1 1)= -5.00114910E-02  sigma(3 2)=  1.13024752E-01
+- sigma(2 2)=  1.03613453E-01  sigma(3 1)= -1.14026043E-02
+- sigma(3 3)=  7.08498835E-02  sigma(2 1)= -1.23258208E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 4/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  2.0383480897840346E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37141029492414E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -2.18111927E-06  sigma(3 2)=  5.60470998E-06
+  sigma(2 2)=  6.95326687E-06  sigma(3 1)= -5.84939728E-07
+  sigma(3 3)=  4.25705520E-06  sigma(2 1)= -6.44323514E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -8.8549E-02 GPa]
+- sigma(1 1)= -6.41707335E-02  sigma(3 2)=  1.64896233E-01
+- sigma(2 2)=  2.04572140E-01  sigma(3 1)= -1.72095180E-02
+- sigma(3 3)=  1.25246867E-01  sigma(2 1)= -1.89566491E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 5/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  3.5105183258441169E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37126307790054E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -2.43150312E-06  sigma(3 2)=  7.23452024E-06
+  sigma(2 2)=  1.12557706E-05  sigma(3 1)= -7.77144666E-07
+  sigma(3 3)=  6.48493531E-06  sigma(2 1)= -8.73234850E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -1.5014E-01 GPa]
+- sigma(1 1)= -7.15372797E-02  sigma(3 2)=  2.12846898E-01
+- sigma(2 2)=  3.31156148E-01  sigma(3 1)= -2.28643816E-02
+- sigma(3 3)=  1.90793352E-01  sigma(2 1)= -2.56914520E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 6/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  5.2503731027187368E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37108909242285E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -2.47411803E-06  sigma(3 2)=  8.70931739E-06
+  sigma(2 2)=  1.61345781E-05  sigma(3 1)= -9.56213344E-07
+  sigma(3 3)=  9.02709125E-06  sigma(2 1)= -1.09806770E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -2.2250E-01 GPa]
+- sigma(1 1)= -7.27910533E-02  sigma(3 2)=  2.56236921E-01
+- sigma(2 2)=  4.74695595E-01  sigma(3 1)= -2.81327631E-02
+- sigma(3 3)=  2.65586149E-01  sigma(2 1)= -3.23062617E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 7/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  7.1339330600399653E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37090073642712E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -2.34207343E-06  sigma(3 2)=  1.00060082E-05
+  sigma(2 2)=  2.11993989E-05  sigma(3 1)= -1.11227503E-06
+  sigma(3 3)=  1.17902575E-05  sigma(2 1)= -1.30920904E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.0056E-01 GPa]
+- sigma(1 1)= -6.89061678E-02  sigma(3 2)=  2.94386876E-01
+- sigma(2 2)=  6.23707746E-01  sigma(3 1)= -3.27242556E-02
+- sigma(3 3)=  3.46881292E-01  sigma(2 1)= -3.85182532E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 8/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  9.0062685263381292E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37071350288049E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -2.07787587E-06  sigma(3 2)=  1.11003081E-05
+  sigma(2 2)=  2.59741244E-05  sigma(3 1)= -1.23391561E-06
+  sigma(3 3)=  1.46474467E-05  sigma(2 1)= -1.49528642E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.7800E-01 GPa]
+- sigma(1 1)= -6.11332084E-02  sigma(3 2)=  3.26582285E-01
+- sigma(2 2)=  7.64184993E-01  sigma(3 1)= -3.63030444E-02
+- sigma(3 3)=  4.30942687E-01  sigma(2 1)= -4.39928380E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: ( 9/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.0691005663368687E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37054502916678E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -1.73057241E-06  sigma(3 2)=  1.19679296E-05
+  sigma(2 2)=  2.99333817E-05  sigma(3 1)= -1.30918574E-06
+  sigma(3 3)=  1.74379826E-05  sigma(2 1)= -1.64403098E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.4760E-01 GPa]
+- sigma(1 1)= -5.09151896E-02  sigma(3 2)=  3.52108586E-01
+- sigma(2 2)=  8.80670345E-01  sigma(3 1)= -3.85175677E-02
+- sigma(3 3)=  5.13043074E-01  sigma(2 1)= -4.83690533E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (10/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.2012052451662561E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37041292448795E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -1.34945601E-06  sigma(3 2)=  1.25869354E-05
+  sigma(2 2)=  3.25760559E-05  sigma(3 1)= -1.32740428E-06
+  sigma(3 3)=  1.99780162E-05  sigma(2 1)= -1.74395830E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.0216E-01 GPa]
+- sigma(1 1)= -3.97023599E-02  sigma(3 2)=  3.70320362E-01
+- sigma(2 2)=  9.58420493E-01  sigma(3 1)= -3.90535756E-02
+- sigma(3 3)=  5.87773430E-01  sigma(2 1)= -5.13090158E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (11/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.2826911116529008E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37033143862147E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -9.74476138E-07  sigma(3 2)=  1.29408916E-05
+  sigma(2 2)=  3.35299398E-05  sigma(3 1)= -1.28149609E-06
+  sigma(3 3)=  2.20849205E-05  sigma(2 1)= -1.78669471E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.3586E-01 GPa]
+- sigma(1 1)= -2.86700730E-02  sigma(3 2)=  3.80734111E-01
+- sigma(2 2)=  9.86484722E-01  sigma(3 1)= -3.77029103E-02
+- sigma(3 3)=  6.49760685E-01  sigma(2 1)= -5.25663644E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (12/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.3062043856440322E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37030792534748E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -6.26074187E-07  sigma(3 2)=  1.30217716E-05
+  sigma(2 2)=  3.26543527E-05  sigma(3 1)= -1.17001612E-06
+  sigma(3 3)=  2.36118150E-05  sigma(2 1)= -1.76918444E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.4566E-01 GPa]
+- sigma(1 1)= -1.84197354E-02  sigma(3 2)=  3.83113684E-01
+- sigma(2 2)=  9.60724065E-01  sigma(3 1)= -3.44230569E-02
+- sigma(3 3)=  6.94683463E-01  sigma(2 1)= -5.20511944E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (13/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.2733949876487094E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37034073474547E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)= -2.99149680E-07  sigma(3 2)=  1.28312613E-05
+  sigma(2 2)=  3.00903026E-05  sigma(3 1)= -9.97764734E-07
+  sigma(3 3)=  2.44793360E-05  sigma(2 1)= -1.69467656E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.3223E-01 GPa]
+- sigma(1 1)= -8.80128595E-03  sigma(3 2)=  3.77508676E-01
+- sigma(2 2)=  8.85287117E-01  sigma(3 1)= -2.93552470E-02
+- sigma(3 3)=  7.20206808E-01  sigma(2 1)= -4.98590973E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (14/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.1943992950358465E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37041973043808E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  3.53967251E-08  sigma(3 2)=  1.23797395E-05
+  sigma(2 2)=  2.62267949E-05  sigma(3 1)= -7.74493841E-07
+  sigma(3 3)=  2.46896350E-05  sigma(2 1)= -1.57185749E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.9968E-01 GPa]
+- sigma(1 1)=  1.04140743E-03  sigma(3 2)=  3.64224449E-01
+- sigma(2 2)=  7.71618816E-01  sigma(3 1)= -2.27863917E-02
+- sigma(3 3)=  7.26394017E-01  sigma(2 1)= -4.62456363E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (15/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.0849915619699152E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37052913817115E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  4.22410731E-07  sigma(3 2)=  1.16834508E-05
+  sigma(2 2)=  2.15999928E-05  sigma(3 1)= -5.12311888E-07
+  sigma(3 3)=  2.43171314E-05  sigma(2 1)= -1.41255568E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.5445E-01 GPa]
+- sigma(1 1)=  1.24277507E-02  sigma(3 2)=  3.43738933E-01
+- sigma(2 2)=  6.35493621E-01  sigma(3 1)= -1.50727336E-02
+- sigma(3 3)=  7.15434587E-01  sigma(2 1)= -4.15588159E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (16/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  9.6291612880242183E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37065121360432E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  9.11898570E-07  sigma(3 2)=  1.07612029E-05
+  sigma(2 2)=  1.67759905E-05  sigma(3 1)= -2.23017397E-07
+  sigma(3 3)=  2.34837456E-05  sigma(2 1)= -1.22915407E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.0377E-01 GPa]
+- sigma(1 1)=  2.68289777E-02  sigma(3 2)=  3.16605468E-01
+- sigma(2 2)=  4.93566596E-01  sigma(3 1)= -6.56139724E-03
+- sigma(3 3)=  6.90915534E-01  sigma(2 1)= -3.61629551E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (17/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  8.4487778508226724E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37076925194804E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.55034335E-06  sigma(3 2)=  9.63177835E-06
+  sigma(2 2)=  1.22614449E-05  sigma(3 1)=  8.37218332E-08
+  sigma(3 3)=  2.23316392E-05  sigma(2 1)= -1.03266489E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.5446E-01 GPa]
+- sigma(1 1)=  4.56126686E-02  sigma(3 2)=  2.83376655E-01
+- sigma(2 2)=  3.60744104E-01  sigma(3 1)=  2.46318096E-03
+- sigma(3 3)=  6.57019399E-01  sigma(2 1)= -3.03820450E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (18/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  7.4479815511170500E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37086933157801E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.37561647E-06  sigma(3 2)=  8.31256047E-06
+  sigma(2 2)=  8.45676010E-06  sigma(3 1)=  4.01147176E-07
+  sigma(3 3)=  2.10024494E-05  sigma(2 1)= -8.31765383E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.1220E-01 GPa]
+- sigma(1 1)=  6.98930380E-02  sigma(3 2)=  2.44563931E-01
+- sigma(2 2)=  2.48806430E-01  sigma(3 1)=  1.18021554E-02
+- sigma(3 3)=  6.17913292E-01  sigma(2 1)= -2.44713783E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (19/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  6.7317199471187111E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37094095773841E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  3.41494096E-06  sigma(3 2)=  6.81930726E-06
+  sigma(2 2)=  5.64323863E-06  sigma(3 1)=  7.25429437E-07
+  sigma(3 3)=  1.96253002E-05  sigma(2 1)= -6.32595623E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -2.8130E-01 GPa]
+- sigma(1 1)=  1.00471015E-01  sigma(3 2)=  2.00630912E-01
+- sigma(2 2)=  1.66029785E-01  sigma(3 1)=  2.13428673E-02
+- sigma(3 3)=  5.77396170E-01  sigma(2 1)= -1.86116027E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (20/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  6.3706694347098608E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37097706278965E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  4.68453650E-06  sigma(3 2)=  5.16680233E-06
+  sigma(2 2)=  3.98851887E-06  sigma(3 1)=  1.05530768E-06
+  sigma(3 3)=  1.83116873E-05  sigma(2 1)= -4.38978929E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -2.6464E-01 GPa]
+- sigma(1 1)=  1.37823799E-01  sigma(3 2)=  1.52012547E-01
+- sigma(2 2)=  1.17346257E-01  sigma(3 1)=  3.10482186E-02
+- sigma(3 3)=  5.38748351E-01  sigma(2 1)= -1.29152038E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (21/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  6.4036049647323443E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37097376923665E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  6.18971969E-06  sigma(3 2)=  3.37016828E-06
+  sigma(2 2)=  3.55764780E-06  sigma(3 1)=  1.39160741E-06
+  sigma(3 3)=  1.71542211E-05  sigma(2 1)= -2.52800820E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -2.6382E-01 GPa]
+- sigma(1 1)=  1.82107810E-01  sigma(3 2)=  9.91537574E-02
+- sigma(2 2)=  1.04669594E-01  sigma(3 1)=  4.09424967E-02
+- sigma(3 3)=  5.04694525E-01  sigma(2 1)= -7.43765566E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (22/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  6.8396057214792277E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37093016916097E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  7.92465433E-06  sigma(3 2)=  1.44677023E-06
+  sigma(2 2)=  4.32260195E-06  sigma(3 1)=  1.73675095E-06
+  sigma(3 3)=  1.62266716E-05  sigma(2 1)= -7.44074378E-07
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -2.7924E-01 GPa]
+- sigma(1 1)=  2.33151341E-01  sigma(3 2)=  4.25654427E-02
+- sigma(2 2)=  1.27175319E-01  sigma(3 1)=  5.10969685E-02
+- sigma(3 3)=  4.77405080E-01  sigma(2 1)= -2.18914203E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (23/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  7.6588752499751805E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37084824220812E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  9.87130081E-06  sigma(3 2)= -5.81233769E-07
+  sigma(2 2)=  6.16740965E-06  sigma(3 1)=  2.09426179E-06
+  sigma(3 3)=  1.55835344E-05  sigma(2 1)=  9.70182567E-07
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.1012E-01 GPa]
+- sigma(1 1)=  2.90423648E-01  sigma(3 2)= -1.71004850E-02
+- sigma(2 2)=  1.81451426E-01  sigma(3 1)=  6.16152989E-02
+- sigma(3 3)=  4.58483333E-01  sigma(2 1)=  2.85437518E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (24/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  8.8118562260160516E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37073294411052E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.19973667E-05  sigma(3 2)= -2.68358618E-06
+  sigma(2 2)=  8.88892996E-06  sigma(3 1)=  2.46819351E-06
+  sigma(3 3)=  1.52579328E-05  sigma(2 1)=  2.63083647E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.5447E-01 GPa]
+- sigma(1 1)=  3.52974657E-01  sigma(3 2)= -7.89538180E-02
+- sigma(2 2)=  2.61521304E-01  sigma(3 1)=  7.26167479E-02
+- sigma(3 3)=  4.48903805E-01  sigma(2 1)=  7.74018683E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (25/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.0217061001956178E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37059242363292E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.42533324E-05  sigma(3 2)= -4.81785041E-06
+  sigma(2 2)=  1.21956969E-05  sigma(3 1)=  2.86236865E-06
+  sigma(3 3)=  1.52571157E-05  sigma(2 1)=  4.25763265E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.0901E-01 GPa]
+- sigma(1 1)=  4.19347445E-01  sigma(3 2)= -1.41746029E-01
+- sigma(2 2)=  3.58809730E-01  sigma(3 1)=  8.42137791E-02
+- sigma(3 3)=  4.48879766E-01  sigma(2 1)=  1.25263856E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (26/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.1758968082287202E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37043823292489E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.65690934E-05  sigma(3 2)= -6.92490114E-06
+  sigma(2 2)=  1.57099887E-05  sigma(3 1)=  3.27929831E-06
+  sigma(3 3)=  1.55554161E-05  sigma(2 1)=  5.86856557E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.6911E-01 GPa]
+- sigma(1 1)=  4.87479475E-01  sigma(3 2)= -2.03737591E-01
+- sigma(2 2)=  4.62203748E-01  sigma(3 1)=  9.64802709E-02
+- sigma(3 3)=  4.57656066E-01  sigma(2 1)=  1.72659131E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (27/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.3288666396085003E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37028526309351E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.88515932E-05  sigma(3 2)= -8.92510158E-06
+  sigma(2 2)=  1.89816771E-05  sigma(3 1)=  3.71870291E-06
+  sigma(3 3)=  1.60857742E-05  sigma(2 1)=  7.47274166E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.2878E-01 GPa]
+- sigma(1 1)=  5.54632927E-01  sigma(3 2)= -2.62585510E-01
+- sigma(2 2)=  5.58460127E-01  sigma(3 1)=  1.09407998E-01
+- sigma(3 3)=  4.73259736E-01  sigma(2 1)=  2.19855613E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (28/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.4631366470868359E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37015099308603E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.09859432E-05  sigma(3 2)= -1.07174668E-05
+  sigma(2 2)=  2.15249117E-05  sigma(3 1)=  4.17573741E-06
+  sigma(3 3)=  1.67331680E-05  sigma(2 1)=  9.06177927E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.8101E-01 GPa]
+- sigma(1 1)=  6.17427662E-01  sigma(3 2)= -3.15318706E-01
+- sigma(2 2)=  6.33284660E-01  sigma(3 1)=  1.22854415E-01
+- sigma(3 3)=  4.92306716E-01  sigma(2 1)=  2.66606706E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (29/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.5605075241770477E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37005362220894E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.28432638E-05  sigma(3 2)= -1.21851183E-05
+  sigma(2 2)=  2.28858698E-05  sigma(3 1)=  4.63938428E-06
+  sigma(3 3)=  1.73360523E-05  sigma(2 1)=  1.06016519E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -6.1848E-01 GPa]
+- sigma(1 1)=  6.72071912E-01  sigma(3 2)= -3.58498498E-01
+- sigma(2 2)=  6.73325423E-01  sigma(3 1)=  1.36495375E-01
+- sigma(3 3)=  5.10044182E-01  sigma(2 1)=  3.11911316E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (30/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.6051295576564029E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37000900017546E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.42972842E-05  sigma(3 2)= -1.32096578E-05
+  sigma(2 2)=  2.27359595E-05  sigma(3 1)=  5.09189420E-06
+  sigma(3 3)=  1.77027504E-05  sigma(2 1)=  1.20289458E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -6.3487E-01 GPa]
+- sigma(1 1)=  7.14850660E-01  sigma(3 2)= -3.88641484E-01
+- sigma(2 2)=  6.68914910E-01  sigma(3 1)=  1.49808674E-01
+- sigma(3 3)=  5.20832810E-01  sigma(2 1)=  3.53903745E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (31/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.5870625078274284E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37002706722529E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.52473454E-05  sigma(3 2)= -1.36931510E-05
+  sigma(2 2)=  2.09612806E-05  sigma(3 1)=  5.51020640E-06
+  sigma(3 3)=  1.76449106E-05  sigma(2 1)=  1.32560580E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -6.2621E-01 GPa]
+- sigma(1 1)=  7.42802420E-01  sigma(3 2)= -4.02866343E-01
+- sigma(2 2)=  6.16702062E-01  sigma(3 1)=  1.62115842E-01
+- sigma(3 3)=  5.19131105E-01  sigma(2 1)=  3.90006625E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (32/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.5048211286440463E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37010930860448E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.56396112E-05  sigma(3 2)= -1.35803645E-05
+  sigma(2 2)=  1.77035202E-05  sigma(3 1)=  5.86951039E-06
+  sigma(3 3)=  1.70192331E-05  sigma(2 1)=  1.41865830E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.9197E-01 GPa]
+- sigma(1 1)=  7.54343278E-01  sigma(3 2)= -3.99548051E-01
+- sigma(2 2)=  5.20855458E-01  sigma(3 1)=  1.72686929E-01
+- sigma(3 3)=  5.00723040E-01  sigma(2 1)=  4.17383611E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (33/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.3655244781624770E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37024860525496E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.54765328E-05  sigma(3 2)= -1.28710356E-05
+  sigma(2 2)=  1.33234607E-05  sigma(3 1)=  6.14777808E-06
+  sigma(3 3)=  1.57597125E-05  sigma(2 1)=  1.47358897E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -5.3507E-01 GPa]
+- sigma(1 1)=  7.49545347E-01  sigma(3 2)= -3.78678877E-01
+- sigma(2 2)=  3.91989680E-01  sigma(3 1)=  1.80873845E-01
+- sigma(3 3)=  4.63666673E-01  sigma(2 1)=  4.33544771E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (34/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.1825561441500013E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37043157358897E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.48104801E-05  sigma(3 2)= -1.16166916E-05
+  sigma(2 2)=  8.30207768E-06  sigma(3 1)=  6.32936650E-06
+  sigma(3 3)=  1.38860685E-05  sigma(2 1)=  1.48480603E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -4.6092E-01 GPa]
+- sigma(1 1)=  7.29949402E-01  sigma(3 2)= -3.41774808E-01
+- sigma(2 2)=  2.44255517E-01  sigma(3 1)=  1.86216360E-01
+- sigma(3 3)=  4.08542170E-01  sigma(2 1)=  4.36844943E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (35/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  9.7201995476798947E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37064210977835E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.37264023E-05  sigma(3 2)= -9.90544615E-06
+  sigma(2 2)=  3.12740588E-06  sigma(3 1)=  6.40645342E-06
+  sigma(3 3)=  1.14883378E-05  sigma(2 1)=  1.45030348E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.7602E-01 GPa]
+- sigma(1 1)=  6.98054737E-01  sigma(3 2)= -2.91428238E-01
+- sigma(2 2)=  9.20114423E-02  sigma(3 1)=  1.88484335E-01
+- sigma(3 3)=  3.37998511E-01  sigma(2 1)=  4.26693943E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (36/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  7.4955219547659060E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37086457753764E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.23225211E-05  sigma(3 2)= -7.84330981E-06
+  sigma(2 2)= -1.78954680E-06  sigma(3 1)=  6.37843603E-06
+  sigma(3 3)=  8.69944659E-06  sigma(2 1)=  1.37141421E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -2.8668E-01 GPa]
+- sigma(1 1)=  6.56751133E-01  sigma(3 2)= -2.30758103E-01
+- sigma(2 2)= -5.26502758E-02  sigma(3 1)=  1.87660035E-01
+- sigma(3 3)=  2.55946512E-01  sigma(2 1)=  4.03483923E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (37/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  5.2832057553332479E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37108580915759E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.06956006E-05  sigma(3 2)= -5.53901231E-06
+  sigma(2 2)= -6.15526409E-06  sigma(3 1)=  6.25027109E-06
+  sigma(3 3)=  5.66854711E-06  sigma(2 1)=  1.25203821E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -1.9819E-01 GPa]
+- sigma(1 1)=  6.08885489E-01  sigma(3 2)= -1.62963341E-01
+- sigma(2 2)= -1.81094091E-01  sigma(3 1)=  1.83889293E-01
+- sigma(3 3)=  1.66774386E-01  sigma(2 1)=  3.68362298E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (38/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  3.1820395630923516E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37129592577681E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.89326167E-05  sigma(3 2)= -3.09485467E-06
+  sigma(2 2)= -9.79946239E-06  sigma(3 1)=  6.03070964E-06
+  sigma(3 3)=  2.54175096E-06  sigma(2 1)=  1.09779098E-05
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -1.1450E-01 GPa]
+- sigma(1 1)=  5.57016721E-01  sigma(3 2)= -9.10537527E-02
+- sigma(2 2)= -2.88310089E-01  sigma(3 1)=  1.77429574E-01
+- sigma(3 3)=  7.47808826E-02  sigma(2 1)=  3.22981202E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (39/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    :  1.2574939230144820E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37148838034082E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.71075442E-05  sigma(3 2)= -6.02769451E-07
+  sigma(2 2)= -1.26620786E-05  sigma(3 1)=  5.73093166E-06
+  sigma(3 3)= -5.49174752E-07  sigma(2 1)=  9.15315396E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -3.8211E-02 GPa]
+- sigma(1 1)=  5.03321244E-01  sigma(3 2)= -1.77340865E-02
+- sigma(2 2)= -3.72531150E-01  sigma(3 1)=  1.68609802E-01
+- sigma(3 3)= -1.61572763E-02  sigma(2 1)=  2.69295041E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (40/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -4.5503114357565745E-03 Hartree
+
+    >>>>>>>>> Etotal= -1.37165963284748E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.52811461E-05  sigma(3 2)=  1.85638076E-06
+  sigma(2 2)= -1.47739261E-05  sigma(3 1)=  5.36368511E-06
+  sigma(3 3)= -3.49245991E-06  sigma(2 1)=  7.11811881E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  2.9276E-02 GPa]
+- sigma(1 1)=  4.49586766E-01  sigma(3 2)=  5.46165984E-02
+- sigma(2 2)= -4.34663840E-01  sigma(3 1)=  1.57805038E-01
+- sigma(3 3)= -1.02751701E-01  sigma(2 1)=  2.09422250E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (41/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -1.9459158560850606E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37180872131873E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.35020437E-05  sigma(3 2)=  4.21203857E-06
+  sigma(2 2)= -1.62374460E-05  sigma(3 1)=  4.94282702E-06
+  sigma(3 3)= -6.19898724E-06  sigma(2 1)=  4.94742610E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  8.7620E-02 GPa]
+- sigma(1 1)=  3.97243775E-01  sigma(3 2)=  1.23922432E-01
+- sigma(2 2)= -4.77722074E-01  sigma(3 1)=  1.45422967E-01
+- sigma(3 3)= -1.82380471E-01  sigma(2 1)=  1.45558277E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (42/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -3.2271890990324945E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37193684864302E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.18080273E-05  sigma(3 2)=  6.40289939E-06
+  sigma(2 2)= -1.72094788E-05  sigma(3 1)=  4.48310362E-06
+  sigma(3 3)= -8.60388110E-06  sigma(2 1)=  2.71637748E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  1.3735E-01 GPa]
+- sigma(1 1)=  3.47404100E-01  sigma(3 2)=  1.88379772E-01
+- sigma(2 2)= -5.06320262E-01  sigma(3 1)=  1.31897440E-01
+- sigma(3 3)= -2.53134879E-01  sigma(2 1)=  7.99185711E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (43/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -4.3288156163765780E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37204701129476E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  1.02271160E-05  sigma(3 2)=  8.37622554E-06
+  sigma(2 2)= -1.78855611E-05  sigma(3 1)=  4.00001169E-06
+  sigma(3 3)= -1.06680634E-05  sigma(2 1)=  4.99371333E-07
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  1.7973E-01 GPa]
+- sigma(1 1)=  3.00892092E-01  sigma(3 2)=  2.46437022E-01
+- sigma(2 2)= -5.26211286E-01  sigma(3 1)=  1.17684387E-01
+- sigma(3 3)= -3.13865208E-01  sigma(2 1)=  1.46920094E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (44/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -5.2951631774960053E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37214364605087E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  8.77823699E-06  sigma(3 2)=  1.00878204E-05
+  sigma(2 2)= -1.84843318E-05  sigma(3 1)=  3.50960681E-06
+  sigma(3 3)= -1.23800375E-05  sigma(2 1)= -1.63182147E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  2.1660E-01 GPa]
+- sigma(1 1)=  2.58264605E-01  sigma(3 2)=  2.96793874E-01
+- sigma(2 2)= -5.43827727E-01  sigma(3 1)=  1.03256180E-01
+- sigma(3 3)= -3.64233217E-01  sigma(2 1)= -4.80098372E-02
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (45/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -6.1812140773603988E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37223225114086E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  7.47162184E-06  sigma(3 2)=  1.15027090E-05
+  sigma(2 2)= -1.92306878E-05  sigma(3 1)=  3.02815276E-06
+  sigma(3 3)= -1.37575283E-05  sigma(2 1)= -3.61021508E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  2.5024E-01 GPa]
+- sigma(1 1)=  2.19822667E-01  sigma(3 2)=  3.38421326E-01
+- sigma(2 2)= -5.65786275E-01  sigma(3 1)=  8.90913150E-02
+- sigma(3 3)= -4.04760388E-01  sigma(2 1)= -1.06216177E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (46/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -7.0481097999600603E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37231894071312E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  6.30916541E-06  sigma(3 2)=  1.25963664E-05
+  sigma(2 2)= -2.03370835E-05  sigma(3 1)=  2.57154509E-06
+  sigma(3 3)= -1.48480989E-05  sigma(2 1)= -5.37625519E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  2.8319E-01 GPa]
+- sigma(1 1)=  1.85622024E-01  sigma(3 2)=  3.70597832E-01
+- sigma(2 2)= -5.98337554E-01  sigma(3 1)=  7.56574559E-02
+- sigma(3 3)= -4.36846078E-01  sigma(2 1)= -1.58174862E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (47/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -7.9578444048947261E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37240991417361E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  5.28506991E-06  sigma(3 2)=  1.33561438E-05
+  sigma(2 2)= -2.19836918E-05  sigma(3 1)=  2.15450181E-06
+  sigma(3 3)= -1.57275678E-05  sigma(2 1)= -6.88073670E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  3.1800E-01 GPa]
+- sigma(1 1)=  1.55492099E-01  sigma(3 2)=  3.92951252E-01
+- sigma(2 2)= -6.46782435E-01  sigma(3 1)=  6.33876209E-02
+- sigma(3 3)= -4.62720942E-01  sigma(2 1)= -2.02438229E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (48/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -8.9673314254625269E-02 Hartree
+
+    >>>>>>>>> Etotal= -1.37251086287567E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  4.38708084E-06  sigma(3 2)=  1.37823868E-05
+  sigma(2 2)= -2.42997499E-05  sigma(3 1)=  1.78959806E-06
+  sigma(3 3)= -1.64951324E-05  sigma(2 1)= -8.08750078E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  3.5705E-01 GPa]
+- sigma(1 1)=  1.29072353E-01  sigma(3 2)=  4.05491752E-01
+- sigma(2 2)= -7.14923205E-01  sigma(3 1)=  5.26517838E-02
+- sigma(3 3)= -4.85303467E-01  sigma(2 1)= -2.37942448E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (49/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -1.0122562216089223E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37262638595473E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  3.59847164E-06  sigma(3 2)=  1.38886973E-05
+  sigma(2 2)= -2.73496987E-05  sigma(3 1)=  1.48631038E-06
+  sigma(3 3)= -1.72647386E-05  sigma(2 1)= -8.97524714E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  4.0224E-01 GPa]
+- sigma(1 1)=  1.05870673E-01  sigma(3 2)=  4.08619515E-01
+- sigma(2 2)= -8.04655780E-01  sigma(3 1)=  4.37287538E-02
+- sigma(3 3)= -5.07946061E-01  sigma(2 1)= -2.64060843E-01
+--------------------------------------------------------------------------------
+
+
+--- Iteration: (50/50) Internal Cycle: (1/1)
+--------------------------------------------------------------------------------
+
+---EFFECTIVE POTENTIAL CALCULATION--------------------------------------------
+
+ Calculation of the energy with effective potential
+--------------------------------------------------------------------------------
+ Components of total energy (in Hartree) :
+
+ Energy of the reference structure         : -1.3716141297331200E+02 Hartree
+ Energy of the ifc part                    : -1.1453940075861628E-01 Hartree
+
+    >>>>>>>>> Etotal= -1.37275952374071E+02
+
+--------------------------------------------------------------------------------
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  2.90066476E-06  sigma(3 2)=  1.37009413E-05
+  sigma(2 2)= -3.11278678E-05  sigma(3 1)=  1.25029084E-06
+  sigma(3 3)= -1.81533695E-05  sigma(2 1)= -9.53784966E-06
+
+-Cartesian components of stress tensor (GPa)         [Pressure=  4.5485E-01 GPa]
+- sigma(1 1)=  8.53404894E-02  sigma(3 2)=  4.03095541E-01
+- sigma(2 2)= -9.15813335E-01  sigma(3 1)=  3.67848202E-02
+- sigma(3 3)= -5.34090481E-01  sigma(2 1)= -2.80613178E-01
+--------------------------------------------------------------------------------
+
+
+================================================================================
+
+
+================================================================================
+
+-
+- Proc.   0 individual time (sec): cpu=          0.2  wall=          0.2
+
+================================================================================
+
++Total cpu time      0.921  and wall time      0.921 sec
+
+ multibinit : the run completed succesfully.
