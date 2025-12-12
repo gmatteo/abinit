@@ -2,7 +2,7 @@ name: Build Abinit and run the test suite
 
 on:
   push:
-    branches: ["develop", "abinit_web"]
+    branches: ["master"]
   pull_request:
     branches: ["develop"]
 

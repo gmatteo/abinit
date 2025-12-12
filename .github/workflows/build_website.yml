@@ -4,7 +4,7 @@ name: Publish Abinit website
 on:
   workflow_dispatch:
   push:
-    branches: ["abinit_web"]
+    branches: ["master"]
     #paths: # Recommended to avoid extra builds
     #  - .github/workflows/your_site_publish_file.yml # Change name to what your workflow file is
     #  - docs/**
