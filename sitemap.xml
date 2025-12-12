@@ -1,1483 +1,1483 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://gmatteo.github.io/abinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/INSTALL_CentOS/</loc>
+         <loc>https://gmatteo.github.io/abinit/INSTALL_CentOS.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/INSTALL_EasyBuild/</loc>
+         <loc>https://gmatteo.github.io/abinit/INSTALL_EasyBuild.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/INSTALL_MacOS/</loc>
+         <loc>https://gmatteo.github.io/abinit/INSTALL_MacOS.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/INSTALL_Ubuntu/</loc>
+         <loc>https://gmatteo.github.io/abinit/INSTALL_Ubuntu.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/INSTALL_gpu/</loc>
+         <loc>https://gmatteo.github.io/abinit/INSTALL_gpu.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/TODO/</loc>
+         <loc>https://gmatteo.github.io/abinit/TODO.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/installation/</loc>
+         <loc>https://gmatteo.github.io/abinit/installation.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/about/contributing/</loc>
+         <loc>https://gmatteo.github.io/abinit/about/contributing.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/about/history/</loc>
+         <loc>https://gmatteo.github.io/abinit/about/history.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/about/license/</loc>
+         <loc>https://gmatteo.github.io/abinit/about/license.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/about/release-notes/</loc>
+         <loc>https://gmatteo.github.io/abinit/about/release-notes.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/build/Obsolete/build-howto/</loc>
+         <loc>https://gmatteo.github.io/abinit/build/Obsolete/build-howto.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/XgType/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/XgType.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/abimkdocs/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/abimkdocs.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/autoconf_examples/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/autoconf_examples.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/codestats/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/codestats.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/developers_howto/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/developers_howto.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/git_and_gitlab/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/git_and_gitlab.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/markdown/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/markdown.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/mpi_devtools/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/mpi_devtools.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/new_testsuite/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/new_testsuite.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/psp1_info/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/psp1_info.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/psp3_info/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/psp3_info.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/psp45_info/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/psp45_info.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/psp5spinorbit_info/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/psp5spinorbit_info.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/psp6_info/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/psp6_info.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/psp8_info/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/psp8_info.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/testlink/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/testlink.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/testsuite/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/testsuite.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/testsuite_howto/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/testsuite_howto.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/developers/yaml_tools_api/</loc>
+         <loc>https://gmatteo.github.io/abinit/developers/yaml_tools_api.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/extra_javascript/jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend/</loc>
+         <loc>https://gmatteo.github.io/abinit/extra_javascript/jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/extra_javascript/jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend/CHANGELOG/</loc>
+         <loc>https://gmatteo.github.io/abinit/extra_javascript/jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend/CHANGELOG.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/extra_javascript/jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend/LICENSE/</loc>
+         <loc>https://gmatteo.github.io/abinit/extra_javascript/jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend/LICENSE.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/faq/Troubleshooting/</loc>
+         <loc>https://gmatteo.github.io/abinit/faq/Troubleshooting.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/faq/configuration_and_compilation/</loc>
+         <loc>https://gmatteo.github.io/abinit/faq/configuration_and_compilation.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/faq/dfpt/</loc>
+         <loc>https://gmatteo.github.io/abinit/faq/dfpt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/faq/general_questions/</loc>
+         <loc>https://gmatteo.github.io/abinit/faq/general_questions.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/faq/ground_state/</loc>
+         <loc>https://gmatteo.github.io/abinit/faq/ground_state.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/faq/pre_and_post_processing/</loc>
+         <loc>https://gmatteo.github.io/abinit/faq/pre_and_post_processing.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/faq/tuning_abinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/faq/tuning_abinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/abinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/abinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/abitk/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/abitk.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/aim/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/aim.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/anaddb/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/anaddb.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/atdep/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/atdep.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/cut3d/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/cut3d.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/fold2bloch/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/fold2bloch.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/mrgddb/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/mrgddb.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/mrgscr/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/mrgscr.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/multibinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/multibinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/new_user/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/new_user.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/optic/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/optic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/respfn/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/respfn.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/guide/spacegroup/</loc>
+         <loc>https://gmatteo.github.io/abinit/guide/spacegroup.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/DensityAtom_pw/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/DensityAtom_pw/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/DensityCore_pw/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/DensityCore_pw/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_fr_04_pbe_std_psp8/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_fr_04_pbe_std_psp8/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_sr_04_pbe_std_psp8/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_sr_04_pbe_std_psp8/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_sr_04_pw_lrgcore_psp8/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_sr_04_pw_lrgcore_psp8/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_sr_04_pw_std_psp8/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_nc_sr_04_pw_std_psp8/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_paw_pbe_std/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_paw_pbe_std/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_paw_pw_std/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_paw_pw_std/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_paw_pw_stringent/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/Psdj_paw_pw_stringent/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/PseudosGTH_pwteter/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/PseudosGTH_pwteter/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/PseudosHGH_pwteter/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/PseudosHGH_pwteter/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/PseudosTM_pwteter/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/Pspdir/PseudosTM_pwteter/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tests/modules_with_data/</loc>
+         <loc>https://gmatteo.github.io/abinit/tests/modules_with_data/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/acknowledgments/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/acknowledgments.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/acronyms/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/acronyms.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/bibliography/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/bibliography.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/bse/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/bse.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/documents/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/documents.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/geometry/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/geometry.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/mbt/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/mbt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/noncollinear/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/noncollinear.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/pseudopotentials/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/pseudopotentials.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/spherical_harmonics/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/spherical_harmonics.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/theory/wavefunctions/</loc>
+         <loc>https://gmatteo.github.io/abinit/theory/wavefunctions.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/APPA/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/APPA.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Abipy/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Abipy.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Artificial/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Artificial.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/AtomCentered/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/AtomCentered.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/AtomManipulator/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/AtomManipulator.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/AtomTypes/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/AtomTypes.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/BSE/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/BSE.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Bader/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Bader.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Band2eps/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Band2eps.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/BandOcc/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/BandOcc.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Berry/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Berry.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/BoundingProcess/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/BoundingProcess.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/CRPA/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/CRPA.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/CalcUJ/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/CalcUJ.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ConstrainedDFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ConstrainedDFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ConstrainedPol/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ConstrainedPol.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Control/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Control.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Coulomb/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Coulomb.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/CrossingBarriers/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/CrossingBarriers.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/DFPT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/DFPT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/DFT%2BU/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/DFT%2BU.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/DMFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/DMFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/DeltaSCF/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/DeltaSCF.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/DensityPotential/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/DensityPotential.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Dev/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Dev.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/DynamicsMultibinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/DynamicsMultibinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/EFG/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/EFG.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/EffectiveMass/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/EffectiveMass.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ElPhonInt/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ElPhonInt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ElPhonTransport/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ElPhonTransport.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Elastic/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Elastic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ElecBandStructure/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ElecBandStructure.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ElecDOS/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ElecDOS.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ExtFPMD/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ExtFPMD.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/FileFormats/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/FileFormats.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/FitProcess/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/FitProcess.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/ForcesStresses/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/ForcesStresses.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/FrequencyMeshMBPT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/FrequencyMeshMBPT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/GSintroduction/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/GSintroduction.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/GW/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/GW.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/GWR/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/GWR.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/GWls/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/GWls.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/GeoConstraints/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/GeoConstraints.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/GeoOpt/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/GeoOpt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Git/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Git.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Hybrids/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Hybrids.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Install/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Install.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/LDAminushalf/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/LDAminushalf.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/LOTF/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/LOTF.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/LWFModel/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/LWFModel.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/LatticeModel/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/LatticeModel.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/LatticeWannier/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/LatticeWannier.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Macroave/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Macroave.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/MagField/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/MagField.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/MagMom/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/MagMom.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/MolecularDynamics/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/MolecularDynamics.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/NMR/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/NMR.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Optic/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Optic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Output/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Output.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/PAW/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/PAW.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/PIMD/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/PIMD.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/PhononBands/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/PhononBands.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/PhononWidth/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/PhononWidth.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Phonons/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Phonons.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Planewaves/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Planewaves.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Polaron/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Polaron.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/PortabilityNonRegression/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/PortabilityNonRegression.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/PseudosPAW/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/PseudosPAW.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/RPACorrEn/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/RPACorrEn.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/RTTDDFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/RTTDDFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/RandStopPow/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/RandStopPow.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Recursion/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Recursion.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/SCFAlgorithms/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/SCFAlgorithms.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/SCFControl/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/SCFControl.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/STM/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/STM.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/SelfEnergy/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/SelfEnergy.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/SmartSymm/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/SmartSymm.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/SpinDynamicsMultibinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/SpinDynamicsMultibinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Susceptibility/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Susceptibility.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/TDDFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/TDDFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/TDepES/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/TDepES.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Temperature/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Temperature.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/TransPath/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/TransPath.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/TuningSpeedMem/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/TuningSpeedMem.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Unfolding/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Unfolding.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/UnitCell/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/UnitCell.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Verification/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Verification.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Wannier/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Wannier.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/Wavelets/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/Wavelets.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_APPA/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_APPA.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Abipy/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Abipy.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Artificial/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Artificial.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_AtomCentered/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_AtomCentered.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_AtomManipulator/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_AtomManipulator.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_AtomTypes/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_AtomTypes.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_BSE/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_BSE.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Bader/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Bader.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Band2eps/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Band2eps.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_BandOcc/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_BandOcc.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Berry/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Berry.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_BoundingProcess/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_BoundingProcess.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_CalcUJ/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_CalcUJ.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ConstrainedDFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ConstrainedDFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ConstrainedPol/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ConstrainedPol.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Control/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Control.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Coulomb/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Coulomb.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_CrossingBarriers/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_CrossingBarriers.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_DFPT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_DFPT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_DFT%2BU/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_DFT%2BU.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_DMFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_DMFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_DeltaSCF/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_DeltaSCF.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_DensityPotential/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_DensityPotential.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Dev/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Dev.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_DynamicsMultibinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_DynamicsMultibinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_EFG/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_EFG.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_EffectiveMass/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_EffectiveMass.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ElPhonInt/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ElPhonInt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ElPhonTransport/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ElPhonTransport.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Elastic/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Elastic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ElecBandStructure/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ElecBandStructure.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ElecDOS/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ElecDOS.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ExtFPMD/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ExtFPMD.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_FileFormats/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_FileFormats.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_FitProcess/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_FitProcess.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_ForcesStresses/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_ForcesStresses.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_FrequencyMeshMBPT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_FrequencyMeshMBPT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_GSintroduction/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_GSintroduction.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_GW/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_GW.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_GWR/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_GWR.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_GWls/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_GWls.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_GeoConstraints/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_GeoConstraints.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_GeoOpt/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_GeoOpt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Git/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Git.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Hybrids/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Hybrids.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Install/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Install.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_LDAminushalf/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_LDAminushalf.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_LOTF/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_LOTF.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_LWFModel/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_LWFModel.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_LatticeModel/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_LatticeModel.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_LatticeWannier/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_LatticeWannier.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Macroave/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Macroave.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_MagField/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_MagField.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_MagMom/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_MagMom.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_MolecularDynamics/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_MolecularDynamics.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_NMR/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_NMR.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Optic/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Optic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Output/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Output.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_PAW/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_PAW.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_PIMD/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_PIMD.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_PhononBands/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_PhononBands.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_PhononWidth/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_PhononWidth.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Phonons/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Phonons.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Planewaves/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Planewaves.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Polaron/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Polaron.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_PortabilityNonRegression/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_PortabilityNonRegression.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_PseudosPAW/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_PseudosPAW.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_RPACorrEn/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_RPACorrEn.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_RTTDDFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_RTTDDFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_RandStopPow/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_RandStopPow.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Recursion/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Recursion.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_SCFAlgorithms/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_SCFAlgorithms.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_SCFControl/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_SCFControl.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_STM/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_STM.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_SelfEnergy/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_SelfEnergy.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_SmartSymm/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_SmartSymm.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_SpinDynamicsMultibinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_SpinDynamicsMultibinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Susceptibility/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Susceptibility.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_TDDFT/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_TDDFT.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_TDepES/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_TDepES.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Temperature/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Temperature.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_TransPath/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_TransPath.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_TuningSpeedMem/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_TuningSpeedMem.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Unfolding/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Unfolding.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_UnitCell/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_UnitCell.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Verification/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Verification.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Wannier/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Wannier.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_Wavelets/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_Wavelets.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_aTDEP/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_aTDEP.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_crystal/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_crystal.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_k-points/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_k-points.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_longwave/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_longwave.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_multidtset/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_multidtset.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_nonlinear/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_nonlinear.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_parallelism/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_parallelism.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_positron/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_positron.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_printing/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_printing.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_q-points/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_q-points.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_spinpolarisation/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_spinpolarisation.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_vdw/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_vdw.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/_xc/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/_xc.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/aTDEP/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/aTDEP.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/crystal/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/crystal.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/external_resources/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/external_resources.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/features/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/features.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/k-points/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/k-points.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/longwave/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/longwave.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/multidtset/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/multidtset.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/nonlinear/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/nonlinear.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/parallelism/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/parallelism.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/positron/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/positron.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/printing/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/printing.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/q-points/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/q-points.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/spinpolarisation/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/spinpolarisation.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/vdw/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/vdw.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/topics/xc/</loc>
+         <loc>https://gmatteo.github.io/abinit/topics/xc.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/abinit_build/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/abinit_build.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/atdep1/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/atdep1.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/atdep2/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/atdep2.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/base1/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/base1.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/base2/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/base2.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/base3/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/base3.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/base4/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/base4.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/basepar/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/basepar.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/bse/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/bse.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/cut3d/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/cut3d.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/dftu/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/dftu.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/dmft/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/dmft.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/elastic/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/elastic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/eph4isotc/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/eph4isotc.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/eph4mob/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/eph4mob.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/eph4vpq/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/eph4vpq.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/eph4zpr/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/eph4zpr.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/eph_intro/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/eph_intro.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/eph_legacy/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/eph_legacy.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/eph_tdep_legacy/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/eph_tdep_legacy.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/fold2bloch/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/fold2bloch.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/gw1/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/gw1.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/gw2/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/gw2.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/gwr1/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/gwr1.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/gwr_intro/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/gwr_intro.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/lattice_harmonic_model/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/lattice_harmonic_model.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/lattice_model/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/lattice_model.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/lattice_wannier/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/lattice_wannier.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/lruj/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/lruj.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/lw_quad/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/lw_quad.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/lwf_model/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/lwf_model.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/multibinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/multibinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/nlo/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/nlo.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/nuc/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/nuc.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/optic/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/optic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paral_bandpw/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paral_bandpw.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paral_dfpt/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paral_dfpt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paral_gswvl/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paral_gswvl.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paral_images/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paral_images.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paral_mbt/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paral_mbt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paral_moldyn/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paral_moldyn.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paw1/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paw1.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paw2/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paw2.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/paw3/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/paw3.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/polarization/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/polarization.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/positron/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/positron.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/rf1/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/rf1.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/rf2/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/rf2.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/rttddft/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/rttddft.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/spin/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/spin.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/spin_model/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/spin_model.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/tddft/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/tddft.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/ucalc_crpa/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/ucalc_crpa.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/wannier90/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/wannier90.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/tutorial/z2pack/</loc>
+         <loc>https://gmatteo.github.io/abinit/tutorial/z2pack.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/index.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/aim/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/aim.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/anaddb/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/anaddb.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/atdep/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/atdep.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/basic/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/basic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/bse/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/bse.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/dev/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/dev.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/dfpt/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/dfpt.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/dmft/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/dmft.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/eph/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/eph.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/external_parameters/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/external_parameters.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/ffield/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/ffield.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/files/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/files.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/geo/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/geo.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/gstate/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/gstate.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/gw/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/gw.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/gwr/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/gwr.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/internal/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/internal.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/multibinit/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/multibinit.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/optic/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/optic.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/paral/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/paral.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/paw/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/paw.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/rlx/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/rlx.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/rttddft/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/rttddft.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/varset_stats/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/varset_stats.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/vdw/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/vdw.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-         <loc>https://gmatteo.github.io/abinit/variables/w90/</loc>
+         <loc>https://gmatteo.github.io/abinit/variables/w90.html</loc>
          <lastmod>2025-12-12</lastmod>
     </url>
 </urlset>
